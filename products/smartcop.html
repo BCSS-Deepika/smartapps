@@ -1186,6 +1186,29 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px soli
 @media (max-width:1100px){ .foot-cols{grid-template-columns:repeat(2,minmax(0,1fr))} }
 .phero .chip-div{background:rgba(245,129,32,.16); border-color:rgba(255,178,122,.45); color:#FFD2AE}
 
+/* ---- navigation menus ---- */
+.drop a b{color:var(--color-text)}
+.drop{max-height:calc(100vh - var(--nav-h) - 24px); overflow-y:auto; overscroll-behavior:contain}
+@media (min-width:1121px){
+  .drop-mega[data-open=true]{display:grid}
+  .drop-mega{position:fixed; top:calc(var(--nav-h) - 4px); left:50%; transform:translateX(-50%);
+    width:min(900px, calc(100vw - 32px)); grid-template-columns:290px minmax(0,1fr); gap:6px; padding:12px}
+  .dm-col + .dm-col{border-left:1px solid var(--color-border); padding-left:8px}
+  .dm-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:4px}
+}
+@media (max-width:1120px){
+  .nav-links{height:calc(100vh - var(--nav-h)); height:calc(100dvh - var(--nav-h)); bottom:auto; overflow-y:auto; overscroll-behavior:contain}
+  .nav-links .drop{display:none; max-height:none; overflow:visible}
+  .nav-links .drop[data-open=true]{display:block}
+  .nav-a[data-drop]{display:flex; justify-content:space-between; align-items:center; width:100%; text-align:left}
+  .nav-a[data-drop]::after{content:""; width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+    transform:rotate(45deg) translateY(-3px); transition:transform .18s; margin-right:4px}
+  .nav-a[data-drop][aria-expanded=true]::after{transform:rotate(-135deg) translateY(-2px)}
+  .drop a b{color:#fff} .drop a span{color:#9FB3CE} .drop-h{color:#8FA6C6}
+  .dm-grid{display:grid; grid-template-columns:minmax(0,1fr)}
+}
+@media (min-width:600px) and (max-width:1120px){ .dm-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
 /* ---- forms ---- */
 input,select,textarea{font-family:var(--font-body); font-size:var(--text-body)}
 
@@ -1215,7 +1238,7 @@ input,select,textarea{font-family:var(--font-body); font-size:var(--text-body)}
       <a class="nav-a" href="../index.html#overview">Overview</a>
       <div>
         <button class="nav-a" data-drop="dAG" aria-expanded="false" aria-haspopup="true">Access Genie</button>
-        <div class="drop" id="dAG" role="menu"><div class="drop-h">Access Genie platform</div><a href="access-genie.html" style="--c:var(--ag)"><i></i><span><b>Access Genie overview</b><span>AI video and operational intelligence</span></span></a><div class="drop-h">Division · Policing &amp; public safety</div><a href="garuda.html" style="--c:var(--garuda)"><i></i><span><b>GARUDA ecosystem</b><span>One front door, thirteen products</span></span></a><a href="geo-intelligence.html" style="--c:var(--blue)"><i></i><span><b>Geo Intelligence</b><span>One map for every product</span></span></a><a href="drug-offender-portal.html" style="--c:var(--amberx)"><i></i><span><b>Drug Offender Portal</b><span>Narcotics offender register</span></span></a><a href="women-safety-portal.html" style="--c:var(--amberx)"><i></i><span><b>Women Safety Portal</b><span>Registry &amp; controlled disclosure</span></span></a><a href="bluflow.html" style="--c:var(--amberx)"><i></i><span><b>BluFlow</b><span>Bank statement fraud analysis</span></span></a><a href="digital-forensics.html" style="--c:var(--amberx)"><i></i><span><b>Digital Forensics</b><span>Device &amp; media evidence</span></span></a><a href="trap-case-management.html" style="--c:var(--amberx)"><i></i><span><b>Trap Case Management</b><span>Anti-corruption trap cases</span></span></a><a href="ai-copwriter.html" style="--c:var(--violet)"><i></i><span><b>AI CopWriter</b><span>Voice to structured complaint</span></span></a><a href="fir-automation.html" style="--c:var(--violet)"><i></i><span><b>FIR Automation</b><span>Complaint to registered report</span></span></a><a href="memo-generator.html" style="--c:var(--violet)"><i></i><span><b>Memo Complaint Generator</b><span>Supervision memos</span></span></a><a href="smartcop.html" style="--c:var(--green)"><i></i><span><b>SmartCOP</b><span>Officer mobile platform</span></span></a><a href="grievance-management.html" style="--c:var(--green)"><i></i><span><b>Grievance Management</b><span>Citizen grievances to closure</span></span></a><a href="bluvaani.html" style="--c:var(--green)"><i></i><span><b>BluVaani</b><span>AI call dispatcher</span></span></a><div class="drop-h">Division · Enterprise &amp; industry</div><a href="access-genie-retail.html" style="--c:var(--ag)"><i></i><span><b>Access Genie Retail</b><span>16 KPIs across a store estate</span></span></a><a href="blugo.html" style="--c:var(--teal)"><i></i><span><b>BluGo</b><span>Logistics &amp; mobility</span></span></a><a href="../index.html#access-genie-more" style="--c:var(--ag-2)"><i></i><span><b>More industries</b><span>Transport, infrastructure, healthcare</span></span></a></div>
+        <div class="drop drop-mega" id="dAG" role="menu"><div class="dm-col"><div class="drop-h">Access Genie platform</div><a href="access-genie.html" style="--c:var(--ag)"><i></i><span><b>Access Genie overview</b><span>AI video and operational intelligence</span></span></a><div class="drop-h">Division · Enterprise &amp; industry</div><a href="access-genie-retail.html" style="--c:var(--ag)"><i></i><span><b>Access Genie Retail</b><span>16 KPIs across a store estate</span></span></a><a href="blugo.html" style="--c:var(--teal)"><i></i><span><b>BluGo</b><span>Logistics &amp; mobility</span></span></a><a href="../index.html#access-genie-more" style="--c:#0D9E80"><i></i><span><b>Six more industries</b><span>Transport, infrastructure, healthcare, finance, education</span></span></a></div><div class="dm-col dm-pol"><div class="drop-h">Division · Policing &amp; public safety</div><div class="dm-grid"><a href="garuda.html" style="--c:var(--garuda)"><i></i><span><b>GARUDA ecosystem</b><span>One front door, thirteen products</span></span></a><a href="geo-intelligence.html" style="--c:var(--blue)"><i></i><span><b>Geo Intelligence</b><span>One map for every product</span></span></a><a href="drug-offender-portal.html" style="--c:var(--amberx)"><i></i><span><b>Drug Offender Portal</b><span>Narcotics offender register</span></span></a><a href="women-safety-portal.html" style="--c:var(--amberx)"><i></i><span><b>Women Safety Portal</b><span>Registry &amp; controlled disclosure</span></span></a><a href="bluflow.html" style="--c:var(--amberx)"><i></i><span><b>BluFlow</b><span>Bank statement fraud analysis</span></span></a><a href="digital-forensics.html" style="--c:var(--amberx)"><i></i><span><b>Digital Forensics</b><span>Device &amp; media evidence</span></span></a><a href="trap-case-management.html" style="--c:var(--amberx)"><i></i><span><b>Trap Case Management</b><span>Anti-corruption trap cases</span></span></a><a href="ai-copwriter.html" style="--c:var(--violet)"><i></i><span><b>AI CopWriter</b><span>Voice to structured complaint</span></span></a><a href="fir-automation.html" style="--c:var(--violet)"><i></i><span><b>FIR Automation</b><span>Complaint to registered report</span></span></a><a href="memo-generator.html" style="--c:var(--violet)"><i></i><span><b>Memo Complaint Generator</b><span>Supervision memos</span></span></a><a href="smartcop.html" style="--c:var(--green)"><i></i><span><b>SmartCOP</b><span>Officer mobile platform</span></span></a><a href="grievance-management.html" style="--c:var(--green)"><i></i><span><b>Grievance Management</b><span>Citizen grievances to closure</span></span></a><a href="bluvaani.html" style="--c:var(--green)"><i></i><span><b>BluVaani</b><span>AI call dispatcher</span></span></a></div></div></div>
       </div>
       <div>
         <button class="nav-a" data-drop="dSAGA" aria-expanded="false" aria-haspopup="true">Blura SAGA</button>
@@ -1648,6 +1671,7 @@ input,select,textarea{font-family:var(--font-body); font-size:var(--text-body)}
       if (d) d.setAttribute("data-open", open ? "false" : "true");
     });
   });
+  $$(".drop").forEach(function (d) { d.addEventListener("click", function (e) { if (e.target.closest("a") === null) e.stopPropagation(); }); });
   document.addEventListener("click", function () { closeDrops(null); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrops(null); });
 
