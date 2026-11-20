@@ -648,8 +648,8 @@ const P=[
   feat:['Offender profile with case, conviction and photo','Periodic address verification through Smart Cop','Prison release and change-of-address alerts','Proximity view on GIS: schools, colleges, hostels','Restricted access with every view logged','Victim details never exposed'],
   g:{s:'Registry status on the GARUDA ID',u:'Prison and parole releases, CCTNS cases',o:'Subject → “Registry record”'},
   wf:{t:'table',title:'Women Safety Portal · Registry',tabs:['Registered','Due for verification','Alerts'],cols:['Offender','Station','Category','Last verified','Status'],rows:[['Offender #1182','Riverside','Convicted','12 Oct','low|Verified'],['Offender #0974','Lake View Hills','Charge-sheeted','03 Aug','med|Due'],['Offender #1203','South Colony','Convicted','—','crit|Released · new'],['Offender #0811','North Colony','Convicted','28 Sep','low|Verified']]}},
- {id:'bluflow',cl:'inv',name:'BluFlow',tag:'Bank statement fraud analysis',
-  line:'Reads bank statements and finds the fraud: where the money went, through which accounts, and how fast.',
+ {id:'bluflow',cl:'inv',name:'BluFlow',tag:'Financial intelligence',
+  line:'Brings bank statements, accounts and transactions into one connected view, and shows where the money went, through which accounts, and how fast.',
   users:['Cyber crime','Economic Offences Wing','ACB','Narcotics investigators'],
   flow:[['Upload','Statements from any bank: PDF, Excel or scanned'],['Read','AI extracts and standardises every transaction'],['Detect','Mule accounts, round-tripping, rapid in-and-out, split cash'],['Trace','Money-trail graph across accounts'],['Report','Court-ready summary of flagged transactions']],
   feat:['Reads many banks and formats, including scans','Matches the same counterparty across accounts','Fraud pattern rules plus anomaly scoring','Money-trail graph with amounts and dates','Links to cyber fraud complaints (1930)','Exportable evidence annexures'],
@@ -683,12 +683,12 @@ const P=[
   feat:['Reads handwritten and printed petitions','Telugu, Hindi, Urdu and English','Section suggestions with reasons; the officer decides','Duplicate complaint detection','Zero FIR and e-FIR support','Push to CCTNS'],
   g:{s:'New FIRs and parties linked to GARUDA IDs',u:'Prior FIRs of the accused',o:'Apps → FIR Automation'},
   wf:{t:'doc',title:'FIR Automation · Draft',fields:[['Complainant','K. Lakshmi, Central Market'],['Incident','Chain snatching, 19:40, 14 Nov'],['Property','Gold chain, 2 tola'],['Suggested sections','BNS 304(2) · officer to confirm']],paper:'FIRST INFORMATION REPORT',act:['Approve & register','Edit']}},
- {id:'memo',cl:'draft',name:'Memo Complaint Generator',tag:'Supervision memos',
+ {id:'memo',cl:'draft',name:'Compliant Memo Generator',tag:'Supervision memos',
   line:'Reads the daily task-force reports and issues accountability memos to the responsible SHO or SI automatically.',
   users:['Commissioner’s office','SHOs','SIs','Administrators'],
   flow:[['Upload DSR','Daily Situation Report uploaded'],['Read','Each case extracted and classified'],['Identify','Station, sector and responsible officer found from jurisdiction'],['Approve','Warning or charge memo reviewed by the Commissioner'],['Comply','Officer uploads reply; tracked to closure']],
   feat:['Reads DSRs in Word or PDF','Maps jurisdiction to the responsible officer (HRMS)','Warning memos; charge memo after repeated warnings','Review: approve, hold or reject','Officer memo register with compliance upload','Station-wise lapse dashboard'],
-  g:{s:'Lapse counts by station and officer',u:'Officer and jurisdiction master data',o:'Apps → Memo Complaint Generator'},
+  g:{s:'Lapse counts by station and officer',u:'Officer and jurisdiction master data',o:'Apps → Compliant Memo Generator'},
   wf:{t:'doc',title:'Memo Review',fields:[['Case','Gaming raid, 13 Nov, Sector 3'],['Police station','Bridge Road'],['Responsible','SI, Sector 3 (auto)'],['Memo type','Warning · 2 of 3']],paper:'MEMORANDUM',act:['Approve','Hold','Reject']}},
  {id:'tgcop',cl:'field',name:'Smart Cop',tag:'Officer mobile platform',
   line:'The officer’s phone. Its 19 modules bring every system into the field, from Dial 112 to e-Sakshya evidence.',
@@ -700,20 +700,20 @@ const P=[
  {id:'grievance',cl:'field',name:'Grievance Management',tag:'Citizen grievances to closure',
   line:'Every citizen grievance, whether it comes from social media, a petition or a phone call, goes to the right desk and is tracked until it is closed.',
   users:['Grievance cells','SHOs','Department heads','Commissioner’s office'],
-  flow:[['Capture','Social media (Blura SAGA), petitions, AI Call Dispatcher calls'],['Classify','Complaint, criticism, suggestion or query; category and station'],['Assign','Routed with an SLA timer'],['Resolve','Remarks required at every step'],['Close','Citizen updated; monthly reports']],
+  flow:[['Capture','Social media (Blura SAGA), petitions, BluVaani calls'],['Classify','Complaint, criticism, suggestion or query; category and station'],['Assign','Routed with an SLA timer'],['Resolve','Remarks required at every step'],['Close','Citizen updated; monthly reports']],
   feat:['Automatic detection from social media','Category and station routing','New → Review → In progress → Resolved → Closed','Mandatory officer remarks','SLA timers with escalation','Monthly resolution and source reports'],
   g:{s:'Grievance trends by station and category',u:'Station and officer directory',o:'Alerts → “Grievances”'},
   wf:{t:'kanban',title:'Grievances · Board',cols:[['New',3],['Review',2],['In progress',2],['Resolved',1]]}},
- {id:'bluvaani',cl:'field',name:'AI Call Dispatcher',tag:'Voice AI · call handling & dispatch',
-  line:'AI that answers and understands citizen calls in Telugu, Hindi, Urdu and English, then dispatches each call to the right station, unit or product, with a transcript.',
+ {id:'bluvaani',cl:'field',name:'BluVaani',tag:'The sovereign AI call dispatcher',
+  line:'Sovereign AI that answers and understands citizen calls in all Indian languages, then dispatches each call to the right station, unit or product, with a transcript.',
   users:['Dial 100 / 112 call centres','Control room','Station desks','Citizens'],
-  flow:[['Answer','Citizen call picked up in any language'],['Transcribe','Speech to text, with speakers separated'],['Understand','Intent, urgency, place and names'],['Dispatch','Routed to the right station, unit or patrol'],['Hand off','Complaint to AI Cop Writer, grievance or a Smart Cop task']],
-  feat:['Telugu, Hindi, Urdu and English, including mixed speech','Urgency scoring so emergencies jump the queue','Automatic routing to station, unit or patrol','Transcript and summary attached to every call','Hands complaints to AI Cop Writer and Grievance','Speech engine reused by other products'],
-  g:{s:'Call records, transcripts and dispatch decisions',u:'Station jurisdiction and unit availability',o:'Apps → AI Call Dispatcher'},
-  wf:{t:'voice',title:'AI Call Dispatcher · Live Call'}}
+  flow:[['Answer','Citizen call picked up in any Indian language'],['Transcribe','Speech to text, with speakers separated'],['Understand','Intent, urgency, place and names'],['Dispatch','Routed to the right station, unit or patrol'],['Hand off','Complaint to AI Cop Writer, grievance or a Smart Cop task']],
+  feat:['All Indian languages, including mixed speech','Urgency scoring so emergencies jump the queue','Automatic routing to station, unit or patrol','Transcript and summary attached to every call','Hands complaints to AI Cop Writer and Grievance','Speech engine reused by other products'],
+  g:{s:'Call records, transcripts and dispatch decisions',u:'Station jurisdiction and unit availability',o:'Apps → BluVaani'},
+  wf:{t:'voice',title:'BluVaani · Live Call'}}
 ];
 const PI=Object.fromEntries(P.map(p=>[p.id,p]));
-const SHORT={saga:'Blura SAGA',gis:'GIS / Geo',forensic:'Forensics',trap:'Trap Cases',fir:'FIR Auto',copwriter:'AI Cop Writer',memo:'Memo Generator',grievance:'Grievance',dopams:'Drug Offenders',ssor:'Women Safety',bluvaani:'AI Dispatcher',tgcop:'Smart Cop'};
+const SHORT={saga:'Blura SAGA',gis:'GIS / Geo',forensic:'Forensics',trap:'Trap Cases',fir:'FIR Auto',copwriter:'AI Cop Writer',memo:'Compliant Memo',grievance:'Grievance',dopams:'Drug Offenders',ssor:'Women Safety',bluvaani:'BluVaani',tgcop:'Smart Cop'};
 const short=id=>SHORT[id]||PI[id].name;
 const col=id=>id==='garuda'?'var(--orange-600)':CL[PI[id].cl].color;
 
@@ -887,7 +887,7 @@ addEventListener('scroll',trackProduct,{passive:true});trackProduct();setInterva
 /* ---------- journeys ---------- */
 const SC=[
  {t:'A viral post to a field response',tag:'PUBLIC ORDER',why:'A Telugu video calls people to an unauthorised gathering. The aim is to act before the crowd forms.',
-  s:[['saga','Blura SAGA detects the video within minutes; engagement is rising fast.'],['bluvaani','The AI Call Dispatcher speech engine transcribes the Telugu audio and pulls out the gathering time and place.'],['garuda','GARUDA raises a Critical alert and matches the poster to an existing GARUDA ID with 2 prior FIRs.'],['gis','GIS marks the venue, draws a geo-fence and shows the nearest patrol units.'],['tgcop','Smart Cop tasks beat officers; they check in on scene with geotagged photos.'],['garuda','GARUDA produces the incident report and briefing for the DCP, with the full audit trail.']],
+  s:[['saga','Blura SAGA detects the video within minutes; engagement is rising fast.'],['bluvaani','The BluVaani speech engine transcribes the Telugu audio and pulls out the gathering time and place.'],['garuda','GARUDA raises a Critical alert and matches the poster to an existing GARUDA ID with 2 prior FIRs.'],['gis','GIS marks the venue, draws a geo-fence and shows the nearest patrol units.'],['tgcop','Smart Cop tasks beat officers; they check in on scene with geotagged photos.'],['garuda','GARUDA produces the incident report and briefing for the DCP, with the full audit trail.']],
   out:'The crowd is prevented, the poster is identified, and every step from detection to response is in one audit trail.'},
  {t:'A drug arrest to the money trail',tag:'NARCOTICS',why:'A peddler is caught with MDMA. The aim is to reach the supplier and the money behind him.',
   s:[['dopams','Drug Offender Portal shows he is a repeat offender with 2 NDPS cases and lists his known associates.'],['forensic','Digital Forensics images his phone: chats with a supplier, UPI IDs and drop locations.'],['bluflow','BluFlow reads 6 linked bank statements and finds 3 mule accounts paying one supplier.'],['garuda','GARUDA’s network graph shows the supplier connecting three peddler groups.'],['gis','GIS maps the drop points into a supply hotspot for the narcotics team.'],['garuda','GARUDA compiles the intelligence report with the forensic and bank evidence for the chargesheet.']],
@@ -896,13 +896,13 @@ const SC=[
   s:[['copwriter','At the station kiosk he records the complaint by voice in Telugu on AI Cop Writer. It asks follow-up questions for the vehicle number, place and time.'],['copwriter','AI Cop Writer writes a formal complaint and FIR draft, reads it back to him, and he confirms.'],['fir','FIR Automation checks the fields and suggests BNS sections. The SHO approves and the FIR is registered in CCTNS.'],['tgcop','Smart Cop assigns the IO; the vehicle is added to the ANPR watch list.'],['grievance','Grievance Management tracks the case against its SLA and sends him updates until it is closed.']],
   out:'The FIR is registered in minutes, in the citizen’s own language, and he hears back without visiting the station again.'},
  {t:'An ACB bribery trap',tag:'ANTI-CORRUPTION',why:'A contractor complains that an official is demanding a bribe to clear a bill.',
-  s:[['trap','Trap Case Management records the complaint and assigns a DSP and team.'],['bluvaani','The AI Call Dispatcher speech engine transcribes the complainant’s recording of the demand.'],['forensic','Digital Forensics confirms the recording has not been tampered with.'],['trap','The trap is planned: panch witnesses and note serial numbers are logged. On trap day the chemical test and seizure are recorded with geotags.'],['bluflow','BluFlow checks the official’s bank statements for disproportionate assets.'],['trap','Trap Case Management tracks the sanction-for-prosecution request and the chargesheet to court.']],
+  s:[['trap','Trap Case Management records the complaint and assigns a DSP and team.'],['bluvaani','The BluVaani speech engine transcribes the complainant’s recording of the demand.'],['forensic','Digital Forensics confirms the recording has not been tampered with.'],['trap','The trap is planned: panch witnesses and note serial numbers are logged. On trap day the chemical test and seizure are recorded with geotags.'],['bluflow','BluFlow checks the official’s bank statements for disproportionate assets.'],['trap','Trap Case Management tracks the sanction-for-prosecution request and the chargesheet to court.']],
   out:'Every trap step is evidenced and time-stamped, and sanction for prosecution is tracked until it is granted.'},
  {t:'A sex offender released into a beat',tag:'WOMEN SAFETY',why:'A registered offender is released from prison and moves into a new area.',
   s:[['garuda','GARUDA receives the release from the Prison / Parole feed.'],['ssor','Women Safety Portal matches the person to the registry and raises a release alert for the jurisdiction.'],['gis','GIS shows the declared residence and flags two schools within 500 m.'],['tgcop','Smart Cop assigns the beat officer an address-verification visit, which is geotagged.'],['ssor','Women Safety Portal updates the registry and Women safety teams are notified.']],
   out:'Within a day the local officer and Women safety teams know who has moved into the beat, with the address verified.'},
  {t:'Supervision and accountability',tag:'COMMAND OVERSIGHT',why:'The Commissioner’s task force raids a gaming den the local station had not acted on.',
-  s:[['memo','Memo Complaint Generator reads the task-force DSR and classifies the case.'],['gis','The jurisdiction map identifies the police station and sector.'],['memo','The responsible SHO / SI is identified and a warning memo is drafted.'],['memo','The Commissioner approves. The officer is notified and uploads a compliance reply.'],['garuda','GARUDA’s dashboard shows lapses by station. After repeated warnings a charge memo is raised.']],
+  s:[['memo','Compliant Memo Generator reads the task-force DSR and classifies the case.'],['gis','The jurisdiction map identifies the police station and sector.'],['memo','The responsible SHO / SI is identified and a warning memo is drafted.'],['memo','The Commissioner approves. The officer is notified and uploads a compliance reply.'],['garuda','GARUDA’s dashboard shows lapses by station. After repeated warnings a charge memo is raised.']],
   out:'Supervision memos go out the same day instead of weeks later, and lapses by station are visible to senior officers.'}
 ];
 const tabs=document.getElementById('scenTabs');
