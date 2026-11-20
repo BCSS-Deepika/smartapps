@@ -1233,9 +1233,9 @@ input,select,textarea{font-family:var(--font-body); font-size:var(--text-body)}
    .foot-logo) stay white on purpose: the product logos are drawn for white.
    ===================================================================== */
 :root{
-  --ink:#E7EEF8; --ink-2:#B9C7DC; --ink-3:#95A9C5; --hair:#233A60; --hair-2:#1A2F52;
-  --paper:#0E2142; --paper-2:#0A1A37; --paper-3:#13294D;
-  --bg:#06132B; --bg-alt:#091A38; --surf:#0E2142; --surf-2:#122A50;
+  --ink:#E7EEF8; --ink-2:#B9C7DC; --ink-3:#95A9C5; --hair:#2B3458; --hair-2:#232B4C;
+  --paper:#1A2140; --paper-2:#10162E; --paper-3:#222A4F;
+  --bg:#0B1020; --bg-alt:#121831; --surf:#1A2140; --surf-2:#222A4F;
   --shadow:0 1px 2px rgba(0,0,0,.35), 0 8px 26px rgba(0,0,0,.28);
   --shadow-l:0 2px 6px rgba(0,0,0,.4), 0 22px 56px rgba(0,0,0,.42);
 }
@@ -1244,8 +1244,8 @@ h1,h2,h3,h4,h5{color:#fff}
 .band,.band-tight{background:var(--bg)}
 .band-alt{background:var(--bg-alt)}
 .band-line{border-top:1px solid var(--hair-2)}
-.band-dark{background:#071835}
-.band-deep{background:#040E22}
+.band-dark{background:#0E1428}
+.band-deep{background:#070B17}
 .lede,.ld{color:var(--ink-2)}
 .eyebrow{color:var(--orange-l)}
 
@@ -1255,13 +1255,13 @@ h1,h2,h3,h4,h5{color:#fff}
 .drop{background:var(--surf); border-color:var(--hair); color:var(--ink)}
 .layer.cross,.note,.chip{background:var(--surf-2); border-color:var(--hair); color:var(--ink-2)}
 .drop a:hover,.co-line:hover,.btn-o:hover{background:var(--surf-2)}
-th{background:#10264A; color:var(--ink-2)}
+th{background:#1E2547; color:var(--ink-2)}
 td{border-color:var(--hair)}
-.sx-roles td:first-child,.sx-roles th:first-child{background:#0E2142}
+.sx-roles td:first-child,.sx-roles th:first-child{background:#1A2140}
 .dcard-top{background:#fff; border-bottom-color:var(--hair)}
 .facts{border-bottom-color:var(--hair)}
-.enq input,.enq select,.enq textarea,.mx-s input{background:#081733; color:var(--ink); border-color:var(--hair)}
-.enq input:focus,.enq select:focus,.enq textarea:focus{background:#0A1D3D}
+.enq input,.enq select,.enq textarea,.mx-s input{background:#0D1226; color:var(--ink); border-color:var(--hair)}
+.enq input:focus,.enq select:focus,.enq textarea:focus{background:#10162E}
 .enq input::placeholder,.enq textarea::placeholder,.mx-s input::placeholder{color:#7F93B1}
 .btn-o{color:#fff}
 
@@ -1272,7 +1272,7 @@ td{border-color:var(--hair)}
 
 :root{
   --color-text:#E7EEF8; --color-text-secondary:#B9C7DC; --color-text-muted:#95A9C5;
-  --color-border:#233A60; --color-surface:#0E2142; --color-surface-subtle:#0A1A37; --color-surface-blue:#10264A;
+  --color-border:#2B3458; --color-surface:#1A2140; --color-surface-subtle:#10162E; --color-surface-blue:#1E2547;
   --color-orange-700:#FFB27A; --orange-d:#FFB27A; --color-blue-700:#8EC5F2;
   --color-success:#7FE0B0; --color-warning:#FFD27A; --color-error:#FF9AAE; --color-info:#A6D1F0;
 }
@@ -1288,6 +1288,19 @@ td{border-color:var(--hair)}
 .lw-p{background:#fff}
 .lw-p .lw-d{color:#4A5B78}
 .lw-p .lw-d b{color:#0E2545}
+
+/* =====================================================================
+   PALETTE B · MIDNIGHT JEWEL. Midnight surfaces, orange brand, coral highlight,
+   one jewel colour per platform: Access Genie amber, Blura SAGA orchid, EduGenie emerald.
+   ===================================================================== */
+:root{
+  --navy-900:#070B17; --navy-850:#0B1020; --navy-800:#121831; --navy-700:#1A2140; --navy-600:#2B3458; --navy-500:#3A4470;
+  --color-navy-950:#070B17; --color-navy-900:#0B1020; --color-navy-700:#1A2140;
+  --ag:#F59E0B; --saga:#E879F9; --edu:#34D399; --coral:#FF6B6B; --coral-l:#FF9C9C;
+}
+.eyebrow,.band-dark .eyebrow,.band-deep .eyebrow{color:var(--coral-l)}
+.demo-band{background:linear-gradient(135deg,#161C3A,#232B52) !important}
+.lk-dark,.lw-l.dk{background:#121831}
 </style>
 </head>
 <body data-mode="plain" data-present="false">
@@ -1412,7 +1425,7 @@ td{border-color:var(--hair)}
     <div class="sec-head"><div class="eyebrow" style="color:#A495CF">Module explorer</div><h2>What the station gets</h2><p class="lede">Six capabilities, used together at the station desk or on a citizen kiosk.</p></div>
     <div class="mx-bar"><div class="mx-fs" role="toolbar" aria-label="Filter modules"><button class="mx-f on" data-g="*">All <i>7</i></button><button class="mx-f" data-g="0" style="--mc:#5B3FA8">Record <i>3</i></button><button class="mx-f" data-g="1" style="--mc:#2070B3">Review &amp; keep <i>3</i></button><button class="mx-f" data-g="2" style="--mc:#1E7F4F">Languages <i>1</i></button></div>
       <label class="mx-s"><span class="sr">Search modules</span><input type="search" placeholder="Search 7 modules" autocomplete="off"></label></div>
-    <div class="mx-g" data-g="0" style="--mc:#5B3FA8; --mct:#A495CF"><div class="mx-gh"><b>Record</b><span>Capture the complaint</span><i>3</i></div><div class="mx-grid"><article class="mx" id="m-live-transcription" data-q="live transcription as they speak text appears on screen while the complainant is still speaking."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-live-transcription"><span class="mx-n">01</span><span class="mx-t"><b>Live transcription</b><em>As they speak</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-live-transcription" hidden><p>Text appears on screen while the complainant is still speaking.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-live-transcription">Copy link to this module</button></div></div></article><article class="mx" id="m-speaker-separation" data-q="speaker separation who said what shows who said what when the officer and complainant both speak."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-speaker-separation"><span class="mx-n">02</span><span class="mx-t"><b>Speaker separation</b><em>Who said what</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-speaker-separation" hidden><p>Shows who said what when the officer and complainant both speak.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-speaker-separation">Copy link to this module</button></div></div></article><article class="mx" id="m-petition-scanning" data-q="petition scanning pdf and photos reads petitions from pdf or photographs into editable text."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-petition-scanning"><span class="mx-n">03</span><span class="mx-t"><b>Petition scanning</b><em>PDF and photos</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-petition-scanning" hidden><p>Reads petitions from PDF or photographs into editable text.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-petition-scanning">Copy link to this module</button></div></div></article></div></div><div class="mx-g" data-g="1" style="--mc:#2070B3; --mct:#70A3CE"><div class="mx-gh"><b>Review &amp; keep</b><span>Check and store it</span><i>3</i></div><div class="mx-grid"><article class="mx" id="m-quality-audit" data-q="fir quality audit 12-point report marks each element of what, where, when, who, whom, why and how as present, partial or missing, and works out any delay in reporting."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-quality-audit"><span class="mx-n">04</span><span class="mx-t"><b>FIR quality audit</b><em>12-point report</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-quality-audit" hidden><p>Marks each element of what, where, when, who, whom, why and how as present, partial or missing, and works out any delay in reporting.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-quality-audit">Copy link to this module</button></div></div></article><article class="mx" id="m-searchable-records" data-q="searchable records audio kept every complaint saved with its original audio, ready to search, replay and edit."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-searchable-records"><span class="mx-n">05</span><span class="mx-t"><b>Searchable records</b><em>Audio kept</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-searchable-records" hidden><p>Every complaint saved with its original audio, ready to search, replay and edit.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-searchable-records">Copy link to this module</button></div></div></article><article class="mx" id="m-secure-access" data-q="secure access your own server personal logins per officer, an admin panel, and records stored on the department's own server."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-secure-access"><span class="mx-n">06</span><span class="mx-t"><b>Secure access</b><em>Your own server</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-secure-access" hidden><p>Personal logins per officer, an admin panel, and records stored on the department's own server.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-secure-access">Copy link to this module</button></div></div></article></div></div><div class="mx-g" data-g="2" style="--mc:#1E7F4F; --mct:#68A989"><div class="mx-gh"><b>Languages</b><span>The complainant chooses</span><i>1</i></div><div class="mx-grid"><article class="mx" id="m-languages" data-q="eleven languages auto-detect telugu, hindi, english, tamil, kannada, malayalam, marathi, bengali, gujarati, odia and punjabi. the language can also be detected automatically."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-languages"><span class="mx-n">07</span><span class="mx-t"><b>Eleven languages</b><em>Auto-detect</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-languages" hidden><p>Telugu, Hindi, English, Tamil, Kannada, Malayalam, Marathi, Bengali, Gujarati, Odia and Punjabi. The language can also be detected automatically.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-languages">Copy link to this module</button></div></div></article></div></div>
+    <div class="mx-g" data-g="0" style="--mc:#5B3FA8; --mct:#A495CF"><div class="mx-gh"><b>Record</b><span>Capture the complaint</span><i>3</i></div><div class="mx-grid"><article class="mx" id="m-live-transcription" data-q="live transcription as they speak text appears on screen while the complainant is still speaking."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-live-transcription"><span class="mx-n">01</span><span class="mx-t"><b>Live transcription</b><em>As they speak</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-live-transcription" hidden><p>Text appears on screen while the complainant is still speaking.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-live-transcription">Copy link to this module</button></div></div></article><article class="mx" id="m-speaker-separation" data-q="speaker separation who said what shows who said what when the officer and complainant both speak."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-speaker-separation"><span class="mx-n">02</span><span class="mx-t"><b>Speaker separation</b><em>Who said what</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-speaker-separation" hidden><p>Shows who said what when the officer and complainant both speak.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-speaker-separation">Copy link to this module</button></div></div></article><article class="mx" id="m-petition-scanning" data-q="petition scanning pdf and photos reads petitions from pdf or photographs into editable text."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-petition-scanning"><span class="mx-n">03</span><span class="mx-t"><b>Petition scanning</b><em>PDF and photos</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-petition-scanning" hidden><p>Reads petitions from PDF or photographs into editable text.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-petition-scanning">Copy link to this module</button></div></div></article></div></div><div class="mx-g" data-g="1" style="--mc:#2070B3; --mct:#70A3CE"><div class="mx-gh"><b>Review &amp; keep</b><span>Check and store it</span><i>3</i></div><div class="mx-grid"><article class="mx" id="m-quality-audit" data-q="fir quality audit 12-point report marks each element of what, where, when, who, whom, why and how as present, partial or missing, and works out any delay in reporting."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-quality-audit"><span class="mx-n">04</span><span class="mx-t"><b>FIR quality audit</b><em>12-point report</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-quality-audit" hidden><p>Marks each element of what, where, when, who, whom, why and how as present, partial or missing, and works out any delay in reporting.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-quality-audit">Copy link to this module</button></div></div></article><article class="mx" id="m-searchable-records" data-q="searchable records audio kept every complaint saved with its original audio, ready to search, replay and edit."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-searchable-records"><span class="mx-n">05</span><span class="mx-t"><b>Searchable records</b><em>Audio kept</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-searchable-records" hidden><p>Every complaint saved with its original audio, ready to search, replay and edit.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-searchable-records">Copy link to this module</button></div></div></article><article class="mx" id="m-secure-access" data-q="secure access your own server personal logins per officer, an admin panel, and records stored on the department's own server."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-secure-access"><span class="mx-n">06</span><span class="mx-t"><b>Secure access</b><em>Your own server</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-secure-access" hidden><p>Personal logins per officer, an admin panel, and records stored on the department's own server.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-secure-access">Copy link to this module</button></div></div></article></div></div><div class="mx-g" data-g="2" style="--mc:#1E7F4F; --mct:#6FAD8E"><div class="mx-gh"><b>Languages</b><span>The complainant chooses</span><i>1</i></div><div class="mx-grid"><article class="mx" id="m-languages" data-q="eleven languages auto-detect telugu, hindi, english, tamil, kannada, malayalam, marathi, bengali, gujarati, odia and punjabi. the language can also be detected automatically."><button class="mx-h" type="button" aria-expanded="false" aria-controls="mb-languages"><span class="mx-n">07</span><span class="mx-t"><b>Eleven languages</b><em>Auto-detect</em></span><span class="mx-c" aria-hidden="true"></span></button><div class="mx-b" id="mb-languages" hidden><p>Telugu, Hindi, English, Tamil, Kannada, Malayalam, Marathi, Bengali, Gujarati, Odia and Punjabi. The language can also be detected automatically.</p><div class="mx-a"><button class="mx-copy" type="button" data-id="m-languages">Copy link to this module</button></div></div></article></div></div>
     <p class="mx-none" hidden>No module matches that search.</p>
     <p class="mx-hint">Click any module to open it. Each module has its own link you can send on its own.</p>
   </div>
