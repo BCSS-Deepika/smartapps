@@ -1,0 +1,38 @@
+import type { Division, ProductSummary } from '@/types/product';
+
+/** Menu and card lines are copied from the live site's navigation (main @ 7082f0d). */
+export const products: ProductSummary[] = [
+  { slug: 'access-genie', name: 'Access Genie', line: 'AI video and operational intelligence', family: 'access-genie', flagship: true, accent: 'ag', logo: '/logos/access-genie.webp', legacy: '/products/access-genie.html', demo: '/demos/traffic-analytics/' },
+  { slug: 'access-genie-retail', name: 'Access Genie Retail', line: '16 KPIs across a store estate', family: 'access-genie', accent: 'ag', logo: '/logos/access-genie-retail.webp', legacy: '/products/access-genie-retail.html', demo: '/demos/access-genie-retail/' },
+  { slug: 'blugo', name: 'BluGo', line: 'Logistics & mobility', family: 'access-genie', accent: 'blugo', logo: '/logos/blugo.webp', legacy: '/products/blugo.html' },
+  { slug: 'blura-saga', name: 'Blura SAGA', line: 'One engine, four workspaces', family: 'blura-saga', flagship: true, division: 'watch', accent: 'saga', logo: '/logos/blura-saga.webp', legacy: '/products/blura-saga.html', demo: '/demos/blura-saga/' },
+  { slug: 'edugenie', name: 'EduGenie', line: 'Workforce management · ERP, CRM, LMS', family: 'edugenie', flagship: true, accent: 'edu', logo: '/logos/edugenie.webp', legacy: '/products/edugenie.html' },
+  { slug: 'garuda', name: 'GARUDA', line: "Blue Cloud's Policing Operational Ecosystem", family: 'garuda', accent: 'garuda', logo: '/logos/garuda.webp', legacy: '/products/garuda.html', demo: '/demos/garuda/' },
+  { slug: 'geo-intelligence', name: 'Geo Intelligence', line: 'One map for every product', family: 'garuda', division: 'watch', accent: 'watch', legacy: '/products/geo-intelligence.html', demo: '/demos/geo-intelligence/' },
+  { slug: 'drug-offender-portal', name: 'Drug Offender Portal', line: 'Narcotics offender register', family: 'garuda', division: 'invest', accent: 'invest', legacy: '/products/drug-offender-portal.html' },
+  { slug: 'women-safety-portal', name: 'Women Safety Portal', line: 'Registry & controlled disclosure', family: 'garuda', division: 'invest', accent: 'invest', legacy: '/products/women-safety-portal.html', demo: '/demos/women-safety-portal/' },
+  { slug: 'bluflow', name: 'BluFlow', line: 'Financial intelligence', family: 'garuda', division: 'invest', accent: 'bluflow', logo: '/logos/bluflow.webp', legacy: '/products/bluflow.html', demo: '/demos/bluflow/' },
+  { slug: 'digital-forensics', name: 'Digital Forensics', line: 'Device & media evidence', family: 'garuda', division: 'invest', accent: 'invest', legacy: '/products/digital-forensics.html' },
+  { slug: 'trap-case-management', name: 'Trap Case Management', line: 'Anti-corruption trap cases', family: 'garuda', division: 'invest', accent: 'invest', legacy: '/products/trap-case-management.html' },
+  { slug: 'ai-copwriter', name: 'AI CopWriter', line: 'Voice to structured complaint', family: 'garuda', division: 'draft', accent: 'draft', legacy: '/products/ai-copwriter.html', demo: '/demos/ai-copwriter/' },
+  { slug: 'fir-automation', name: 'FIR Automation', line: 'Complaint to registered report', family: 'garuda', division: 'draft', accent: 'draft', legacy: '/products/fir-automation.html' },
+  { slug: 'memo-generator', name: 'Compliant Memo Generator', line: 'Supervision memos', family: 'garuda', division: 'draft', accent: 'draft', legacy: '/products/memo-generator.html', demo: '/demos/memo-generator/' },
+  { slug: 'smartcop', name: 'SmartCOP', line: 'Officer mobile platform', family: 'garuda', division: 'field', accent: 'smartcop', logo: '/logos/smartcop.svg', legacy: '/products/smartcop.html', demo: '/demos/smartcop/' },
+  { slug: 'grievance-management', name: 'Grievance Management', line: 'Citizen grievances to closure', family: 'garuda', division: 'field', accent: 'field', legacy: '/products/grievance-management.html' },
+  { slug: 'bluvaani', name: 'BluVaani', line: 'The sovereign AI call dispatcher', family: 'garuda', division: 'field', accent: 'bluvaani', logo: '/logos/bluvaani.webp', legacy: '/products/bluvaani.html', demo: '/demos/bluvaani/' },
+];
+
+export const divisions: { key: Division; name: string }[] = [
+  { key: 'watch', name: 'Watch & Detect' },
+  { key: 'invest', name: 'Investigate' },
+  { key: 'draft', name: 'Draft & Decide' },
+  { key: 'field', name: 'Field & Citizen' },
+];
+
+export const bySlug = (slug: string) => {
+  const p = products.find((x) => x.slug === slug);
+  if (!p) throw new Error(`Unknown product: ${slug}`);
+  return p;
+};
+export const productUrl = (slug: string) => `/products/${slug}/`;
+export const garudaProducts = (d: Division) => products.filter((p) => p.division === d);

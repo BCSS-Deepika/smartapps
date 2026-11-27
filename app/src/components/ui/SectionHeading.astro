@@ -1,0 +1,10 @@
+---
+interface Props { eyebrow?: string; title: string; as?: 'h1' | 'h2'; align?: 'left' | 'center'; size?: 'page' | 'section' }
+const { eyebrow, title, as: H = 'h2', align = 'left', size = 'section' } = Astro.props;
+const sizeCls = size === 'page' ? 'text-page' : 'text-section';
+---
+<header class={`mb-10 max-w-3xl md:mb-14 ${align === 'center' ? 'mx-auto text-center' : ''}`}>
+  {eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+  <H class={sizeCls}>{title}</H>
+  {Astro.slots.has('default') && <div class="mt-4 text-lede text-ink-2"><slot /></div>}
+</header>

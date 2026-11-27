@@ -1,0 +1,15 @@
+---
+import type { Maturity } from '@/types/product';
+/* How mature a link between two products is. Text is passed in verbatim from the
+   source content, e.g. "Integration level 2 · deep link"; the kind sets the colour. */
+interface Props { kind: Maturity }
+const { kind } = Astro.props;
+const color = { established: 'var(--color-established)', integration: 'var(--color-integration)', proposed: 'var(--color-proposed)' }[kind];
+---
+<span
+  class="inline-flex items-center gap-1.5 rounded-[5px] px-2.5 py-1 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em]"
+  style={`color:${color}; background:color-mix(in oklab, ${color} 15%, transparent)`}
+  data-maturity={kind}
+>
+  <span class="size-1.5 rounded-full bg-current" aria-hidden="true"></span><slot />
+</span>

@@ -1,0 +1,15 @@
+---
+/* Plain content card. An accent draws a 3px rule along the top. */
+import type { Accent } from '@/types/product';
+import { accentStyle } from '@/lib/accent';
+interface Props { href?: string; accent?: Accent; class?: string }
+const { href, accent, class: cls = '' } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+<Tag
+  href={href}
+  style={accent ? accentStyle(accent) : undefined}
+  class={`relative flex flex-col rounded-card border border-line bg-surface p-5 text-ink-2 no-underline md:p-6 ${accent ? 'before:absolute before:inset-x-5 before:top-0 before:h-[3px] before:rounded-b before:bg-[var(--accent)]' : ''} ${href ? 'transition duration-200 hover:-translate-y-0.5 hover:border-ink-3/60 hover:shadow-card' : ''} ${cls}`}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,145 @@
+[
+ {
+  "id": "m-dial-112",
+  "name": "Emergency dispatch",
+  "tag": "Live dispatch",
+  "group": "Respond",
+  "summary": "Accept the call, navigate, attach evidence and close it from the phone."
+ },
+ {
+  "id": "m-sos-feed",
+  "name": "SOS feed",
+  "tag": "Citizen + officer",
+  "group": "Respond",
+  "summary": "Citizen panic and officer SOS in one live feed, routed to the nearest unit."
+ },
+ {
+  "id": "m-t-safe",
+  "name": "T-Safe",
+  "tag": "Journey monitoring",
+  "group": "Respond",
+  "summary": "Citizens share a journey; a route deviation raises an emergency incident."
+ },
+ {
+  "id": "m-hawk-eye",
+  "name": "Hawk Eye",
+  "tag": "Citizen reports",
+  "group": "Respond",
+  "summary": "A two-way thread with the citizen, with live officer ETA. Anonymous reports allowed."
+ },
+ {
+  "id": "m-e-complaint",
+  "name": "e-Complaint",
+  "tag": "Voice · multilingual",
+  "group": "Investigate",
+  "summary": "The complainant speaks in their own language; the text is transcribed, translated and classified."
+ },
+ {
+  "id": "m-records-search",
+  "name": "Records search",
+  "tag": "Report · person",
+  "group": "Investigate",
+  "summary": "One federated search across crime records, court linkage and bureau records."
+ },
+ {
+  "id": "m-frs",
+  "name": "Facial recognition",
+  "tag": "FRS",
+  "group": "Investigate",
+  "summary": "Face match with a liveness check. A match is a lead only and needs supervisor sign-off.",
+  "details": [
+   {
+    "label": "How it works",
+    "text": "The officer points the phone, the platform extracts the biometric template, searches the gallery and returns a ranked candidate."
+   },
+   {
+    "label": "Safeguard",
+    "text": "An investigative lead only. The officer verifies against the record and a supervisor signs off before any action. Every scan, result and sign-off is logged."
+   }
+  ]
+ },
+ {
+  "id": "m-e-sakshya",
+  "name": "Digital evidence",
+  "tag": "Statutory evidence",
+  "group": "Investigate",
+  "summary": "Geotagged, hashed evidence with chain of custody and a statutory certificate."
+ },
+ {
+  "id": "m-mobile-tower",
+  "name": "Mobile / tower data",
+  "tag": "Call & device records",
+  "group": "Investigate",
+  "summary": "Requests need a case link and two levels of senior approval before any data comes back."
+ },
+ {
+  "id": "m-osint",
+  "name": "OSINT",
+  "tag": "Public data only",
+  "group": "Investigate",
+  "summary": "Flags misinformation and upcoming public events from open sources."
+ },
+ {
+  "id": "m-hotspots",
+  "name": "Hotspots",
+  "tag": "Predictive grid",
+  "group": "Prevent",
+  "summary": "Crime forecast in 250 m cells, with time windows and patrol tasking."
+ },
+ {
+  "id": "m-surveillance",
+  "name": "Surveillance watch list",
+  "tag": "Preventive watch",
+  "group": "Prevent",
+  "summary": "Dossiers with geo-verified house visits."
+ },
+ {
+  "id": "m-mo-offenders",
+  "name": "MO offenders",
+  "tag": "Modus operandi",
+  "group": "Prevent",
+  "summary": "Find offenders by how they operate: snatching, house break, two-wheeler theft."
+ },
+ {
+  "id": "m-release-alerts",
+  "name": "Release alerts",
+  "tag": "In your zone",
+  "group": "Prevent",
+  "summary": "Alert when a repeat offender is released into the officer's jurisdiction."
+ },
+ {
+  "id": "m-point-book",
+  "name": "Point book",
+  "tag": "QR · NFC check-in",
+  "group": "Prevent",
+  "summary": "Geofenced beat check-ins, with points graded by risk each shift."
+ },
+ {
+  "id": "m-cctv-grid",
+  "name": "CCTV grid",
+  "tag": "Beat cameras",
+  "group": "Prevent",
+  "summary": "Beat cameras with plate-read alerts and AI video analytics."
+ },
+ {
+  "id": "m-traffic",
+  "name": "Traffic",
+  "tag": "e-Challan · ANPR",
+  "group": "Enforce & support",
+  "summary": "Quick e-challan with photo evidence, synced to the enforcement system; the owner gets an SMS."
+ },
+ {
+  "id": "m-cyber-1930",
+  "name": "Cyber fraud freeze",
+  "tag": "Golden hour",
+  "group": "Enforce & support",
+  "summary": "Bank freeze requested within the golden hour after a fraud complaint."
+ },
+ {
+  "id": "m-hrms",
+  "name": "HRMS",
+  "tag": "Duty · leave",
+  "group": "Enforce & support",
+  "summary": "Duty roster, leave, payslips, e-files and the officer fitness score."
+ }
+]
