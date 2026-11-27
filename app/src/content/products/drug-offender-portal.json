@@ -1,0 +1,171 @@
+{
+ "slug": "drug-offender-portal",
+ "title": "Drug Offender Portal — SMARTAPPS by Blue Cloud Softech",
+ "description": "Every offender, seizure and supply link in one register. One register of every drug offender, seizure and supply link, so repeat offenders and their networks cannot slip through.",
+ "accent": "invest",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "Drug Offender Portal",
+    "href": null
+   }
+  ],
+  "tag": "Narcotics offender register",
+  "h1": "Drug Offender Portal",
+  "tagline": "Every offender, seizure and supply link in one register.",
+  "lede": "One register of every drug offender, seizure and supply link, so repeat offenders and their networks cannot slip through.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Investigate",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 6 modules",
+    "href": "#modules",
+    "primary": true
+   }
+  ],
+  "logo": null,
+  "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M10.5 20.5a5 5 0 0 1-7-7l6.5-6.5a5 5 0 0 1 7 7z\"></path><path d=\"M8.5 8.5l7 7\"></path><path d=\"M19 3v4M17 5h4\"></path></svg>",
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "Modules",
+  "lede": "From the case and seizure register to network mapping and reports.",
+  "groups": [
+   {
+    "name": "Register",
+    "sub": "Who and what"
+   },
+   {
+    "name": "Watch & link",
+    "sub": "Networks and alerts"
+   },
+   {
+    "name": "Report",
+    "sub": "Performance"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-seizure-register",
+    "n": "01",
+    "name": "Case & seizure register",
+    "tag": "Substance, quantity, place",
+    "group": "Register",
+    "summary": "Every narcotics case and seizure recorded with the substance, the quantity and the place."
+   },
+   {
+    "id": "m-offender-roles",
+    "n": "02",
+    "name": "Offender roles",
+    "tag": "Supplier · peddler · consumer",
+    "group": "Register",
+    "summary": "Each offender profiled by role — supplier, peddler or consumer — with photo, aliases, address and past cases."
+   },
+   {
+    "id": "m-repeat-alerts",
+    "n": "03",
+    "name": "Repeat & release alerts",
+    "tag": "Nobody slips through",
+    "group": "Watch & link",
+    "summary": "Alerts when a known offender reappears in a new case or is released from custody."
+   },
+   {
+    "id": "m-network-mapping",
+    "n": "04",
+    "name": "Supply-chain & associate mapping",
+    "tag": "Networks",
+    "group": "Watch & link",
+    "summary": "Links associates, phones, vehicles and suppliers into the network behind each offender."
+   },
+   {
+    "id": "m-hotspot-maps",
+    "n": "05",
+    "name": "Drug hotspot maps",
+    "tag": "Through Geo Intelligence",
+    "group": "Watch & link",
+    "summary": "Seizures and offender addresses shown as hotspots on the shared map.",
+    "go": {
+     "label": "Open the Geo Intelligence page →",
+     "href": "/products/geo-intelligence/"
+    }
+   },
+   {
+    "id": "m-performance-reports",
+    "n": "06",
+    "name": "Station & district reports",
+    "tag": "Performance",
+    "group": "Report",
+    "summary": "Performance reports by station and district."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "The problem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Repeat offenders slip through</h4><p>A person arrested in one district and released in another leaves no connected trail, so the pattern never surfaces.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Seizures sit in separate files</h4><p>Substance, quantity and place are recorded case by case, with nothing linking a supplier to the peddlers working for them.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Releases go unnoticed</h4><p>An offender returns to a jurisdiction where no officer was told, and preventive action happens too late or not at all.</p></div></div>"
+  },
+  {
+   "kind": "html",
+   "title": "How it works",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Record</b><span>Narcotics case and seizure entered</span></div></li><li><div><b>Profile</b><span>Photo, aliases, address, past cases</span></div></li><li><div><b>Link</b><span>Associates, phones, vehicles, suppliers</span></div></li><li><div><b>Watch</b><span>Repeat-offender and release alerts</span></div></li><li><div><b>Act</b><span>Preventive action and case follow-up</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Anti-narcotics bureau</span><span class=\"chip\">Narcotics wings</span><span class=\"chip\">Station house officers</span></div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "GARUDA links",
+   "id": null,
+   "tone": "base",
+   "tight": true,
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Drug offender profiles and seizures</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Phone, vehicle and bank links</td></tr><tr><td><b>Opened from</b></td><td>Subject → “Open offender record”</td></tr></tbody></table></div></div>"
+  }
+ ],
+ "demo": null,
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ]
+ },
+ "cta": {
+  "title": "See Drug Offender Portal running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Drug Offender Portal demonstration request"
+ }
+}

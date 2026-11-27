@@ -1,0 +1,234 @@
+/*
+ * Product page content. The sections that differ page to page are kept as clean HTML from the
+ * live pages (see scripts/migrate/extract_products.py); this sheet draws them with the Deep Ocean
+ * tokens. Everything is scoped to .pc so it never leaks into the shared components.
+ * --c / --ct are the accent and its readable tint; data-acc switches them per element.
+ */
+
+.pc { --c: var(--accent, var(--color-brand)); --ct: var(--accent-text, var(--color-brand-soft)); color: var(--color-ink-2); }
+.pc [data-acc] { --c: var(--acc); --ct: var(--acc-t); }
+.pc [data-acc='ag'] { --acc: var(--color-ag); --acc-t: var(--color-ag-text); }
+.pc [data-acc='saga'] { --acc: var(--color-saga); --acc-t: var(--color-saga-text); }
+.pc [data-acc='edu'] { --acc: var(--color-edu); --acc-t: var(--color-edu-text); }
+.pc [data-acc='garuda'] { --acc: var(--color-garuda); --acc-t: var(--color-garuda-text); }
+.pc [data-acc='blugo'] { --acc: var(--color-blugo); --acc-t: var(--color-blugo-text); }
+.pc [data-acc='bluflow'] { --acc: var(--color-bluflow); --acc-t: var(--color-bluflow-text); }
+.pc [data-acc='bluvaani'] { --acc: var(--color-bluvaani); --acc-t: var(--color-bluvaani-text); }
+.pc [data-acc='watch'] { --acc: var(--color-watch); --acc-t: var(--color-watch-text); }
+.pc [data-acc='invest'] { --acc: var(--color-invest); --acc-t: var(--color-invest-text); }
+.pc [data-acc='draft'] { --acc: var(--color-draft); --acc-t: var(--color-draft-text); }
+.pc [data-acc='field'] { --acc: var(--color-field); --acc-t: var(--color-field-text); }
+
+.pc .wrap { max-width: none; padding: 0; }
+.pc > * + * { margin-top: clamp(24px, 3vw, 36px); }
+
+/* ---------- type ---------- */
+.pc h2 { font-size: var(--text-section); line-height: var(--text-section--line-height); margin-bottom: 18px; }
+.pc h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); margin-bottom: 12px; }
+.pc h4 { font-size: 1.0625rem; margin-bottom: 8px; }
+.pc p { line-height: 1.65; }
+.pc b, .pc strong { color: var(--color-white); font-weight: 600; }
+.pc a { color: var(--ct); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.pc a:hover { color: var(--color-white); }
+.pc .eyebrow, .pc .kicker, .pc .ch-sec > h4, .pc .agv-k, .pc .tier-k, .pc .now, .pc .eg-e .k {
+  font-family: var(--font-mono); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ct);
+}
+.pc .eyebrow { margin-bottom: 12px; }
+.pc .kicker { margin: 30px 0 12px; }
+.pc .lede { font-size: var(--text-lede); line-height: 1.65; color: var(--color-ink-2); max-width: 72ch; margin-top: 14px; }
+.pc .lede em { font-style: italic; color: var(--color-white); }
+.pc .sec-head { max-width: 76ch; margin-bottom: clamp(24px, 3.5vw, 40px); }
+.pc .sec-head h2 { margin-bottom: 0; }
+
+/* ---------- grids ---------- */
+.pc .grid, .pc .pp-grid, .pc .sx-grid, .pc .eg-eng, .pc .eg-aud, .pc .eg-proof, .pc .doors, .pc .maturity, .pc .sx-kpis, .pc .ag-verts, .pc .tiers {
+  display: grid; gap: clamp(12px, 1.6vw, 18px); grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 640px) {
+  .pc .g2, .pc .g3, .pc .g4, .pc .pp-grid, .pc .sx-c3, .pc .sx-c4, .pc .eg-aud, .pc .eg-proof, .pc .eg-j, .pc .doors, .pc .sw-mods, .pc .tiers, .pc .maturity { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .pc .g3, .pc .pp-grid, .pc .sx-c3, .pc .eg-eng, .pc .sx-kpis, .pc .sw-mods, .pc .maturity, .pc .tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pc .g4, .pc .sx-c4, .pc .eg-aud, .pc .eg-proof, .pc .eg-j { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pc .ag-verts { grid-template-columns: 1.35fr 1fr 1fr; }
+}
+
+/* ---------- cards ---------- */
+.pc .card, .pc .door, .pc .rule-box, .pc .sx-kpi, .pc .eg-e, .pc .eg-proof > div, .pc .eg-j li, .pc .tier, .pc .maturity > div {
+  position: relative; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface);
+  padding: clamp(18px, 2.2vw, 24px);
+}
+.pc .card p, .pc .door > p, .pc .tier > p { font-size: var(--text-small); color: var(--color-ink-2); line-height: 1.6; }
+.pc .card h3, .pc .card h4 { margin-bottom: 8px; }
+.pc .card-top, .pc .tier, .pc .eg-e { border-top: 3px solid var(--c); }
+.pc .card-d { background: color-mix(in oklab, var(--color-surface) 70%, transparent); }
+.pc .card > .chips, .pc .card > .ticks { margin-top: 14px; }
+
+/* ---------- chips, tags, maturity ---------- */
+.pc .chips, .pc .eds { display: flex; flex-wrap: wrap; gap: 6px; }
+.pc .chip, .pc .eds span {
+  display: inline-flex; align-items: center; border: 1px solid var(--color-line); background: var(--color-surface-2);
+  color: var(--color-ink-2); border-radius: var(--radius-chip); padding: 4px 9px; font-size: var(--text-label); font-weight: 500;
+}
+.pc .chip.neg { border-color: color-mix(in oklab, var(--color-saga) 45%, transparent); background: color-mix(in oklab, var(--color-saga) 14%, transparent); color: var(--color-saga-text); }
+.pc .tag, .pc .mat, .pc .sx-tag {
+  display: inline-flex; align-items: center; gap: 6px; border-radius: 5px; padding: 3px 9px; font-family: var(--font-mono);
+  font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  background: color-mix(in oklab, var(--c) 16%, transparent); color: var(--ct);
+}
+.pc .mat::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pc .mat-e, .pc .sx-y { color: var(--color-established); background: color-mix(in oklab, var(--color-established) 15%, transparent); }
+.pc .mat-s, .pc .sx-p { color: var(--color-integration); background: color-mix(in oklab, var(--color-integration) 15%, transparent); }
+.pc .mat-i { color: var(--color-proposed); background: color-mix(in oklab, var(--color-proposed) 15%, transparent); }
+.pc .sx-n { color: var(--color-ink-3); background: color-mix(in oklab, var(--color-ink-3) 12%, transparent); }
+.pc .sx-tag { text-transform: none; letter-spacing: 0; font-family: var(--font-sans); font-size: var(--text-label); white-space: nowrap; }
+.pc .sx-y::before { content: '\2713\00a0'; }
+.pc .sx-n::before { content: '\2013\00a0'; }
+
+/* ---------- lists ---------- */
+.pc .ticks { display: grid; gap: 10px; }
+.pc .ticks li { position: relative; padding-left: 26px; font-size: var(--text-small); line-height: 1.55; color: var(--color-ink-2); }
+.pc .ticks li::before {
+  content: ''; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%;
+  background: color-mix(in oklab, var(--c) 22%, transparent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8'/%3E%3C/svg%3E");
+}
+.pc .ticks li::after {
+  content: ''; position: absolute; left: 4px; top: 8px; width: 8px; height: 4px; border-left: 1.6px solid var(--ct);
+  border-bottom: 1.6px solid var(--ct); transform: rotate(-45deg);
+}
+.pc .flow { display: grid; gap: 10px; counter-reset: fl; }
+.pc .flow li { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--color-line); background: var(--color-surface); border-radius: 12px; padding: 14px 16px; }
+.pc .flow li::before {
+  counter-increment: fl; content: counter(fl, decimal-leading-zero); flex: none; font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--ct); background: color-mix(in oklab, var(--c) 18%, transparent); border-radius: 6px; padding: 3px 7px;
+}
+.pc .flow b { display: block; font-size: 0.9375rem; }
+.pc .flow span { display: block; font-size: var(--text-small); color: var(--color-ink-2); line-height: 1.5; margin-top: 2px; }
+@media (min-width: 1024px) {
+  .pc .flow.fl-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .pc .flow.fl-5 li { flex-direction: column; gap: 8px; }
+}
+.pc .mini-flow { display: grid; gap: 6px; counter-reset: mf; margin-top: 10px; }
+.pc .mini-flow li { position: relative; padding-left: 24px; font-size: var(--text-small); line-height: 1.45; }
+.pc .mini-flow li::before {
+  counter-increment: mf; content: counter(mf); position: absolute; left: 0; top: 1px; width: 16px; height: 16px; border-radius: 4px;
+  display: grid; place-items: center; font-size: 0.625rem; font-weight: 700; color: var(--ct); background: color-mix(in oklab, var(--c) 20%, transparent);
+}
+
+/* ---------- notes and callouts ---------- */
+.pc .note { display: flex; gap: 12px; border-left: 3px solid var(--color-sky); background: var(--color-surface-2); border-radius: 10px; padding: 14px 18px; font-size: var(--text-small); line-height: 1.6; }
+.pc .note b { color: var(--color-white); }
+.pc .sx-note, .pc .eg-src { margin-top: 16px; max-width: 86ch; font-size: var(--text-small); color: var(--color-ink-3); }
+.pc .now { display: block; margin-top: 12px; }
+.pc .rule-box { border-left: 4px solid var(--c); }
+.pc .rule-h { margin-bottom: 10px; }
+.pc .rule-h b { display: block; margin-top: 10px; font-size: 1.0625rem; }
+.pc .rule-box > p { font-size: var(--text-small); margin-bottom: 14px; }
+.pc .limit-box, .pc .limits { margin-top: 16px; border-radius: var(--radius-card); padding: clamp(18px, 2.4vw, 26px); border: 1px solid var(--color-line); background: var(--color-deep); }
+.pc .limits { border-color: color-mix(in oklab, var(--color-saga) 35%, transparent); background: color-mix(in oklab, var(--color-saga) 8%, var(--color-deep)); }
+.pc .limit-box > b, .pc .limits > b { display: block; font-size: 1.0625rem; margin-bottom: 10px; }
+.pc .limit-box p, .pc .limits p { font-size: var(--text-small); max-width: 80ch; margin-top: 10px; }
+.pc .limit-box strong { color: var(--color-brand-soft); }
+
+/* ---------- chapters ---------- */
+.pc .ch-lead { max-width: 76ch; }
+.pc .ch-lead p { font-size: var(--text-lede); }
+.pc .ch-sec { margin-top: clamp(28px, 3.6vw, 44px); }
+.pc .ch-sec > h4 { margin-bottom: 14px; }
+
+/* ---------- tables ---------- */
+.pc .tbl-w { overflow-x: auto; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); }
+.pc table { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
+.pc th { text-align: left; font-family: var(--font-mono); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3); background: var(--color-surface-2); }
+.pc th, .pc td { padding: 12px 16px; border-top: 1px solid var(--color-line-soft); vertical-align: top; line-height: 1.5; }
+.pc tr:first-child > * { border-top: 0; }
+.pc td:first-child { color: var(--color-ink); }
+.pc .sx-roles table { min-width: 620px; }
+.pc .sx-roles td:not(:first-child), .pc .sx-roles th:not(:first-child) { text-align: center; }
+.pc .sx-roles td:first-child, .pc .sx-roles th:first-child { position: sticky; left: 0; z-index: 1; min-width: 170px; background: var(--color-surface); }
+.pc .sx-roles th:first-child { background: var(--color-surface-2); }
+.pc .eg-vtbl td:first-child { width: 34%; }
+.pc .eg-int td:first-child { white-space: nowrap; }
+
+/* ---------- tabs (Blura SAGA workspaces, EduGenie industries) ---------- */
+.pc .sw-tabs, .pc .eg-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.pc .sw-tab, .pc .eg-vt {
+  min-height: 42px; border: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-ink-2);
+  border-radius: 999px; padding: 8px 16px; font-size: var(--text-small); font-weight: 600; cursor: pointer; transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.pc .sw-tab:hover, .pc .eg-vt:hover { color: var(--color-white); border-color: var(--color-ink-3); }
+.pc .sw-tab[aria-selected='true'], .pc .eg-vt[aria-selected='true'] { background: var(--c); border-color: var(--c); color: var(--color-white); }
+.pc .eg-tabs { margin-bottom: 14px; }
+.pc .sw-panel { margin-top: 12px; border: 1px solid var(--color-line); border-top: 3px solid var(--c); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(18px, 2.4vw, 26px); }
+.pc .swp-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 18px; }
+.pc .swp-h > b { font-family: var(--font-display); font-size: 1.25rem; }
+.pc .swp-h > span { font-size: var(--text-small); color: var(--color-ink-3); }
+.pc .swp-link { flex-basis: 100%; }
+.pc .sw-mods { display: grid; gap: 14px; }
+.pc .sw-mods > div { padding-left: 12px; border-left: 2px solid var(--c); }
+.pc .sw-mods b { display: block; font-size: 0.9375rem; }
+.pc .sw-mods span { display: block; margin-top: 3px; font-size: var(--text-small); line-height: 1.5; }
+.pc .sw-panel .note { margin-top: 18px; }
+
+/* ---------- Blura SAGA ---------- */
+.pc .saga-spine { display: flex; flex-wrap: wrap; gap: 8px; }
+.pc .saga-spine span { flex: 1 1 120px; border: 1px solid var(--color-line); background: var(--color-surface); border-radius: 10px; padding: 12px 14px; text-align: center; font-size: var(--text-small); font-weight: 600; color: var(--color-ink); }
+.pc .tier-k { display: block; }
+.pc .tier > b { display: block; margin: 8px 0; font-size: 1.0625rem; }
+.pc .tier dl, .pc .card dl { display: grid; gap: 10px; margin-top: 14px; }
+.pc dt { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3); }
+.pc dd { margin-top: 2px; font-size: var(--text-small); line-height: 1.5; color: var(--color-ink-2); }
+.pc .maturity ul { display: grid; gap: 7px; margin-top: 12px; }
+.pc .maturity li { position: relative; padding-left: 14px; font-size: var(--text-small); line-height: 1.45; }
+.pc .maturity li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+.pc .sx-h3 { margin: 32px 0 14px; font-size: 1.15rem; }
+.pc .sx-kpi > span { display: block; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-sky); }
+.pc .sx-kpi > b { display: block; margin-top: 8px; font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15; }
+.pc .sx-kpi em { display: inline-block; margin-top: 8px; font-style: normal; font-size: var(--text-label); font-weight: 600; padding: 3px 8px; border-radius: 6px; color: var(--color-brand-soft); background: color-mix(in oklab, var(--color-brand) 14%, transparent); }
+.pc .sx-kpi p { margin-top: 8px; font-size: var(--text-small); }
+
+/* ---------- Access Genie ---------- */
+.pc .ag-pipe { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .pc .ag-pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .pc .ag-pipe { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.pc .ag-pipe li { border: 1px solid var(--color-line); background: var(--color-surface); border-radius: var(--radius-card); padding: 20px; }
+.pc .agp-n { display: block; margin-bottom: 8px; font-family: var(--font-mono); font-size: var(--text-label); color: var(--color-brand-soft); }
+.pc .ag-pipe b { display: block; margin-bottom: 6px; font-size: 1.0625rem; }
+.pc .ag-pipe span:not(.agp-n) { display: block; font-size: var(--text-small); line-height: 1.55; }
+.pc .ag-v { display: flex; flex-direction: column; border: 1px solid var(--color-line); background: var(--color-surface); border-radius: var(--radius-card); padding: 22px; text-decoration: none; color: var(--color-ink-2); transition: border-color 0.2s, transform 0.2s; }
+.pc .ag-v:hover { border-color: var(--color-brand); transform: translateY(-2px); color: var(--color-ink-2); }
+.pc .ag-v-lead { border-color: color-mix(in oklab, var(--color-brand) 45%, transparent); background: linear-gradient(150deg, color-mix(in oklab, var(--color-brand) 18%, var(--color-surface)), var(--color-surface)); }
+.pc .ag-v > b { display: block; margin: 8px 0; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem); }
+.pc .agv-d { display: block; flex: 1; font-size: var(--text-small); line-height: 1.55; }
+.pc .agv-go { display: block; margin-top: 14px; font-size: var(--text-small); font-weight: 600; color: var(--color-brand-soft); }
+
+/* ---------- Women Safety Portal ---------- */
+.pc .door h4 { margin: 10px 0 8px; }
+
+/* ---------- EduGenie ---------- */
+.pc .eg-e { display: flex; flex-direction: column; gap: 10px; }
+.pc .eg-e h3 { margin: 0; font-size: 1.2rem; }
+.pc .eg-e p { font-size: var(--text-small); line-height: 1.55; }
+.pc .eg-e .eds span { border-radius: 999px; }
+.pc .eg-e a { margin-top: auto; font-size: var(--text-small); font-weight: 600; text-decoration: none; }
+.pc .eg-j { display: grid; gap: 12px; counter-reset: ej; }
+.pc .eg-j li::before { counter-increment: ej; content: counter(ej, decimal-leading-zero); display: block; margin-bottom: 6px; font-family: var(--font-mono); font-size: var(--text-label); color: var(--ct); }
+.pc .eg-j b { display: block; margin-bottom: 4px; font-size: 0.9375rem; }
+.pc .eg-j span { display: block; font-size: var(--text-small); line-height: 1.5; }
+.pc .eg-j .sla { display: inline-block; margin-top: 8px; border-radius: 999px; padding: 2px 8px; font-family: var(--font-mono); font-size: var(--text-label); color: var(--color-edu-text); background: color-mix(in oklab, var(--color-edu) 18%, transparent); }
+.pc .eg-proof b { display: block; font-family: var(--font-display); font-size: 1.6rem; line-height: 1.1; color: var(--color-edu-text); }
+.pc .eg-proof span { display: block; margin-top: 6px; font-size: var(--text-small); }
+
+/* ---------- rhythm between blocks, at any depth ---------- */
+.pc * + :is(.grid, .pp-grid, .saga-spine, .sw-tabs, .eg-tabs, .tiers, .maturity, .limits, .limit-box, .note, .ticks, .tbl-w, .flow, .chips, .doors, .ag-pipe, .ag-verts, .sx-grid, .sx-kpis, .eg-eng, .eg-aud, .eg-proof, .eg-j, .rule-box, .lede) { margin-top: 20px; }
+.pc * + :is(h2, h3, .eyebrow) { margin-top: clamp(32px, 4vw, 48px); }
+.pc .eyebrow + :is(h2, h3), .pc .sec-head > h2 { margin-top: 0; }
+.pc * + p { margin-top: 12px; }
+.pc :is(.card, .door, .tier, .eg-e, .note, .sw-mods > div, .flow li, .rule-h, .ag-v, .eg-j li, .sx-kpi) > * + * { margin-top: 8px; }
+.pc .sw-tabs + .sw-panel { margin-top: 12px; }
+.pc .note > * + * { margin-top: 0; }
+.pc a.card, .pc a.ag-v { display: block; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+.pc a.card:hover { border-color: var(--c); transform: translateY(-2px); }
+.pc a.card h4, .pc a.card h3 { color: var(--color-white); }

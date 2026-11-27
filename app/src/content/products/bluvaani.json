@@ -1,0 +1,613 @@
+{
+ "slug": "bluvaani",
+ "title": "BluVaani — SMARTAPPS by Blue Cloud Softech",
+ "description": "The Sovereign AI Call Dispatcher. Sovereign AI that answers and understands citizen calls in all Indian languages, then dispatches each one to the right station, unit or product, with ",
+ "accent": "field",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "BluVaani",
+    "href": null
+   }
+  ],
+  "tag": "",
+  "h1": "BluVaani",
+  "tagline": "The Sovereign AI Call Dispatcher.",
+  "lede": "Sovereign AI that answers and understands citizen calls in all Indian languages, then dispatches each one to the right station, unit or product, with a transcript attached.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Field & Citizen",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 17 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/bluvaani.html",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/bluvaani.webp",
+  "icon": null,
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "17 components, one path for every call",
+  "lede": "Each component has one job. Open any one to see what it takes in, what it produces and how it recovers when something goes wrong. Maturity labels are as given in the product's own architecture.",
+  "groups": [
+   {
+    "name": "Call handling",
+    "sub": "6 components"
+   },
+   {
+    "name": "Understanding",
+    "sub": "4 components"
+   },
+   {
+    "name": "Case & messaging",
+    "sub": "2 components"
+   },
+   {
+    "name": "Police & filing",
+    "sub": "2 components"
+   },
+   {
+    "name": "Data & reports",
+    "sub": "3 components"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-citizen",
+    "n": "01",
+    "name": "Citizen call · Citizen / Incoming Call",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "A citizen dials the control-room number to report an incident such as UPI fraud.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Every BluVaani journey starts with a real citizen contact, not a form."
+     },
+     {
+      "label": "Takes in",
+      "text": "Citizen voice; Caller number (ANI)"
+     },
+     {
+      "label": "Produces",
+      "text": "Inbound call session"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Caller hangs up at once — spotted by short cdr / no answer — recovery: No case; optional callback"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-pbx",
+    "n": "02",
+    "name": "Phone system · Grandstream UCM PBX",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "Receives control-room calls and routes them into the intake queue.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Central telephony control for police control-room numbers."
+     },
+     {
+      "label": "Takes in",
+      "text": "DID call; Route rules"
+     },
+     {
+      "label": "Produces",
+      "text": "Queued call; CDR started"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "PBX interruption — spotted by call-drop event / incomplete cdr — recovery: Mark interrupted, keep the partial CDR, prompt a redial"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-queue",
+    "n": "03",
+    "name": "Intake queue · Queue 6500",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "Holds incoming calls and hands each one to the AI line or an officer desk.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Controlled intake capacity and prioritisation."
+     },
+     {
+      "label": "Takes in",
+      "text": "Routed calls"
+     },
+     {
+      "label": "Produces",
+      "text": "Extension assignment"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "AI unavailable / no agents — spotted by queue timeout — recovery: Overflow to officer desks or callback"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-ai1007",
+    "n": "04",
+    "name": "AI call line · AI Ext 1007",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "BluVaani answers first-line calls on extension 1007 and opens the audio to the understanding pipeline.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Scales first-line complaint capture with a consistent structure."
+     },
+     {
+      "label": "Takes in",
+      "text": "Answered call audio"
+     },
+     {
+      "label": "Produces",
+      "text": "Audio stream; Answer details in CDR"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "AI line unreachable — spotted by extension unreachable — recovery: Reroute to officer desks 1001 / 1003 / 1004 / 1009"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-human",
+    "n": "05",
+    "name": "Officer desks · Human Exts 1001/1003/1004/1009",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "Officers take escalations, unclear audio and complex calls.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Human judgement is always one step away."
+     },
+     {
+      "label": "Takes in",
+      "text": "Overflow and escalated calls"
+     },
+     {
+      "label": "Produces",
+      "text": "Manual case updates"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-cdr",
+    "n": "06",
+    "name": "Call records · CDR Collection",
+    "tag": "Call handling",
+    "group": "Call handling",
+    "summary": "Collects call detail records for operations and reporting.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Evidence of call handling, and the input to Call Operations reporting."
+     },
+     {
+      "label": "Takes in",
+      "text": "PBX call events"
+     },
+     {
+      "label": "Produces",
+      "text": "ucm_cdr_records rows"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-speech",
+    "n": "07",
+    "name": "Listening · Speech Processing",
+    "tag": "Understanding",
+    "group": "Understanding",
+    "summary": "Prepares the call audio for transcription.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Turns voice into segments that can be processed."
+     },
+     {
+      "label": "Takes in",
+      "text": "Call audio"
+     },
+     {
+      "label": "Produces",
+      "text": "Audio segments"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Noisy or broken audio — spotted by low signal quality — recovery: Flag clarity; hand off to an officer if needed"
+     }
+    ],
+    "maturity": {
+     "kind": "integration",
+     "label": "Simulated"
+    }
+   },
+   {
+    "id": "m-asr",
+    "n": "08",
+    "name": "Speech to text · Transcription",
+    "tag": "Understanding",
+    "group": "Understanding",
+    "summary": "Turns speech into a transcript with a confidence score.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Text makes classification and case drafting possible."
+     },
+     {
+      "label": "Takes in",
+      "text": "Audio segments"
+     },
+     {
+      "label": "Produces",
+      "text": "Transcript + confidence"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Unclear transcription — spotted by low confidence score — recovery: Officer-desk review before classification"
+     }
+    ],
+    "maturity": {
+     "kind": "proposed",
+     "label": "Illustrative"
+    }
+   },
+   {
+    "id": "m-intent",
+    "n": "09",
+    "name": "Understanding · Intent & Classification",
+    "tag": "Understanding",
+    "group": "Understanding",
+    "summary": "Works out what the caller needs and what type of complaint it is.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Separates enquiries, non-financial complaints and fraud complaints."
+     },
+     {
+      "label": "Takes in",
+      "text": "Transcript"
+     },
+     {
+      "label": "Produces",
+      "text": "Intent; Complaint category"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "AI processing failure — spotted by pipeline error — recovery: Retry, then hand off to an officer desk"
+     }
+    ],
+    "maturity": {
+     "kind": "proposed",
+     "label": "Illustrative"
+    }
+   },
+   {
+    "id": "m-fraud",
+    "n": "10",
+    "name": "Fraud & loss check · Financial Fraud Qualification",
+    "tag": "Understanding",
+    "group": "Understanding",
+    "summary": "Separates general complaints from confirmed financial fraud, then confirms whether money was actually lost.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Case type, officer priority and WhatsApp automation all depend on it."
+     },
+     {
+      "label": "Takes in",
+      "text": "Intent; Extracted details"
+     },
+     {
+      "label": "Produces",
+      "text": "financial_fraud_confirmed; incident_category; financial"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Details incomplete — spotted by amount / method / reference missing — recovery: Case held as pending_info for follow-up"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-case",
+    "n": "11",
+    "name": "Case record · Case Management",
+    "tag": "Case & messaging",
+    "group": "Case & messaging",
+    "summary": "Creates and tracks the structured case, links calls to it and holds its status.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "The operational system of record for every complaint."
+     },
+     {
+      "label": "Takes in",
+      "text": "Qualified complaint; Call IDs"
+     },
+     {
+      "label": "Produces",
+      "text": "Case entity; Call ↔ case links"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Same incident reported twice — spotted by duplicate detection — recovery: Linked to the existing case; no second intake"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-wa",
+    "n": "12",
+    "name": "WhatsApp follow-up · WhatsApp Automation",
+    "tag": "Case & messaging",
+    "group": "Case & messaging",
+    "summary": "Sends the acknowledgement and financial-fraud intake message, only when all three conditions are true.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Keeps the citizen informed after the call without a manual send."
+     },
+     {
+      "label": "Takes in",
+      "text": "Case ID; Eligibility flags"
+     },
+     {
+      "label": "Produces",
+      "text": "Message status"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Gateway offline, or delivery fails — spotted by send blocked / failed delivery — recovery: Queued for retry; the case stays valid"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-police",
+    "n": "13",
+    "name": "Officer review · Police Operations",
+    "tag": "Police & filing",
+    "group": "Police & filing",
+    "summary": "Officers review the structured case, update its status and follow up.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Turns structured intake into police action."
+     },
+     {
+      "label": "Takes in",
+      "text": "Structured case"
+     },
+     {
+      "label": "Produces",
+      "text": "Review actions; Status changes"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Case not yet reviewed — spotted by status pending_officer — recovery: Shown in the Pending Work & Aging report"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-ncrp",
+    "n": "14",
+    "name": "NCRP filing · NCRP Integration",
+    "tag": "Police & filing",
+    "group": "Police & filing",
+    "summary": "The officer uploads the Excel filing; the outcome syncs back to the same case.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Connects local casework to NCRP filing outcomes."
+     },
+     {
+      "label": "Takes in",
+      "text": "Filing Excel; Case ID"
+     },
+     {
+      "label": "Produces",
+      "text": "Filing ID; Accepted / pending / rejected"
+     },
+     {
+      "label": "When something goes wrong",
+      "text": "Filing rejected — spotted by rejection on sync — recovery: Case set to correction_required; police notified"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-api",
+    "n": "15",
+    "name": "Backend services · Backend Services (logical)",
+    "tag": "Data & reports",
+    "group": "Data & reports",
+    "summary": "The service layer between the screens, the automation and the adapters.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Lets simulated adapters be swapped for real APIs later."
+     },
+     {
+      "label": "Takes in",
+      "text": "UI and automation calls"
+     },
+     {
+      "label": "Produces",
+      "text": "Case and messaging APIs"
+     }
+    ],
+    "maturity": {
+     "kind": "proposed",
+     "label": "Illustrative"
+    }
+   },
+   {
+    "id": "m-store",
+    "n": "16",
+    "name": "Data store · Data Store (logical)",
+    "tag": "Data & reports",
+    "group": "Data & reports",
+    "summary": "Keeps call records, cases, messages and filings in one place.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Shared data for every component and every report."
+     },
+     {
+      "label": "Takes in",
+      "text": "CDR rows; Case entities; Message status"
+     },
+     {
+      "label": "Produces",
+      "text": "Metrics"
+     }
+    ],
+    "maturity": {
+     "kind": "proposed",
+     "label": "Illustrative"
+    }
+   },
+   {
+    "id": "m-reports",
+    "n": "17",
+    "name": "Reports · Analytics & Reporting",
+    "tag": "Data & reports",
+    "group": "Data & reports",
+    "summary": "Rolls call, case, WhatsApp and NCRP signals into seven reports.",
+    "details": [
+     {
+      "label": "Why it exists",
+      "text": "Leaders and officers see the whole lifecycle."
+     },
+     {
+      "label": "Takes in",
+      "text": "Metrics; Filing outcomes; Ops status"
+     },
+     {
+      "label": "Produces",
+      "text": "Seven report views"
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"ch-lead\">\n<h3>One citizen call. Understood, recorded, acted on.</h3>\n<p>\n            A fraud victim calls once. The system must not lose a word. BluVaani answers the call in\n            any Indian language the citizen speaks, separates who said what, works out what happened and how\n            urgent it is, and turns the call into a structured case that someone is accountable for.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The journey · nineteen stages, phone ringing to a line in a report</h4>\n<ol class=\"flow\">\n<li><div><b>Answer</b><span>The call is picked up in any Indian language the citizen uses, including mixed speech.</span></div></li>\n<li><div><b>Transcribe</b><span>Speech to text, with speakers separated so the officer's words and the citizen's are distinct.</span></div></li>\n<li><div><b>Understand</b><span>Intent, urgency, place and names extracted; emergencies jump the queue on urgency score.</span></div></li>\n<li><div><b>Dispatch</b><span>Routed to the right station, unit or patrol based on jurisdiction and availability.</span></div></li>\n<li><div><b>Hand off</b><span>Complaint passed to the documentation product, the grievance board or a field task.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>The follow-up rule</h4>\n<div class=\"rule-box\">\n<div class=\"rule-h\">\n<span class=\"tag\" data-acc=\"field\">Three conditions · all true, or no message</span>\n<b>A follow-up message is never sent automatically</b>\n</div>\n<p>\n              The messaging follow-up is deliberately conditional, not a blanket auto-reply. All three\n              conditions must hold before anything leaves the platform. This is the rule as the product\n              implements it, and it should not be described as generic automatic messaging.\n            </p>\n<ul class=\"ticks\">\n<li>The call is classified as a financial-fraud or money-loss case under the decision logic.</li>\n<li>The caller's number is captured and valid for the messaging channel.</li>\n<li>The case reaches the state at which a follow-up is defined as appropriate.</li>\n</ul>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>What the department gets</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Structured cases</h4><p>Every call becomes a case with a transcript, a summary, a classification and a dispatch decision attached.</p></div>\n<div class=\"card\"><h4>Clean statuses</h4><p>One status at a time, always a clear answer — including what happens when a call is not the happy path.</p></div>\n<div class=\"card\"><h4>Seven operational reports</h4><p>Call volumes, categories, urgency bands, dispatch outcomes, handoffs, follow-ups and closure, counted from the case record.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>Fast for the citizen, careful for the department</b> — urgency decides the queue, not call order alone.</li>\n<li><b>Human handoff</b> — an officer reviews before a case leaves the call-handling stage.</li>\n<li><b>Transcript retained</b> — the summary never replaces the record it came from.</li>\n<li><b>Local deployment option</b> — speech and language models can run inside the department's own infrastructure.</li>\n</ul>\n</div>"
+  },
+  {
+   "kind": "modules"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through BluVaani, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/bluvaani.html"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management"
+  ]
+ },
+ "cta": {
+  "title": "See BluVaani running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "BluVaani demonstration request"
+ }
+}

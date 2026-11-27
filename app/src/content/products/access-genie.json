@@ -1,0 +1,363 @@
+{
+ "slug": "access-genie",
+ "title": "Access Genie — SMARTAPPS by Blue Cloud Softech",
+ "description": "From passive surveillance to proactive intelligence. AI video and operational intelligence. Access Genie adds detection, alerting and evidence search to the cameras, recorders and record systems an organ",
+ "accent": "ag",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "Access Genie",
+    "href": null
+   }
+  ],
+  "tag": "Multi-industry platform",
+  "h1": "Access Genie",
+  "tagline": "From passive surveillance to proactive intelligence.",
+  "lede": "AI video and operational intelligence. Access Genie adds detection, alerting and evidence search to the cameras, recorders and record systems an organisation already runs — with nothing ripped out.",
+  "chips": [],
+  "actions": [
+   {
+    "label": "Explore the 14 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open Traffic AI Analytics",
+    "href": "/demos/traffic-analytics/index.html",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/access-genie.webp",
+  "icon": null,
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "One platform, two divisions",
+  "lede": "The core modules and hardware run on the cameras an organisation already has. Above them sit two divisions: Policing & public safety, and Enterprise & industry.",
+  "groups": [
+   {
+    "name": "Core platform",
+    "sub": "The intelligence layer on every camera"
+   },
+   {
+    "name": "Hardware",
+    "sub": "Supplied and installed by the same team"
+   },
+   {
+    "name": "Policing & public safety",
+    "sub": "Delivered through GARUDA, a separate policing vertical",
+    "id": "policing"
+   },
+   {
+    "name": "Enterprise & industry",
+    "sub": "Division · for businesses and institutions",
+    "id": "enterprise"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-ai-video-analytics",
+    "n": "01",
+    "name": "AI Video Analytics",
+    "tag": "The intelligence layer",
+    "group": "Core platform",
+    "summary": "Watches live and recorded video, recognises the events an organisation defines and raises an alert with the evidence attached.",
+    "details": [
+     {
+      "label": "Watch every feed",
+      "text": "Every stream is analysed around the clock, so operators review alerts instead of staring at screens."
+     },
+     {
+      "label": "What it can detect",
+      "text": "Identity: face recognition, watchlist match, person search across cameras. Public order: crowd gathering, overcrowding, loitering, night movement. Threats: intrusion, restricted zones, gate jumping, unattended baggage. Stations: frisking checks, guard absence, after-hours access, camera health."
+     },
+     {
+      "label": "Investigator search",
+      "text": "Face search from one reference photo, attribute search by clothing when no photo exists, a movement timeline across cameras, and watchlist alerts the moment a listed face or plate appears."
+     },
+     {
+      "label": "Every alert is closed",
+      "text": "Assign, acknowledge, resolve or mark a false positive to improve tuning, then report trends by camera, zone and alert type."
+     },
+     {
+      "label": "Where it runs",
+      "text": "On existing IP and PTZ cameras, on new edge AI cameras, or on a BluEdge server inside the premises."
+     },
+     {
+      "label": "Safeguard",
+      "text": "Face recognition is used within the legal authorisation and procedures the organisation sets."
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-anpr",
+    "n": "02",
+    "name": "ANPR & vehicle intelligence",
+    "tag": "Every plate, read and checked",
+    "group": "Core platform",
+    "summary": "Every vehicle that passes a camera is read, logged and checked against the rules an organisation sets, day and night.",
+    "details": [
+     {
+      "label": "What is captured",
+      "text": "Number plate (reflective or not) from multiple angles, time stamp and direction of travel, and a vehicle image with every read, at speed and at night."
+     },
+     {
+      "label": "Checked against",
+      "text": "Watchlists of suspect vehicles, permitted-hours rules for entry and exit, and vehicle registration records."
+     },
+     {
+      "label": "Rules",
+      "text": "Watchlist hit → instant alert. Time-rule breach → ticket alert. Partly hidden, tampered or cloned plate → flag for review. Loitering, erratic movement or repeat crossings → pattern alert."
+     },
+     {
+      "label": "How an alert reaches the team",
+      "text": "Plate read → rule check → ticket raised with images → SMS, email and messaging to the officers."
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-vms",
+    "n": "03",
+    "name": "Video Management System",
+    "tag": "One console for every camera",
+    "group": "Core platform",
+    "summary": "A browser-based VMS that brings IP and analog cameras, DVRs and NVRs into one console for monitoring, recording, investigation and reporting, on-premises or in the cloud.",
+    "details": [
+     {
+      "label": "Unified monitoring",
+      "text": "Video wall and custom layouts, live PTZ and digital zoom, two-way audio, a browser console for the command centre."
+     },
+     {
+      "label": "Recording & playback",
+      "text": "Continuous, motion and event recording with pre- and post-event buffers, synchronised multi-camera playback, smart search, bookmarks and clip export."
+     },
+     {
+      "label": "Forensic search",
+      "text": "People, vehicle and object tracking, face search from a photo, attribute search and a cross-camera timeline."
+     },
+     {
+      "label": "Alerts, maps & health",
+      "text": "A central alert centre, cameras pinned on site and floor plans, and camera, recorder and storage health with scheduled reports."
+     },
+     {
+      "label": "Device management",
+      "text": "ONVIF discovery and onboarding, bulk import, firmware upgrades and remote reboot. Existing recordings stay usable."
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-bluedge",
+    "n": "04",
+    "name": "BluEdge server",
+    "tag": "Sovereign on-premises AI",
+    "group": "Hardware",
+    "summary": "The on-premises AI server that runs Access Genie inside the organisation's premises, so sensitive data never has to leave.",
+    "details": [
+     {
+      "label": "Built in",
+      "text": "Sovereign processing, zero-trust access with MFA and least privilege, encryption at rest and in transit, continuous threat detection and high availability."
+     },
+     {
+      "label": "What it runs",
+      "text": "Video analytics and VMS, LLM and AI workloads, investigation platforms, dashboards and analytics, and internal communication."
+     },
+     {
+      "label": "Architecture",
+      "text": "Enterprise storage chassis with room for GPU configurations, expandable high-density storage, open and Kubernetes-ready."
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-field-devices",
+    "n": "05",
+    "name": "Field devices",
+    "tag": "Capture on roads and checkpoints",
+    "group": "Hardware",
+    "summary": "The devices that capture what Access Genie analyses, on roads, bridges and checkpoints.",
+    "details": [
+     {
+      "label": "Edge AI camera",
+      "text": "5 MP camera with AI on board for ANPR, loitering, face recognition and people counting; IR night vision to 30 m, IP66."
+     },
+     {
+      "label": "4K global-shutter ANPR camera",
+      "text": "Captures fast traffic with no motion blur across 3–4 lanes; one camera handles both ANPR and violation detection."
+     },
+     {
+      "label": "Pulsed IR flash & 4D radar",
+      "text": "The flash keeps seatbelts, phones and plates readable at night; the radar measures spot and average speed, lane by lane, up to 240 km/h."
+     },
+     {
+      "label": "AI-VPU edge unit",
+      "text": "Runs several violation models at the roadside with up to 1 TB local storage, sending only results over wired or 4G links."
+     }
+    ],
+    "maturity": {
+     "kind": "established",
+     "label": "Established"
+    }
+   },
+   {
+    "id": "m-garuda",
+    "n": "06",
+    "name": "GARUDA",
+    "tag": "Blue Cloud's Policing Operational Ecosystem",
+    "group": "Policing & public safety",
+    "summary": "Access Genie's video AI and operational products reach police forces through GARUDA, Blue Cloud's Policing Operational Ecosystem. GARUDA is a separate vertical that also draws on Blura SAGA and EduGenie, with thirteen connected products behind one login.",
+    "go": {
+     "label": "Open the GARUDA page →",
+     "href": "/products/garuda/"
+    }
+   },
+   {
+    "id": "m-access-genie-retail",
+    "n": "07",
+    "name": "Access Genie Retail",
+    "tag": "Retail & jewellery",
+    "group": "Enterprise & industry",
+    "summary": "Sixteen measured KPIs across sales, risk and operations.",
+    "go": {
+     "label": "Open the Access Genie Retail page →",
+     "href": "/products/access-genie-retail/"
+    }
+   },
+   {
+    "id": "m-blugo",
+    "n": "08",
+    "name": "BluGo",
+    "tag": "Logistics & mobility",
+    "group": "Enterprise & industry",
+    "summary": "One platform for goods transport, fleet and labour.",
+    "go": {
+     "label": "Open the BluGo page →",
+     "href": "/products/blugo/"
+    }
+   },
+   {
+    "id": "m-airports",
+    "n": "09",
+    "name": "Airports & transport",
+    "tag": "Aviation and transit",
+    "group": "Enterprise & industry",
+    "summary": "Aviation and transit surveillance: perimeter monitoring, crowd density, unattended baggage, restricted-area access and vehicle movement across terminals and depots."
+   },
+   {
+    "id": "m-infrastructure",
+    "n": "10",
+    "name": "Critical infrastructure",
+    "tag": "Data centres and server rooms",
+    "group": "Enterprise & industry",
+    "summary": "Data centres and server rooms: unauthorised access detection around the clock, thermal monitoring for equipment safety, tailgating and piggybacking detection."
+   },
+   {
+    "id": "m-communities",
+    "n": "11",
+    "name": "Smart communities",
+    "tag": "Gated communities, public spaces",
+    "group": "Enterprise & industry",
+    "summary": "Gated communities and public spaces: visitor pre-screening and authentication, resident and vehicle access, perimeter surveillance and intrusion alerts."
+   },
+   {
+    "id": "m-healthcare",
+    "n": "12",
+    "name": "Healthcare",
+    "tag": "Hospitals and clinics",
+    "group": "Enterprise & industry",
+    "summary": "Hospitals and clinics: unauthorised ward and intensive-care entry, overcrowding alerts, equipment theft or misuse, and staff shift adherence."
+   },
+   {
+    "id": "m-finance",
+    "n": "13",
+    "name": "Finance & banking",
+    "tag": "Branches and cash handling",
+    "group": "Enterprise & industry",
+    "summary": "Branch and cash-handling environments: queue and footfall analytics, restricted-zone access, after-hours monitoring and incident evidence."
+   },
+   {
+    "id": "m-education",
+    "n": "14",
+    "name": "Education",
+    "tag": "Campus safety",
+    "group": "Enterprise & industry",
+    "summary": "Campus safety and operations: entry and exit monitoring, restricted-area access, attendance support and incident response, with the link into EduGenie."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "deep",
+   "tight": false,
+   "html": "<div class=\"wrap\">\n</div>\n<ol class=\"ag-pipe\">\n<li><span class=\"agp-n\">01</span><b>Collect</b><span>Streams from IP and analog cameras, ANPR and radar, plus records, helplines and seized devices.</span></li>\n<li><span class=\"agp-n\">02</span><b>Detect</b><span>Models run on zones, time windows and thresholds the organisation sets — at the edge or in the cluster.</span></li>\n<li><span class=\"agp-n\">03</span><b>Alert</b><span>A detection becomes a prioritised alert with its evidence attached, routed to whoever owns it.</span></li>\n<li><span class=\"agp-n\">04</span><b>Act</b><span>The alert lands in a workflow: a dispatch, a challan, a case, a memo, a floor-team instruction.</span></li>\n</ol>\n<div class=\"grid g3\">\n<div class=\"card card-d\">\n<h4>Built on existing cameras</h4>\n<p>IP and analog CCTV, PTZ, city and station cameras keep recording as before. Access Genie reads the streams and adds a layer on top; the recorder and the wiring stay where they are.</p>\n</div>\n<div class=\"card card-d\">\n<h4>Processing stays where you decide</h4>\n<p>Fully on-premise, private cloud or hybrid. For most government deployments, video, records and evidence are processed and stored on infrastructure the department owns.</p>\n</div>\n<div class=\"card card-d\">\n<h4>Connected, not another silo</h4>\n<p>Reads from and writes to the systems already in use, so officers and staff do not key the same data in twice. Each connection is scoped, tested and approved before it goes live.</p>\n</div>\n</div>\n<div>\n<div class=\"eyebrow\">Two divisions</div>\n<h3>\n        Policing &amp; public safety. Enterprise &amp; industry.\n      </h3>\n<p class=\"lede\">\n        One detection engine serves two divisions. For police forces, Access Genie is delivered through GARUDA,\n        Blue Cloud's separate policing vertical, with traffic enforcement alongside it. Enterprise\n        and industry covers retail, logistics through BluGo, and six more sectors. What changes between\n        them is the model set, the KPIs, the workflow and who receives the alert.\n      </p>\n<div class=\"ag-verts\">\n<a class=\"ag-v ag-v-lead\" href=\"/products/garuda/\">\n<span class=\"agv-k\">Separate vertical · Policing</span>\n<b>GARUDA</b>\n<span class=\"agv-d\">An ecosystem of thirteen connected products: intelligence, investigation, documentation, field and citizen services — behind one login.</span>\n<span class=\"agv-go\">Open the ecosystem →</span>\n</a>\n<a class=\"ag-v\" href=\"/products/access-genie-retail/\">\n<span class=\"agv-k\">Division · Enterprise &amp; industry</span>\n<b>Retail &amp; jewellery</b>\n<span class=\"agv-d\">16 operational KPIs across sales, risk and operations, with camera evidence against every one.</span>\n<span class=\"agv-go\">Open the chapter →</span>\n</a>\n<a class=\"ag-v\" href=\"/#access-genie-more\">\n<span class=\"agv-k\">Enterprise &amp; industry · six more</span>\n<b>Industries</b>\n<span class=\"agv-d\">Airports and transport, critical infrastructure, smart communities, healthcare and finance, education, and BluGo for logistics.</span>\n<span class=\"agv-go\">See the industries →</span>\n</a>\n</div>\n</div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "Safeguards",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Safeguards</div><h2>What it will not do, and what it always keeps.</h2><ul class=\"ticks\"><li>Sovereign processing: AI can run on servers inside the organisation's premises.</li><li>Zero-trust access: identity-based, multi-factor, least privilege, micro-segmented.</li><li>Encryption at rest and in transit, with key management under the organisation's control.</li><li>Every alert carries its evidence; every action is logged for audit.</li><li>Face recognition only within the legal authorisation the organisation sets.</li></ul>"
+  }
+ ],
+ "demo": {
+  "title": "Traffic AI Analytics",
+  "kicker": "Live analytics demo",
+  "heading": "Traffic AI Analytics, on real Indian road footage",
+  "text": "40 cameras, 20 traffic analytics: detection, counting, density, ANPR, helmets, triple riding, speed and more. Opens as its own page.",
+  "button": "Open the dashboard →",
+  "href": "/demos/traffic-analytics/index.html"
+ },
+ "related": {
+  "title": "Elsewhere in the portfolio",
+  "slugs": [
+   "garuda",
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani",
+   "access-genie-retail",
+   "blugo",
+   "edugenie"
+  ]
+ },
+ "cta": {
+  "title": "See Access Genie running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Access Genie demonstration request"
+ }
+}

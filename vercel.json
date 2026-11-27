@@ -4,5 +4,102 @@
   "installCommand": "cd app && npm ci",
   "buildCommand": "cd app && npm run build",
   "outputDirectory": "app/dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/products/access-genie.html",
+      "destination": "/products/access-genie/",
+      "permanent": true
+    },
+    {
+      "source": "/products/access-genie-retail.html",
+      "destination": "/products/access-genie-retail/",
+      "permanent": true
+    },
+    {
+      "source": "/products/ai-copwriter.html",
+      "destination": "/products/ai-copwriter/",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluflow.html",
+      "destination": "/products/bluflow/",
+      "permanent": true
+    },
+    {
+      "source": "/products/blugo.html",
+      "destination": "/products/blugo/",
+      "permanent": true
+    },
+    {
+      "source": "/products/blura-saga.html",
+      "destination": "/products/blura-saga/",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluvaani.html",
+      "destination": "/products/bluvaani/",
+      "permanent": true
+    },
+    {
+      "source": "/products/digital-forensics.html",
+      "destination": "/products/digital-forensics/",
+      "permanent": true
+    },
+    {
+      "source": "/products/drug-offender-portal.html",
+      "destination": "/products/drug-offender-portal/",
+      "permanent": true
+    },
+    {
+      "source": "/products/edugenie.html",
+      "destination": "/products/edugenie/",
+      "permanent": true
+    },
+    {
+      "source": "/products/fir-automation.html",
+      "destination": "/products/fir-automation/",
+      "permanent": true
+    },
+    {
+      "source": "/products/garuda.html",
+      "destination": "/products/garuda/",
+      "permanent": true
+    },
+    {
+      "source": "/products/geo-intelligence.html",
+      "destination": "/products/geo-intelligence/",
+      "permanent": true
+    },
+    {
+      "source": "/products/grievance-management.html",
+      "destination": "/products/grievance-management/",
+      "permanent": true
+    },
+    {
+      "source": "/products/memo-generator.html",
+      "destination": "/products/memo-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/products/smartcop.html",
+      "destination": "/products/smartcop/",
+      "permanent": true
+    },
+    {
+      "source": "/products/trap-case-management.html",
+      "destination": "/products/trap-case-management/",
+      "permanent": true
+    },
+    {
+      "source": "/products/women-safety-portal.html",
+      "destination": "/products/women-safety-portal/",
+      "permanent": true
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { ModuleItem } from '@/types/product';
+import type { ModuleItem, ModuleGroup } from '@/types/product';
 
 interface Props {
   modules: ModuleItem[];
-  /** Group order as shown on the filter chips. */
-  groups: string[];
+  /** Group order as shown on the filter chips; an object adds the group's one-line description. */
+  groups: (string | ModuleGroup)[];
   productName: string;
 }
 
@@ -16,7 +16,16 @@ const norm = (s: string) => s.toLowerCase();
  * open module (#m-…), a deep link opens its module with filters reset, and every module has
  * "Copy link to this module". The full text is rendered into the HTML on the server, so search engines and deep links get every module.
  */
-export default function ModuleExplorer({ modules, groups, productName }: Props) {
+const strip = (s: string) => s.replace(/<[^>]+>/g, '');
+const matColor = {
+  established: 'var(--color-established)',
+  integration: 'var(--color-integration)',
+  proposed: 'var(--color-proposed)',
+};
+
+export default function ModuleExplorer({ modules, groups: groupList, productName }: Props) {
+  const groupInfo = groupList.map((g) => (typeof g === 'string' ? { name: g } : g));
+  const groups = groupInfo.map((g) => g.name);
   const [group, setGroup] = useState<string>('*');
   const [query, setQuery] = useState('');
   const [openId, setOpenId] = useState<string | null>(null);
@@ -25,11 +34,28 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
   const rootRef = useRef<HTMLDivElement>(null);
 
   const index = useMemo(
-    () => new Map(modules.map((m) => [m.id, norm([m.name, m.tag, m.summary, ...(m.details?.map((d) => d.text) ?? [])].join(' '))])),
+    () =>
+      new Map(
+        modules.map((m) => [
+          m.id,
+          norm(
+            strip(
+              [
+                m.name,
+                m.tag,
+                m.summary,
+                ...(m.more ?? []),
+                ...(m.details?.flatMap((d) => [d.label, d.text]) ?? []),
+              ].join(' '),
+            ),
+          ),
+        ]),
+      ),
     [modules],
   );
   const q = norm(query.trim());
-  const visible = (m: ModuleItem) => (group === '*' || m.group === group) && (!q || index.get(m.id)!.includes(q));
+  const visible = (m: ModuleItem) =>
+    (group === '*' || m.group === group) && (!q || index.get(m.id)!.includes(q));
   const shown = modules.filter(visible);
 
   const fromHash = useCallback(() => {
@@ -58,7 +84,8 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
     if (next) {
       const el = document.getElementById(id);
       const r = el?.getBoundingClientRect();
-      if (r && (r.top < 80 || r.top > innerHeight * 0.6)) el!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (r && (r.top < 80 || r.top > innerHeight * 0.6))
+        el!.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -90,13 +117,28 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
   return (
     <div ref={rootRef} id="modules-explorer">
       <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2" role="group" aria-label={`Filter ${productName} modules by group`}>
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-label={`Filter ${productName} modules by group`}
+        >
           {chip('*', 'All', modules.length)}
           {groups.map((g) => chip(g, g, count(g)))}
         </div>
         <label className="relative block md:w-72">
           <span className="sr-only">Search modules</span>
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink-3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
           <input
             type="search"
             value={query}
@@ -107,20 +149,28 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
         </label>
       </div>
 
-      <p className="sr-only" aria-live="polite">{shown.length} of {modules.length} modules shown</p>
+      <p className="sr-only" aria-live="polite">
+        {shown.length} of {modules.length} modules shown
+      </p>
 
-      {groups.map((g) => {
+      {groupInfo.map(({ name: g, sub, id: gid }) => {
         const items = modules.filter((m) => m.group === g && visible(m));
         if (!items.length) return null;
         return (
-          <section key={g} className="mb-8 last:mb-0">
+          <section key={g} id={gid} className="mb-8 scroll-mt-[calc(var(--nav-h)+16px)] last:mb-0">
             <h3 className="mb-3 flex items-baseline gap-3 font-mono font-medium text-label uppercase tracking-[0.12em] text-[var(--accent-text)]">
-              {g}<span className="text-ink-3">{items.length}</span>
+              {g}
+              <span className="text-ink-3">{items.length}</span>
+              {sub && (
+                <span className="font-sans text-small normal-case tracking-normal text-ink-3">
+                  {sub}
+                </span>
+              )}
             </h3>
             <div className="grid gap-2.5">
               {items.map((m) => {
                 const open = openId === m.id;
-                const n = String(modules.indexOf(m) + 1).padStart(2, '0');
+                const n = m.n || String(modules.indexOf(m) + 1).padStart(2, '0');
                 return (
                   <article
                     key={m.id}
@@ -137,23 +187,90 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
                       >
                         <span className="font-mono text-small text-ink-3">{n}</span>
                         <span className="min-w-0 flex-1">
-                          <b className="block font-sans text-[1rem] font-semibold text-white">{m.name}</b>
-                          {m.tag && <em className="block text-small not-italic text-ink-3">{m.tag}</em>}
+                          <b className="block font-sans text-[1rem] font-semibold text-white">
+                            {m.name}
+                          </b>
+                          {m.tag && (
+                            <em className="block text-small not-italic text-ink-3">{m.tag}</em>
+                          )}
                         </span>
-                        <svg aria-hidden="true" viewBox="0 0 24 24" className={`size-5 shrink-0 text-ink-3 transition-transform duration-200 ${open ? 'rotate-45 text-[var(--accent-text)]' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+                        {m.maturity && (
+                          <span
+                            className="hidden shrink-0 items-center gap-1.5 rounded-[5px] px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.08em] sm:inline-flex"
+                            style={{
+                              color: matColor[m.maturity.kind],
+                              background: `color-mix(in oklab, ${matColor[m.maturity.kind]} 15%, transparent)`,
+                            }}
+                          >
+                            <span aria-hidden="true" className="size-1.5 rounded-full bg-current" />
+                            {m.maturity.label}
+                          </span>
+                        )}
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          className={`size-5 shrink-0 text-ink-3 transition-transform duration-200 ${open ? 'rotate-45 text-[var(--accent-text)]' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
+                          <path d="M12 5v14M5 12h14" />
+                        </svg>
                       </button>
                     </h4>
-                    <div id={`mb-${m.id.slice(2)}`} hidden={!open} className="px-4 pb-5 md:px-5 md:pl-[3.25rem]">
-                      <p className="max-w-[78ch] text-[0.9375rem] leading-relaxed text-ink-2">{m.summary}</p>
+                    <div
+                      id={`mb-${m.id.slice(2)}`}
+                      hidden={!open}
+                      className="px-4 pb-5 md:px-5 md:pl-[3.25rem]"
+                    >
+                      <p
+                        className="rich max-w-[78ch] text-[0.9375rem] leading-relaxed text-ink-2"
+                        dangerouslySetInnerHTML={{ __html: m.summary }}
+                      />
+                      {m.more?.map((p, i) => (
+                        <p
+                          key={i}
+                          className="rich mt-3 max-w-[78ch] text-[0.9375rem] leading-relaxed text-ink-2"
+                          dangerouslySetInnerHTML={{ __html: p }}
+                        />
+                      ))}
+                      {m.maturity && (
+                        <p className="mt-3 sm:hidden">
+                          <span
+                            className="inline-flex items-center gap-1.5 rounded-[5px] px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.08em]"
+                            style={{
+                              color: matColor[m.maturity.kind],
+                              background: `color-mix(in oklab, ${matColor[m.maturity.kind]} 15%, transparent)`,
+                            }}
+                          >
+                            <span aria-hidden="true" className="size-1.5 rounded-full bg-current" />
+                            {m.maturity.label}
+                          </span>
+                        </p>
+                      )}
                       {m.details && (
                         <dl className="mt-4 grid gap-2.5 md:grid-cols-2">
-                          {m.details.map((d) => (
-                            <div key={d.label} className="rounded-[10px] bg-bg-alt p-3.5">
-                              <dt className="font-mono text-label uppercase tracking-[0.12em] text-[var(--accent-text)]">{d.label}</dt>
-                              <dd className="mt-1.5 text-small text-ink-2">{d.text}</dd>
+                          {m.details.map((d, i) => (
+                            <div key={i} className="rounded-[10px] bg-bg-alt p-3.5">
+                              <dt className="font-mono text-label uppercase tracking-[0.12em] text-[var(--accent-text)]">
+                                {d.label}
+                              </dt>
+                              <dd
+                                className="rich mt-1.5 text-small text-ink-2"
+                                dangerouslySetInnerHTML={{ __html: d.text }}
+                              />
                             </div>
                           ))}
                         </dl>
+                      )}
+                      {m.go && (
+                        <a
+                          href={m.go.href}
+                          className="mt-4 mr-3 inline-flex min-h-9 items-center font-semibold text-[var(--accent-text)] no-underline hover:text-white"
+                        >
+                          {m.go.label}
+                        </a>
                       )}
                       <button
                         type="button"
@@ -170,7 +287,11 @@ export default function ModuleExplorer({ modules, groups, productName }: Props) 
           </section>
         );
       })}
-      {!shown.length && <p className="rounded-card border border-dashed border-line p-6 text-center text-ink-3">No modules match “{query}”.</p>}
+      {!shown.length && (
+        <p className="rounded-card border border-dashed border-line p-6 text-center text-ink-3">
+          No modules match “{query}”.
+        </p>
+      )}
     </div>
   );
 }

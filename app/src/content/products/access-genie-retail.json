@@ -1,0 +1,550 @@
+{
+ "slug": "access-genie-retail",
+ "title": "Access Genie Retail — SMARTAPPS by Blue Cloud Softech",
+ "description": "From passive CCTV to actionable retail intelligence. Sixteen measured operational KPIs across sales, risk and operations, with camera evidence against every one.",
+ "accent": "ag",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "Access Genie",
+    "href": "/products/access-genie/"
+   },
+   {
+    "label": "Enterprise",
+    "href": "/products/access-genie/#enterprise"
+   },
+   {
+    "label": "Access Genie Retail",
+    "href": null
+   }
+  ],
+  "tag": "Retail vertical",
+  "h1": "Access Genie Retail",
+  "tagline": "From passive CCTV to actionable retail intelligence.",
+  "lede": "Sixteen measured operational KPIs across sales, risk and operations, with camera evidence against every one.",
+  "chips": [
+   {
+    "text": "Access Genie · Enterprise & industry",
+    "division": true
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 19 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/access-genie-retail.html",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/access-genie-retail.webp",
+  "icon": null,
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "16 KPIs and the platform foundation",
+  "lede": "Every KPI has a defined trigger, the evidence it keeps, where it is delivered and the business impact it measures.",
+  "groups": [
+   {
+    "name": "Sales",
+    "sub": "What the floor is converting"
+   },
+   {
+    "name": "Risk & security",
+    "sub": "What must never be missed"
+   },
+   {
+    "name": "Operations",
+    "sub": "What the customer experiences"
+   },
+   {
+    "name": "Platform foundation",
+    "sub": "What keeps the rest honest"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-kpi-sales-01",
+    "n": "01",
+    "name": "Customer Walk-ins & Headcount",
+    "tag": "Footfall Counting, Peak Traffic & Forensic Face Embeddings",
+    "group": "Sales",
+    "summary": "Monitors customer walk-in volume and group size entering through showroom vestibules. Stores 512-dimensional facial vector embeddings securely in Milvus Vector DB to provide instantaneous forensic evidence if any security dispute or high-value loss occurs.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer enters showroom across vestibule tripwire; groups tallied"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Timestamped head count tally + 512-d ArcFace facial vector embedding in Milvus DB"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Live Dashboard, WhatsApp Summary, PDF Nightly"
+     },
+     {
+      "label": "Business impact",
+      "text": "Accurate footfall baseline for sales conversion; instant forensic identification without scrubbing hours of video."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-sales-02",
+    "n": "02",
+    "name": "Display Ornaments Counter",
+    "tag": "Counter Table Dwell & Presented Jewellery Tracking",
+    "group": "Sales",
+    "summary": "Detects when a customer is seated at a sales consultation table and audits the exact count of jewellery trays and ornaments presented by the sales associate. Prevents counter overcrowding, measures customer engagement, and correlates presentation depth with closing rates.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer seated at table; velvet trays placed; items audited continuously"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Bounding box snapshot of displayed jewellery pieces + table dwell duration"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Live Dashboard, Floor Manager Alert"
+     },
+     {
+      "label": "Business impact",
+      "text": "Ensures sales staff adhere to luxury presentation standards; prevents unattended clutter and loss on tables."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-sales-03",
+    "n": "03",
+    "name": "Try-On & Purchase Selection Analytics",
+    "tag": "Physical Try-on Detection & Selection Conversion",
+    "group": "Sales",
+    "summary": "Uses upper-body pose estimation to detect when a customer tries on a necklace, ring, bangle or earrings in front of mirrors. Logs try-on duration and interaction intensity, and flags the final ornament selected for purchase.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Hand-to-neck/ear/wrist gesture detected while viewing mirror"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Pose interaction snapshot + try-on item ID & conversion selection flag"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Daily Merchandising Intelligence Report"
+     },
+     {
+      "label": "Business impact",
+      "text": "Identifies top-performing designs and provides high-intent buyer analytics to retail merchandising executives."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-01",
+    "n": "04",
+    "name": "Store Opening & Closing Shutter Compliance",
+    "tag": "Motorized Shutter/Curtain State & Dual-Witness Protocol",
+    "group": "Risk & security",
+    "summary": "Monitors the opening and closing of store motorized shutters and heavy velvet security curtains. Strictly enforces the chain’s dual-witness security protocol, ensuring 2+ authorized staff members are verified present before opening or after closing.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Shutter/curtain motion; requires 2+ authorized staff witnesses"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Dual-witness arrival snapshots + opening/closing timestamp compliance log"
+     },
+     {
+      "label": "Delivered to",
+      "text": "WhatsApp Alert, Central Security Console"
+     },
+     {
+      "label": "Business impact",
+      "text": "Eliminates lone-worker insider theft risks during high-vulnerability morning and night transitions."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-02",
+    "n": "05",
+    "name": "Security Frisking & Keypoint Checks",
+    "tag": "Human Frisking Pose Estimation & Anatomical Keypoint Coverage",
+    "group": "Risk & security",
+    "summary": "Monitors security guards performing frisking on staff and visitors entering or exiting. Using 17-keypoint skeleton pose tracking, it verifies whether all mandated body zones (torso, arms, pockets, waistband, lower legs) were systematically scanned, with video proof archived.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Staff/visitor enters checkpoint; audits all body touchpoint scans"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "10-second proof video clip + SHA-256 hash + keypoint coverage %"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Security Vault, CSO Audit Log"
+     },
+     {
+      "label": "Business impact",
+      "text": "Guarantees 100% adherence to loss-prevention frisking; stops weapon or tool ingress and jewellery shrinkage."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-03",
+    "n": "06",
+    "name": "Vault Opening & Dual-Custodian Audit",
+    "tag": "Strongroom Access, Multi-Angle Snapshots (P1, P2, Door)",
+    "group": "Risk & security",
+    "summary": "Monitors the high-security jewellery strongroom 24/7. Upon vault door motion, the system captures synchronized multi-angle snapshots: Person 1 (P1), Person 2 (P2) and the Vault Door. Enforces dual-custodian authorization and alerts on single-person breaches.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Vault door motion; validates dual authorized keyholders present"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Triple synchronized snapshots: Person 1 (P1), Person 2 (P2), Vault Door"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Urgent WhatsApp to CSO & Store Head"
+     },
+     {
+      "label": "Business impact",
+      "text": "Strict physical dual-control of the highest-value inventory in the store; provides an unalterable audit trail."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-04",
+    "n": "07",
+    "name": "Security Guard Absence Monitoring",
+    "tag": "Post Dwell Tracking & >15 Minutes Absence Escalation",
+    "group": "Risk & security",
+    "summary": "Continuously verifies that assigned security guard posts at main entrances, vaults and billing counters remain occupied. If a guard vacates the assigned post for more than 15 minutes continuously during business hours, a high-severity alert is immediately raised to the Store Manager.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Guard vacates designated geofence post for >15 minutes continuously"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Absence timer stopwatch log + empty post camera snapshot"
+     },
+     {
+      "label": "Delivered to",
+      "text": "WhatsApp Ping to Store Head & Agency SLA Log"
+     },
+     {
+      "label": "Business impact",
+      "text": "Maintains active deterrence at all showroom gates; ensures security agencies fulfil contractual staffing SLAs."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-05",
+    "n": "08",
+    "name": "Empty Racks & Jewellery Displacement",
+    "tag": "Showcase Rack Occupancy & Anti-Robbery Telemetry",
+    "group": "Risk & security",
+    "summary": "Audits high-value diamond and gold showcases, wall display cabinets and counter trays. Logs when jewellery is placed and removed, flags prolonged empty display slots, and triggers an anti-robbery alert if multiple trays are removed abruptly without customer consultation.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Jewellery tray removed from rack; flags prolonged vacancy or abrupt removal"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Showcase slot vacancy heatmap + displacement event timestamp"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Dashboard Telemetry, Anti-Robbery Siren"
+     },
+     {
+      "label": "Business impact",
+      "text": "Prevents internal shrinkage during stock transitions and provides early warning during smash-and-grab attempts."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-06",
+    "n": "09",
+    "name": "Frisking Bag Screening Compliance",
+    "tag": "Staff & Visitor Carry-on Screening Enforcement",
+    "group": "Risk & security",
+    "summary": "Verifies that security guards inspect all staff backpacks, handbags and visitor tote bags upon entry and exit. Guarantees that bags are physically opened and inspected under camera view before clearance is granted.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Staff or visitor carry-on bag crosses screening without full inspection"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Open bag inspection pose snapshot vs uninspected bypass alert frame"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Security Post Monitor, Daily Compliance Report"
+     },
+     {
+      "label": "Business impact",
+      "text": "Stops illicit transport of jewellery, loose diamonds or dangerous articles in or out of store premises."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-risk-07",
+    "n": "10",
+    "name": "After-Hours Perimeter Intruder Detection",
+    "tag": "Night Vision IR Human Silhouette & Tripwire Trigger",
+    "group": "Risk & security",
+    "summary": "Arms automatically once store shutters are locked (e.g. 21:30 IST). Continuously scans low-light showroom floors, back offices and vault perimeters, and dispatches an instant emergency alert if an unauthorized person is detected after hours.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Human silhouette or motion in darkened showroom during closed hours"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Night-vision IR snapshot with bounding box + instant alarm clip"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Emergency Siren, Central Command, Police Dispatch"
+     },
+     {
+      "label": "Business impact",
+      "text": "Protects high-value retail assets 24/7/365; eliminates vulnerability during holidays and overnight hours."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-01",
+    "n": "11",
+    "name": "Hospitality Service On-Time",
+    "tag": "Luxury Customer Seating to Service Stopwatch",
+    "group": "Operations",
+    "summary": "Measures the duration from when a customer sits at a showroom sales table until a hospitality team member or sales associate attends to them with welcome refreshments, water or product catalogues, ensuring the chain’s luxury hospitality standards are consistently maintained.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer seated; associates deliver water/refreshments within benchmark"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Stopwatch timer record (e.g. 7 seconds) + arrival confirmation frame"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Live Dashboard Hospitality Scorecard"
+     },
+     {
+      "label": "Business impact",
+      "text": "Enhances luxury brand prestige; seated customers feel immediately valued upon arrival."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-02",
+    "n": "12",
+    "name": "Hospitality Service Late Escalation Alarm",
+    "tag": "Delayed Service Alarm (>5 Minutes Dwell Alert)",
+    "group": "Operations",
+    "summary": "Triggers an operational alarm whenever a seated customer remains unattended past acceptable hospitality thresholds (e.g. >5 minutes 1 second), and sends an immediate ping to the Floor Manager to deploy staff before customer frustration sets in.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer seated and unattended for >5 minutes without service"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Elapsed dwell snapshot (5m 1s) + unattended table coordinates"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Floor Manager Handheld Ping & Dashboard Alarm"
+     },
+     {
+      "label": "Business impact",
+      "text": "Significantly reduces customer walk-outs and negative reviews due to unattended consultation tables."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-03",
+    "n": "13",
+    "name": "Meet & Greet Protocol (“Atithi Devo Bhava”)",
+    "tag": "10-Second Welcoming Reception Compliance",
+    "group": "Operations",
+    "summary": "Enforces the chain’s foundational philosophy of “Atithi Devo Bhava”. Detects entering customers and verifies whether designated showroom reception hosts welcome them with a traditional Namaste within 10 seconds of crossing the door.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer enters; staff host must perform welcoming Namaste in <10s"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "10-second reception pose verification snapshot + store greeting %"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Executive Scorecard, Area Head Dashboard"
+     },
+     {
+      "label": "Business impact",
+      "text": "Creates an exceptional first impression and establishes customer loyalty from the very first step."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-04",
+    "n": "14",
+    "name": "Clear Counter Safety Protocol",
+    "tag": "Prompt Counter Clearance & Inventory Safe Return",
+    "group": "Operations",
+    "summary": "Monitors consultation counters after customer departure. Verifies that diamond and gold ornaments are promptly counted, repacked into secure trays and returned to locked safes or display cases rather than left unattended on open tables.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Customer departs; jewellery trays left unattended on table >15 mins"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Customer departure timestamp + exposed ornaments on counter snapshot"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Floor Manager Alert, Stock Audit Log"
+     },
+     {
+      "label": "Business impact",
+      "text": "Prevents opportunist theft or inventory misplacement; keeps sales counters impeccably organized."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-05",
+    "n": "15",
+    "name": "Floor Mopping & Store Hygiene Standards",
+    "tag": "Morning Pre-Opening & Evening Hygiene Verification",
+    "group": "Operations",
+    "summary": "Audits pre-opening showroom cleaning routines (08:00–09:30 AM) and evening maintenance. Tracks housekeeping staff using mops and cleaning equipment across all floor aisles, ensuring pristine hygiene benchmarks for luxury jewellery buyers.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "Housekeeping floor mopping verified during morning routine (08:00–09:30)"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Mop trajectory floor coverage heatmap + pre-opening hygiene certificate"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Store Manager Hygiene Sign-Off"
+     },
+     {
+      "label": "Business impact",
+      "text": "Ensures showroom floors, mirrors and display cases maintain luxury brand standards."
+     }
+    ]
+   },
+   {
+    "id": "m-kpi-ops-06",
+    "n": "16",
+    "name": "Staff Gathering & Loitering Detection",
+    "tag": "Unproductive Staff Congregation & Floor Discipline",
+    "group": "Operations",
+    "summary": "Identifies instances where 3 or more sales associates cluster together for informal conversation while customer tables remain unattended. Generates floor productivity analytics to maintain professional showroom decorum.",
+    "details": [
+     {
+      "label": "Trigger",
+      "text": "3+ sales staff congregating for >3 mins while customer tables unattended"
+     },
+     {
+      "label": "Evidence kept",
+      "text": "Spatial cluster bounding box frame + unattended counter status"
+     },
+     {
+      "label": "Delivered to",
+      "text": "Floor Productivity Console, Floor Lead Alert"
+     },
+     {
+      "label": "Business impact",
+      "text": "Boosts floor staff utilization and prevents customers from waiting unattended."
+     }
+    ]
+   },
+   {
+    "id": "m-heartbeat",
+    "n": "17",
+    "name": "Camera heartbeat",
+    "tag": "Uptime",
+    "group": "Platform foundation",
+    "summary": "Continuous polling across every camera endpoint, with automated escalation to technicians before a blind spot can be exploited."
+   },
+   {
+    "id": "m-daily-reports",
+    "n": "18",
+    "name": "Daily executive summaries",
+    "tag": "Every night",
+    "group": "Platform foundation",
+    "summary": "An automated scorecard every night: store-wise KPIs, violation logs and conversion metrics, delivered to leadership."
+   },
+   {
+    "id": "m-super-admin",
+    "n": "19",
+    "name": "Super admin portal",
+    "tag": "One pane",
+    "group": "Platform foundation",
+    "summary": "Add stores, register camera streams, assign role-based permissions and tune KPI thresholds."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"wrap\">\n<p class=\"lede\">\n        Manual monitoring of thousands of cameras is physically impossible. For a luxury jewellery\n        chain running dozens of branches, a traditional CCTV setup is a purely passive archive —\n        incidents are noticed hours or days after they happen. Access Genie turns the same cameras\n        into an operational intelligence engine with sixteen measured KPIs.\n      </p>\n</div>\n<div class=\"note\">\n<span><b>Reference deployment figures.</b> The numbers above describe one live jewellery-chain deployment and are stated as reference information, not as a universal guarantee of what any other customer will see.</span>\n</div>\n<div class=\"ch-sec\">\n<h4 class=\"kicker\">\n        Enterprise safeguards\n      </h4>\n<ul class=\"ticks\">\n<li><b>Evidence integrity</b> — every alert clip and snapshot is cryptographically stamped with a hash and a UTC timestamp, preventing tampering and supporting legal admissibility.</li>\n<li><b>Camera uptime monitoring</b> — continuous polling across the estate, with automated escalation to technicians before blind spots can be exploited.</li>\n<li><b>Single administrative pane</b> — stores, streams, permissions and KPI thresholds managed in one place, with roles scoped per function.</li>\n<li><b>Daily executive scorecard</b> — generated automatically each night and delivered to leadership, so the picture does not depend on anyone compiling it.</li>\n</ul>\n</div>"
+  },
+  {
+   "kind": "modules"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through Access Genie Retail, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/access-genie-retail.html"
+ },
+ "related": {
+  "title": "Elsewhere in Access Genie",
+  "slugs": [
+   "blugo",
+   "access-genie",
+   "garuda"
+  ]
+ },
+ "cta": {
+  "title": "See Access Genie Retail running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Access Genie Retail demonstration request"
+ }
+}

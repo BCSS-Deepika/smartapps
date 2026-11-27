@@ -1,0 +1,191 @@
+{
+ "slug": "memo-generator",
+ "title": "Compliant Memo Generator — SMARTAPPS by Blue Cloud Softech",
+ "description": "Last night's raids. This morning's memos. Reads the daily situation reports and issues accountability memos to the responsible officer automatically, resolved through the jurisdiction chain.",
+ "accent": "draft",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "Compliant Memo Generator",
+    "href": null
+   }
+  ],
+  "tag": "Supervision memos",
+  "h1": "Compliant Memo Generator",
+  "tagline": "Last night's raids. This morning's memos.",
+  "lede": "Reads the daily situation reports and issues accountability memos to the responsible officer automatically, resolved through the jurisdiction chain.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Draft & Decide",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 10 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/memo-generator.html",
+    "primary": false
+   }
+  ],
+  "logo": null,
+  "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"94\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.9\" viewbox=\"0 0 24 24\" width=\"94\"><path d=\"M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z\"></path><path d=\"M8.5 12l2.5 2.5 4.5-5\"></path></svg>",
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "Core services and screens",
+  "lede": "The engines that turn a situation report into an issued, tracked memo, and the screens each role uses.",
+  "groups": [
+   {
+    "name": "Core services",
+    "sub": "Report to memo"
+   },
+   {
+    "name": "Screens",
+    "sub": "Each role sees only what it needs"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-dsr-parser",
+    "n": "01",
+    "name": "Report parser",
+    "tag": "Word & PDF",
+    "group": "Core services",
+    "summary": "Reads each daily situation report and extracts every case."
+   },
+   {
+    "id": "m-vice-classifier",
+    "n": "02",
+    "name": "Vice classifier",
+    "tag": "Category",
+    "group": "Core services",
+    "summary": "Classifies each case by vice category."
+   },
+   {
+    "id": "m-jurisdiction-resolver",
+    "n": "03",
+    "name": "Jurisdiction resolver",
+    "tag": "Zone → sector",
+    "group": "Core services",
+    "summary": "Walks each case down zone, division, circle, station and sector to the officers who held that ground, from personnel records so transfers are respected."
+   },
+   {
+    "id": "m-template-engine",
+    "n": "04",
+    "name": "Memo template engine",
+    "tag": "Draft",
+    "group": "Core services",
+    "summary": "Writes the warning or charge memo from the case, editable before issue."
+   },
+   {
+    "id": "m-escalation",
+    "n": "05",
+    "name": "Escalation scheduler",
+    "tag": "Three warnings",
+    "group": "Core services",
+    "summary": "Counts only approved warnings; after three, offers a charge memo; resets each cycle. An hourly job checks pending items."
+   },
+   {
+    "id": "m-doc-conversion",
+    "n": "06",
+    "name": "Document conversion",
+    "tag": "Files",
+    "group": "Core services",
+    "summary": "Converts uploads and issued memos between document formats."
+   },
+   {
+    "id": "m-dsr-intake",
+    "n": "07",
+    "name": "Report intake",
+    "tag": "Administrator",
+    "group": "Screens",
+    "summary": "Upload and parse reports, check extracted cases and categories, keep officer and hierarchy data right."
+   },
+   {
+    "id": "m-review-queue",
+    "n": "08",
+    "name": "Review queue",
+    "tag": "Reviewing authority",
+    "group": "Screens",
+    "summary": "Approve, hold or reject each memo, edit wording before approval, see charge memos due."
+   },
+   {
+    "id": "m-memo-register",
+    "n": "09",
+    "name": "Officer memo register",
+    "tag": "Officers",
+    "group": "Screens",
+    "summary": "Officers see only memos addressed to them, upload compliance replies and track their own warning count."
+   },
+   {
+    "id": "m-command-dashboard",
+    "n": "10",
+    "name": "Command dashboard",
+    "tag": "Insight",
+    "group": "Screens",
+    "summary": "Lapses by vice category and stations needing attention, every memo tied to its case."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"ch-lead\">\n<h3>Supervision only works if the memo reaches the right desk, fast.</h3>\n<p>\n            Daily situation reports arrive every morning. Reading each by hand, matching every case to a\n            station and typing each memo from scratch took days — while the lapse went cold. The\n            generator reads the report, resolves the responsible officer and drafts the memo within\n            minutes of upload.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The problem</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Drafting took days</h4><p>Each report was read by hand, every case matched to a station, and each memo typed from scratch.</p><span class=\"now\">Now · drafts ready within minutes of upload</span></div>\n<div class=\"card\"><h4>Who was responsible?</h4><p>Stations, sectors and transfers change. Working out which officer held that ground on that date was slow and error-prone.</p><span class=\"now\">Now · resolved from jurisdiction and personnel records</span></div>\n<div class=\"card\"><h4>Repeat lapses went unseen</h4><p>Nobody could easily see that the same officer had already been warned twice this cycle, so repeat lapses never escalated.</p><span class=\"now\">Now · three warnings raise a charge memo</span></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Every case walks down the hierarchy to one desk</h4>\n<p>\n            A city force is organised zone → division → circle → police station → sector. The generator\n            resolves each case through that chain and picks the officers who held that ground, using\n            officer records synced from the personnel system so transfers are respected.\n          </p>\n<div class=\"tbl-w\">\n<table>\n<thead><tr><th>Recipient</th><th>Role</th><th>Memo</th></tr></thead>\n<tbody>\n<tr><td><b>Station house officer</b></td><td>Holds the station</td><td>SHO memo</td></tr>\n<tr><td><b>Primary sector officer</b></td><td>Holds the sector</td><td>Sector memo</td></tr>\n<tr><td><b>Relief sector officer</b></td><td>Covers leave and duty gaps</td><td>If on duty</td></tr>\n<tr><td><b>Circle supervisor</b></td><td>Supervision</td><td>Visibility only</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Memo lifecycle and escalation</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Every memo has a status</h4>\n<ol class=\"flow\">\n<li><div><b>Draft</b><span>Generated from the case, editable before anything is issued.</span></div></li>\n<li><div><b>Pending review</b><span>In the reviewing authority's queue.</span></div></li>\n<li><div><b>Approved</b><span>Issued to the officer.</span></div></li>\n<li><div><b>Awaiting reply</b><span>The officer must respond.</span></div></li>\n<li><div><b>Complied</b><span>Reply uploaded and closed.</span></div></li>\n</ol>\n<p>A memo can also be held for more facts, or rejected if the lapse is not upheld — in which case it does not count towards escalation.</p>\n</div>\n<div class=\"card\">\n<h4>Three warnings, then a charge memo</h4>\n<ul class=\"ticks\">\n<li><b>Only approved warnings count.</b> A warning counts once the reviewing authority approves it. Held or rejected memos do not.</li>\n<li><b>The fourth lapse becomes a charge memo.</b> After three approved warnings, the generator offers a charge memo instead of another warning.</li>\n<li><b>The count resets each cycle.</b> Once a charge memo is raised, the warning count starts again.</li>\n</ul>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Each role sees only what it needs</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Administrator</h4><p>Runs the report intake, checks extracted cases and categories, and keeps officer access and organisational hierarchy right.</p></div>\n<div class=\"card\"><h4>Reviewing authority</h4><p>Sees the review queue and the force-wide picture: approve, hold or reject each memo, edit wording before approval, and see lapses by station and category.</p></div>\n<div class=\"card\"><h4>Officers</h4><p>See only memos addressed to them: read the memo and the case, upload a compliance reply, and track their own warning count.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>A person approves every memo</b> — the generator drafts; only the reviewing authority issues, and wording can be changed before approval.</li>\n<li><b>Every memo traces to a case</b> — tied to the situation report entry it came from.</li>\n<li><b>Officer data respects transfers</b> — synced from personnel records, so the memo reaches whoever actually held that ground.</li>\n</ul>\n</div>"
+  },
+  {
+   "kind": "modules"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through Compliant Memo Generator, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/memo-generator.html"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ]
+ },
+ "cta": {
+  "title": "See Compliant Memo Generator running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Compliant Memo Generator demonstration request"
+ }
+}

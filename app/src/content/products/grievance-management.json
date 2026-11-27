@@ -1,0 +1,171 @@
+{
+ "slug": "grievance-management",
+ "title": "Grievance Management — SMARTAPPS by Blue Cloud Softech",
+ "description": "Every grievance to the right desk, tracked to closure. Every citizen grievance — from public conversation, a petition or a phone call — goes to the right desk and is tracked until it is closed.",
+ "accent": "field",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "Grievance Management",
+    "href": null
+   }
+  ],
+  "tag": "Citizen grievances to closure",
+  "h1": "Grievance Management",
+  "tagline": "Every grievance to the right desk, tracked to closure.",
+  "lede": "Every citizen grievance — from public conversation, a petition or a phone call — goes to the right desk and is tracked until it is closed.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Field & Citizen",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 6 modules",
+    "href": "#modules",
+    "primary": true
+   }
+  ],
+  "logo": null,
+  "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 21l2-5.2A8.4 8.4 0 1 1 21 11.5z\"></path><path d=\"M8.5 10h7M8.5 13.5h4\"></path></svg>",
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "Modules",
+  "lede": "Every grievance to the right desk, tracked to closure.",
+  "groups": [
+   {
+    "name": "Capture & route",
+    "sub": "Nothing lands nowhere"
+   },
+   {
+    "name": "Resolve",
+    "sub": "Accountable closure"
+   },
+   {
+    "name": "Report",
+    "sub": "Trends"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-detect",
+    "n": "01",
+    "name": "Automatic detection",
+    "tag": "From public conversation",
+    "group": "Capture & route",
+    "summary": "Grievances detected from public conversation through Blura SAGA.",
+    "go": {
+     "label": "Open the Blura SAGA page →",
+     "href": "/products/blura-saga/"
+    }
+   },
+   {
+    "id": "m-routing",
+    "n": "02",
+    "name": "Category & station routing",
+    "tag": "Right desk",
+    "group": "Capture & route",
+    "summary": "Each grievance classified as complaint, criticism, suggestion or query and routed by category and station."
+   },
+   {
+    "id": "m-lifecycle",
+    "n": "03",
+    "name": "Five-stage lifecycle",
+    "tag": "New → closed",
+    "group": "Resolve",
+    "summary": "New → review → in progress → resolved → closed."
+   },
+   {
+    "id": "m-remarks",
+    "n": "04",
+    "name": "Mandatory remarks",
+    "tag": "At every step",
+    "group": "Resolve",
+    "summary": "Officers record remarks at every step."
+   },
+   {
+    "id": "m-sla",
+    "n": "05",
+    "name": "Response-time timers",
+    "tag": "Escalation",
+    "group": "Resolve",
+    "summary": "Timers with escalation when a grievance waits too long."
+   },
+   {
+    "id": "m-monthly",
+    "n": "06",
+    "name": "Monthly reports",
+    "tag": "Resolution & source",
+    "group": "Report",
+    "summary": "Monthly resolution and source reports."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "The problem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"field\"><h4>Grievances arrive everywhere</h4><p>Social posts, petitions and phone calls each land in a different place, and no one has the whole picture.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Routing is manual</h4><p>Someone reads each item and decides where it goes, which is slow and inconsistent between shifts.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Closure is unverified</h4><p>A grievance marked resolved may never have reached the citizen, and nobody is measuring the difference.</p></div></div>"
+  },
+  {
+   "kind": "html",
+   "title": "How it works",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"field\"><li><div><b>Capture</b><span>From Blura SAGA, petitions, BluVaani calls</span></div></li><li><div><b>Classify</b><span>Complaint, criticism, suggestion or query; category and station</span></div></li><li><div><b>Assign</b><span>Routed with a response-time timer</span></div></li><li><div><b>Resolve</b><span>Remarks required at every step</span></div></li><li><div><b>Close</b><span>Citizen updated; monthly reports</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Grievance cells</span><span class=\"chip\">Station house officers</span><span class=\"chip\">Department heads</span><span class=\"chip\">Commissioner's office</span></div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "GARUDA links",
+   "id": null,
+   "tone": "base",
+   "tight": true,
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Grievance trends by station and category</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Station and officer directory</td></tr><tr><td><b>Opened from</b></td><td>Alerts → “Grievances”</td></tr></tbody></table></div></div>"
+  }
+ ],
+ "demo": null,
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "bluvaani"
+  ]
+ },
+ "cta": {
+  "title": "See Grievance Management running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Grievance Management demonstration request"
+ }
+}

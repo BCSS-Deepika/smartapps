@@ -1,0 +1,253 @@
+{
+ "slug": "bluflow",
+ "title": "BluFlow — SMARTAPPS by Blue Cloud Softech",
+ "description": "Financial Intelligence. Brings bank statements, accounts and transactions into one connected view, and shows where the money went, through which accounts, and how fast.",
+ "accent": "invest",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "BluFlow",
+    "href": null
+   }
+  ],
+  "tag": "",
+  "h1": "BluFlow",
+  "tagline": "Financial Intelligence.",
+  "lede": "Brings bank statements, accounts and transactions into one connected view, and shows where the money went, through which accounts, and how fast.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Investigate",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 13 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/bluflow.html",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/bluflow.webp",
+  "icon": null,
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "13 capabilities",
+  "lede": "From raw statements to investigation-ready intelligence, in one workspace.",
+  "groups": [
+   {
+    "name": "Ingest & analyse",
+    "sub": "Statements to signals"
+   },
+   {
+    "name": "Investigate",
+    "sub": "Follow the money"
+   },
+   {
+    "name": "Manage & report",
+    "sub": "Case to court"
+   },
+   {
+    "name": "Platform",
+    "sub": "Security and deployment"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-multi-bank",
+    "n": "01",
+    "name": "Multi-bank statement processing",
+    "tag": "Any format",
+    "group": "Ingest & analyse",
+    "summary": "Imports statements from multiple financial institutions in various formats, with automatic standardisation for unified analysis."
+   },
+   {
+    "id": "m-ai-analysis",
+    "n": "02",
+    "name": "AI-powered transaction analysis",
+    "tag": "Classify & flag",
+    "group": "Ingest & analyse",
+    "summary": "Analyses transaction histories, classifies financial activity, detects anomalies and highlights transactions needing investigation."
+   },
+   {
+    "id": "m-suspicious-detection",
+    "n": "03",
+    "name": "Suspicious transaction detection",
+    "tag": "Nine patterns",
+    "group": "Ingest & analyse",
+    "summary": "Detects the patterns investigators look for.",
+    "details": [
+     {
+      "label": "Patterns covered",
+      "text": "Structured or split transactions; circular fund movements; pass-through and funnel accounts; dormant account activation; high-frequency cash withdrawals; immediate fund withdrawals; source concentration; unusual transaction spikes; income-to-asset inconsistencies."
+     }
+    ]
+   },
+   {
+    "id": "m-risk-priority",
+    "n": "04",
+    "name": "Risk-based prioritisation",
+    "tag": "Configurable",
+    "group": "Ingest & analyse",
+    "summary": "Prioritises suspicious transactions against configurable risk indicators."
+   },
+   {
+    "id": "m-multi-account",
+    "n": "05",
+    "name": "Multi-account investigation",
+    "tag": "Hidden relationships",
+    "group": "Investigate",
+    "summary": "Analyses many accounts at once to reveal hidden financial relationships between individuals, organisations and entities."
+   },
+   {
+    "id": "m-network-graph",
+    "n": "06",
+    "name": "Relationship & network visualisation",
+    "tag": "Interactive graphs",
+    "group": "Investigate",
+    "summary": "Interactive graphs of fund transfers that expose intermediaries, beneficiary accounts and hidden networks."
+   },
+   {
+    "id": "m-fund-trail",
+    "n": "07",
+    "name": "Fund trail analysis",
+    "tag": "Money trails",
+    "group": "Investigate",
+    "summary": "Traces the complete movement of funds across accounts and reconstructs the money trail."
+   },
+   {
+    "id": "m-timeline",
+    "n": "08",
+    "name": "Investigation timeline",
+    "tag": "Sequence of events",
+    "group": "Investigate",
+    "summary": "Puts financial events in chronological order to reconstruct what happened when."
+   },
+   {
+    "id": "m-case-mgmt",
+    "n": "09",
+    "name": "Integrated case management",
+    "tag": "One workspace",
+    "group": "Manage & report",
+    "summary": "A central workspace for investigations, accounts, evidence and case progress."
+   },
+   {
+    "id": "m-reports",
+    "n": "10",
+    "name": "Automated investigation reports",
+    "tag": "Evidence-ready",
+    "group": "Manage & report",
+    "summary": "Reports with transaction summaries, suspicious findings, relationship analysis, fund trails and supporting evidence."
+   },
+   {
+    "id": "m-dashboards",
+    "n": "11",
+    "name": "Interactive dashboards",
+    "tag": "For supervisors",
+    "group": "Manage & report",
+    "summary": "Dashboards, charts, account summaries and financial insight for investigators and supervisors."
+   },
+   {
+    "id": "m-security",
+    "n": "12",
+    "name": "Enterprise security & access control",
+    "tag": "RBAC · audit",
+    "group": "Platform",
+    "summary": "Role-based access, authentication, audit logs and encrypted data handling."
+   },
+   {
+    "id": "m-deployment",
+    "n": "13",
+    "name": "Flexible deployment",
+    "tag": "Cloud or on-premises",
+    "group": "Platform",
+    "summary": "Available as secure cloud; enterprise and on-premises deployment options."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "The problem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Statements arrive unreadable</h4><p>Every bank formats differently, and many arrive as scans, so an investigator retypes thousands of rows before any analysis starts.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>The trail crosses accounts</h4><p>Money moves through mule accounts and shell entities; following it by hand across dozens of statements is impractical within a case timeline.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Findings must stand in court</h4><p>A spreadsheet of suspicions is not an annexure. The output has to be reproducible and referenced back to the source transaction.</p></div></div>"
+  },
+  {
+   "kind": "html",
+   "title": "How it works",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Statements in</b><span>PDF or spreadsheet statements from multiple institutions.</span></div></li><li><div><b>Extract &amp; normalise</b><span>Every transaction extracted, cleaned and standardised across banks.</span></div></li><li><div><b>Analyse</b><span>AI and rule-based analytics classify activity and detect anomalies.</span></div></li><li><div><b>Trace</b><span>Fund trails and relationship graphs across accounts.</span></div></li><li><div><b>Report</b><span>Investigation-ready reports with evidence export.</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Cyber crime</span><span class=\"chip\">Economic offences wing</span><span class=\"chip\">Anti-corruption</span><span class=\"chip\">Narcotics investigators</span></div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "GARUDA links",
+   "id": null,
+   "tone": "base",
+   "tight": true,
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Flagged accounts and money links into the network graph</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Bank data received under authorisation</td></tr><tr><td><b>Opened from</b></td><td>Subject → Financial tab → “Analyse in BluFlow”</td></tr></tbody></table></div></div>"
+  },
+  {
+   "kind": "html",
+   "title": "Safeguards",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Safeguards</div><h2>What it will not do, and what it always keeps.</h2><ul class=\"ticks\"><li>All investigation data, documents and reports remain the client's property.</li><li>Role-based access, encryption and a full audit trail.</li><li>Court-ready summaries reference the source transaction.</li></ul>"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through BluFlow, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/bluflow.html"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ]
+ },
+ "cta": {
+  "title": "See BluFlow running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "BluFlow demonstration request"
+ }
+}

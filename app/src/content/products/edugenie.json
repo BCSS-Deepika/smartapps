@@ -1,0 +1,673 @@
+{
+ "slug": "edugenie",
+ "title": "EduGenie — SMARTAPPS by Blue Cloud Softech",
+ "description": "EduGenie: a workforce management platform from Blue Cloud Softech that brings LMS, ERP and CRM together on one platform.",
+ "accent": "edu",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "EduGenie",
+    "href": null
+   }
+  ],
+  "tag": "Workforce management platform",
+  "h1": "EduGenie",
+  "tagline": "Learning, operations and customers, on one platform.",
+  "lede": "EduGenie brings a learning management system, an ERP and a CRM together, so an institution or a business can train its people, run its operations and manage its customers from one system instead of several.",
+  "chips": [
+   {
+    "text": "LMS",
+    "division": false
+   },
+   {
+    "text": "ERP",
+    "division": false
+   },
+   {
+    "text": "CRM",
+    "division": false
+   },
+   {
+    "text": "White-label",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 62 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "See the three engines",
+    "href": "#engines",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/edugenie.webp",
+  "icon": null,
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "62 modules across three engines",
+  "lede": "Learning, institution ERP, business ERP, CRM and CRM operations, plus the innovation programme EduGenie runs with academia and industry.",
+  "groups": [
+   {
+    "name": "Learning (LMS)",
+    "sub": "Teach, practise, certify"
+   },
+   {
+    "name": "Institution ERP",
+    "sub": "Run the school or college"
+   },
+   {
+    "name": "BluERP · business ERP",
+    "sub": "Run the business"
+   },
+   {
+    "name": "BluCRM",
+    "sub": "Win and keep customers"
+   },
+   {
+    "name": "CRM operations",
+    "sub": "Lead to service delivery"
+   },
+   {
+    "name": "Innovation ecosystem",
+    "sub": "Academia, industry, government"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-lms-courses",
+    "n": "01",
+    "name": "End-to-end course delivery",
+    "tag": "Video, live, text, quizzes",
+    "group": "Learning (LMS)",
+    "summary": "Deliver whole courses in one place, mixing video, live classes, text lessons and quizzes, with progress tracking and certifications."
+   },
+   {
+    "id": "m-lms-adaptive",
+    "n": "02",
+    "name": "AI-powered learning paths",
+    "tag": "Adaptive engine",
+    "group": "Learning (LMS)",
+    "summary": "An adaptive learning engine personalises each learner's path, and AI-powered content recommendations suggest what to study next."
+   },
+   {
+    "id": "m-lms-blura",
+    "n": "03",
+    "name": "Blura card-based microlearning",
+    "tag": "Small, focused cards",
+    "group": "Learning (LMS)",
+    "summary": "Content broken into small interactive cards using text, images or quizzes. Learners go at their own pace with instant feedback and progress tracking, and the cards sit inside EduGenie for classroom use."
+   },
+   {
+    "id": "m-lms-live",
+    "n": "04",
+    "name": "Live class integrations",
+    "tag": "Zoom, Meet, native",
+    "group": "Learning (LMS)",
+    "summary": "Run live classes through Zoom, Google Meet or EduGenie's own native live class."
+   },
+   {
+    "id": "m-lms-practice",
+    "n": "05",
+    "name": "Interactive practice & quizzes",
+    "tag": "Practise and assess",
+    "group": "Learning (LMS)",
+    "summary": "Interactive practice sets and quizzes built into the course flow."
+   },
+   {
+    "id": "m-lms-gamification",
+    "n": "06",
+    "name": "Gamification & certificates",
+    "tag": "Certificate engine",
+    "group": "Learning (LMS)",
+    "summary": "Gamification to keep learners engaged, and a certificate engine for course completion."
+   },
+   {
+    "id": "m-lms-secure",
+    "n": "07",
+    "name": "Secure content delivery",
+    "tag": "Via MDM",
+    "group": "Learning (LMS)",
+    "summary": "Course content is delivered securely through Mobile Device Management (MDM)."
+   },
+   {
+    "id": "m-lms-dashboards",
+    "n": "08",
+    "name": "Instructor & student dashboards",
+    "tag": "Two views",
+    "group": "Learning (LMS)",
+    "summary": "Separate dashboards for instructors and for students, showing progress and activity."
+   },
+   {
+    "id": "m-lms-monetise",
+    "n": "09",
+    "name": "Monetisation",
+    "tag": "Bundles, subscriptions",
+    "group": "Learning (LMS)",
+    "summary": "Sell courses as bundles or subscriptions to open a new revenue line."
+   },
+   {
+    "id": "m-lms-mobile",
+    "n": "10",
+    "name": "Mobile-first, multilingual",
+    "tag": "Any device, any language",
+    "group": "Learning (LMS)",
+    "summary": "A mobile-first interface that works in multiple languages."
+   },
+   {
+    "id": "m-erp-admissions",
+    "n": "11",
+    "name": "Paperless admissions & digital ID",
+    "tag": "Enrolment",
+    "group": "Institution ERP",
+    "summary": "Efficient, paper-free student enrolment with a digital ID for every student, saving staff hours on admissions."
+   },
+   {
+    "id": "m-erp-attendance",
+    "n": "12",
+    "name": "Attendance & leave",
+    "tag": "Automated, real time",
+    "group": "Institution ERP",
+    "summary": "Accurate, real-time attendance monitoring with automated leave tracking."
+   },
+   {
+    "id": "m-erp-fees",
+    "n": "13",
+    "name": "Fee management",
+    "tag": "Online and offline",
+    "group": "Institution ERP",
+    "summary": "Secure fee collection with flexible online and offline payment options, tracked automatically without errors."
+   },
+   {
+    "id": "m-erp-timetable",
+    "n": "14",
+    "name": "Timetables & class allocation",
+    "tag": "Scheduling",
+    "group": "Institution ERP",
+    "summary": "Optimised timetables and class allocation for efficient classes."
+   },
+   {
+    "id": "m-erp-hr",
+    "n": "15",
+    "name": "Staff records, HR & payroll",
+    "tag": "People",
+    "group": "Institution ERP",
+    "summary": "Staff data, payroll and performance monitoring for teaching and non-teaching staff."
+   },
+   {
+    "id": "m-erp-academics",
+    "n": "16",
+    "name": "Academics & exams",
+    "tag": "Assessment",
+    "group": "Institution ERP",
+    "summary": "Academic records and examinations managed in the same system as admissions and fees."
+   },
+   {
+    "id": "m-erp-comms",
+    "n": "17",
+    "name": "Parent communication",
+    "tag": "Messages, announcements",
+    "group": "Institution ERP",
+    "summary": "Real-time messaging between staff, students and parents, broadcast announcements and alerts, and timely updates that keep parents engaged."
+   },
+   {
+    "id": "m-erp-transport",
+    "n": "18",
+    "name": "Transport",
+    "tag": "Listed module",
+    "group": "Institution ERP",
+    "summary": "Transport is part of the EduGenie ERP module set."
+   },
+   {
+    "id": "m-erp-dashboards",
+    "n": "19",
+    "name": "Role-based dashboards",
+    "tag": "Admin, staff, parents",
+    "group": "Institution ERP",
+    "summary": "Customised views for each role, including administrators and parents."
+   },
+   {
+    "id": "m-erp-analytics",
+    "n": "20",
+    "name": "Analytics & reports",
+    "tag": "Decide on data",
+    "group": "Institution ERP",
+    "summary": "Performance dashboards for student progress and staff productivity, resource-usage monitoring to cut operating costs, and custom reports."
+   },
+   {
+    "id": "m-biz-finance",
+    "n": "21",
+    "name": "Financial management",
+    "tag": "Invoices to P&L",
+    "group": "BluERP · business ERP",
+    "summary": "Create invoices and estimates, track expenses, record payments across multiple gateways, and generate real-time balance sheets, P&L and transaction summaries."
+   },
+   {
+    "id": "m-biz-inventory",
+    "n": "22",
+    "name": "Inventory & stock",
+    "tag": "Batches and expiry",
+    "group": "BluERP · business ERP",
+    "summary": "Track stock levels, batch numbers and expiry dates, move stock between branches or departments, and get automatic low-stock and expiry alerts."
+   },
+   {
+    "id": "m-biz-purchase",
+    "n": "23",
+    "name": "Vendor & purchase",
+    "tag": "POs to bills",
+    "group": "BluERP · business ERP",
+    "summary": "Supplier profiles with contact and bank details; create, approve and track purchase orders; record bills linked straight to finance."
+   },
+   {
+    "id": "m-biz-clients",
+    "n": "24",
+    "name": "Client & service management",
+    "tag": "Full service history",
+    "group": "BluERP · business ERP",
+    "summary": "Client profiles, history and service details in one place, linked to billing and appointments, with follow-ups tracked."
+   },
+   {
+    "id": "m-biz-scheduling",
+    "n": "25",
+    "name": "Scheduling & resources",
+    "tag": "Bookings and reminders",
+    "group": "BluERP · business ERP",
+    "summary": "Manage staff and resource availability, book appointments, send automatic SMS or WhatsApp reminders, and monitor confirmed, completed and missed appointments."
+   },
+   {
+    "id": "m-biz-hr",
+    "n": "26",
+    "name": "HR & payroll",
+    "tag": "Biometric or manual",
+    "group": "BluERP · business ERP",
+    "summary": "Employee records and payroll, attendance by biometric or manual entry, leave requests and approvals, and salary slips generated with all deductions and bonuses."
+   },
+   {
+    "id": "m-biz-supply",
+    "n": "27",
+    "name": "Supply chain management",
+    "tag": "Listed core module",
+    "group": "BluERP · business ERP",
+    "summary": "Supply chain management is one of BluERP's core modules, alongside inventory and logistics."
+   },
+   {
+    "id": "m-biz-statutory",
+    "n": "28",
+    "name": "Statutory compliance",
+    "tag": "GST, TDS, PF/ESI and more",
+    "group": "BluERP · business ERP",
+    "summary": "Statutory-ready for GST, TDS, PF/ESI, HIPAA, NABH and RERA, with domain-tailored workflow templates for each industry."
+   },
+   {
+    "id": "m-biz-field",
+    "n": "29",
+    "name": "Mobile & field",
+    "tag": "Guards, doctors, project staff",
+    "group": "BluERP · business ERP",
+    "summary": "Mobile and field use for staff who are not at a desk, such as guards, doctors and project teams."
+   },
+   {
+    "id": "m-crm-leads",
+    "n": "30",
+    "name": "Lead management",
+    "tag": "Capture to conversion",
+    "group": "BluCRM",
+    "summary": "Organise and track leads, auto-import leads from email sources, and analyse lead conversion and performance."
+   },
+   {
+    "id": "m-crm-proposals",
+    "n": "31",
+    "name": "Proposals",
+    "tag": "Rich media",
+    "group": "BluCRM",
+    "summary": "Build proposals with images, tables and videos, then convert an accepted proposal straight into a contract."
+   },
+   {
+    "id": "m-crm-sales",
+    "n": "32",
+    "name": "Sales performance",
+    "tag": "Goals and conversion",
+    "group": "BluCRM",
+    "summary": "Sales goals with automatic notifications, staff performance monitoring and real-time conversion-rate analytics."
+   },
+   {
+    "id": "m-crm-invoicing",
+    "n": "33",
+    "name": "Invoicing & payments",
+    "tag": "Multi-currency",
+    "group": "BluCRM",
+    "summary": "Branded invoices delivered automatically, multiple payment methods, multi-currency processing with PayPal and Stripe, and estimates converted to invoices."
+   },
+   {
+    "id": "m-crm-expenses",
+    "n": "34",
+    "name": "Expenses & financial analytics",
+    "tag": "Income vs expense",
+    "group": "BluCRM",
+    "summary": "Track expenses and bill them to customers, compare income against expense, and run financial reports."
+   },
+   {
+    "id": "m-crm-tasks",
+    "n": "35",
+    "name": "Tasks & time tracking",
+    "tag": "Billable hours",
+    "group": "BluCRM",
+    "summary": "Assign tasks against any record, track billable time, and monitor progress against deadlines."
+   },
+   {
+    "id": "m-crm-collab",
+    "n": "36",
+    "name": "Collaborative workspace",
+    "tag": "Comments, files, calendar",
+    "group": "BluCRM",
+    "summary": "Task comments and file uploads, staff notifications and reminders, and a visual calendar of events and deadlines."
+   },
+   {
+    "id": "m-crm-support",
+    "n": "37",
+    "name": "Support tickets",
+    "tag": "Priority-based",
+    "group": "BluCRM",
+    "summary": "Track and resolve issues, auto-import support tickets, and handle them by priority."
+   },
+   {
+    "id": "m-crm-engagement",
+    "n": "38",
+    "name": "Customer engagement",
+    "tag": "Surveys and knowledge base",
+    "group": "BluCRM",
+    "summary": "Custom customer surveys, a knowledge base and self-service resources."
+   },
+   {
+    "id": "m-crm-portal",
+    "n": "39",
+    "name": "Client portal",
+    "tag": "Self-service",
+    "group": "BluCRM",
+    "summary": "Customers see their financial data, invoices and estimates, and talk to the team directly."
+   },
+   {
+    "id": "m-crm-contracts",
+    "n": "40",
+    "name": "Contracts",
+    "tag": "PDF and mail",
+    "group": "BluCRM",
+    "summary": "Generate contracts as PDF automatically and mail them to customers, with client approval workflows."
+   },
+   {
+    "id": "m-crm-goals",
+    "n": "41",
+    "name": "Goal management",
+    "tag": "Company to individual",
+    "group": "BluCRM",
+    "summary": "Set goals at company, team and individual level, track them on colour-coded dashboards, find bottlenecks, and sync metrics with CRM data."
+   },
+   {
+    "id": "m-crm-vendors",
+    "n": "42",
+    "name": "Vendor management",
+    "tag": "Vendor portals",
+    "group": "BluCRM",
+    "summary": "Automated vendor ticketing, performance tracking and dedicated vendor portals, with real-time vendor objectives, progress status and resolution timers."
+   },
+   {
+    "id": "m-crm-reports",
+    "n": "43",
+    "name": "Business intelligence",
+    "tag": "PDF / Excel export",
+    "group": "BluCRM",
+    "summary": "Quick overview reports, sales-funnel and lead-conversion analysis, customer behaviour insights, and automated, exportable reports in PDF or Excel."
+   },
+   {
+    "id": "m-ops-capture",
+    "n": "44",
+    "name": "Multi-channel lead capture",
+    "tag": "Social, calls, walk-ins",
+    "group": "CRM operations",
+    "summary": "Leads collected automatically from social media (Instagram, YouTube, TikTok, LinkedIn, Facebook), referrals, direct calls, walk-ins and hoardings, with Meta integration for real-time analytics."
+   },
+   {
+    "id": "m-ops-distribution",
+    "n": "45",
+    "name": "Lead distribution & status",
+    "tag": "Admin / team-lead panel",
+    "group": "CRM operations",
+    "summary": "Leads shared equally across sales executives with date and country filters, and tracked by status (converted, interested, cold, not converted) and follow-up (pending, done, CNP, disconnected)."
+   },
+   {
+    "id": "m-ops-paylinks",
+    "n": "46",
+    "name": "Payment links & auto-invoice",
+    "tag": "WhatsApp and email",
+    "group": "CRM operations",
+    "summary": "Payment links and invoices sent to the client by WhatsApp and email. Accounts is alerted the moment a lead converts, and payments are reconciled against sales records."
+   },
+   {
+    "id": "m-ops-sla",
+    "n": "47",
+    "name": "Onboarding SLA checkpoints",
+    "tag": "Real-time delay alerts",
+    "group": "CRM operations",
+    "summary": "Team leads track each onboarding checkpoint against its time limit and are alerted in real time when one slips."
+   },
+   {
+    "id": "m-ops-hrdocs",
+    "n": "48",
+    "name": "HR & document master",
+    "tag": "Profiles, KYC, leave",
+    "group": "CRM operations",
+    "summary": "Employee profiles with approval workflows, documents such as KYC, NDA and background checks, automatic leave balances and a real-time staffing roster."
+   },
+   {
+    "id": "m-ops-assets",
+    "n": "49",
+    "name": "Asset management",
+    "tag": "Issued and returned",
+    "group": "CRM operations",
+    "summary": "Devices tracked by ID, type and warranty status, with issued and returned records."
+   },
+   {
+    "id": "m-ops-it",
+    "n": "50",
+    "name": "IT ticketing",
+    "tag": "Priority and SLA",
+    "group": "CRM operations",
+    "summary": "Tickets for provisioning, security, device and access issues, each with a priority and an SLA timeline."
+   },
+   {
+    "id": "m-ops-calls",
+    "n": "51",
+    "name": "Call integration",
+    "tag": "SIP / PRI, softphone",
+    "group": "CRM operations",
+    "summary": "Calls over SIP or PRI with a softphone, fetching the client's details automatically when a call comes in."
+   },
+   {
+    "id": "m-ops-insight",
+    "n": "52",
+    "name": "Insight brief & SLA risk radar",
+    "tag": "Lead to client insight",
+    "group": "CRM operations",
+    "summary": "An automated insight brief built from templates, and an SLA risk radar that watches for commitments at risk."
+   },
+   {
+    "id": "m-talent",
+    "n": "53",
+    "name": "Talent development",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "Data, AI and IoT courses; train-the-trainers programme; hands-on labs; internships and placements; global certifications."
+   },
+   {
+    "id": "m-research",
+    "n": "54",
+    "name": "Research & innovation",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "AI and IoT research labs; faculty and student research; publications and patents; grants and collaborations; open innovation."
+   },
+   {
+    "id": "m-industry",
+    "n": "55",
+    "name": "Industry collaboration",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "Live industry projects; enterprise use cases; advisory board; co-development programmes; mentorship and expert sessions."
+   },
+   {
+    "id": "m-labs",
+    "n": "56",
+    "name": "AI labs & infrastructure",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "GPU clusters and compute; high-performance storage; AI workbenches; IoT devices and testbeds; secure network and labs."
+   },
+   {
+    "id": "m-startups",
+    "n": "57",
+    "name": "Product & startup ecosystem",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "Startup incubation; hackathons and challenges; product engineering; MVP to market support; IP creation and patents."
+   },
+   {
+    "id": "m-impact",
+    "n": "58",
+    "name": "Impact & sustainability",
+    "tag": "5 elements",
+    "group": "Innovation ecosystem",
+    "summary": "Social impact projects; sustainability solutions; community engagement; alumni network; lifelong learning."
+   },
+   {
+    "id": "m-joint-ip",
+    "n": "59",
+    "name": "Joint IP pipeline",
+    "tag": "Eight steps",
+    "group": "Innovation ecosystem",
+    "summary": "Idea generation → evaluation and selection → joint IP creation → innovation labs → seed funding → dedicated team → go-to-market → revenue and royalty."
+   },
+   {
+    "id": "m-sustain",
+    "n": "60",
+    "name": "Sustaining revenue",
+    "tag": "Seven sources",
+    "group": "Innovation ecosystem",
+    "summary": "Compute rent from Blue Cloud, paid domain programmes and labs, research grants, IP licensing and royalty, consulting, placements and programmes for other colleges."
+   },
+   {
+    "id": "m-programmes",
+    "n": "61",
+    "name": "Domain programmes",
+    "tag": "AI for…",
+    "group": "Innovation ecosystem",
+    "summary": "AI for Law, Commerce, Healthcare, Agriculture, Education and Retail, plus HR, marketing, supply chain, smart cities and cybersecurity."
+   },
+   {
+    "id": "m-lifetime",
+    "n": "62",
+    "name": "Lifetime student access",
+    "tag": "Always on",
+    "group": "Innovation ecosystem",
+    "summary": "EduGenie LMS for life, an internship portal, a mentoring portal and upskilling at any time."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "The problem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2>\n<div class=\"grid g4\">\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Disconnected tools</h4><p>Separate software for learning, admissions, fees, HR, sales and support means departments work in silos and data is keyed in more than once.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Administrative overload</h4><p>Manual admissions, attendance, billing and payroll waste staff time and introduce costly errors.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Communication gaps</h4><p>Staff, students, parents and customers hear different things on different channels, and follow-ups slip through the cracks.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>No single view, data at risk</h4><p>Without one source of truth, decisions rest on guesswork, and sensitive records sit outside any central protection.</p></div>\n</div>"
+  },
+  {
+   "kind": "html",
+   "title": "Three engines",
+   "id": "engines",
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"sec-head\"><div class=\"eyebrow\">Overview</div><h2>One platform, three engines.</h2><p class=\"lede\">Each engine runs on its own or together, on one login, one dashboard and one set of records.</p></div>\n<div class=\"eg-eng\">\n<div class=\"eg-e\" data-acc=\"edu\"><span class=\"k\">Engine 1 · Learn</span><h3>Learning management (LMS)</h3>\n<p>End-to-end course delivery with video, live classes, text and quizzes, AI-powered learning paths, Blura card-based microlearning, gamification and certificates.</p>\n<div class=\"eds\"><span>Courses</span><span>Live classes</span><span>Microlearning</span><span>Certificates</span></div>\n<a href=\"#m-lms-courses\">10 LMS modules →</a></div>\n<div class=\"eg-e\" data-acc=\"edu\"><span class=\"k\">Engine 2 · Operate</span><h3>ERP</h3>\n<p>Two editions on one core. <b>EduGenie ERP</b> runs schools and colleges: admissions, attendance, fees, timetables, exams and parent communication. <b>BluERP</b> runs businesses: finance, inventory, purchasing, scheduling and HR, tailored to each industry.</p>\n<div class=\"eds\"><span>EduGenie ERP</span><span>BluERP</span><span>HR &amp; payroll</span><span>Statutory ready</span></div>\n<a href=\"#m-erp-admissions\">19 ERP modules →</a></div>\n<div class=\"eg-e\" data-acc=\"edu\"><span class=\"k\">Engine 3 · Engage</span><h3>CRM (BluCRM)</h3>\n<p>Leads, proposals, contracts, invoicing, support tickets, client portal and goals in one pipeline. BluERP is designed to work with BluCRM for a 360-degree view of the customer lifecycle.</p>\n<div class=\"eds\"><span>Sales pipeline</span><span>Invoicing</span><span>Support</span><span>Client portal</span></div>\n<a href=\"#m-crm-leads\">23 CRM modules →</a></div>\n</div>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Unified dashboard</h4><p>One real-time view across learning and administration, and across income, expenses, appointments and tasks.</p></div>\n<div class=\"card\"><h4>AI-powered automation</h4><p>Personalised learning paths and content recommendations, with routine admin such as billing, payroll and reminders automated.</p></div>\n<div class=\"card\"><h4>White-label and scalable</h4><p>Your logo, colours and theme throughout, from 100 users to more than 100,000.</p></div>\n</div>"
+  },
+  {
+   "kind": "html",
+   "title": "Who it is for",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Who it is for</div><h2>Who uses it.</h2>\n<h4 class=\"kicker\">Education</h4>\n<div class=\"eg-aud\">\n<div class=\"card card-top\" data-acc=\"edu\"><h4>K-12 schools</h4><p>Digital school management, online course delivery, and academic and administrative automation.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Coaching institutes</h4><p>Robust online course delivery, student data tracking and efficient management tools.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Public and private education networks</h4><p>Standardised delivery and management across multiple institutions on one platform.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Government education departments</h4><p>A scalable platform for widespread digital learning, administration and student data tracking.</p></div>\n</div>\n<div><h4 class=\"kicker\">Business verticals · BluERP</h4></div>\n<p>BluERP is built on a flexible core that adapts to each industry. Pick an industry to see how the same modules change.</p>\n<div aria-label=\"Industry\" class=\"eg-tabs\" role=\"tablist\"><button aria-selected=\"true\" class=\"eg-vt on\" data-v=\"0\" role=\"tab\">Manufacturing</button><button aria-selected=\"false\" class=\"eg-vt\" data-v=\"1\" role=\"tab\">Service industry</button><button aria-selected=\"false\" class=\"eg-vt\" data-v=\"2\" role=\"tab\">Real estate</button><button aria-selected=\"false\" class=\"eg-vt\" data-v=\"3\" role=\"tab\">Healthcare</button><button aria-selected=\"false\" class=\"eg-vt\" data-v=\"4\" role=\"tab\">Security services</button></div>\n<div class=\"tbl-w\"><table class=\"eg-vtbl\"><tbody><tr><td><b>Client management</b></td><td data-v=\"0\">Customer &amp; order management</td><td data-v=\"1\" hidden=\"\">Client &amp; project management</td><td data-v=\"2\" hidden=\"\">Lead, buyer and tenant management</td><td data-v=\"3\" hidden=\"\">Patient &amp; family registration</td><td data-v=\"4\" hidden=\"\">Client contracts &amp; site management</td></tr><tr><td><b>Scheduling</b></td><td data-v=\"0\">Production line scheduling</td><td data-v=\"1\" hidden=\"\">Staff bookings &amp; meeting rooms</td><td data-v=\"2\" hidden=\"\">Project milestone &amp; labour roster</td><td data-v=\"3\" hidden=\"\">OPD/IPD appointments, OT scheduling</td><td data-v=\"4\" hidden=\"\">Guard roster &amp; patrol planning</td></tr><tr><td><b>Inventory</b></td><td data-v=\"0\">Raw materials &amp; finished goods</td><td data-v=\"1\" hidden=\"\">Retail product stock</td><td data-v=\"2\" hidden=\"\">Construction material &amp; site stock</td><td data-v=\"3\" hidden=\"\">Medicine, lab &amp; equipment</td><td data-v=\"4\" hidden=\"\">Uniforms, radios &amp; field asset tracking</td></tr><tr><td><b>Service delivery</b></td><td data-v=\"0\">Quality control (QC) reports</td><td data-v=\"1\" hidden=\"\">Project milestones &amp; deliverables</td><td data-v=\"2\" hidden=\"\">Handover process &amp; maintenance logs</td><td data-v=\"3\" hidden=\"\">Treatment logs, lab &amp; radiology records</td><td data-v=\"4\" hidden=\"\">Incident reporting &amp; emergency logs</td></tr><tr><td><b>Resource management</b></td><td data-v=\"0\">Machine &amp; team allocation</td><td data-v=\"1\" hidden=\"\">Specialist &amp; team assignments</td><td data-v=\"2\" hidden=\"\">Site engineers, contractors, brokers</td><td data-v=\"3\" hidden=\"\">Doctors, nurses, technicians</td><td data-v=\"4\" hidden=\"\">Guards, supervisors, field officers</td></tr><tr><td><b>Compliance &amp; finance</b></td><td data-v=\"0\">GST, stock audits, cost control</td><td data-v=\"1\" hidden=\"\">Payroll, invoicing, tax deductions</td><td data-v=\"2\" hidden=\"\">RERA compliance, budgeting, EMI tracking</td><td data-v=\"3\" hidden=\"\">NABH/HIPAA, insurance, TDS, PF/ESI</td><td data-v=\"4\" hidden=\"\">Labour law reports, PF/ESI billing</td></tr></tbody></table></div>"
+  },
+  {
+   "kind": "html",
+   "title": "How it works",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From first enquiry to a served customer.</h2>\n<p>A sample CRM workflow for a diet and nutrition service, taken from Blue Cloud's CRM workflow material. Sales, accounts, service, HR and IT work from the same records, with time limits on each hand-over.</p>\n<ol class=\"eg-j\">\n<li><b>Capture</b><span>Leads arrive automatically from social media, referrals, calls and walk-ins.</span></li>\n<li><b>Distribute</b><span>The team lead shares leads equally across sales executives, filtered by date and country.</span></li>\n<li><b>Convert</b><span>The executive records plan, quoted and closed amounts, and sends a payment link by WhatsApp or email.</span></li>\n<li><b>Reconcile</b><span>Accounts is alerted instantly, matches the payment to the sale, and the invoice goes out automatically.</span></li>\n<li><b>Assign</b><span>A dedicated dietitian is assigned to the new client.</span><em class=\"sla\">within 1 hour</em></li>\n<li><b>Connect</b><span>A WhatsApp group is created for the client, followed by an intro call and intake forms.</span><em class=\"sla\">within 2 hours</em></li>\n<li><b>Deliver</b><span>A customised diet plan reaches the client, with the next cycle reminded a day in advance.</span><em class=\"sla\">within 24 hours</em></li>\n<li><b>Follow up</b><span>CRM staff check progress on day 4 (India) or day 5 (international), and team leads get delay alerts.</span><em class=\"sla\">SLA tracked</em></li>\n</ol>\n<div class=\"grid g2\">\n<div class=\"card\"><h4>Getting started at an institution</h4><p>Four steps, live within 7 days.</p>\n<ol class=\"mini-flow\" data-acc=\"edu\"><li><b>Assessment</b></li><li><b>Configuration</b></li><li><b>Training</b></li><li><b>Go-live</b></li></ol></div>\n<div class=\"card\"><h4>Getting started with BluCRM</h4><p>Three phases.</p>\n<ul class=\"ticks\"><li><b>Setup and configuration:</b> branding, user roles and access, data migration from existing systems.</li><li><b>Training and onboarding</b> for every team.</li><li><b>Go-live and optimisation:</b> deployment, monitoring, performance tuning and ongoing support.</li></ul></div>\n</div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "Innovation ecosystem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">For universities</div><h2>Learn, innovate, build, deploy, impact.</h2>\n<p>For universities and colleges, EduGenie also runs as a Data, AI and IoT innovation ecosystem connecting academia, industry and government. The host institution owns AI labs with GPU infrastructure, which Blue Cloud uses for training and inferencing and pays rent for by compute hours.</p>\n<div class=\"grid g3\">\n<div class=\"card card-top\" data-acc=\"edu\"><h4>Who takes part</h4><p>Universities, students, industry partners, government and alumni, with Blue Cloud supplying technology, platform and expertise.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>From classroom to customer projects</h4><p>Train, assess, intern, then deploy on live Blue Cloud customer projects in law enforcement, airports, railways, data centres and retail, with impact measured.</p></div>\n<div class=\"card card-top\" data-acc=\"edu\"><h4>How it sustains itself</h4><p>Compute rent, paid domain programmes, research grants, IP licensing and royalty, consulting and placements.</p></div>\n</div>\n<p class=\"eg-src\"><a href=\"#m-talent\">See the ten innovation modules →</a></p>"
+  },
+  {
+   "kind": "html",
+   "title": "Security and integrations",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Security and integrations</div><h2>Secure by design, connected to the tools you use.</h2>\n<div class=\"grid g2\">\n<div class=\"card\"><h4>Data security</h4>\n<ul class=\"ticks\"><li><b>Role-based access:</b> control who can see and edit sensitive data, with user-specific dashboards.</li><li><b>Encryption:</b> all data encrypted to prevent unauthorised access.</li><li><b>Secure cloud storage:</b> scalable hosting with backups and disaster recovery.</li><li><b>Secure content:</b> course material delivered through Mobile Device Management.</li><li><b>White-label:</b> your logo, colours and design elements across the platform.</li></ul></div>\n<div class=\"tbl-w\"><table class=\"eg-int\"><thead><tr><th>Integration</th><th>Used for</th></tr></thead><tbody>\n<tr><td><b>Zoom, Google Meet</b></td><td>Live classes, alongside EduGenie's native live class</td></tr>\n<tr><td><b>PayPal, Stripe</b></td><td>Multi-currency payments in BluCRM; multiple gateways in BluERP</td></tr>\n<tr><td><b>WhatsApp, SMS, email</b></td><td>Appointment reminders, payment links, invoices and diet-cycle reminders</td></tr>\n<tr><td><b>Meta</b></td><td>Lead capture and real-time analytics from social media</td></tr>\n<tr><td><b>SIP / PRI telephony</b></td><td>Softphone calls with client details fetched automatically</td></tr>\n<tr><td><b>Biometric devices</b></td><td>Staff attendance in BluERP</td></tr>\n<tr><td><b>BluERP ↔ BluCRM</b></td><td>One customer record across sales, billing and service</td></tr>\n<tr><td><b>PDF / Excel</b></td><td>Exportable, automated reports</td></tr>\n</tbody></table></div>\n</div>"
+  },
+  {
+   "kind": "html",
+   "title": "Results",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Results</div><h2>What institutions report.</h2>\n<div class=\"eg-proof\"><div><b>1000+</b><span>institutions using EduGenie</span></div><div><b>30%+</b><span>improvement in learning outcomes through personalised learning</span></div><div><b>3x</b><span>faster administration</span></div><div><b>7 days</b><span>from start to running</span></div></div>\n<p class=\"eg-src\">Figures as stated in EduGenie product material. They are reference information, not guarantees.</p>"
+  }
+ ],
+ "demo": null,
+ "related": {
+  "title": "Elsewhere in the portfolio",
+  "slugs": [
+   "access-genie",
+   "garuda",
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani",
+   "access-genie-retail",
+   "blugo"
+  ]
+ },
+ "cta": {
+  "title": "See EduGenie running on your own data.",
+  "text": "Book a free live demo, or start a pilot tailored to your institution or business. Tell us which engines you need and we will set them up on your own data.",
+  "subject": "EduGenie demonstration request"
+ }
+}

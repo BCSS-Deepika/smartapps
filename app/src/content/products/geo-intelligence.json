@@ -1,0 +1,283 @@
+{
+ "slug": "geo-intelligence",
+ "title": "Geo Intelligence — SMARTAPPS by Blue Cloud Softech",
+ "description": "Any state. Layer by layer. Puts incidents, offenders, alerts, cameras and patrols on one map, so commanders see where to act. Thirteen workspaces across one shared map engine.",
+ "accent": "watch",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "Geo Intelligence",
+    "href": null
+   }
+  ],
+  "tag": "One map for every product",
+  "h1": "Geo Intelligence",
+  "tagline": "Any state. Layer by layer.",
+  "lede": "Puts incidents, offenders, alerts, cameras and patrols on one map, so commanders see where to act. Thirteen workspaces across one shared map engine.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Watch & Detect",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 13 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/geo-intelligence.html",
+    "primary": false
+   }
+  ],
+  "logo": null,
+  "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"94\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.9\" viewbox=\"0 0 24 24\" width=\"94\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M3 12h18\"></path><path d=\"M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z\"></path></svg>",
+  "round": false
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "13 workspaces in four groups",
+  "lede": "Every workspace is role-gated, so a department exposes only what each rank should see. Labels show what is in the platform today, what is set up per deployment, and what is on the roadmap.",
+  "groups": [
+   {
+    "name": "Situation awareness",
+    "sub": "What an operator sees first"
+   },
+   {
+    "name": "Layers & data",
+    "sub": "Choosing and saving what the map carries"
+   },
+   {
+    "name": "Products & field",
+    "sub": "Taking the map out"
+   },
+   {
+    "name": "System & governance",
+    "sub": "Administration"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-dashboard",
+    "n": "01",
+    "name": "Dashboard",
+    "tag": "Operational map",
+    "group": "Situation awareness",
+    "summary": "Operational map with layer composition and administrative drill-down.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-analytics",
+    "n": "02",
+    "name": "Analytics",
+    "tag": "Panels over departmental data",
+    "group": "Situation awareness",
+    "summary": "Offender, incident and hotspot panels over departmental data.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Roadmap"
+    }
+   },
+   {
+    "id": "m-reports",
+    "n": "03",
+    "name": "Reports",
+    "tag": "Summary tables",
+    "group": "Situation awareness",
+    "summary": "Summary tables with CSV export.",
+    "maturity": {
+     "kind": "integration",
+     "label": "Deployment setup"
+    }
+   },
+   {
+    "id": "m-admin-layers",
+    "n": "04",
+    "name": "Administrative layers",
+    "tag": "Boundary catalog",
+    "group": "Layers & data",
+    "summary": "Catalog of boundary layers with save destinations.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-operational-layers",
+    "n": "05",
+    "name": "Operational layers",
+    "tag": "The department's own layers",
+    "group": "Layers & data",
+    "summary": "Catalog of the department's own enforcement layers.",
+    "maturity": {
+     "kind": "integration",
+     "label": "Deployment setup"
+    }
+   },
+   {
+    "id": "m-road-layers",
+    "n": "06",
+    "name": "Road network layers",
+    "tag": "Transport catalog",
+    "group": "Layers & data",
+    "summary": "Catalog of transport and road layers.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-routing",
+    "n": "07",
+    "name": "Routing",
+    "tag": "Multi-point",
+    "group": "Layers & data",
+    "summary": "Multi-point routing across saved networks.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-corridor",
+    "n": "08",
+    "name": "Corridor analysis",
+    "tag": "Along a route",
+    "group": "Layers & data",
+    "summary": "Point-of-interest association along a corridor.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-atlas",
+    "n": "09",
+    "name": "Atlas",
+    "tag": "District sheets",
+    "group": "Products & field",
+    "summary": "District map composition and sheet export.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-locus",
+    "n": "10",
+    "name": "Locus",
+    "tag": "Field packages",
+    "group": "Products & field",
+    "summary": "KMZ packaging for handheld field devices.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-raster",
+    "n": "11",
+    "name": "Raster",
+    "tag": "Survey overlays",
+    "group": "Products & field",
+    "summary": "Survey topo sheets as map overlays.",
+    "maturity": {
+     "kind": "established",
+     "label": "In the platform"
+    }
+   },
+   {
+    "id": "m-users-audit",
+    "n": "12",
+    "name": "Users & audit trail",
+    "tag": "Action trail",
+    "group": "System & governance",
+    "summary": "Action trail with export.",
+    "maturity": {
+     "kind": "integration",
+     "label": "Deployment setup"
+    }
+   },
+   {
+    "id": "m-workbench",
+    "n": "13",
+    "name": "Map workbench",
+    "tag": "Tools",
+    "group": "System & governance",
+    "summary": "Search, attribute tables, import and drawing tools.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Roadmap"
+    }
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"ch-lead\">\n<p>\n            Every department already has the geography. It is in forty different files. Boundaries,\n            operational layers, road shapefiles and survey sheets each sit in their own folder and\n            their own format, converted by hand whenever someone needs a map.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The problem</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Scattered GIS assets</h4><p>Boundaries, operational layers and survey sheets each sit in their own format, converted by hand on demand.</p><span class=\"now\">Now · one catalog, one map, one composition</span></div>\n<div class=\"card\"><h4>Road networks too big for a browser</h4><p>A single state's road network can exceed 150,000 segments. Sent as one file it stalls the browser, so planning a route on the real network is not practical.</p><span class=\"now\">Now · served by map area, or as tiles</span></div>\n<div class=\"card\"><h4>Field teams need offline</h4><p>A district team going out needs a printed sheet and something a handheld can open — not a web page they cannot reach once they leave coverage.</p><span class=\"now\">Now · atlas sheets and field map packages</span></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>The habit it turns on</h4>\n<p>\n            Pick the layers that matter, save the composition, work from it. That is the pair of actions\n            an operator repeats all day, at whatever level their jurisdiction starts — nation, state,\n            district, sub-district or village.\n          </p>\n<div class=\"chips\">\n<span class=\"chip\">Administrative boundaries</span><span class=\"chip\">Beats &amp; jurisdictions</span>\n<span class=\"chip\">Crime hotspots</span><span class=\"chip\">CCTV nodes</span>\n<span class=\"chip\">Offender layers</span><span class=\"chip\">Geo-fences</span>\n<span class=\"chip\">Patrol routes</span><span class=\"chip\">Event &amp; deployment planning</span>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Deploying in a new state · the platform does not change, six things do</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Administrative boundaries</h4><p>The state's own authoritative state, district, sub-district and village layers replace the base set.</p></div>\n<div class=\"card\"><h4>Jurisdiction hierarchy and names</h4><p>Mandal, taluk, tehsil, block, circle — the levels and their labels are set to match how the state is actually administered.</p></div>\n<div class=\"card\"><h4>Road network</h4><p>The state's network is loaded into the spatial database and served by map area, so size stops being a limit.</p></div>\n<div class=\"card\"><h4>Operational layers</h4><p>The department's own enforcement, asset or incident layers are converted and added to the catalog.</p></div>\n<div class=\"card\"><h4>Identity and roles</h4><p>Connected to the department's existing identity provider, with the role-to-workspace matrix set to its own rank structure.</p></div>\n<div class=\"card\"><h4>Language</h4><p>Interface labels and map annotation in the languages the department works in.</p></div>\n</div>\n<div class=\"note\">\n<span><b>None of the six requires a code change.</b> The map engine, catalog and composition model, routing, field products, serving strategy and audit model are identical across deployments — which is why a second state costs a fraction of the first.</span>\n</div>\n</div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "Safeguards",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Safeguards</div><h2>What it will not do, and what it always keeps.</h2><ul class=\"ticks\"><li>Authorisation enforced on the server as well as in the interface.</li><li>Every action recorded in an exportable trail.</li><li>Each layer carries the pipeline it came from, so its currency and reliability are visible.</li></ul>"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through Geo Intelligence, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/geo-intelligence.html"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ]
+ },
+ "cta": {
+  "title": "See Geo Intelligence running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Geo Intelligence demonstration request"
+ }
+}
