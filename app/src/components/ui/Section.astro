@@ -1,0 +1,10 @@
+---
+/* One band of a page. Tones step from the page colour to the deepest navy; use
+   "band" or "deep" as punctuation for the sections that matter most. */
+interface Props { id?: string; tone?: 'base' | 'alt' | 'band' | 'deep'; title?: string; rule?: boolean; class?: string }
+const { id, tone = 'base', title, rule = false, class: cls = '' } = Astro.props;
+const tones = { base: 'bg-bg', alt: 'bg-bg-alt', band: 'bg-band', deep: 'bg-deep' };
+---
+<section id={id} data-title={title} class={`section-y relative ${tones[tone]} ${rule ? 'border-t border-line-soft' : ''} ${cls}`}>
+  <div class="wrap"><slot /></div>
+</section>

@@ -1,0 +1,33 @@
+---
+import '@/styles/global.css';
+import SiteHeader from '@/components/navigation/SiteHeader.astro';
+import SiteFooter from '@/components/footer/SiteFooter.astro';
+import PresentationMode from '@/components/navigation/PresentationMode.astro';
+interface Props { title: string; description: string; noindex?: boolean }
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#06101C" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/logos/blue-cloud-mark.webp" type="image/webp" />
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body data-present="false">
+    <a href="#main" class="sr-only z-[60] rounded-btn bg-brand px-4 py-2 font-semibold text-brand-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-3">Skip to content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+    <PresentationMode />
+  </body>
+</html>

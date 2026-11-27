@@ -1,0 +1,9 @@
+---
+interface Props { tone?: 'neutral' | 'accent'; class?: string }
+const { tone = 'neutral', class: cls = '' } = Astro.props;
+const tones = {
+  neutral: 'border-line bg-surface-2 text-ink-2',
+  accent: 'border-[color-mix(in_oklab,var(--accent)_45%,transparent)] bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] text-[var(--accent-text)]',
+};
+---
+<span class={`inline-flex items-center gap-1.5 rounded-chip border px-2.5 py-1 text-label font-semibold tracking-[0.02em] ${tones[tone]} ${cls}`}><slot /></span>

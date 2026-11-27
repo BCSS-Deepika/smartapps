@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+
+/* =====================================================================
+   SmartApps 2.0 design tokens · Deep Ocean (dark only)
+   Source: the live site's palette-deep-ocean block (PR 3) and its
+   type and spacing tokens. Every page uses these and nothing else.
+   ===================================================================== */
+
+@font-face { font-family: 'Inter'; font-weight: 400; font-display: swap; src: url('/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 500; font-display: swap; src: url('/fonts/inter-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: swap; src: url('/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 700; font-display: swap; src: url('/fonts/inter-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; font-display: swap; src: url('/fonts/poppins-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; font-display: swap; src: url('/fonts/poppins-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; font-display: swap; src: url('/fonts/poppins-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto Mono'; font-weight: 400; font-display: swap; src: url('/fonts/roboto-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto Mono'; font-weight: 500; font-display: swap; src: url('/fonts/roboto-mono-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Outfit'; font-weight: 300 700; font-display: swap; src: url('/fonts/outfit-latin-variable.woff2') format('woff2'); }
+
+@theme static {
+  /* reset Tailwind's default palette so only these colours exist */
+  --color-*: initial;
+
+  /* surfaces, darkest to lightest */
+  --color-deep: #040b15;      /* hero and closing bands */
+  --color-bg: #06101c;        /* page */
+  --color-band: #081525;      /* feature band */
+  --color-bg-alt: #0a1726;    /* alternate band, inputs */
+  --color-surface: #0e1e31;   /* cards */
+  --color-surface-2: #13263d; /* raised, table header */
+  --color-line: #213751;
+  --color-line-soft: #1a2e46;
+
+  /* text */
+  --color-ink: #eaf1f9;
+  --color-ink-2: #bccbdd;
+  --color-ink-3: #9db0c6;
+  --color-white: #ffffff;
+
+  /* brand: Blue Cloud orange is the only call-to-action colour */
+  --color-brand: #f58120;
+  --color-brand-hover: #ff9a45;
+  --color-brand-soft: #ffb27a;
+  --color-brand-ink: #040b15;
+  --color-cloud: #2070b3;     /* Blue Cloud blue */
+  --color-sky: #8cc2f5;       /* links and info on dark */
+
+  /* product accents, from each product's logo */
+  --color-ag: #f58120;
+  --color-saga: #f15b26;
+  --color-edu: #4a8de8;
+  --color-garuda: #22d3ee;
+  --color-smartcop: #f58120;
+  --color-bluvaani: #3ea0ff;
+  --color-bluflow: #1ed89a;
+  --color-blugo: #14b8a6;
+  /* lighter tints for words set in an accent on dark (from the live --dct values) */
+  --color-ag-text: #ffb27a;
+  --color-saga-text: #ff9a6b;
+  --color-edu-text: #8cc2f5;
+  --color-garuda-text: #67e8f9;
+  --color-smartcop-text: #ffb27a;
+  --color-bluvaani-text: #8cc2f5;
+  --color-bluflow-text: #7fe8c0;
+  --color-blugo-text: #5eead4;
+
+  /* GARUDA divisions: hue for dots and rules, -text for words on dark */
+  --color-watch: #2070b3;  --color-watch-text: #8cc2f5;
+  --color-invest: #de6c0e; --color-invest-text: #ffb27a;
+  --color-draft: #5b3fa8;  --color-draft-text: #c7b6f5;
+  --color-field: #1e7f4f;  --color-field-text: #7fe0b0;
+
+  /* integration maturity, so a proposed link never reads as live */
+  --color-established: #8fe6bc;
+  --color-integration: #8cc2f5;
+  --color-proposed: #ffb27a;
+
+  /* status */
+  --color-success: #7fe0b0;
+  --color-warning: #ffd27a;
+  --color-error: #ff9aae;
+
+  /* type */
+  --font-display: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  --font-sans: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, Menlo, monospace;
+
+  --text-hero: clamp(2.5rem, 5.4vw, 4.1rem);
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.034em;
+  --text-page: clamp(2.1rem, 4.4vw, 3.25rem);
+  --text-page--line-height: 1.08;
+  --text-page--letter-spacing: -0.03em;
+  --text-section: clamp(1.65rem, 3.1vw, 2.5rem);
+  --text-section--line-height: 1.12;
+  --text-section--letter-spacing: -0.028em;
+  --text-card: clamp(1.125rem, 1.7vw, 1.375rem);
+  --text-card--line-height: 1.3;
+  --text-lede: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  --text-lede--line-height: 1.65;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.55;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+
+  /* shape */
+  --radius-btn: 10px;
+  --radius-chip: 6px;
+  --radius-card: 14px;
+  --radius-panel: 22px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 26px rgba(0, 0, 0, 0.28);
+  --shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.4), 0 22px 56px rgba(0, 0, 0, 0.42);
+  --shadow-brand: 0 4px 16px rgba(245, 129, 32, 0.28);
+
+  /* layout */
+  --container-page: 1280px;
+  --breakpoint-xs: 380px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --nav-h: 64px;
+    --section-y: clamp(48px, 8vw, 104px);
+    --gutter: clamp(16px, 4vw, 32px);
+  }
+  html { background: var(--color-bg); scroll-padding-top: calc(var(--nav-h) + 12px); -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 650; color: var(--color-white); text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: var(--color-sky); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--color-brand-soft); outline-offset: 2px; border-radius: 4px; }
+  ::selection { background: rgba(245, 129, 32, 0.35); color: var(--color-white); }
+  img, svg, video { max-width: 100%; }
+  [hidden] { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility section-y {
+  padding-block: var(--section-y);
+}
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand-soft);
+}
+
+/* Presentation mode: one titled section per screen, header and footer hidden. */
+@layer components {
+  body[data-present='true'] { padding-bottom: 64px; }
+  body[data-present='true'] [data-site-header],
+  body[data-present='true'] [data-site-footer],
+  body[data-present='true'] main > section:not(.present-on) { display: none; }
+  body[data-present='true'] main > section.present-on { min-height: 100vh; }
+  body[data-present='true'] [data-present-bar] { display: flex; }
+}

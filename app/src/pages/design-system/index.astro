@@ -1,0 +1,263 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import Chip from '@/components/ui/Chip.astro';
+import Maturity from '@/components/ui/Maturity.astro';
+import Card from '@/components/ui/Card.astro';
+import Panel from '@/components/ui/Panel.astro';
+import Stat from '@/components/ui/Stat.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+import ModuleExplorer from '@/components/module/ModuleExplorer.tsx';
+import { products, bySlug, divisions, garudaProducts } from '@/data/products';
+import { accentStyle } from '@/lib/accent';
+import { contrast } from '@/lib/contrast';
+import smartcop from '@/data/modules/smartcop.json';
+import type { ModuleItem } from '@/types/product';
+
+const surfaces = [
+  ['deep', '#040B15', 'Hero, closing bands, footer'],
+  ['bg', '#06101C', 'Page'],
+  ['band', '#081525', 'Feature band'],
+  ['bg-alt', '#0A1726', 'Alternate band, inputs'],
+  ['surface', '#0E1E31', 'Cards'],
+  ['surface-2', '#13263D', 'Raised, table headers'],
+  ['line', '#213751', 'Borders'],
+];
+const texts = [
+  ['ink', '#EAF1F9', 'Body text'],
+  ['ink-2', '#BCCBDD', 'Secondary text'],
+  ['ink-3', '#9DB0C6', 'Labels, metadata'],
+  ['sky', '#8CC2F5', 'Links'],
+  ['brand-soft', '#FFB27A', 'Eyebrows, stats'],
+];
+const accents = [
+  ['Access Genie', 'ag', '#F58120', '#FFB27A'],
+  ['Blura SAGA', 'saga', '#F15B26', '#FF9A6B'],
+  ['EduGenie', 'edu', '#4A8DE8', '#8CC2F5'],
+  ['GARUDA', 'garuda', '#22D3EE', '#67E8F9'],
+  ['SmartCOP', 'smartcop', '#F58120', '#FFB27A'],
+  ['BluVaani', 'bluvaani', '#3EA0FF', '#8CC2F5'],
+  ['BluFlow', 'bluflow', '#1ED89A', '#7FE8C0'],
+  ['BluGo', 'blugo', '#14B8A6', '#5EEAD4'],
+] as const;
+const divs = [
+  ['watch', '#2070B3', '#8CC2F5'],
+  ['invest', '#DE6C0E', '#FFB27A'],
+  ['draft', '#5B3FA8', '#C7B6F5'],
+  ['field', '#1E7F4F', '#7FE0B0'],
+] as const;
+const typeScale = [
+  ['Hero', 'text-hero', 'Poppins 650 · 40–66px', 'Building AI that matters.'],
+  ['Page title', 'text-page', 'Poppins 650 · 34–52px', 'GARUDA'],
+  ['Section title', 'text-section', 'Poppins 650 · 26–40px', 'Follow one case across the portfolio.'],
+  ['Card title', 'text-card', 'Poppins 650 · 18–22px', 'Facial recognition'],
+  ['Lede', 'text-lede', 'Inter 400 · 17–19px', 'A portfolio of intelligent platforms connecting public safety, digital intelligence, citizen services, enterprise operations and education.'],
+  ['Body', 'text-body', 'Inter 400 · 16px', 'Face match with a liveness check. A match is a lead only and needs supervisor sign-off.'],
+  ['Small', 'text-small', 'Inter 400 · 14px', 'Officer mobile platform'],
+] as const;
+const sc = smartcop as ModuleItem[];
+const scGroups = [...new Set(sc.map((m) => m.group))];
+const flagships = products.filter((p) => p.flagship);
+---
+<MainLayout title="Design system · SmartApps 2.0" description="SmartApps 2.0 design tokens and components, Deep Ocean dark theme." noindex>
+  <Section tone="deep" class="overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(52%_46%_at_78%_30%,rgba(245,129,32,.14),transparent_70%),radial-gradient(46%_42%_at_10%_80%,rgba(32,112,179,.2),transparent_72%)]"></div>
+    <div class="relative">
+      <Breadcrumbs items={[{ label: 'SmartApps', href: '/' }, { label: 'Design system' }]} />
+      <p class="eyebrow mb-3 mt-8">SmartApps 2.0 · Gate 2</p>
+      <h1 class="text-hero max-w-4xl">One look for every platform.</h1>
+      <p class="mt-5 max-w-2xl text-lede text-ink-2">The Deep Ocean palette, type, components and rules every SmartApps page is built from. Dark only. Each product keeps its own logo colour as an accent; Blue Cloud orange is the one call-to-action colour.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href="#colour" icon="arrow-right">Explore the tokens</Button>
+        <Button href="#modules" variant="secondary">See the module explorer</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="colour" title="Colour">
+    <SectionHeading eyebrow="01 · Colour" title="Ink-navy surfaces, one orange, a colour per product.">
+      Surfaces step from the deepest navy to the card colour. Text contrast is measured against the card colour, the lightest surface that carries text.
+    </SectionHeading>
+    <h3 class="mb-4 text-card">Surfaces</h3>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+      {surfaces.map(([n, hex, use]) => (
+        <div class="overflow-hidden rounded-card border border-line">
+          <div class="h-20" style={`background:${hex}`}></div>
+          <div class="bg-surface p-3"><p class="font-mono text-label text-white">{n}</p><p class="font-mono text-label text-ink-3">{hex}</p><p class="mt-1 text-[0.8125rem] leading-snug text-ink-3">{use}</p></div>
+        </div>
+      ))}
+    </div>
+    <h3 class="mb-4 mt-10 text-card">Text and brand</h3>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {texts.map(([n, hex, use]) => (
+        <div class="flex items-center gap-4 rounded-card border border-line bg-surface p-4">
+          <span class="font-display text-[2rem] font-semibold leading-none" style={`color:${hex}`}>Aa</span>
+          <span class="flex-1"><b class="block font-mono text-label text-white">{n} · {hex}</b><span class="text-small text-ink-3">{use}</span></span>
+          <span class="rounded-md bg-bg-alt px-2 py-1 font-mono text-label text-ink-2" title="Contrast on the card colour">{contrast(hex, '#0E1E31')}:1</span>
+        </div>
+      ))}
+      <div class="flex items-center gap-4 rounded-card border border-line bg-surface p-4">
+        <span class="grid h-10 w-16 place-items-center rounded-btn bg-brand font-semibold text-brand-ink">Go</span>
+        <span class="flex-1"><b class="block font-mono text-label text-white">brand · #F58120</b><span class="text-small text-ink-3">Primary buttons only. Text on it is navy.</span></span>
+        <span class="rounded-md bg-bg-alt px-2 py-1 font-mono text-label text-ink-2">{contrast('#040B15', '#F58120')}:1</span>
+      </div>
+    </div>
+
+    <h3 class="mb-2 mt-10 text-card">Product accents</h3>
+    <p class="mb-4 max-w-2xl text-small text-ink-3">Taken from each logo. The strong tone draws rules, dots and borders; the tint sets words, so labels stay readable on dark.</p>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {accents.map(([name, key, hex, text]) => (
+        <div style={accentStyle(key)} class="rounded-card border border-line bg-surface p-4">
+          <div class="flex gap-2"><span class="h-10 flex-1 rounded-md" style={`background:${hex}`}></span><span class="h-10 flex-1 rounded-md" style={`background:${text}`}></span></div>
+          <p class="mt-3 font-semibold text-white">{name}</p>
+          <p class="font-mono text-label text-ink-3">{hex} · tint {text} · {contrast(text, '#0E1E31')}:1</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mb-2 mt-10 text-card">GARUDA divisions</h3>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {divs.map(([key, hex, text]) => (
+        <div style={accentStyle(key)} class="rounded-card border border-line bg-surface p-4 before:absolute">
+          <p class="flex items-center gap-2 font-mono text-label uppercase tracking-[0.12em] text-[var(--accent-text)]"><span class="size-2.5 rounded-full bg-[var(--accent)]"></span>{divisions.find((d) => d.key === key)!.name}</p>
+          <p class="mt-2 text-small text-ink-2">{garudaProducts(key).map((p) => p.name).join(' · ')}</p>
+          <p class="mt-2 font-mono text-label text-ink-3">{hex} · tint {text} · {contrast(text, '#0E1E31')}:1</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="type" tone="alt" rule title="Typography">
+    <SectionHeading eyebrow="02 · Typography" title="Poppins for headings, Inter for reading.">
+      The live site's fonts, self-hosted. Sizes are fluid, so headings shrink on phones without breakpoints. Roboto Mono is kept for labels and numbers.
+    </SectionHeading>
+    <div class="divide-y divide-line-soft rounded-card border border-line bg-surface">
+      {typeScale.map(([n, cls, spec, sample]) => (
+        <div class="grid gap-2 p-5 md:grid-cols-[180px_1fr] md:gap-6 md:p-6">
+          <div><p class="font-semibold text-white">{n}</p><p class="font-mono text-label text-ink-3">{spec}</p></div>
+          <p class={`${cls} ${cls === 'text-lede' || cls === 'text-body' || cls === 'text-small' ? 'text-ink-2' : 'font-display font-semibold text-white'}`}>{sample}</p>
+        </div>
+      ))}
+      <div class="grid gap-2 p-5 md:grid-cols-[180px_1fr] md:gap-6 md:p-6">
+        <div><p class="font-semibold text-white">Eyebrow / label</p><p class="font-mono text-label text-ink-3">Roboto Mono 500 · 12px, spaced caps</p></div>
+        <p class="eyebrow">GARUDA · Field &amp; Citizen</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="controls" title="Buttons and labels">
+    <SectionHeading eyebrow="03 · Controls" title="Buttons, chips and maturity labels." />
+    <div class="grid gap-6 lg:grid-cols-2">
+      <Card>
+        <h3 class="text-card">Buttons</h3>
+        <p class="mt-1 text-small text-ink-3">At least 48px tall (40px small). One primary per view.</p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <Button icon="arrow-right">Explore products</Button>
+          <Button variant="secondary">View demonstrations</Button>
+          <Button variant="ghost" icon="arrow-right">Open the demo</Button>
+        </div>
+        <div class="mt-3 flex flex-wrap items-center gap-3">
+          <Button size="sm">Request a demonstration</Button>
+          <Button size="sm" variant="secondary">Copy details</Button>
+          <Button size="sm" disabled>Disabled</Button>
+        </div>
+      </Card>
+      <Card>
+        <h3 class="text-card">Chips</h3>
+        <p class="mt-1 text-small text-ink-3">Tags and categories. The accent chip takes the product colour.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <Chip>On-premise</Chip><Chip>Air-gapped</Chip><Chip>Multilingual</Chip>
+          <span style={accentStyle('garuda')}><Chip tone="accent">GARUDA – Blue Cloud's Policing Operational Ecosystem</Chip></span>
+          <span style={accentStyle('field')}><Chip tone="accent">Field &amp; Citizen</Chip></span>
+        </div>
+      </Card>
+      <Card class="lg:col-span-2">
+        <h3 class="text-card">Integration maturity</h3>
+        <p class="mt-1 max-w-3xl text-small text-ink-3">Every link between two products carries one of three labels, with the wording taken from the source content. This is how a proposed integration is never shown as a live one.</p>
+        <ol class="mt-5 grid gap-3 md:grid-cols-3">
+          <li class="rounded-[10px] bg-bg-alt p-4"><span class="font-mono text-label text-ink-3">BluVaani</span><p class="mt-1 font-semibold text-white">Routed and handed off</p><div class="mt-3"><Maturity kind="established">Established in product</Maturity></div></li>
+          <li class="rounded-[10px] bg-bg-alt p-4"><span class="font-mono text-label text-ink-3">AI CopWriter</span><p class="mt-1 font-semibold text-white">Structured into a draft</p><div class="mt-3"><Maturity kind="integration">Handoff defined, per-deployment integration</Maturity></div></li>
+          <li class="rounded-[10px] bg-bg-alt p-4"><span class="font-mono text-label text-ink-3">FIR Automation</span><p class="mt-1 font-semibold text-white">Verified and registered</p><div class="mt-3"><Maturity kind="proposed">Proposed · validate the records interface per state</Maturity></div></li>
+        </ol>
+        <p class="mt-3 text-label text-ink-3">Steps 2 to 4 of the live "Citizen call to documentation" workflow, with their exact labels.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section id="cards" tone="band" title="Cards">
+    <SectionHeading eyebrow="04 · Cards" title="Product cards, one template for every product.">
+      Logo on a white plate, family, one line, then Explore and, where one exists, Demo. Products without a logo get a name plate in their colour; no logo is invented.
+    </SectionHeading>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {flagships.map((p) => <ProductCard product={p} />)}
+      <ProductCard product={bySlug('garuda')} />
+      <ProductCard product={bySlug('smartcop')} />
+      <ProductCard product={bySlug('fir-automation')} />
+    </div>
+  </Section>
+
+  <Section id="panels" title="Panels and stats">
+    <SectionHeading eyebrow="05 · Panels" title="Feature panels for the moments that matter." />
+    <Panel glow>
+      <div class="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
+        <div>
+          <p class="eyebrow">Proof from live deployments</p>
+          <h3 class="mt-3 text-section">Figures from deployments running today.</h3>
+          <p class="mt-4 max-w-xl text-ink-2">Reference figures, not guarantees. They describe what specific deployments have produced.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <Stat value="2" label="state police forces running the platform" />
+          <Stat value="7" label="police programmes live across those forces" />
+          <Stat value="56" label="stores in the retail intelligence deployment" />
+          <Stat value="1,000+" label="camera endpoints continuously monitored" />
+        </div>
+      </div>
+    </Panel>
+    <p class="mt-3 text-label text-ink-3">Figures and wording copied from the live homepage's "Proof and company" section.</p>
+  </Section>
+
+  <Section id="modules" tone="alt" rule title="Module explorer">
+    <div style={accentStyle('smartcop')}>
+      <SectionHeading eyebrow="06 · Module explorer" title="19 modules on one Command Deck">
+        Live with SmartCOP's real modules, word for word. Filter, search, open one at a time, and copy a link. Try <a href="#m-frs">#m-frs</a>: it opens Facial recognition, as the old link does today.
+      </SectionHeading>
+      <ModuleExplorer client:load modules={sc} groups={scGroups} productName="SmartCOP" />
+    </div>
+  </Section>
+
+  <Section id="forms" title="Forms">
+    <SectionHeading eyebrow="07 · Forms" title="Enquiry fields.">
+      Styling only. The homepage form keeps its current behaviour in Gate 3: it checks name and email, then opens an email to smartapps@bluecloudsoftech.com.
+    </SectionHeading>
+    <form class="grid max-w-3xl gap-4 rounded-card border border-line bg-surface p-5 md:grid-cols-2 md:p-6" onsubmit="return false" novalidate>
+      <label class="grid min-w-0 gap-1.5 md:col-span-2"><span class="text-small font-medium text-white">Which platform?</span>
+        <select class="min-h-12 w-full min-w-0 rounded-btn border border-line bg-bg-alt px-3 text-white focus:border-brand-soft focus:outline-none"><option>GARUDA – Blue Cloud's Policing Operational Ecosystem</option><option>Blura SAGA</option><option>EduGenie</option></select></label>
+      <label class="grid gap-1.5"><span class="text-small font-medium text-white">Your name</span>
+        <input class="min-h-12 rounded-btn border border-line bg-bg-alt px-3 text-white focus:border-brand-soft focus:outline-none" /></label>
+      <label class="grid gap-1.5"><span class="text-small font-medium text-white">Email</span>
+        <input type="email" value="not-an-email" aria-invalid="true" aria-describedby="ds-err" class="min-h-12 rounded-btn border border-error bg-bg-alt px-3 text-white focus:outline-none" />
+        <span id="ds-err" class="text-small text-error">Enter a valid email address</span></label>
+      <div class="flex flex-wrap gap-3 md:col-span-2"><Button type="submit">Open in email</Button><Button variant="secondary">Copy details</Button></div>
+    </form>
+  </Section>
+
+  <Section id="rules" tone="deep" title="Rules">
+    <SectionHeading eyebrow="08 · Rules" title="How pages use the system." />
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {[
+        ['Layout', 'Content up to 1280px wide. Side gutter 16px on phones, 32px on desktop. Section spacing 48px on phones to 104px on desktop.'],
+        ['Shape', 'Buttons 10px, cards 14px, feature panels 22px. Borders before shadows; shadows only on hover or raised menus.'],
+        ['Motion', '150–250ms on hover and open. No autoplay carousels, parallax or scroll-jacking. Reduced-motion turns transitions off.'],
+        ['Bands', 'Page, alternate and feature bands step through the navy scale. The deepest band marks heroes, proof and contact, never every other section.'],
+        ['Touch and keys', 'Every control is at least 40px, works by keyboard and shows an orange focus ring. Nothing depends on hover.'],
+        ['Phones', 'Single column under 640px, no sideways scrolling, menus in a drawer that locks the page behind it.'],
+      ].map(([h, t]) => (
+        <div class="rounded-card border border-line bg-surface/60 p-5"><p class="flex items-center gap-2 font-semibold text-white"><Icon name="check" size={16} class="text-brand-soft" />{h}</p><p class="mt-2 text-small text-ink-2">{t}</p></div>
+      ))}
+    </div>
+  </Section>
+</MainLayout>

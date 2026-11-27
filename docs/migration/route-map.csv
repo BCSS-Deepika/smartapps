@@ -1,0 +1,32 @@
+old_url,proposed_new_url,type,source_file,product_family,redirect_and_notes
+/,/,Homepage,index.html,—,Same path. /index.html redirects to /.
+/index.html,/,Homepage alias,index.html,—,Redirect
+/products/access-genie-retail.html,/products/access-genie-retail/,Product page,products/access-genie-retail.html,Access Genie · Enterprise,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/access-genie.html,/products/access-genie/,Product page,products/access-genie.html,Flagship: Access Genie,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/ai-copwriter.html,/products/ai-copwriter/,Product page,products/ai-copwriter.html,GARUDA · Draft & Decide,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/bluflow.html,/products/bluflow/,Product page,products/bluflow.html,GARUDA · Investigate,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/blugo.html,/products/blugo/,Product page,products/blugo.html,Access Genie · Enterprise,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/blura-saga.html,/products/blura-saga/,Product page,products/blura-saga.html,Flagship: Blura SAGA (also GARUDA · Watch & Detect),Redirect old .html to new folder URL; #m-* fragments carry over
+/products/bluvaani.html,/products/bluvaani/,Product page,products/bluvaani.html,GARUDA · Field & Citizen,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/digital-forensics.html,/products/digital-forensics/,Product page,products/digital-forensics.html,GARUDA · Investigate,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/drug-offender-portal.html,/products/drug-offender-portal/,Product page,products/drug-offender-portal.html,GARUDA · Investigate,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/edugenie.html,/products/edugenie/,Product page,products/edugenie.html,Flagship: EduGenie,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/fir-automation.html,/products/fir-automation/,Product page,products/fir-automation.html,GARUDA · Draft & Decide,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/garuda.html,/products/garuda/,Product page,products/garuda.html,Vertical: GARUDA,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/geo-intelligence.html,/products/geo-intelligence/,Product page,products/geo-intelligence.html,GARUDA · Watch & Detect,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/grievance-management.html,/products/grievance-management/,Product page,products/grievance-management.html,GARUDA · Field & Citizen,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/memo-generator.html,/products/memo-generator/,Product page,products/memo-generator.html,GARUDA · Draft & Decide,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/smartcop.html,/products/smartcop/,Product page,products/smartcop.html,GARUDA · Field & Citizen,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/trap-case-management.html,/products/trap-case-management/,Product page,products/trap-case-management.html,GARUDA · Investigate,Redirect old .html to new folder URL; #m-* fragments carry over
+/products/women-safety-portal.html,/products/women-safety-portal/,Product page,products/women-safety-portal.html,GARUDA · Investigate,Redirect old .html to new folder URL; #m-* fragments carry over
+/demos/access-genie-retail.html,/demos/access-genie-retail/,Demo,—,access-genie-retail,Redirect; demo file kept byte-identical at first
+/demos/ai-copwriter.html,/demos/ai-copwriter/,Demo,—,ai-copwriter,Redirect; demo file kept byte-identical at first
+/demos/bluflow.html,/demos/bluflow/,Demo,—,bluflow,Redirect; demo file kept byte-identical at first
+/demos/blura-saga.html,/demos/blura-saga/,Demo,—,blura-saga,Redirect; demo file kept byte-identical at first
+/demos/bluvaani.html,/demos/bluvaani/,Demo,—,bluvaani,Redirect; demo file kept byte-identical at first
+/demos/garuda.html,/demos/garuda/,Demo,—,garuda,Redirect; demo file kept byte-identical at first
+/demos/geo-intelligence.html,/demos/geo-intelligence/,Demo,—,geo-intelligence,Redirect; demo file kept byte-identical at first
+/demos/memo-generator.html,/demos/memo-generator/,Demo,—,memo-generator,Redirect; demo file kept byte-identical at first
+/demos/smartcop.html,/demos/smartcop/,Demo,—,smartcop,Redirect; demo file kept byte-identical at first
+/demos/women-safety-portal.html,/demos/women-safety-portal/,Demo,—,women-safety-portal,Redirect; demo file kept byte-identical at first
+/demos/traffic-analytics/index.html,/demos/traffic-analytics/,"Demo (SPA, hash routes #/m/<module>/<camera>)",—,access-genie,Same folder; hash routes untouched

@@ -1,0 +1,28 @@
+---
+import type { ProductSummary } from '@/types/product';
+import { accentStyle } from '@/lib/accent';
+import { productUrl, demoUrl, divisions } from '@/data/products';
+import LogoPlate from '../ui/LogoPlate.astro';
+import Icon from '../ui/Icon.astro';
+interface Props { product: ProductSummary }
+const { product: p } = Astro.props;
+const kind = p.flagship ? 'Flagship platform' : p.family === 'garuda' && p.division ? `GARUDA · ${divisions.find((d) => d.key === p.division)?.name}` : p.family === 'garuda' ? 'Policing vertical' : 'Access Genie · Enterprise';
+---
+<article style={accentStyle(p.accent)} class="group relative flex h-full flex-col rounded-card border border-line bg-surface p-5 transition duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-card md:p-6">
+  <div class="mb-5 flex h-14 items-center">
+    {p.logo ? <LogoPlate src={p.logo} alt={`${p.name} logo`} height={36} /> : (
+      <span class="inline-flex h-14 items-center gap-2.5 rounded-[12px] border border-line bg-bg-alt px-3.5 font-display text-[1.05rem] font-semibold text-white">
+        <span class="size-2.5 rounded-full bg-[var(--accent)]" aria-hidden="true"></span>{p.name}
+      </span>
+    )}
+  </div>
+  <p class="font-mono text-label uppercase tracking-[0.12em] text-[var(--accent-text)]">{kind}</p>
+  <h3 class="mt-1.5 text-card">
+    <a href={productUrl(p.slug)} class="text-white no-underline after:absolute after:inset-0 after:rounded-card focus-visible:outline-none">{p.name}</a>
+  </h3>
+  <p class="mt-2 flex-1 text-small text-ink-2">{p.line}</p>
+  <div class="relative z-10 mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-small font-semibold">
+    <span class="inline-flex items-center gap-1.5 text-[var(--accent-text)]">Explore <Icon name="arrow-right" size={15} class="transition-transform group-hover:translate-x-0.5" /></span>
+    {p.demo && <a href={demoUrl(p.demo)} class="inline-flex items-center gap-1.5 text-ink-2 no-underline hover:text-white"><Icon name="play" size={13} /> Demo</a>}
+  </div>
+</article>
