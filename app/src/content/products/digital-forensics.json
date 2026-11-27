@@ -41,7 +41,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><rect height=\"18\" rx=\"2\" width=\"11\" x=\"4\" y=\"2.5\"></rect><path d=\"M8 17.5h3\"></path><circle cx=\"16\" cy=\"12.5\" r=\"3.5\"></circle><path d=\"M18.6 15.1 21.5 18\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "modules"
+   },
+   {
+    "value": "5",
+    "label": "steps"
+   },
+   {
+    "value": "1",
+    "label": "chain of custody"
+   },
+   {
+    "value": "0",
+    "label": "changes to the original"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -119,7 +137,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Evidence integrity is fragile</h4><p>A device examined without write protection can be challenged in court, and the case can turn on that alone.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Extraction is only the start</h4><p>Thousands of chats, calls and media files mean nothing until someone can search, link and date them against the case.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Manipulated media is now routine</h4><p>Audio and video submitted as evidence may be edited or synthetic, and that has to be tested rather than assumed.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h3 class=\"lv4\">Evidence integrity is fragile</h3><p>A device examined without write protection can be challenged in court, and the case can turn on that alone.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Extraction is only the start</h4><p>Thousands of chats, calls and media files mean nothing until someone can search, link and date them against the case.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Manipulated media is now routine</h4><p>Audio and video submitted as evidence may be edited or synthetic, and that has to be tested rather than assumed.</p></div></div>"
   },
   {
    "kind": "html",
@@ -127,7 +145,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Image</b><span>Device copied with a hash; original untouched</span></div></li><li><div><b>Extract</b><span>Contacts, chats, calls, photos, locations, payment apps</span></div></li><li><div><b>Analyse</b><span>Keyword, face and link search; tamper and manipulation checks</span></div></li><li><div><b>Link</b><span>Findings attached to the case and GARUDA ID</span></div></li><li><div><b>Certify</b><span>Report with chain of custody and statutory certificate</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Forensic labs</span><span class=\"chip\">Cyber crime</span><span class=\"chip\">Investigating officers</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Image</b><span>Device copied with a hash; original untouched</span></div></li><li><div><b>Extract</b><span>Contacts, chats, calls, photos, locations, payment apps</span></div></li><li><div><b>Analyse</b><span>Keyword, face and link search; tamper and manipulation checks</span></div></li><li><div><b>Link</b><span>Findings attached to the case and GARUDA ID</span></div></li><li><div><b>Certify</b><span>Report with chain of custody and statutory certificate</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Forensic labs</span><span class=\"chip\">Cyber crime</span><span class=\"chip\">Investigating officers</span></div>"
   },
   {
    "kind": "modules"
@@ -138,7 +156,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Phones, contacts, payment identifiers and locations found on devices</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Case and subject context</td></tr><tr><td><b>Opened from</b></td><td>Case → “Evidence · Forensics”</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Phones, contacts, payment identifiers and locations found on devices</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Case and subject context</td></tr><tr><td><b>Opened from</b></td><td>Case → “Evidence · Forensics”</td></tr></tbody></table></div></div>"
   }
  ],
  "demo": null,
@@ -157,8 +175,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "BluFlow",
+   "href": "/products/bluflow/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Trap Case Management",
+   "href": "/products/trap-case-management/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See Digital Forensics running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

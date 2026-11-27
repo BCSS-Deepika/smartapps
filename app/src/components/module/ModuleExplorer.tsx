@@ -144,7 +144,7 @@ export default function ModuleExplorer({ modules, groups: groupList, productName
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search modules"
-            className="min-h-11 w-full rounded-btn border border-line bg-bg-alt pl-9 pr-3 text-small text-white placeholder:text-ink-3 focus:border-[var(--accent)] focus:outline-none"
+            className="min-h-11 w-full rounded-btn border border-line bg-bg-alt pl-9 pr-3 text-small text-white placeholder:text-ink-3 focus:border-[var(--accent)]"
           />
         </label>
       </div>

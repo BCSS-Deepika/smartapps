@@ -46,7 +46,25 @@
   ],
   "logo": "/logos/smartcop.svg",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "19",
+    "label": "modules"
+   },
+   {
+    "value": "4",
+    "label": "groups"
+   },
+   {
+    "value": "7",
+    "label": "platform layers"
+   },
+   {
+    "value": "10",
+    "label": "shared capabilities"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -242,7 +260,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"ch-lead\">\n<p>\n            Policing on the beat needs many systems, all at once. A emergency call, an SOS or a cyber\n            fraud in its golden hour needs the nearest officer to act straight away — while record\n            searches, cameras, challans, evidence and duty records each come from a different system.\n            SmartCOP brings it together: respond, prevent, record.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The problem</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Minutes decide outcomes</h4><p>An emergency call or a fraud in its golden hour needs the nearest officer moving immediately, not after a phone tree.</p></div>\n<div class=\"card\"><h4>Too many separate tools</h4><p>Record searches, cameras, challans, evidence and duty records each come from a different system with a different login.</p></div>\n<div class=\"card\"><h4>Every step must hold up</h4><p>Evidence, searches and visits must be recorded properly so they stand in court and in audit.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>How it works · one emergency call, ring to closed case</h4>\n<ol class=\"flow\">\n<li><div><b>Call</b><span>A citizen dials the emergency number; the control room receives it with location.</span></div></li>\n<li><div><b>Dispatch</b><span>The nearest unit is identified by distance and ETA, and assigned without a phone call.</span></div></li>\n<li><div><b>Respond</b><span>The officer accepts on their phone, navigates, and marks en-route, on-scene and closed.</span></div></li>\n<li><div><b>Evidence</b><span>Geotagged, timestamped and hash-registered before upload, sealed in the evidence locker.</span></div></li>\n<li><div><b>Closed</b><span>Logged to the response register; the unit returns to available. Every action audit-logged.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>Two modules in detail</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Facial recognition — a lead, never an identification</h4>\n<p>The officer points the phone, the platform extracts the biometric template, searches the gallery and returns a ranked candidate.</p>\n<div class=\"note\">\n<span>A match is an <b>investigative lead only</b>. The officer verifies against the record and a supervisor signs off before any action is taken. Every scan, result and sign-off is written to the audit log.</span>\n</div>\n</div>\n<div class=\"card\">\n<h4>Patrol &amp; beat management</h4>\n<p>Patrol cars and two-wheelers stream their position continuously. The control room sees who is where, which check-points are covered, and which unit is closest when a call comes in.</p>\n<div class=\"chips\">\n<span class=\"chip\">Live unit positions</span><span class=\"chip\">Beat boundaries</span>\n<span class=\"chip\">QR check-points</span><span class=\"chip\">CCTV nodes</span>\n<span class=\"chip\">Crime hotspots</span><span class=\"chip\">Nearest-unit dispatch</span>\n</div>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Built for how police work</h4>\n<ul class=\"ticks\">\n<li><b>Biometric login</b> — fingerprint verified and bound to the officer's own device.</li>\n<li><b>Every action logged</b> — searches, face scans and each dispatch step recorded for audit.</li>\n<li><b>Approval before sensitive data</b> — mobile and tower requests go through two levels of sign-off, tied to a case.</li>\n<li><b>A human decides</b> — face matches and AI suggestions are leads; an officer verifies before action.</li>\n<li><b>Officer SOS</b> — sends live location to the command centre, alerts the three nearest units and starts body-cam recording.</li>\n<li><b>Phone and tablet</b> — the Command Deck adapts: three module columns on a phone, up to five on a tablet.</li>\n<li><b>Offline operations</b> — permitted activity continues through network interruptions and reconciles cleanly on reconnect.</li>\n</ul>\n</div>"
+   "html": "<div class=\"ch-lead\">\n<p>\n            Policing on the beat needs many systems, all at once. A emergency call, an SOS or a cyber\n            fraud in its golden hour needs the nearest officer to act straight away — while record\n            searches, cameras, challans, evidence and duty records each come from a different system.\n            SmartCOP brings it together: respond, prevent, record.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h2 class=\"lv4\">The problem</h2>\n<div class=\"grid g3\">\n<div class=\"card\"><h3 class=\"lv4\">Minutes decide outcomes</h3><p>An emergency call or a fraud in its golden hour needs the nearest officer moving immediately, not after a phone tree.</p></div>\n<div class=\"card\"><h4>Too many separate tools</h4><p>Record searches, cameras, challans, evidence and duty records each come from a different system with a different login.</p></div>\n<div class=\"card\"><h4>Every step must hold up</h4><p>Evidence, searches and visits must be recorded properly so they stand in court and in audit.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>How it works · one emergency call, ring to closed case</h4>\n<ol class=\"flow\">\n<li><div><b>Call</b><span>A citizen dials the emergency number; the control room receives it with location.</span></div></li>\n<li><div><b>Dispatch</b><span>The nearest unit is identified by distance and ETA, and assigned without a phone call.</span></div></li>\n<li><div><b>Respond</b><span>The officer accepts on their phone, navigates, and marks en-route, on-scene and closed.</span></div></li>\n<li><div><b>Evidence</b><span>Geotagged, timestamped and hash-registered before upload, sealed in the evidence locker.</span></div></li>\n<li><div><b>Closed</b><span>Logged to the response register; the unit returns to available. Every action audit-logged.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>Two modules in detail</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Facial recognition — a lead, never an identification</h4>\n<p>The officer points the phone, the platform extracts the biometric template, searches the gallery and returns a ranked candidate.</p>\n<div class=\"note\">\n<span>A match is an <b>investigative lead only</b>. The officer verifies against the record and a supervisor signs off before any action is taken. Every scan, result and sign-off is written to the audit log.</span>\n</div>\n</div>\n<div class=\"card\">\n<h4>Patrol &amp; beat management</h4>\n<p>Patrol cars and two-wheelers stream their position continuously. The control room sees who is where, which check-points are covered, and which unit is closest when a call comes in.</p>\n<div class=\"chips\">\n<span class=\"chip\">Live unit positions</span><span class=\"chip\">Beat boundaries</span>\n<span class=\"chip\">QR check-points</span><span class=\"chip\">CCTV nodes</span>\n<span class=\"chip\">Crime hotspots</span><span class=\"chip\">Nearest-unit dispatch</span>\n</div>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Built for how police work</h4>\n<ul class=\"ticks\">\n<li><b>Biometric login</b> — fingerprint verified and bound to the officer's own device.</li>\n<li><b>Every action logged</b> — searches, face scans and each dispatch step recorded for audit.</li>\n<li><b>Approval before sensitive data</b> — mobile and tower requests go through two levels of sign-off, tied to a case.</li>\n<li><b>A human decides</b> — face matches and AI suggestions are leads; an officer verifies before action.</li>\n<li><b>Officer SOS</b> — sends live location to the command centre, alerts the three nearest units and starts body-cam recording.</li>\n<li><b>Phone and tablet</b> — the Command Deck adapts: three module columns on a phone, up to five on a tablet.</li>\n<li><b>Offline operations</b> — permitted activity continues through network interruptions and reconciles cleanly on reconnect.</li>\n</ul>\n</div>"
   },
   {
    "kind": "modules"
@@ -279,8 +297,39 @@
    "memo-generator",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "Compliant Memo Generator",
+   "href": "/products/memo-generator/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Grievance Management",
+   "href": "/products/grievance-management/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See SmartCOP running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

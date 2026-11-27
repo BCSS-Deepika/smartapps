@@ -41,7 +41,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M10.5 20.5a5 5 0 0 1-7-7l6.5-6.5a5 5 0 0 1 7 7z\"></path><path d=\"M8.5 8.5l7 7\"></path><path d=\"M19 3v4M17 5h4\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "modules"
+   },
+   {
+    "value": "3",
+    "label": "offender roles"
+   },
+   {
+    "value": "5",
+    "label": "steps"
+   },
+   {
+    "value": "1",
+    "label": "register"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -123,7 +141,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Repeat offenders slip through</h4><p>A person arrested in one district and released in another leaves no connected trail, so the pattern never surfaces.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Seizures sit in separate files</h4><p>Substance, quantity and place are recorded case by case, with nothing linking a supplier to the peddlers working for them.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Releases go unnoticed</h4><p>An offender returns to a jurisdiction where no officer was told, and preventive action happens too late or not at all.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h3 class=\"lv4\">Repeat offenders slip through</h3><p>A person arrested in one district and released in another leaves no connected trail, so the pattern never surfaces.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Seizures sit in separate files</h4><p>Substance, quantity and place are recorded case by case, with nothing linking a supplier to the peddlers working for them.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Releases go unnoticed</h4><p>An offender returns to a jurisdiction where no officer was told, and preventive action happens too late or not at all.</p></div></div>"
   },
   {
    "kind": "html",
@@ -131,7 +149,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Record</b><span>Narcotics case and seizure entered</span></div></li><li><div><b>Profile</b><span>Photo, aliases, address, past cases</span></div></li><li><div><b>Link</b><span>Associates, phones, vehicles, suppliers</span></div></li><li><div><b>Watch</b><span>Repeat-offender and release alerts</span></div></li><li><div><b>Act</b><span>Preventive action and case follow-up</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Anti-narcotics bureau</span><span class=\"chip\">Narcotics wings</span><span class=\"chip\">Station house officers</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Record</b><span>Narcotics case and seizure entered</span></div></li><li><div><b>Profile</b><span>Photo, aliases, address, past cases</span></div></li><li><div><b>Link</b><span>Associates, phones, vehicles, suppliers</span></div></li><li><div><b>Watch</b><span>Repeat-offender and release alerts</span></div></li><li><div><b>Act</b><span>Preventive action and case follow-up</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Anti-narcotics bureau</span><span class=\"chip\">Narcotics wings</span><span class=\"chip\">Station house officers</span></div>"
   },
   {
    "kind": "modules"
@@ -142,7 +160,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Drug offender profiles and seizures</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Phone, vehicle and bank links</td></tr><tr><td><b>Opened from</b></td><td>Subject → “Open offender record”</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Drug offender profiles and seizures</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Phone, vehicle and bank links</td></tr><tr><td><b>Opened from</b></td><td>Subject → “Open offender record”</td></tr></tbody></table></div></div>"
   }
  ],
  "demo": null,
@@ -161,8 +179,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "Geo Intelligence",
+   "href": "/products/geo-intelligence/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Women Safety Portal",
+   "href": "/products/women-safety-portal/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See Drug Offender Portal running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

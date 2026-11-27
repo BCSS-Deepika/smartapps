@@ -41,7 +41,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6\"></path><path d=\"M13 3v5h5v3\"></path><path d=\"M8 12h5M8 16h3\"></path><path d=\"M19 13.5l2 2-5.5 5.5H13.5v-2z\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "modules"
+   },
+   {
+    "value": "5",
+    "label": "steps"
+   },
+   {
+    "value": "1",
+    "label": "officer approval"
+   },
+   {
+    "value": "0",
+    "label": "unreviewed registrations"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -115,7 +133,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"draft\"><h4>Reports are written under time pressure</h4><p>Mandatory facts get missed while the complainant waits, and the gap is discovered weeks later.</p></div><div class=\"card card-top\" data-acc=\"draft\"><h4>Section selection is inconsistent</h4><p>The same offence attracts different sections at different stations, which creates problems at trial.</p></div><div class=\"card card-top\" data-acc=\"draft\"><h4>Duplicate complaints go unnoticed</h4><p>The same incident is registered twice from different sources with nothing linking the two.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"draft\"><h3 class=\"lv4\">Reports are written under time pressure</h3><p>Mandatory facts get missed while the complainant waits, and the gap is discovered weeks later.</p></div><div class=\"card card-top\" data-acc=\"draft\"><h4>Section selection is inconsistent</h4><p>The same offence attracts different sections at different stations, which creates problems at trial.</p></div><div class=\"card card-top\" data-acc=\"draft\"><h4>Duplicate complaints go unnoticed</h4><p>The same incident is registered twice from different sources with nothing linking the two.</p></div></div>"
   },
   {
    "kind": "html",
@@ -123,7 +141,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"draft\"><li><div><b>Receive</b><span>From AI CopWriter, a scanned petition or the desk</span></div></li><li><div><b>Extract</b><span>Who, what, when, where, property, accused</span></div></li><li><div><b>Suggest</b><span>Statutory sections and report fields filled in</span></div></li><li><div><b>Verify</b><span>The officer checks, edits and approves</span></div></li><li><div><b>Register</b><span>Pushed to crime records; copy to complainant</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Station writers</span><span class=\"chip\">Station house officers</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"draft\"><li><div><b>Receive</b><span>From AI CopWriter, a scanned petition or the desk</span></div></li><li><div><b>Extract</b><span>Who, what, when, where, property, accused</span></div></li><li><div><b>Suggest</b><span>Statutory sections and report fields filled in</span></div></li><li><div><b>Verify</b><span>The officer checks, edits and approves</span></div></li><li><div><b>Register</b><span>Pushed to crime records; copy to complainant</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Station writers</span><span class=\"chip\">Station house officers</span></div>"
   },
   {
    "kind": "modules"
@@ -134,7 +152,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>New reports and parties linked to GARUDA IDs</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Prior reports of the accused</td></tr><tr><td><b>Opened from</b></td><td>Apps → FIR Automation</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>New reports and parties linked to GARUDA IDs</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Prior reports of the accused</td></tr><tr><td><b>Opened from</b></td><td>Apps → FIR Automation</td></tr></tbody></table></div></div>"
   }
  ],
  "demo": null,
@@ -153,8 +171,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "AI CopWriter",
+   "href": "/products/ai-copwriter/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Compliant Memo Generator",
+   "href": "/products/memo-generator/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See FIR Automation running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

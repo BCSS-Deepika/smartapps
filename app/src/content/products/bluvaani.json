@@ -46,7 +46,25 @@
   ],
   "logo": "/logos/bluvaani.webp",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "17",
+    "label": "components"
+   },
+   {
+    "value": "19",
+    "label": "stages per call"
+   },
+   {
+    "value": "3",
+    "label": "conditions before any message"
+   },
+   {
+    "value": "7",
+    "label": "operational reports"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -574,7 +592,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"ch-lead\">\n<h3>One citizen call. Understood, recorded, acted on.</h3>\n<p>\n            A fraud victim calls once. The system must not lose a word. BluVaani answers the call in\n            any Indian language the citizen speaks, separates who said what, works out what happened and how\n            urgent it is, and turns the call into a structured case that someone is accountable for.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The journey · nineteen stages, phone ringing to a line in a report</h4>\n<ol class=\"flow\">\n<li><div><b>Answer</b><span>The call is picked up in any Indian language the citizen uses, including mixed speech.</span></div></li>\n<li><div><b>Transcribe</b><span>Speech to text, with speakers separated so the officer's words and the citizen's are distinct.</span></div></li>\n<li><div><b>Understand</b><span>Intent, urgency, place and names extracted; emergencies jump the queue on urgency score.</span></div></li>\n<li><div><b>Dispatch</b><span>Routed to the right station, unit or patrol based on jurisdiction and availability.</span></div></li>\n<li><div><b>Hand off</b><span>Complaint passed to the documentation product, the grievance board or a field task.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>The follow-up rule</h4>\n<div class=\"rule-box\">\n<div class=\"rule-h\">\n<span class=\"tag\" data-acc=\"field\">Three conditions · all true, or no message</span>\n<b>A follow-up message is never sent automatically</b>\n</div>\n<p>\n              The messaging follow-up is deliberately conditional, not a blanket auto-reply. All three\n              conditions must hold before anything leaves the platform. This is the rule as the product\n              implements it, and it should not be described as generic automatic messaging.\n            </p>\n<ul class=\"ticks\">\n<li>The call is classified as a financial-fraud or money-loss case under the decision logic.</li>\n<li>The caller's number is captured and valid for the messaging channel.</li>\n<li>The case reaches the state at which a follow-up is defined as appropriate.</li>\n</ul>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>What the department gets</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Structured cases</h4><p>Every call becomes a case with a transcript, a summary, a classification and a dispatch decision attached.</p></div>\n<div class=\"card\"><h4>Clean statuses</h4><p>One status at a time, always a clear answer — including what happens when a call is not the happy path.</p></div>\n<div class=\"card\"><h4>Seven operational reports</h4><p>Call volumes, categories, urgency bands, dispatch outcomes, handoffs, follow-ups and closure, counted from the case record.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>Fast for the citizen, careful for the department</b> — urgency decides the queue, not call order alone.</li>\n<li><b>Human handoff</b> — an officer reviews before a case leaves the call-handling stage.</li>\n<li><b>Transcript retained</b> — the summary never replaces the record it came from.</li>\n<li><b>Local deployment option</b> — speech and language models can run inside the department's own infrastructure.</li>\n</ul>\n</div>"
+   "html": "<div class=\"ch-lead\">\n<h2 class=\"lv3\">One citizen call. Understood, recorded, acted on.</h2>\n<p>\n            A fraud victim calls once. The system must not lose a word. BluVaani answers the call in\n            any Indian language the citizen speaks, separates who said what, works out what happened and how\n            urgent it is, and turns the call into a structured case that someone is accountable for.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h3 class=\"lv4\">The journey · nineteen stages, phone ringing to a line in a report</h3>\n<ol class=\"flow\">\n<li><div><b>Answer</b><span>The call is picked up in any Indian language the citizen uses, including mixed speech.</span></div></li>\n<li><div><b>Transcribe</b><span>Speech to text, with speakers separated so the officer's words and the citizen's are distinct.</span></div></li>\n<li><div><b>Understand</b><span>Intent, urgency, place and names extracted; emergencies jump the queue on urgency score.</span></div></li>\n<li><div><b>Dispatch</b><span>Routed to the right station, unit or patrol based on jurisdiction and availability.</span></div></li>\n<li><div><b>Hand off</b><span>Complaint passed to the documentation product, the grievance board or a field task.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>The follow-up rule</h4>\n<div class=\"rule-box\">\n<div class=\"rule-h\">\n<span class=\"tag\" data-acc=\"field\">Three conditions · all true, or no message</span>\n<b>A follow-up message is never sent automatically</b>\n</div>\n<p>\n              The messaging follow-up is deliberately conditional, not a blanket auto-reply. All three\n              conditions must hold before anything leaves the platform. This is the rule as the product\n              implements it, and it should not be described as generic automatic messaging.\n            </p>\n<ul class=\"ticks\">\n<li>The call is classified as a financial-fraud or money-loss case under the decision logic.</li>\n<li>The caller's number is captured and valid for the messaging channel.</li>\n<li>The case reaches the state at which a follow-up is defined as appropriate.</li>\n</ul>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>What the department gets</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Structured cases</h4><p>Every call becomes a case with a transcript, a summary, a classification and a dispatch decision attached.</p></div>\n<div class=\"card\"><h4>Clean statuses</h4><p>One status at a time, always a clear answer — including what happens when a call is not the happy path.</p></div>\n<div class=\"card\"><h4>Seven operational reports</h4><p>Call volumes, categories, urgency bands, dispatch outcomes, handoffs, follow-ups and closure, counted from the case record.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>Fast for the citizen, careful for the department</b> — urgency decides the queue, not call order alone.</li>\n<li><b>Human handoff</b> — an officer reviews before a case leaves the call-handling stage.</li>\n<li><b>Transcript retained</b> — the summary never replaces the record it came from.</li>\n<li><b>Local deployment option</b> — speech and language models can run inside the department's own infrastructure.</li>\n</ul>\n</div>"
   },
   {
    "kind": "modules"
@@ -603,8 +621,34 @@
    "memo-generator",
    "smartcop",
    "grievance-management"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure"
   ]
  },
+ "pager": [
+  {
+   "label": "Grievance Management",
+   "href": "/products/grievance-management/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  }
+ ],
  "cta": {
   "title": "See BluVaani running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

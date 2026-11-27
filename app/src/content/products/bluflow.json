@@ -46,7 +46,25 @@
   ],
   "logo": "/logos/bluflow.webp",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "13",
+    "label": "capabilities"
+   },
+   {
+    "value": "9",
+    "label": "fraud patterns"
+   },
+   {
+    "value": "7",
+    "label": "architecture layers"
+   },
+   {
+    "value": "hours",
+    "label": "not weeks"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -190,7 +208,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Statements arrive unreadable</h4><p>Every bank formats differently, and many arrive as scans, so an investigator retypes thousands of rows before any analysis starts.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>The trail crosses accounts</h4><p>Money moves through mule accounts and shell entities; following it by hand across dozens of statements is impractical within a case timeline.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Findings must stand in court</h4><p>A spreadsheet of suspicions is not an annexure. The output has to be reproducible and referenced back to the source transaction.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h3 class=\"lv4\">Statements arrive unreadable</h3><p>Every bank formats differently, and many arrive as scans, so an investigator retypes thousands of rows before any analysis starts.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>The trail crosses accounts</h4><p>Money moves through mule accounts and shell entities; following it by hand across dozens of statements is impractical within a case timeline.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Findings must stand in court</h4><p>A spreadsheet of suspicions is not an annexure. The output has to be reproducible and referenced back to the source transaction.</p></div></div>"
   },
   {
    "kind": "html",
@@ -198,7 +216,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Statements in</b><span>PDF or spreadsheet statements from multiple institutions.</span></div></li><li><div><b>Extract &amp; normalise</b><span>Every transaction extracted, cleaned and standardised across banks.</span></div></li><li><div><b>Analyse</b><span>AI and rule-based analytics classify activity and detect anomalies.</span></div></li><li><div><b>Trace</b><span>Fund trails and relationship graphs across accounts.</span></div></li><li><div><b>Report</b><span>Investigation-ready reports with evidence export.</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Cyber crime</span><span class=\"chip\">Economic offences wing</span><span class=\"chip\">Anti-corruption</span><span class=\"chip\">Narcotics investigators</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Statements in</b><span>PDF or spreadsheet statements from multiple institutions.</span></div></li><li><div><b>Extract &amp; normalise</b><span>Every transaction extracted, cleaned and standardised across banks.</span></div></li><li><div><b>Analyse</b><span>AI and rule-based analytics classify activity and detect anomalies.</span></div></li><li><div><b>Trace</b><span>Fund trails and relationship graphs across accounts.</span></div></li><li><div><b>Report</b><span>Investigation-ready reports with evidence export.</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Cyber crime</span><span class=\"chip\">Economic offences wing</span><span class=\"chip\">Anti-corruption</span><span class=\"chip\">Narcotics investigators</span></div>"
   },
   {
    "kind": "modules"
@@ -209,7 +227,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Flagged accounts and money links into the network graph</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Bank data received under authorisation</td></tr><tr><td><b>Opened from</b></td><td>Subject → Financial tab → “Analyse in BluFlow”</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Flagged accounts and money links into the network graph</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Bank data received under authorisation</td></tr><tr><td><b>Opened from</b></td><td>Subject → Financial tab → “Analyse in BluFlow”</td></tr></tbody></table></div></div>"
   },
   {
    "kind": "html",
@@ -243,8 +261,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "Women Safety Portal",
+   "href": "/products/women-safety-portal/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Digital Forensics",
+   "href": "/products/digital-forensics/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See BluFlow running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

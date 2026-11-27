@@ -26,11 +26,14 @@
 .pc h2 { font-size: var(--text-section); line-height: var(--text-section--line-height); margin-bottom: 18px; }
 .pc h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); margin-bottom: 12px; }
 .pc h4 { font-size: 1.0625rem; margin-bottom: 8px; }
+/* headings renumbered so levels never skip keep their original size (lv3, lv4) */
+.pc h2.lv3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: inherit; margin-bottom: 12px; }
+.pc :is(h2, h3).lv4 { font-size: 1.0625rem; line-height: inherit; margin-bottom: 8px; }
 .pc p { line-height: 1.65; }
 .pc b, .pc strong { color: var(--color-white); font-weight: 600; }
 .pc a { color: var(--ct); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .pc a:hover { color: var(--color-white); }
-.pc .eyebrow, .pc .kicker, .pc .ch-sec > h4, .pc .agv-k, .pc .tier-k, .pc .now, .pc .eg-e .k {
+.pc .eyebrow, .pc .kicker, .pc .ch-sec > :is(h4, .lv4), .pc .agv-k, .pc .tier-k, .pc .now, .pc .eg-e .k {
   font-family: var(--font-mono); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ct);
 }
@@ -60,7 +63,7 @@
   padding: clamp(18px, 2.2vw, 24px);
 }
 .pc .card p, .pc .door > p, .pc .tier > p { font-size: var(--text-small); color: var(--color-ink-2); line-height: 1.6; }
-.pc .card h3, .pc .card h4 { margin-bottom: 8px; }
+.pc .card :is(h2, h3, h4) { margin-bottom: 8px; }
 .pc .card-top, .pc .tier, .pc .eg-e { border-top: 3px solid var(--c); }
 .pc .card-d { background: color-mix(in oklab, var(--color-surface) 70%, transparent); }
 .pc .card > .chips, .pc .card > .ticks { margin-top: 14px; }
@@ -136,7 +139,7 @@
 .pc .ch-lead { max-width: 76ch; }
 .pc .ch-lead p { font-size: var(--text-lede); }
 .pc .ch-sec { margin-top: clamp(28px, 3.6vw, 44px); }
-.pc .ch-sec > h4 { margin-bottom: 14px; }
+.pc .ch-sec > :is(h4, .lv4) { margin-bottom: 14px; }
 
 /* ---------- tables ---------- */
 .pc .tbl-w { overflow-x: auto; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); }
@@ -161,6 +164,8 @@
 .pc .sw-tab:hover, .pc .eg-vt:hover { color: var(--color-white); border-color: var(--color-ink-3); }
 .pc .sw-tab[aria-selected='true'], .pc .eg-vt[aria-selected='true'] { background: var(--c); border-color: var(--c); color: var(--color-white); }
 .pc .eg-tabs { margin-bottom: 14px; }
+/* white on the EduGenie blue is 3.4:1, so the selected tab takes dark text (7:1) */
+.pc .eg-vt[aria-selected='true'] { color: var(--color-brand-ink); }
 .pc .sw-panel { margin-top: 12px; border: 1px solid var(--color-line); border-top: 3px solid var(--c); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(18px, 2.4vw, 26px); }
 .pc .swp-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 18px; }
 .pc .swp-h > b { font-family: var(--font-display); font-size: 1.25rem; }
@@ -205,7 +210,7 @@
 .pc .agv-go { display: block; margin-top: 14px; font-size: var(--text-small); font-weight: 600; color: var(--color-brand-soft); }
 
 /* ---------- Women Safety Portal ---------- */
-.pc .door h4 { margin: 10px 0 8px; }
+.pc .door :is(h4, .lv4) { margin: 10px 0 8px; }
 
 /* ---------- EduGenie ---------- */
 .pc .eg-e { display: flex; flex-direction: column; gap: 10px; }
@@ -223,7 +228,7 @@
 
 /* ---------- rhythm between blocks, at any depth ---------- */
 .pc * + :is(.grid, .pp-grid, .saga-spine, .sw-tabs, .eg-tabs, .tiers, .maturity, .limits, .limit-box, .note, .ticks, .tbl-w, .flow, .chips, .doors, .ag-pipe, .ag-verts, .sx-grid, .sx-kpis, .eg-eng, .eg-aud, .eg-proof, .eg-j, .rule-box, .lede) { margin-top: 20px; }
-.pc * + :is(h2, h3, .eyebrow) { margin-top: clamp(32px, 4vw, 48px); }
+.pc * + :is(h2, h3, .eyebrow):not(.lv4) { margin-top: clamp(32px, 4vw, 48px); }
 .pc .eyebrow + :is(h2, h3), .pc .sec-head > h2 { margin-top: 0; }
 .pc * + p { margin-top: 12px; }
 .pc :is(.card, .door, .tier, .eg-e, .note, .sw-mods > div, .flow li, .rule-h, .ag-v, .eg-j li, .sx-kpi) > * + * { margin-top: 8px; }
@@ -231,4 +236,4 @@
 .pc .note > * + * { margin-top: 0; }
 .pc a.card, .pc a.ag-v { display: block; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
 .pc a.card:hover { border-color: var(--c); transform: translateY(-2px); }
-.pc a.card h4, .pc a.card h3 { color: var(--color-white); }
+.pc a.card :is(h2, h3, h4) { color: var(--color-white); }

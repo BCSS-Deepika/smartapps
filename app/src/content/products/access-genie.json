@@ -33,7 +33,25 @@
   ],
   "logo": "/logos/access-genie.webp",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "2",
+    "label": "divisions"
+   },
+   {
+    "value": "3",
+    "label": "core modules"
+   },
+   {
+    "value": "13",
+    "label": "policing products on GARUDA"
+   },
+   {
+    "value": "8",
+    "label": "enterprise lines and industries"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -311,7 +329,7 @@
    "id": null,
    "tone": "deep",
    "tight": false,
-   "html": "<div class=\"wrap\">\n</div>\n<ol class=\"ag-pipe\">\n<li><span class=\"agp-n\">01</span><b>Collect</b><span>Streams from IP and analog cameras, ANPR and radar, plus records, helplines and seized devices.</span></li>\n<li><span class=\"agp-n\">02</span><b>Detect</b><span>Models run on zones, time windows and thresholds the organisation sets — at the edge or in the cluster.</span></li>\n<li><span class=\"agp-n\">03</span><b>Alert</b><span>A detection becomes a prioritised alert with its evidence attached, routed to whoever owns it.</span></li>\n<li><span class=\"agp-n\">04</span><b>Act</b><span>The alert lands in a workflow: a dispatch, a challan, a case, a memo, a floor-team instruction.</span></li>\n</ol>\n<div class=\"grid g3\">\n<div class=\"card card-d\">\n<h4>Built on existing cameras</h4>\n<p>IP and analog CCTV, PTZ, city and station cameras keep recording as before. Access Genie reads the streams and adds a layer on top; the recorder and the wiring stay where they are.</p>\n</div>\n<div class=\"card card-d\">\n<h4>Processing stays where you decide</h4>\n<p>Fully on-premise, private cloud or hybrid. For most government deployments, video, records and evidence are processed and stored on infrastructure the department owns.</p>\n</div>\n<div class=\"card card-d\">\n<h4>Connected, not another silo</h4>\n<p>Reads from and writes to the systems already in use, so officers and staff do not key the same data in twice. Each connection is scoped, tested and approved before it goes live.</p>\n</div>\n</div>\n<div>\n<div class=\"eyebrow\">Two divisions</div>\n<h3>\n        Policing &amp; public safety. Enterprise &amp; industry.\n      </h3>\n<p class=\"lede\">\n        One detection engine serves two divisions. For police forces, Access Genie is delivered through GARUDA,\n        Blue Cloud's separate policing vertical, with traffic enforcement alongside it. Enterprise\n        and industry covers retail, logistics through BluGo, and six more sectors. What changes between\n        them is the model set, the KPIs, the workflow and who receives the alert.\n      </p>\n<div class=\"ag-verts\">\n<a class=\"ag-v ag-v-lead\" href=\"/products/garuda/\">\n<span class=\"agv-k\">Separate vertical · Policing</span>\n<b>GARUDA</b>\n<span class=\"agv-d\">An ecosystem of thirteen connected products: intelligence, investigation, documentation, field and citizen services — behind one login.</span>\n<span class=\"agv-go\">Open the ecosystem →</span>\n</a>\n<a class=\"ag-v\" href=\"/products/access-genie-retail/\">\n<span class=\"agv-k\">Division · Enterprise &amp; industry</span>\n<b>Retail &amp; jewellery</b>\n<span class=\"agv-d\">16 operational KPIs across sales, risk and operations, with camera evidence against every one.</span>\n<span class=\"agv-go\">Open the chapter →</span>\n</a>\n<a class=\"ag-v\" href=\"/#access-genie-more\">\n<span class=\"agv-k\">Enterprise &amp; industry · six more</span>\n<b>Industries</b>\n<span class=\"agv-d\">Airports and transport, critical infrastructure, smart communities, healthcare and finance, education, and BluGo for logistics.</span>\n<span class=\"agv-go\">See the industries →</span>\n</a>\n</div>\n</div>"
+   "html": "<div class=\"wrap\">\n</div>\n<ol class=\"ag-pipe\">\n<li><span class=\"agp-n\">01</span><b>Collect</b><span>Streams from IP and analog cameras, ANPR and radar, plus records, helplines and seized devices.</span></li>\n<li><span class=\"agp-n\">02</span><b>Detect</b><span>Models run on zones, time windows and thresholds the organisation sets — at the edge or in the cluster.</span></li>\n<li><span class=\"agp-n\">03</span><b>Alert</b><span>A detection becomes a prioritised alert with its evidence attached, routed to whoever owns it.</span></li>\n<li><span class=\"agp-n\">04</span><b>Act</b><span>The alert lands in a workflow: a dispatch, a challan, a case, a memo, a floor-team instruction.</span></li>\n</ol>\n<div class=\"grid g3\">\n<div class=\"card card-d\">\n<h2 class=\"lv4\">Built on existing cameras</h2>\n<p>IP and analog CCTV, PTZ, city and station cameras keep recording as before. Access Genie reads the streams and adds a layer on top; the recorder and the wiring stay where they are.</p>\n</div>\n<div class=\"card card-d\">\n<h3 class=\"lv4\">Processing stays where you decide</h3>\n<p>Fully on-premise, private cloud or hybrid. For most government deployments, video, records and evidence are processed and stored on infrastructure the department owns.</p>\n</div>\n<div class=\"card card-d\">\n<h4>Connected, not another silo</h4>\n<p>Reads from and writes to the systems already in use, so officers and staff do not key the same data in twice. Each connection is scoped, tested and approved before it goes live.</p>\n</div>\n</div>\n<div>\n<div class=\"eyebrow\">Two divisions</div>\n<h3>\n        Policing &amp; public safety. Enterprise &amp; industry.\n      </h3>\n<p class=\"lede\">\n        One detection engine serves two divisions. For police forces, Access Genie is delivered through GARUDA,\n        Blue Cloud's separate policing vertical, with traffic enforcement alongside it. Enterprise\n        and industry covers retail, logistics through BluGo, and six more sectors. What changes between\n        them is the model set, the KPIs, the workflow and who receives the alert.\n      </p>\n<div class=\"ag-verts\">\n<a class=\"ag-v ag-v-lead\" href=\"/products/garuda/\">\n<span class=\"agv-k\">Separate vertical · Policing</span>\n<b>GARUDA</b>\n<span class=\"agv-d\">An ecosystem of thirteen connected products: intelligence, investigation, documentation, field and citizen services — behind one login.</span>\n<span class=\"agv-go\">Open the ecosystem →</span>\n</a>\n<a class=\"ag-v\" href=\"/products/access-genie-retail/\">\n<span class=\"agv-k\">Division · Enterprise &amp; industry</span>\n<b>Retail &amp; jewellery</b>\n<span class=\"agv-d\">16 operational KPIs across sales, risk and operations, with camera evidence against every one.</span>\n<span class=\"agv-go\">Open the chapter →</span>\n</a>\n<a class=\"ag-v\" href=\"/#access-genie-more\">\n<span class=\"agv-k\">Enterprise &amp; industry · six more</span>\n<b>Industries</b>\n<span class=\"agv-d\">Airports and transport, critical infrastructure, smart communities, healthcare and finance, education, and BluGo for logistics.</span>\n<span class=\"agv-go\">See the industries →</span>\n</a>\n</div>\n</div>"
   },
   {
    "kind": "modules"
@@ -353,8 +371,28 @@
    "access-genie-retail",
    "blugo",
    "edugenie"
+  ],
+  "lines": [
+   "Blue Cloud's Policing Operational Ecosystem",
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher",
+   "Retail vertical",
+   "Logistics & mobility",
+   "Education ecosystem"
   ]
  },
+ "pager": [],
  "cta": {
   "title": "See Access Genie running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

@@ -41,7 +41,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M12 3v17M7.5 20.5h9M5 7h14\"></path><path d=\"M2 14h6L5 7z\"></path><path d=\"M16 14h6l-3-7z\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "modules"
+   },
+   {
+    "value": "5",
+    "label": "stages"
+   },
+   {
+    "value": "1",
+    "label": "case diary"
+   },
+   {
+    "value": "0",
+    "label": "missed sanction deadlines"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -119,7 +137,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h4>Trap days leave thin records</h4><p>What happened on site is written up afterwards from memory and loose notes, which weakens the case at trial.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Sanction requests stall</h4><p>Prosecution sanction sits with an authority for months and nobody is tracking the clock until it is too late.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Assets are checked separately</h4><p>Disproportionate assets analysis runs as its own exercise, disconnected from the trap case it belongs to.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"invest\"><h3 class=\"lv4\">Trap days leave thin records</h3><p>What happened on site is written up afterwards from memory and loose notes, which weakens the case at trial.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Sanction requests stall</h4><p>Prosecution sanction sits with an authority for months and nobody is tracking the clock until it is too late.</p></div><div class=\"card card-top\" data-acc=\"invest\"><h4>Assets are checked separately</h4><p>Disproportionate assets analysis runs as its own exercise, disconnected from the trap case it belongs to.</p></div></div>"
   },
   {
    "kind": "html",
@@ -127,7 +145,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Complaint</b><span>Bribe demand complaint recorded</span></div></li><li><div><b>Verify</b><span>Demand confirmed; recording checked</span></div></li><li><div><b>Plan</b><span>Team, witnesses, note serial numbers</span></div></li><li><div><b>Trap</b><span>Chemical test, seizure and arrest logged on site</span></div></li><li><div><b>Prosecute</b><span>Sanction request, chargesheet, court tracking</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Anti-corruption field officers</span><span class=\"chip\">Anti-corruption headquarters</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"invest\"><li><div><b>Complaint</b><span>Bribe demand complaint recorded</span></div></li><li><div><b>Verify</b><span>Demand confirmed; recording checked</span></div></li><li><div><b>Plan</b><span>Team, witnesses, note serial numbers</span></div></li><li><div><b>Trap</b><span>Chemical test, seizure and arrest logged on site</span></div></li><li><div><b>Prosecute</b><span>Sanction request, chargesheet, court tracking</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Anti-corruption field officers</span><span class=\"chip\">Anti-corruption headquarters</span></div>"
   },
   {
    "kind": "modules"
@@ -138,7 +156,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Case status on the accused officer's GARUDA ID</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Assets, bank and vehicle records</td></tr><tr><td><b>Opened from</b></td><td>Apps → Trap Cases</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Case status on the accused officer's GARUDA ID</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Assets, bank and vehicle records</td></tr><tr><td><b>Opened from</b></td><td>Apps → Trap Cases</td></tr></tbody></table></div></div>"
   }
  ],
  "demo": null,
@@ -157,8 +175,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "Digital Forensics",
+   "href": "/products/digital-forensics/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "AI CopWriter",
+   "href": "/products/ai-copwriter/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See Trap Case Management running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

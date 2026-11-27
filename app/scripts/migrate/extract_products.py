@@ -171,7 +171,14 @@ for f in sorted(SRC.glob('*.html')):
         'logo': LOGOS.get(slug) if img else None,
         'icon': str(clean(svg, slug)) if (svg and not img) else None,
         'round': bool(art and art.select_one('.mk-emb')),
+        # the four-figure strip under the hero
+        'facts': [{'value': text(d.find('b')), 'label': text(d.find('span'))}
+                  for d in soup.select('.facts .facts-in > div')],
     }
+    # previous / all GARUDA products / next, on the GARUDA suite pages
+    pager = [{'label': re.sub(r'^\W+|\W+$', '', text(a)).strip(), 'href': rewrite_href(a['href']),
+              'kind': 'prev' if text(a).startswith('\u2190') else 'next' if text(a).endswith('\u2192') else 'all'}
+             for a in soup.select('.pfoot-nav a')]
 
     # ---------- modules ----------
     mod_sec = soup.select_one('section#modules')
@@ -212,10 +219,12 @@ for f in sorted(SRC.glob('*.html')):
 
     # ---------- the rest ----------
     body_sections, demo, related, cta = [], None, None, None
+    level = [1]  # deepest heading so far: the hero h1, then the module explorer's h3/h4
     for sec in sections[1:]:
         t = sec.get('data-title') or ''
         if sec.get('id') == 'modules':
             body_sections.append({'kind': 'modules'})
+            level[0] = 4
             continue
         if sec.select_one('.cta-strip'):
             strip = sec.select_one('.cta-strip')
@@ -226,7 +235,10 @@ for f in sorted(SRC.glob('*.html')):
             continue
         if t == 'Related products':
             related = {'title': text(sec.find(['h2', 'h3'])),
-                       'slugs': [re.sub(r'\.html.*', '', a['href']).split('/')[-1] for a in sec.select('a.sib')]}
+                       'slugs': [re.sub(r'\.html.*', '', a['href']).split('/')[-1] for a in sec.select('a.sib')],
+                       # the one-line description each card carries on this page
+                       'lines': [list(a.stripped_strings)[1] if len(list(a.stripped_strings)) > 1 else ''
+                                 for a in sec.select('a.sib')]}
             for a in sec.select('a.sib'):
                 s2 = re.sub(r'\.html.*', '', a['href']).split('/')[-1]
                 mk = a.select_one('.mk, .mk-wide')
@@ -241,6 +253,18 @@ for f in sorted(SRC.glob('*.html')):
             continue
         wrap = sec.select_one('.wrap') or sec
         clean(wrap, slug)
+        # Headings never skip a level (h2 then h4). A heading that has to move keeps its look
+        # through an lv<original level> class.
+        for hd in wrap.find_all(['h2', 'h3', 'h4', 'h5', 'h6']):
+            orig = int(hd.name[1])
+            new = min(orig, level[0] + 1)
+            if new != orig:
+                hd.name = f'h{new}'
+                hd['class'] = hd.get('class', []) + [f'lv{orig}']
+            level[0] = new
+        # Wide tables and role strips scroll sideways on phones, so they take keyboard focus.
+        for box in wrap.select('.tbl-w, .sx-roles'):
+            box['tabindex'] = '0'
         body_sections.append({
             'kind': 'html', 'title': t, 'id': sec.get('id'),
             'tone': 'deep' if ({'band-dark', 'band-deep'} & set(sec.get('class', []))) else (
@@ -251,7 +275,7 @@ for f in sorted(SRC.glob('*.html')):
 
     products[slug] = apply_changes(slug, {
         'slug': slug, 'title': title, 'description': desc, 'accent': acc_of(hero.get('style', '')),
-        'hero': hero_d, 'modules': modules, 'sections': body_sections, 'demo': demo, 'related': related, 'cta': cta,
+        'hero': hero_d, 'modules': modules, 'sections': body_sections, 'demo': demo, 'related': related, 'pager': pager, 'cta': cta,
     })
     (OUT / f'{slug}.json').write_text(json.dumps(products[slug], ensure_ascii=False, indent=1))
 

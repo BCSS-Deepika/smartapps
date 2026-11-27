@@ -41,7 +41,25 @@
   ],
   "logo": "/logos/blugo.webp",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "participant roles"
+   },
+   {
+    "value": "4",
+    "label": "vehicle categories"
+   },
+   {
+    "value": "2",
+    "label": "booking modes"
+   },
+   {
+    "value": "1",
+    "label": "governed platform"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -199,7 +217,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"blugo\"><h4>Movement sits outside the platform</h4><p>Fleet, goods and labour coordination run on separate tools that share nothing with the operational systems around them.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Roles need different views</h4><p>A driver, a dispatcher, a labour supervisor and a customer each need a different surface onto the same job.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Proof of movement is weak</h4><p>Where a vehicle went and when a job completed is reconstructed from phone calls rather than recorded as it happens.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"blugo\"><h3 class=\"lv4\">Movement sits outside the platform</h3><p>Fleet, goods and labour coordination run on separate tools that share nothing with the operational systems around them.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Roles need different views</h4><p>A driver, a dispatcher, a labour supervisor and a customer each need a different surface onto the same job.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Proof of movement is weak</h4><p>Where a vehicle went and when a job completed is reconstructed from phone calls rather than recorded as it happens.</p></div></div>"
   },
   {
    "kind": "html",
@@ -207,7 +225,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"blugo\"><li><div><b>Request</b><span>A movement job is raised with its route and load</span></div></li><li><div><b>Assign</b><span>Vehicle, driver and labour matched to the job</span></div></li><li><div><b>Track</b><span>Position and status update as the job runs</span></div></li><li><div><b>Confirm</b><span>Completion captured with time and location</span></div></li><li><div><b>Report</b><span>Utilisation, timing and exception reporting</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Fleet operators</span><span class=\"chip\">Dispatchers</span><span class=\"chip\">Labour supervisors</span><span class=\"chip\">Enterprise logistics teams</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"blugo\"><li><div><b>Request</b><span>A movement job is raised with its route and load</span></div></li><li><div><b>Assign</b><span>Vehicle, driver and labour matched to the job</span></div></li><li><div><b>Track</b><span>Position and status update as the job runs</span></div></li><li><div><b>Confirm</b><span>Completion captured with time and location</span></div></li><li><div><b>Report</b><span>Utilisation, timing and exception reporting</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Fleet operators</span><span class=\"chip\">Dispatchers</span><span class=\"chip\">Labour supervisors</span><span class=\"chip\">Enterprise logistics teams</span></div>"
   },
   {
    "kind": "modules"
@@ -228,8 +246,14 @@
    "access-genie-retail",
    "access-genie",
    "garuda"
+  ],
+  "lines": [
+   "Retail vertical",
+   "Multi-industry platform",
+   "Blue Cloud's Policing Operational Ecosystem"
   ]
  },
+ "pager": [],
  "cta": {
   "title": "See BluGo running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

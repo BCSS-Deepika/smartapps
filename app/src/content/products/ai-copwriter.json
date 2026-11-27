@@ -46,7 +46,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M12 19l7-7 3 3-7 7z\"></path><path d=\"M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z\"></path><path d=\"M2 2l7.6 7.6\"></path><circle cx=\"11\" cy=\"11\" r=\"2\"></circle></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "11",
+    "label": "languages"
+   },
+   {
+    "value": "12",
+    "label": "point quality audit"
+   },
+   {
+    "value": "5",
+    "label": "W + 1 H structure"
+   },
+   {
+    "value": "6",
+    "label": "station capabilities"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -132,7 +150,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"ch-lead\">\n<h3>Complaint in the complainant's language. Draft in the station's.</h3>\n<p>\n            Writing a first information report by hand is slow, and key details get missed. The\n            complainant explains what happened in their own language; the report is written in\n            another, and meaning is lost in between. AI CopWriter handles all three problems:\n            record, understand, check.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The problem</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Language gap</h4><p>Complainants explain what happened in their own language. The report is written in another, and meaning gets lost in between.</p></div>\n<div class=\"card\"><h4>Time at the desk</h4><p>The officer writes, re-reads and rewrites the statement by hand while the complainant waits.</p></div>\n<div class=\"card\"><h4>Missing details</h4><p>If the place, time, accused or motive is not recorded, the case is weaker from the first day.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>How it works · one complaint, word by word</h4>\n<ol class=\"flow\">\n<li><div><b>Speaks</b><span>The complainant speaks in the language they are comfortable in, or types.</span></div></li>\n<li><div><b>Captured</b><span>Every word is written down as it is spoken, with the original audio kept.</span></div></li>\n<li><div><b>Translated</b><span>Turned into clear English, with the source text preserved alongside.</span></div></li>\n<li><div><b>Structured</b><span>Placed into the report's five Ws and one H: what, where, when, who, whom, why, how.</span></div></li>\n<li><div><b>Checked</b><span>Gaps flagged before filing — a missing motive is raised, not silently left blank.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>Languages supported</h4>\n<div class=\"chips\">\n<span class=\"chip\">Telugu</span><span class=\"chip\">Hindi</span><span class=\"chip\">English</span>\n<span class=\"chip\">Tamil</span><span class=\"chip\">Kannada</span><span class=\"chip\">Malayalam</span>\n<span class=\"chip\">Marathi</span><span class=\"chip\">Bengali</span><span class=\"chip\">Gujarati</span>\n<span class=\"chip\">Odia</span><span class=\"chip\">Punjabi</span>\n</div>\n<p>The language can also be detected automatically.</p>\n</div>\n<div class=\"ch-sec\">\n<h4>What the station gets</h4>\n<ul class=\"ticks\">\n<li><b>Live transcription</b> — text appears on screen while the complainant is still speaking.</li>\n<li><b>Petition scanning</b> — reads petitions from PDF or photographs into editable text.</li>\n<li><b>Speaker separation</b> — shows who said what when the officer and complainant both speak.</li>\n<li><b>Quality audit</b> — a 12-point report marks each element present, partial or missing, and works out any delay in reporting.</li>\n<li><b>Searchable records</b> — every complaint saved with its original audio, ready to search, replay and edit.</li>\n<li><b>Secure access</b> — personal logins per officer, an admin panel, and records stored on the department's own server.</li>\n</ul>\n</div>\n<div class=\"note\">\n<span><b>Citizen-facing variant.</b> Within GARUDA, the same engine also runs as a citizen complaint writer on a station kiosk, the web or a phone: it asks follow-up questions for missing details, reads the complaint back before submitting, finds the right station from the location, and sends the citizen a copy.</span>\n</div>"
+   "html": "<div class=\"ch-lead\">\n<h2 class=\"lv3\">Complaint in the complainant's language. Draft in the station's.</h2>\n<p>\n            Writing a first information report by hand is slow, and key details get missed. The\n            complainant explains what happened in their own language; the report is written in\n            another, and meaning is lost in between. AI CopWriter handles all three problems:\n            record, understand, check.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h3 class=\"lv4\">The problem</h3>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Language gap</h4><p>Complainants explain what happened in their own language. The report is written in another, and meaning gets lost in between.</p></div>\n<div class=\"card\"><h4>Time at the desk</h4><p>The officer writes, re-reads and rewrites the statement by hand while the complainant waits.</p></div>\n<div class=\"card\"><h4>Missing details</h4><p>If the place, time, accused or motive is not recorded, the case is weaker from the first day.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>How it works · one complaint, word by word</h4>\n<ol class=\"flow\">\n<li><div><b>Speaks</b><span>The complainant speaks in the language they are comfortable in, or types.</span></div></li>\n<li><div><b>Captured</b><span>Every word is written down as it is spoken, with the original audio kept.</span></div></li>\n<li><div><b>Translated</b><span>Turned into clear English, with the source text preserved alongside.</span></div></li>\n<li><div><b>Structured</b><span>Placed into the report's five Ws and one H: what, where, when, who, whom, why, how.</span></div></li>\n<li><div><b>Checked</b><span>Gaps flagged before filing — a missing motive is raised, not silently left blank.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>Languages supported</h4>\n<div class=\"chips\">\n<span class=\"chip\">Telugu</span><span class=\"chip\">Hindi</span><span class=\"chip\">English</span>\n<span class=\"chip\">Tamil</span><span class=\"chip\">Kannada</span><span class=\"chip\">Malayalam</span>\n<span class=\"chip\">Marathi</span><span class=\"chip\">Bengali</span><span class=\"chip\">Gujarati</span>\n<span class=\"chip\">Odia</span><span class=\"chip\">Punjabi</span>\n</div>\n<p>The language can also be detected automatically.</p>\n</div>\n<div class=\"ch-sec\">\n<h4>What the station gets</h4>\n<ul class=\"ticks\">\n<li><b>Live transcription</b> — text appears on screen while the complainant is still speaking.</li>\n<li><b>Petition scanning</b> — reads petitions from PDF or photographs into editable text.</li>\n<li><b>Speaker separation</b> — shows who said what when the officer and complainant both speak.</li>\n<li><b>Quality audit</b> — a 12-point report marks each element present, partial or missing, and works out any delay in reporting.</li>\n<li><b>Searchable records</b> — every complaint saved with its original audio, ready to search, replay and edit.</li>\n<li><b>Secure access</b> — personal logins per officer, an admin panel, and records stored on the department's own server.</li>\n</ul>\n</div>\n<div class=\"note\">\n<span><b>Citizen-facing variant.</b> Within GARUDA, the same engine also runs as a citizen complaint writer on a station kiosk, the web or a phone: it asks follow-up questions for missing details, reads the complaint back before submitting, finds the right station from the location, and sends the citizen a copy.</span>\n</div>"
   },
   {
    "kind": "modules"
@@ -169,8 +187,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "Trap Case Management",
+   "href": "/products/trap-case-management/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "FIR Automation",
+   "href": "/products/fir-automation/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See AI CopWriter running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

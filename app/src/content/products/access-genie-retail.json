@@ -46,7 +46,25 @@
   ],
   "logo": "/logos/access-genie-retail.webp",
   "icon": null,
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "16",
+    "label": "KPIs"
+   },
+   {
+    "value": "3",
+    "label": "KPI families"
+   },
+   {
+    "value": "56",
+    "label": "stores · reference deployment"
+   },
+   {
+    "value": "3",
+    "label": "deployment modes"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -520,7 +538,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"wrap\">\n<p class=\"lede\">\n        Manual monitoring of thousands of cameras is physically impossible. For a luxury jewellery\n        chain running dozens of branches, a traditional CCTV setup is a purely passive archive —\n        incidents are noticed hours or days after they happen. Access Genie turns the same cameras\n        into an operational intelligence engine with sixteen measured KPIs.\n      </p>\n</div>\n<div class=\"note\">\n<span><b>Reference deployment figures.</b> The numbers above describe one live jewellery-chain deployment and are stated as reference information, not as a universal guarantee of what any other customer will see.</span>\n</div>\n<div class=\"ch-sec\">\n<h4 class=\"kicker\">\n        Enterprise safeguards\n      </h4>\n<ul class=\"ticks\">\n<li><b>Evidence integrity</b> — every alert clip and snapshot is cryptographically stamped with a hash and a UTC timestamp, preventing tampering and supporting legal admissibility.</li>\n<li><b>Camera uptime monitoring</b> — continuous polling across the estate, with automated escalation to technicians before blind spots can be exploited.</li>\n<li><b>Single administrative pane</b> — stores, streams, permissions and KPI thresholds managed in one place, with roles scoped per function.</li>\n<li><b>Daily executive scorecard</b> — generated automatically each night and delivered to leadership, so the picture does not depend on anyone compiling it.</li>\n</ul>\n</div>"
+   "html": "<div class=\"wrap\">\n<p class=\"lede\">\n        Manual monitoring of thousands of cameras is physically impossible. For a luxury jewellery\n        chain running dozens of branches, a traditional CCTV setup is a purely passive archive —\n        incidents are noticed hours or days after they happen. Access Genie turns the same cameras\n        into an operational intelligence engine with sixteen measured KPIs.\n      </p>\n</div>\n<div class=\"note\">\n<span><b>Reference deployment figures.</b> The numbers above describe one live jewellery-chain deployment and are stated as reference information, not as a universal guarantee of what any other customer will see.</span>\n</div>\n<div class=\"ch-sec\">\n<h2 class=\"kicker lv4\">\n        Enterprise safeguards\n      </h2>\n<ul class=\"ticks\">\n<li><b>Evidence integrity</b> — every alert clip and snapshot is cryptographically stamped with a hash and a UTC timestamp, preventing tampering and supporting legal admissibility.</li>\n<li><b>Camera uptime monitoring</b> — continuous polling across the estate, with automated escalation to technicians before blind spots can be exploited.</li>\n<li><b>Single administrative pane</b> — stores, streams, permissions and KPI thresholds managed in one place, with roles scoped per function.</li>\n<li><b>Daily executive scorecard</b> — generated automatically each night and delivered to leadership, so the picture does not depend on anyone compiling it.</li>\n</ul>\n</div>"
   },
   {
    "kind": "modules"
@@ -540,8 +558,14 @@
    "blugo",
    "access-genie",
    "garuda"
+  ],
+  "lines": [
+   "Logistics & mobility",
+   "Multi-industry platform",
+   "Blue Cloud's Policing Operational Ecosystem"
   ]
  },
+ "pager": [],
  "cta": {
   "title": "See Access Genie Retail running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

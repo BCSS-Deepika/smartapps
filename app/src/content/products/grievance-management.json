@@ -41,7 +41,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"92\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" viewbox=\"0 0 24 24\" width=\"92\"><path d=\"M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 21l2-5.2A8.4 8.4 0 1 1 21 11.5z\"></path><path d=\"M8.5 10h7M8.5 13.5h4\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "modules"
+   },
+   {
+    "value": "5",
+    "label": "statuses"
+   },
+   {
+    "value": "3",
+    "label": "intake sources"
+   },
+   {
+    "value": "1",
+    "label": "timer per grievance"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -123,7 +141,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"field\"><h4>Grievances arrive everywhere</h4><p>Social posts, petitions and phone calls each land in a different place, and no one has the whole picture.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Routing is manual</h4><p>Someone reads each item and decides where it goes, which is slow and inconsistent between shifts.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Closure is unverified</h4><p>A grievance marked resolved may never have reached the citizen, and nobody is measuring the difference.</p></div></div>"
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"field\"><h3 class=\"lv4\">Grievances arrive everywhere</h3><p>Social posts, petitions and phone calls each land in a different place, and no one has the whole picture.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Routing is manual</h4><p>Someone reads each item and decides where it goes, which is slow and inconsistent between shifts.</p></div><div class=\"card card-top\" data-acc=\"field\"><h4>Closure is unverified</h4><p>A grievance marked resolved may never have reached the citizen, and nobody is measuring the difference.</p></div></div>"
   },
   {
    "kind": "html",
@@ -131,7 +149,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"field\"><li><div><b>Capture</b><span>From Blura SAGA, petitions, BluVaani calls</span></div></li><li><div><b>Classify</b><span>Complaint, criticism, suggestion or query; category and station</span></div></li><li><div><b>Assign</b><span>Routed with a response-time timer</span></div></li><li><div><b>Resolve</b><span>Remarks required at every step</span></div></li><li><div><b>Close</b><span>Citizen updated; monthly reports</span></div></li></ol><h4 class=\"kicker\">Who uses it</h4><div class=\"chips\"><span class=\"chip\">Grievance cells</span><span class=\"chip\">Station house officers</span><span class=\"chip\">Department heads</span><span class=\"chip\">Commissioner's office</span></div>"
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"field\"><li><div><b>Capture</b><span>From Blura SAGA, petitions, BluVaani calls</span></div></li><li><div><b>Classify</b><span>Complaint, criticism, suggestion or query; category and station</span></div></li><li><div><b>Assign</b><span>Routed with a response-time timer</span></div></li><li><div><b>Resolve</b><span>Remarks required at every step</span></div></li><li><div><b>Close</b><span>Citizen updated; monthly reports</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Grievance cells</span><span class=\"chip\">Station house officers</span><span class=\"chip\">Department heads</span><span class=\"chip\">Commissioner's office</span></div>"
   },
   {
    "kind": "modules"
@@ -142,7 +160,7 @@
    "id": null,
    "tone": "base",
    "tight": true,
-   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Grievance trends by station and category</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Station and officer directory</td></tr><tr><td><b>Opened from</b></td><td>Alerts → “Grievances”</td></tr></tbody></table></div></div>"
+   "html": "<div class=\"card\"><h4>How it connects to GARUDA</h4><div class=\"tbl-w\" tabindex=\"0\"><table><tbody><tr><td><b>Sends to GARUDA</b></td><td>Grievance trends by station and category</td></tr><tr><td><b>Uses from GARUDA</b></td><td>Station and officer directory</td></tr><tr><td><b>Opened from</b></td><td>Alerts → “Grievances”</td></tr></tbody></table></div></div>"
   }
  ],
  "demo": null,
@@ -161,8 +179,39 @@
    "memo-generator",
    "smartcop",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "SmartCOP",
+   "href": "/products/smartcop/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "BluVaani",
+   "href": "/products/bluvaani/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See Grievance Management running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

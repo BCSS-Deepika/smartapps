@@ -46,7 +46,25 @@
   ],
   "logo": null,
   "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"94\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.9\" viewbox=\"0 0 24 24\" width=\"94\"><path d=\"M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z\"></path><path d=\"M8.5 12l2.5 2.5 4.5-5\"></path></svg>",
-  "round": false
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "steps per report"
+   },
+   {
+    "value": "3",
+    "label": "warnings before a charge memo"
+   },
+   {
+    "value": "5",
+    "label": "platform layers"
+   },
+   {
+    "value": "3",
+    "label": "roles"
+   }
+  ]
  },
  "modules": {
   "eyebrow": "Module explorer",
@@ -152,7 +170,7 @@
    "id": null,
    "tone": "base",
    "tight": false,
-   "html": "<div class=\"ch-lead\">\n<h3>Supervision only works if the memo reaches the right desk, fast.</h3>\n<p>\n            Daily situation reports arrive every morning. Reading each by hand, matching every case to a\n            station and typing each memo from scratch took days — while the lapse went cold. The\n            generator reads the report, resolves the responsible officer and drafts the memo within\n            minutes of upload.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h4>The problem</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Drafting took days</h4><p>Each report was read by hand, every case matched to a station, and each memo typed from scratch.</p><span class=\"now\">Now · drafts ready within minutes of upload</span></div>\n<div class=\"card\"><h4>Who was responsible?</h4><p>Stations, sectors and transfers change. Working out which officer held that ground on that date was slow and error-prone.</p><span class=\"now\">Now · resolved from jurisdiction and personnel records</span></div>\n<div class=\"card\"><h4>Repeat lapses went unseen</h4><p>Nobody could easily see that the same officer had already been warned twice this cycle, so repeat lapses never escalated.</p><span class=\"now\">Now · three warnings raise a charge memo</span></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Every case walks down the hierarchy to one desk</h4>\n<p>\n            A city force is organised zone → division → circle → police station → sector. The generator\n            resolves each case through that chain and picks the officers who held that ground, using\n            officer records synced from the personnel system so transfers are respected.\n          </p>\n<div class=\"tbl-w\">\n<table>\n<thead><tr><th>Recipient</th><th>Role</th><th>Memo</th></tr></thead>\n<tbody>\n<tr><td><b>Station house officer</b></td><td>Holds the station</td><td>SHO memo</td></tr>\n<tr><td><b>Primary sector officer</b></td><td>Holds the sector</td><td>Sector memo</td></tr>\n<tr><td><b>Relief sector officer</b></td><td>Covers leave and duty gaps</td><td>If on duty</td></tr>\n<tr><td><b>Circle supervisor</b></td><td>Supervision</td><td>Visibility only</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Memo lifecycle and escalation</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Every memo has a status</h4>\n<ol class=\"flow\">\n<li><div><b>Draft</b><span>Generated from the case, editable before anything is issued.</span></div></li>\n<li><div><b>Pending review</b><span>In the reviewing authority's queue.</span></div></li>\n<li><div><b>Approved</b><span>Issued to the officer.</span></div></li>\n<li><div><b>Awaiting reply</b><span>The officer must respond.</span></div></li>\n<li><div><b>Complied</b><span>Reply uploaded and closed.</span></div></li>\n</ol>\n<p>A memo can also be held for more facts, or rejected if the lapse is not upheld — in which case it does not count towards escalation.</p>\n</div>\n<div class=\"card\">\n<h4>Three warnings, then a charge memo</h4>\n<ul class=\"ticks\">\n<li><b>Only approved warnings count.</b> A warning counts once the reviewing authority approves it. Held or rejected memos do not.</li>\n<li><b>The fourth lapse becomes a charge memo.</b> After three approved warnings, the generator offers a charge memo instead of another warning.</li>\n<li><b>The count resets each cycle.</b> Once a charge memo is raised, the warning count starts again.</li>\n</ul>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Each role sees only what it needs</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Administrator</h4><p>Runs the report intake, checks extracted cases and categories, and keeps officer access and organisational hierarchy right.</p></div>\n<div class=\"card\"><h4>Reviewing authority</h4><p>Sees the review queue and the force-wide picture: approve, hold or reject each memo, edit wording before approval, and see lapses by station and category.</p></div>\n<div class=\"card\"><h4>Officers</h4><p>See only memos addressed to them: read the memo and the case, upload a compliance reply, and track their own warning count.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>A person approves every memo</b> — the generator drafts; only the reviewing authority issues, and wording can be changed before approval.</li>\n<li><b>Every memo traces to a case</b> — tied to the situation report entry it came from.</li>\n<li><b>Officer data respects transfers</b> — synced from personnel records, so the memo reaches whoever actually held that ground.</li>\n</ul>\n</div>"
+   "html": "<div class=\"ch-lead\">\n<h2 class=\"lv3\">Supervision only works if the memo reaches the right desk, fast.</h2>\n<p>\n            Daily situation reports arrive every morning. Reading each by hand, matching every case to a\n            station and typing each memo from scratch took days — while the lapse went cold. The\n            generator reads the report, resolves the responsible officer and drafts the memo within\n            minutes of upload.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h3 class=\"lv4\">The problem</h3>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Drafting took days</h4><p>Each report was read by hand, every case matched to a station, and each memo typed from scratch.</p><span class=\"now\">Now · drafts ready within minutes of upload</span></div>\n<div class=\"card\"><h4>Who was responsible?</h4><p>Stations, sectors and transfers change. Working out which officer held that ground on that date was slow and error-prone.</p><span class=\"now\">Now · resolved from jurisdiction and personnel records</span></div>\n<div class=\"card\"><h4>Repeat lapses went unseen</h4><p>Nobody could easily see that the same officer had already been warned twice this cycle, so repeat lapses never escalated.</p><span class=\"now\">Now · three warnings raise a charge memo</span></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Every case walks down the hierarchy to one desk</h4>\n<p>\n            A city force is organised zone → division → circle → police station → sector. The generator\n            resolves each case through that chain and picks the officers who held that ground, using\n            officer records synced from the personnel system so transfers are respected.\n          </p>\n<div class=\"tbl-w\" tabindex=\"0\">\n<table>\n<thead><tr><th>Recipient</th><th>Role</th><th>Memo</th></tr></thead>\n<tbody>\n<tr><td><b>Station house officer</b></td><td>Holds the station</td><td>SHO memo</td></tr>\n<tr><td><b>Primary sector officer</b></td><td>Holds the sector</td><td>Sector memo</td></tr>\n<tr><td><b>Relief sector officer</b></td><td>Covers leave and duty gaps</td><td>If on duty</td></tr>\n<tr><td><b>Circle supervisor</b></td><td>Supervision</td><td>Visibility only</td></tr>\n</tbody>\n</table>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Memo lifecycle and escalation</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Every memo has a status</h4>\n<ol class=\"flow\">\n<li><div><b>Draft</b><span>Generated from the case, editable before anything is issued.</span></div></li>\n<li><div><b>Pending review</b><span>In the reviewing authority's queue.</span></div></li>\n<li><div><b>Approved</b><span>Issued to the officer.</span></div></li>\n<li><div><b>Awaiting reply</b><span>The officer must respond.</span></div></li>\n<li><div><b>Complied</b><span>Reply uploaded and closed.</span></div></li>\n</ol>\n<p>A memo can also be held for more facts, or rejected if the lapse is not upheld — in which case it does not count towards escalation.</p>\n</div>\n<div class=\"card\">\n<h4>Three warnings, then a charge memo</h4>\n<ul class=\"ticks\">\n<li><b>Only approved warnings count.</b> A warning counts once the reviewing authority approves it. Held or rejected memos do not.</li>\n<li><b>The fourth lapse becomes a charge memo.</b> After three approved warnings, the generator offers a charge memo instead of another warning.</li>\n<li><b>The count resets each cycle.</b> Once a charge memo is raised, the warning count starts again.</li>\n</ul>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Each role sees only what it needs</h4>\n<div class=\"grid g3\">\n<div class=\"card\"><h4>Administrator</h4><p>Runs the report intake, checks extracted cases and categories, and keeps officer access and organisational hierarchy right.</p></div>\n<div class=\"card\"><h4>Reviewing authority</h4><p>Sees the review queue and the force-wide picture: approve, hold or reject each memo, edit wording before approval, and see lapses by station and category.</p></div>\n<div class=\"card\"><h4>Officers</h4><p>See only memos addressed to them: read the memo and the case, upload a compliance reply, and track their own warning count.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards</h4>\n<ul class=\"ticks\">\n<li><b>A person approves every memo</b> — the generator drafts; only the reviewing authority issues, and wording can be changed before approval.</li>\n<li><b>Every memo traces to a case</b> — tied to the situation report entry it came from.</li>\n<li><b>Officer data respects transfers</b> — synced from personnel records, so the memo reaches whoever actually held that ground.</li>\n</ul>\n</div>"
   },
   {
    "kind": "modules"
@@ -181,8 +199,39 @@
    "smartcop",
    "grievance-management",
    "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
   ]
  },
+ "pager": [
+  {
+   "label": "FIR Automation",
+   "href": "/products/fir-automation/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "SmartCOP",
+   "href": "/products/smartcop/",
+   "kind": "next"
+  }
+ ],
  "cta": {
   "title": "See Compliant Memo Generator running on your own data.",
   "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",

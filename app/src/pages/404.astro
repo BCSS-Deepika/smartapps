@@ -1,0 +1,34 @@
+---
+/* Shown by Vercel for any address that does not exist. */
+import MainLayout from '@/layouts/MainLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import { products, productUrl } from '@/data/products';
+const flagships = ['access-genie', 'blura-saga', 'edugenie', 'garuda'];
+---
+
+<MainLayout title="Page not found · SmartApps" description="This page does not exist." noindex>
+  <section data-title="Page not found" class="bg-deep">
+    <div class="wrap py-[clamp(56px,10vw,128px)]">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="mt-3 text-page">This page does not exist.</h1>
+      <p class="mt-4 max-w-2xl text-lede text-ink-2">
+        The address may have changed. Product pages now live at /products/&lt;name&gt;/ and demos at
+        /demos/&lt;name&gt;/. Old links ending in .html are sent to their new address automatically.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href="/" icon="arrow-right">Go to the homepage</Button>
+        <Button href="/#directory" variant="secondary">See every product</Button>
+      </div>
+      <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-small">
+        {flagships.map((s) => {
+          const p = products.find((x) => x.slug === s)!;
+          return (
+            <li>
+              <a href={productUrl(s)} class="font-semibold text-ink-2 hover:text-white">{p.name}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+</MainLayout>
