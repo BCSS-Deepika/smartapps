@@ -105,7 +105,8 @@ export const directory = [
     accent: 'ag' as Accent,
     text: 'AI video and operational intelligence. Turns the cameras, records and workflows an organisation already runs into alerts, evidence and decisions.',
     chips: [
-      'Policing & public safety · GARUDA',
+      // CHANGED: was 'Policing & public safety · GARUDA'; GARUDA is its own vertical.
+      'Traffic enforcement',
       'Enterprise & industry',
       'Retail & jewellery',
       'BluGo logistics',
@@ -178,15 +179,6 @@ export const agPoints = [
 
 export const agVerticals = [
   {
-    kind: 'Division · Policing & public safety',
-    title: 'GARUDA',
-    text: 'An ecosystem of thirteen connected products: intelligence, investigation, documentation, field and citizen services — behind one login.',
-    go: 'Open the ecosystem',
-    slug: 'garuda',
-    href: '',
-    lead: true,
-  },
-  {
     kind: 'Division · Enterprise & industry',
     title: 'Retail & jewellery',
     text: '16 operational KPIs across sales, risk and operations, with camera evidence against every one.',
@@ -200,6 +192,16 @@ export const agVerticals = [
     text: 'Airports and transport, critical infrastructure, smart communities, healthcare and finance, education, and BluGo for logistics.',
     go: 'See the industries',
     href: '#access-genie-more',
+  },
+  {
+    // CHANGED: was 'Division · Policing & public safety', listed first.
+    kind: 'Separate vertical · Policing',
+    title: 'GARUDA',
+    text: "Blue Cloud's Policing Operational Ecosystem: thirteen connected products for intelligence, investigation, documentation, field and citizen services — behind one login.",
+    go: 'Open GARUDA',
+    slug: 'garuda',
+    href: '',
+    lead: true,
   },
 ];
 

@@ -222,15 +222,12 @@ const division = (key: string) => divisions.find((d) => d.key === key)!.name;
         ))}
       </div>
       <div class="mt-16">
-        <SectionHeading
-          eyebrow="Two divisions"
-          title="Policing & public safety. Enterprise & industry."
-        >
-          One detection engine serves two divisions. Policing and public safety is built around
-          GARUDA, thirteen connected products for police forces, with traffic enforcement alongside
-          it. Enterprise and industry covers retail, logistics through BluGo, and six more sectors.
-          What changes between them is the model set, the KPIs, the workflow and who receives the
-          alert.
+        <SectionHeading eyebrow="Where it runs" title="Public safety. Enterprise & industry.">
+          {/* CHANGED: the live text placed GARUDA inside Access Genie as its policing division. */}
+          One detection engine serves public safety, including traffic enforcement, and enterprise
+          and industry: retail, logistics through BluGo, and six more sectors. What changes between
+          them is the model set, the KPIs, the workflow and who receives the alert. Products for
+          police forces sit in GARUDA, a vertical of its own.
         </SectionHeading>
         <div class="grid gap-4 md:grid-cols-3">
           {h.agVerticals.map((v) => (
