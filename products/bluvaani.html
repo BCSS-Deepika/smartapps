@@ -124,9 +124,6 @@ section{scroll-margin-top:calc(var(--nav-h) + 14px)}
 .drop a b{display:block; font-size:.875rem; font-weight:620}
 .drop a span{display:block; font-size:.76rem; color:var(--ink-3); line-height:1.4}
 .nav-tools{display:flex; align-items:center; gap:7px; flex:none; margin-left:6px}
-.tgl{display:flex; background:rgba(255,255,255,.1); border-radius:8px; padding:2.5px; gap:2px}
-.tgl button{padding:5px 11px; border-radius:6px; font-size:.745rem; font-weight:600; color:#C6D5EA; transition:.16s}
-.tgl button[aria-pressed=true]{background:var(--orange); color:#fff}
 .icon-btn{width:34px; height:34px; border-radius:8px; display:grid; place-items:center;
   background:rgba(255,255,255,.1); color:#C6D5EA; transition:.16s}
 .icon-btn:hover{background:rgba(255,255,255,.2); color:#fff}
@@ -143,8 +140,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 14px)}
   .drop a b{color:#fff} .drop a:hover{background:rgba(255,255,255,.07)}
   .drop-h{color:#7D93B4}
   .burger{display:grid}
+  .nav-tools{margin-left:auto}
 }
-@media(max-width:620px){ .nav-tools .tgl{display:none} }
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:10px;
@@ -197,14 +194,6 @@ section{scroll-margin-top:calc(var(--nav-h) + 14px)}
 .band-dark .mat-s,.band-deep .mat-s{background:rgba(166,209,240,.16); color:#A6D1F0}
 .band-dark .mat-i,.band-deep .mat-i{background:rgba(255,178,122,.16); color:#FFB27A}
 
-/* ---------- plain / technical ---------- */
-body[data-mode=plain] .tech-only{display:none !important}
-body[data-mode=tech] .plain-alt{display:none !important}
-.tech-only{border-left:3px solid var(--blue); padding-left:16px; margin-top:16px}
-.band-dark .tech-only,.band-deep .tech-only{border-left-color:var(--blue-l)}
-.tech-only .tech-tag{font-size:.63rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--blue); display:block; margin-bottom:7px}
-.band-dark .tech-only .tech-tag,.band-deep .tech-only .tech-tag{color:var(--blue-l)}
 
 /* ---------- chapters (collapsed by default) ---------- */
 .chapter{border-top:1px solid var(--hair)}
@@ -303,7 +292,6 @@ body[data-present=true] .ch-x{display:none}
   .print-only{display:block !important}
   h2{font-size:15pt} h1{font-size:23pt}
   a{text-decoration:none; color:#000}
-  .tech-only{display:none !important}
   section{break-inside:auto}
 }
 .print-only{display:none}
@@ -342,7 +330,6 @@ body[data-present=true] .ch-x{display:none}
   .brand-tx b{font-size:.86rem}
   .brand-tx span{font-size:.52rem; letter-spacing:.1em}
   .nav-tools{gap:5px}
-  #printBtn{display:none}            /* printing is a desktop action */
   .icon-btn{width:32px; height:32px}
   .btn{padding:12px 18px; font-size:.86rem}
   .card{padding:17px}
@@ -356,7 +343,6 @@ body[data-present=true] .ch-x{display:none}
   .enq{padding:19px}
 }
 @media(max-width:340px){
-  .tgl{display:none}
   .hero-stats{grid-template-columns:1fr}
 }
 
@@ -997,7 +983,6 @@ a.eco-t:hover .go{color:#fff; transform:translateX(2px)}
   border:1px solid var(--hair); border-radius:10px}
 .layers b{font-size:.88rem; font-weight:650; color:var(--ink)} .layers span{font-size:.86rem; color:var(--ink-2); line-height:1.5}
 @media(max-width:620px){ .layers li{grid-template-columns:minmax(0,1fr); gap:4px} }
-body[data-mode=plain] .tech-sec{display:none}
 .rule-card{border-radius:14px; padding:22px 24px; background:color-mix(in srgb,var(--c) 9%,#fff); border:1px solid color-mix(in srgb,var(--c) 30%,#fff)}
 .rule-card b{display:block; font-size:1.02rem; color:var(--ink)} .rule-card p{margin-top:8px; font-size:.92rem; color:var(--ink-2); line-height:1.6; max-width:80ch}
 .flow.fl-6{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))} .flow.fl-6 li{flex-direction:column; gap:8px}
@@ -1065,11 +1050,11 @@ p,li,dd{max-width:none}
 .lede{font-size:clamp(1rem,1.4vw,1.125rem); line-height:1.65}
 
 /* ---- labels: short, mono, readable ---- */
-.eyebrow,.drop-h,.tech-tag,.ch-sec > h4,th,.mx-b dt,.phero-tag,.dcard-k,.pcard em,.lw-h,.demo-band em,
+.eyebrow,.drop-h,.ch-sec > h4,th,.mx-b dt,.phero-tag,.dcard-k,.pcard em,.lw-h,.demo-band em,
 .sx-kpi span,.foot h5,.facts span,.brand-tx span{
   font-family:var(--font-mono); font-weight:500; letter-spacing:.08em}
 .eyebrow{font-size:var(--text-label)}
-.drop-h,.tech-tag,.ch-sec > h4,th,.mx-b dt,.phero-tag,.dcard-k,.pcard em,.lw-h,.demo-band em{font-size:.75rem}
+.drop-h,.ch-sec > h4,th,.mx-b dt,.phero-tag,.dcard-k,.pcard em,.lw-h,.demo-band em{font-size:.75rem}
 .brand-tx span{font-size:.72rem; letter-spacing:.06em}
 .foot-cols h5,.foot-brand .sa-name,main dl dt,.tier dt,.ed-g dt,.now,main .ch-sec > h4,.agv-k,.sct-n,.sc-k,.tier-k{font-size:.75rem}
 .tag,.mat,.chip{font-size:.75rem; letter-spacing:.02em}
@@ -1122,7 +1107,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px soli
 /* touch: comfortable targets */
 @media (pointer:coarse), (max-width:900px){
   .icon-btn{width:42px; height:42px}
-  .tgl button{padding:9px 13px; min-height:38px}
   .foot-cols a{display:block; padding:7px 0}
   .fb-links a{display:inline-block; padding:6px 0}
   .crumbs a{padding:6px 0}
@@ -1217,7 +1201,6 @@ input,select,textarea{font-family:var(--font-body); font-size:var(--text-body)}
 /* ---- contrast fixes (from the rendered-pixel audit) ---- */
 .ch-sec > h4,.now,.stat b{color:var(--color-orange-700)}
 .band-dark .ch-sec > h4,.band-deep .ch-sec > h4,.band-dark .stat b,.band-deep .stat b{color:var(--orange-l,#FFB27A)}
-.tgl button[aria-pressed=true]{background:var(--color-orange-500); color:var(--color-navy-950)}
 .foot-note{color:#8FA6C6}
 .dcard-go{color:var(--dct,var(--color-blue-700))}
 .band-deep .eco-g h4,.band-dark .eco-g h4{color:color-mix(in srgb,var(--c) 45%,#fff)}
@@ -1343,7 +1326,7 @@ th{background:#13263D}
 [href$="blura-saga.html"]{--dct:#FF9A6B !important}
 </style>
 </head>
-<body data-mode="plain" data-present="false">
+<body data-present="false">
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav no-print">
   <div class="nav-in">
@@ -1369,15 +1352,8 @@ th{background:#13263D}
       <a class="nav-a" href="../index.html#scenarios">Workflows</a><a class="nav-a" href="../index.html#technology">Technology</a><a class="nav-a" href="../index.html#contact">Contact</a>
     </nav>
     <div class="nav-tools">
-      <div class="tgl" role="group" aria-label="Detail level">
-        <button id="mPlain" aria-pressed="true">Plain</button>
-        <button id="mTech" aria-pressed="false">Technical</button>
-      </div>
       <button class="icon-btn" id="presentBtn" title="Presentation mode" aria-label="Enter presentation mode">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      </button>
-      <button class="icon-btn" id="printBtn" title="Print" aria-label="Print">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       </button>
       <button class="icon-btn burger" id="burger" aria-label="Menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -1457,29 +1433,6 @@ th{background:#13263D}
           </div>
         </div>
 
-        <div class="tech-only ch-sec">
-          <span class="tech-tag">Technical · seventeen components, one path for every call</span>
-          <div class="grid g2">
-            <div class="card">
-              <h4>Speech and language</h4>
-              <div class="chips">
-                <span class="chip">All Indian languages</span><span class="chip">Code-switched speech</span>
-                <span class="chip">Speaker diarisation</span><span class="chip">Intent classification</span>
-                <span class="chip">Entity extraction</span><span class="chip">Urgency scoring</span>
-              </div>
-              <p style="margin-top:12px">The speech engine covers all Indian languages and is shared with other products in the ecosystem rather than rebuilt per product.</p>
-            </div>
-            <div class="card">
-              <h4>Routing and deployment</h4>
-              <div class="chips">
-                <span class="chip">Jurisdiction resolution</span><span class="chip">Unit availability</span>
-                <span class="chip">Queue &amp; escalation</span><span class="chip">Handoff connectors</span>
-                <span class="chip">Transcript store</span><span class="chip">Reporting</span>
-              </div>
-              <p style="margin-top:12px">Runs on cloud, on-premise or other hosting models; its scope is not limited to any single helpline type.</p>
-            </div>
-          </div>
-        </div>
 
         <div class="ch-sec">
           <h4>Safeguards</h4>
@@ -1795,18 +1748,6 @@ th{background:#13263D}
     spyTargets.forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   }
 
-  /* ---------------- plain / technical ---------------- */
-  function setMode(m) {
-    document.body.setAttribute("data-mode", m);
-    var a = $("#mPlain"), b = $("#mTech");
-    if (a) a.setAttribute("aria-pressed", String(m === "plain"));
-    if (b) b.setAttribute("aria-pressed", String(m === "tech"));
-    store.set("sa-mode", m);
-  }
-  on("#mPlain", "click", function () { setMode("plain"); });
-  on("#mTech",  "click", function () { setMode("tech"); });
-  setMode(store.get("sa-mode") === "tech" ? "tech" : "plain");
-
   /* ---------------- chapters ---------------- */
   $$("[data-ch-toggle]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -1918,7 +1859,6 @@ th{background:#13263D}
     if (e.key === "Escape") exitPresent();
   });
 
-  on("#printBtn", "click", function () { window.print(); });
 
   /* ---------------- enquiry ---------------- */
   var form = $("#enqForm");
