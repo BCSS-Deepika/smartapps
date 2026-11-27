@@ -168,3 +168,13 @@
   text-transform: uppercase;
   color: var(--color-brand-soft);
 }
+
+/* Presentation mode: one titled section per screen, header and footer hidden. */
+@layer components {
+  body[data-present='true'] { padding-bottom: 64px; }
+  body[data-present='true'] [data-site-header],
+  body[data-present='true'] [data-site-footer],
+  body[data-present='true'] main > section:not(.present-on) { display: none; }
+  body[data-present='true'] main > section.present-on { min-height: 100vh; }
+  body[data-present='true'] [data-present-bar] { display: flex; }
+}

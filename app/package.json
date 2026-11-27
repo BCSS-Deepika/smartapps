@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/copy-legacy.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write ."

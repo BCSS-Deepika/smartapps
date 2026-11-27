@@ -34,5 +34,24 @@ export const bySlug = (slug: string) => {
   if (!p) throw new Error(`Unknown product: ${slug}`);
   return p;
 };
-export const productUrl = (slug: string) => `/products/${slug}/`;
+/** Link to a product: its new page once migrated (Gate 4), otherwise the current live page. */
+export const productUrl = (slug: string) => {
+  const p = bySlug(slug);
+  return p.migrated ? `/products/${slug}/` : p.legacy;
+};
+/** Demo links stay on the current demo files until Gate 5 moves them. */
+export const demoUrl = (path: string) => legacyDemo[path] ?? path;
+const legacyDemo: Record<string, string> = {
+  '/demos/traffic-analytics/': '/demos/traffic-analytics/index.html',
+  '/demos/access-genie-retail/': '/demos/access-genie-retail.html',
+  '/demos/blura-saga/': '/demos/blura-saga.html',
+  '/demos/garuda/': '/demos/garuda.html',
+  '/demos/geo-intelligence/': '/demos/geo-intelligence.html',
+  '/demos/women-safety-portal/': '/demos/women-safety-portal.html',
+  '/demos/bluflow/': '/demos/bluflow.html',
+  '/demos/ai-copwriter/': '/demos/ai-copwriter.html',
+  '/demos/memo-generator/': '/demos/memo-generator.html',
+  '/demos/smartcop/': '/demos/smartcop.html',
+  '/demos/bluvaani/': '/demos/bluvaani.html',
+};
 export const garudaProducts = (d: Division) => products.filter((p) => p.division === d);

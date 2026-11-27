@@ -1,0 +1,90 @@
+---
+/* Presentation mode, as on the live site: the header button walks every section that has a
+   data-title, one per screen. Arrows, Page Up/Down and Space move; Escape exits. */
+---
+
+<div
+  class="fixed inset-x-0 bottom-0 z-[70] hidden items-center gap-3 border-t border-line bg-deep/95 px-4 py-3 backdrop-blur"
+  data-present-bar
+>
+  <button
+    type="button"
+    class="min-h-10 rounded-btn px-3 text-small font-semibold text-sky hover:text-white"
+    data-present-prev
+  >
+    ← Back
+  </button>
+  <span class="min-w-0 flex-1 truncate text-small font-semibold text-white" data-present-title>
+    Overview
+  </span>
+  <span class="flex-none font-mono text-label text-ink-3" data-present-count>
+    1 / 1
+  </span>
+  <button
+    type="button"
+    class="min-h-10 rounded-btn px-3 text-small font-semibold text-sky hover:text-white"
+    data-present-next
+  >
+    Next →
+  </button>
+  <button
+    type="button"
+    class="min-h-10 rounded-btn bg-brand px-3.5 text-small font-semibold text-brand-ink hover:bg-brand-hover"
+    data-present-exit
+  >
+    Exit
+  </button>
+</div>
+<script>
+  const body = document.body;
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[data-title]'));
+  const $ = (s: string) => document.querySelector<HTMLElement>(s);
+  let idx = 0;
+  const show = (i: number) => {
+    if (!sections.length) return;
+    idx = Math.max(0, Math.min(sections.length - 1, i));
+    sections.forEach((s, k) => s.classList.toggle('present-on', k === idx));
+    $('[data-present-title]')!.textContent = sections[idx].dataset.title ?? '';
+    $('[data-present-count]')!.textContent = `${idx + 1} / ${sections.length}`;
+    window.scrollTo(0, 0);
+  };
+  const enter = () => {
+    if (!sections.length) return;
+    body.dataset.present = 'true';
+    // Start on the section the person was reading; trust geometry only once the page has scrolled.
+    let cur = 0;
+    if (window.scrollY > 40)
+      sections.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        if (r.height > 0 && r.top <= 120) cur = i;
+      });
+    show(cur);
+    $('[data-present-next]')?.focus();
+  };
+  const exit = () => {
+    const at = sections[idx];
+    body.dataset.present = 'false';
+    sections.forEach((s) => s.classList.remove('present-on'));
+    at?.scrollIntoView();
+  };
+  document
+    .querySelectorAll('[data-present-btn]')
+    .forEach((b) => b.addEventListener('click', enter));
+  $('[data-present-exit]')?.addEventListener('click', exit);
+  $('[data-present-next]')?.addEventListener('click', () => show(idx + 1));
+  $('[data-present-prev]')?.addEventListener('click', () => show(idx - 1));
+  document.addEventListener('keydown', (e) => {
+    if (body.dataset.present !== 'true') return;
+    const tag = (e.target as HTMLElement).tagName?.toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      show(idx + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      show(idx - 1);
+    }
+    if (e.key === 'Escape') exit();
+  });
+</script>

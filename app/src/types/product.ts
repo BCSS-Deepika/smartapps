@@ -18,6 +18,8 @@ export interface ProductSummary {
   /** Legacy URL on the current site, for redirects. */
   legacy: string;
   demo?: string;
+  /** True once the product has its new page (Gate 4). Until then links go to the live page. */
+  migrated?: boolean;
 }
 
 export type Maturity = 'established' | 'integration' | 'proposed';

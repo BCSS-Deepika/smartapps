@@ -1,7 +1,7 @@
 ---
 import type { ProductSummary } from '@/types/product';
 import { accentStyle } from '@/lib/accent';
-import { productUrl, divisions } from '@/data/products';
+import { productUrl, demoUrl, divisions } from '@/data/products';
 import LogoPlate from '../ui/LogoPlate.astro';
 import Icon from '../ui/Icon.astro';
 interface Props { product: ProductSummary }
@@ -23,6 +23,6 @@ const kind = p.flagship ? 'Flagship platform' : p.family === 'garuda' && p.divis
   <p class="mt-2 flex-1 text-small text-ink-2">{p.line}</p>
   <div class="relative z-10 mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-small font-semibold">
     <span class="inline-flex items-center gap-1.5 text-[var(--accent-text)]">Explore <Icon name="arrow-right" size={15} class="transition-transform group-hover:translate-x-0.5" /></span>
-    {p.demo && <a href={p.demo} class="inline-flex items-center gap-1.5 text-ink-2 no-underline hover:text-white"><Icon name="play" size={13} /> Demo</a>}
+    {p.demo && <a href={demoUrl(p.demo)} class="inline-flex items-center gap-1.5 text-ink-2 no-underline hover:text-white"><Icon name="play" size={13} /> Demo</a>}
   </div>
 </article>

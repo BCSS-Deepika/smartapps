@@ -1,13 +1,976 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
 import Section from '@/components/ui/Section.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Button from '@/components/ui/Button.astro';
+import Card from '@/components/ui/Card.astro';
+import Chip from '@/components/ui/Chip.astro';
+import Icon from '@/components/ui/Icon.astro';
+import LogoPlate from '@/components/ui/LogoPlate.astro';
+import Maturity from '@/components/ui/Maturity.astro';
+import Panel from '@/components/ui/Panel.astro';
+import Stat from '@/components/ui/Stat.astro';
+import { accentStyle } from '@/lib/accent';
+import { bySlug, productUrl, demoUrl, divisions } from '@/data/products';
+import * as h from '@/data/home';
+
+const href = (slug?: string, fallback = '') => (slug ? productUrl(slug) : fallback);
+const division = (key: string) => divisions.find((d) => d.key === key)!.name;
 ---
-<MainLayout title="SmartApps 2.0 (in progress)" description="SmartApps 2.0 rebuild in progress." noindex>
-  <Section tone="deep">
-    <p class="eyebrow">SmartApps 2.0</p>
-    <h1 class="mt-3 text-page">The new homepage arrives at Gate 3.</h1>
-    <p class="mt-4 max-w-xl text-lede text-ink-2">This build holds the design system for review. The live site is unchanged.</p>
-    <div class="mt-8"><Button href="/design-system/" icon="arrow-right">Open the design system</Button></div>
+
+<MainLayout
+  title="SmartApps — Building AI that matters | Blue Cloud Softech Solutions"
+  description="A portfolio of intelligent platforms connecting public safety, digital intelligence, citizen services, enterprise operations and education — built, deployed and supported by one team in Hyderabad."
+>
+  <!-- ========== Hero ========== -->
+  <section id="top" data-title="SmartApps portfolio" class="relative overflow-hidden bg-deep">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_70%_at_85%_10%,rgba(32,112,179,0.28),transparent_70%),radial-gradient(40%_50%_at_5%_100%,rgba(245,129,32,0.12),transparent_70%)]"
+    ></div>
+    <div class="wrap relative grid grid-cols-[minmax(0,1fr)] items-center gap-12 py-[clamp(56px,9vw,120px)] lg:grid-cols-[1.15fr_0.85fr]">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="grid size-11 place-items-center rounded-xl bg-white p-1.5">
+            <img
+              src="/logos/blue-cloud-mark.webp"
+              alt="Blue Cloud Softech Solutions Limited"
+              width="32"
+              height="32"
+              class="size-8 object-contain"
+            />
+          </span>
+          <span class="leading-tight">
+            <b class="block text-small font-semibold text-white">
+              Blue Cloud Softech Solutions Ltd.
+            </b>
+            <span class="font-mono text-label text-ink-3">Think Big | AI-First</span>
+          </span>
+        </div>
+        <h1 class="mt-8 text-[clamp(2.5rem,12.5vw,6.5rem)] font-bold leading-[0.95] tracking-[-0.02em]">
+          SMART<span class="text-brand">APPS</span>
+        </h1>
+        <p class="mt-4 font-display text-[clamp(1.25rem,2.4vw,1.75rem)] font-semibold text-brand-soft">
+          Building AI that matters.
+        </p>
+        <p class="mt-5 max-w-xl text-lede text-ink-2">
+          A portfolio of intelligent platforms connecting public safety, digital intelligence,
+          citizen services, enterprise operations and education — built, deployed and supported by
+          one team in Hyderabad.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/#directory" icon="arrow-right">
+            Explore the portfolio
+          </Button>
+          <Button href="/#contact" variant="secondary">
+            Request a demonstration
+          </Button>
+        </div>
+        <dl class="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-6 border-t border-line-soft pt-8 sm:grid-cols-4">
+          {h.heroStats.map((s) => (
+            <Stat value={s.value} label={s.label} />
+          ))}
+        </dl>
+      </div>
+      <div class="rounded-panel border border-line bg-surface/70 p-5 shadow-raised backdrop-blur md:p-6">
+        <p class="eyebrow">Three platforms</p>
+        <ul class="mt-4 space-y-3">
+          {h.heroPlatforms.map((p) => (
+            <li>
+              <a
+                href={productUrl(p.slug)}
+                style={accentStyle(bySlug(p.slug).accent)}
+                class="group flex items-center gap-4 rounded-card border border-line bg-bg-alt p-3 no-underline transition hover:border-[var(--accent)]"
+              >
+                <LogoPlate
+                  src={p.logo}
+                  alt={p.alt}
+                  height={36}
+                  class="w-28 flex-none justify-center sm:w-32"
+                />
+                <span class="min-w-0 flex-1">
+                  <b class="block font-display text-[1rem] font-semibold text-white">{p.title}</b>
+                  <span class="text-small text-ink-3">{p.sub}</span>
+                </span>
+                <Icon
+                  name="arrow-right"
+                  size={18}
+                  class="flex-none text-ink-3 transition group-hover:translate-x-0.5 group-hover:text-[var(--accent-text)]"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Overview ========== -->
+  <Section id="overview" title="What we solve">
+    <SectionHeading eyebrow="The portfolio" title="Three platforms. One operational idea.">
+      Every organisation we work with already owns the raw material — cameras, records, helplines,
+      public conversation, classrooms. What they lack is the layer that turns it into something a
+      person can act on before the moment passes. That layer is what SmartApps builds.
+    </SectionHeading>
+    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {h.pillars.map((p, i) => (
+        <li>
+          <Card accent={p.accent} class="h-full">
+            <span class="font-mono text-label text-[var(--accent-text)]">0{i + 1}</span>
+            <h3 class="mt-2 text-card">{p.title}</h3>
+            <p class="mt-2 text-small">{p.text}</p>
+          </Card>
+        </li>
+      ))}
+    </ol>
+    <div class="mt-14 rounded-panel border border-line bg-bg-alt p-6 md:p-8">
+      <h3 class="text-card">Where do you sit?</h3>
+      <p class="mt-1 text-small text-ink-3">
+        Pick the closest fit and we will take you to the part of the portfolio built for it.
+      </p>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {h.audiences.map((a) => (
+          <li>
+            <a
+              href={href(a.slug, a.href)}
+              style={accentStyle(a.accent)}
+              class="group flex h-full flex-col rounded-card border border-line bg-surface p-4 no-underline transition hover:border-[var(--accent)]"
+            >
+              <b class="font-display text-[0.9375rem] font-semibold text-white">{a.title}</b>
+              <span class="mt-1 flex-1 text-small text-ink-3">{a.text}</span>
+              <Icon
+                name="arrow-right"
+                size={16}
+                class="mt-3 text-[var(--accent-text)] transition group-hover:translate-x-0.5"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- ========== Directory ========== -->
+  <Section id="directory" tone="alt" title="The three platforms">
+    <SectionHeading
+      eyebrow="Product directory"
+      title="Three platforms, each an umbrella of its own."
+    >
+      {/* CHANGED: the live lede placed GARUDA inside Access Genie; GARUDA is now its own vertical. */}
+      Access Genie, Blura SAGA and EduGenie are the three platforms. GARUDA, an ecosystem of
+      thirteen connected products for policing, is a vertical of its own, further down this page.
+      Every platform and product below opens its own page.
+    </SectionHeading>
+    <div class="grid gap-5 lg:grid-cols-3">
+      {h.directory.map((d) => (
+        <article
+          style={accentStyle(d.accent)}
+          class="relative flex flex-col rounded-panel border border-line bg-surface p-6 before:absolute before:inset-x-6 before:top-0 before:h-[3px] before:rounded-b before:bg-[var(--accent)] md:p-7"
+        >
+          <LogoPlate src={d.logo} alt={d.name} height={40} class="self-start" />
+          <p class="mt-6 font-mono text-label uppercase tracking-[0.1em] text-[var(--accent-text)]">
+            {d.kind}
+          </p>
+          <h3 class="mt-1 text-[1.5rem]">{d.name}</h3>
+          <p class="mt-3 flex-1 text-ink-2">{d.text}</p>
+          <ul class="mt-5 flex flex-wrap gap-1.5">
+            {d.chips.map((c) => (
+              <li>
+                <Chip>{c}</Chip>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={productUrl(d.slug)}
+            class="mt-6 inline-flex items-center gap-2 font-semibold text-[var(--accent-text)] no-underline after:absolute after:inset-0 after:rounded-panel hover:text-white"
+          >
+            {d.go}
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <!-- ========== Access Genie ========== -->
+  <Section id="access-genie" title="Access Genie">
+    <div style={accentStyle('ag')}>
+      <SectionHeading
+        eyebrow="Platform 01 · Access Genie"
+        title="From passive surveillance to proactive intelligence."
+      >
+        Access Genie adds detection, alerting and evidence search to the cameras, recorders and
+        record systems an organisation already runs — with nothing ripped out. The same four steps
+        run behind every module, whether the site is a highway corridor, a jewellery floor or a
+        police station.
+      </SectionHeading>
+      <ol class="grid gap-px overflow-hidden rounded-panel border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        {h.agSteps.map((s) => (
+          <li class="bg-surface p-5 md:p-6">
+            <span class="font-mono text-label text-brand-soft">{s.n}</span>
+            <h3 class="mt-1 text-card">{s.title}</h3>
+            <p class="mt-2 text-small text-ink-2">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        {h.agPoints.map((p) => (
+          <div class="border-l-2 border-brand/60 pl-5">
+            <h3 class="text-[1.0625rem]">{p.title}</h3>
+            <p class="mt-2 text-small text-ink-2">{p.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-16">
+        <SectionHeading
+          eyebrow="Two divisions"
+          title="Policing & public safety. Enterprise & industry."
+        >
+          One detection engine serves two divisions. Policing and public safety is built around
+          GARUDA, thirteen connected products for police forces, with traffic enforcement alongside
+          it. Enterprise and industry covers retail, logistics through BluGo, and six more sectors.
+          What changes between them is the model set, the KPIs, the workflow and who receives the
+          alert.
+        </SectionHeading>
+        <div class="grid gap-4 md:grid-cols-3">
+          {h.agVerticals.map((v) => (
+            <Card href={href(v.slug, v.href)} accent={v.lead ? 'garuda' : 'ag'} class="h-full">
+              <p class="font-mono text-label uppercase tracking-[0.08em] text-[var(--accent-text)]">
+                {v.kind}
+              </p>
+              <h3 class="mt-2 text-card">{v.title}</h3>
+              <p class="mt-2 flex-1 text-small">{v.text}</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-small font-semibold text-[var(--accent-text)]">
+                {v.go}
+                <Icon name="arrow-right" size={15} />
+              </span>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ========== Access Genie · Enterprise ========== -->
+  <Section id="access-genie-more" tone="alt" title="Access Genie · Enterprise">
+    <SectionHeading
+      eyebrow="Access Genie · Enterprise & industry"
+      title="One platform, every industry."
+    >
+      The detection engine, the edge architecture and the governance model are the same everywhere.
+      What changes is the model set, the thresholds and who receives the alert.
+    </SectionHeading>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {h.industries.map((i) => (
+        <li>
+          <Card class="h-full">
+            <h3 class="text-card">{i.title}</h3>
+            <p class="mt-2 text-small">{i.text}</p>
+          </Card>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-10" style={accentStyle('blugo')}>
+      <Panel class="grid gap-6 md:grid-cols-[auto_1fr] md:items-center">
+        <LogoPlate src="/logos/blugo.webp" alt="BluGo" height={48} />
+        <div>
+          <p class="eyebrow !text-[var(--accent-text)]">Access Genie · logistics & mobility</p>
+          <h3 class="mt-1 text-[1.5rem]">BluGo</h3>
+          <p class="mt-3 max-w-3xl text-ink-2">
+            The logistics and mobility line within Access Genie: a multi-role platform for goods
+            transport, fleet operations, labour coordination and the movement side of enterprise
+            operations — using the same identity, tracking and evidence layer as the rest of the
+            platform.
+          </p>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {[
+              'Goods transport',
+              'Fleet operations',
+              'Labour coordination',
+              'Multi-role access',
+            ].map((c) => (
+              <li>
+                <Chip tone="accent">{c}</Chip>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-6">
+            <Button href={productUrl('blugo')} variant="secondary" icon="arrow-right">
+              Open the BluGo page
+            </Button>
+          </div>
+        </div>
+      </Panel>
+    </div>
+  </Section>
+
+  <!-- ========== Every page ========== -->
+  <Section id="more-platforms" title="Each platform opens as its own page.">
+    <SectionHeading
+      eyebrow="Every page in the portfolio"
+      title="Each platform opens as its own page."
+    >
+      Every product and platform is its own page a sales executive can send on its own, rather than
+      sharing the whole portfolio.
+    </SectionHeading>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {h.pages.map((p) => (
+        <li>
+          <Card href={productUrl(p.slug)} accent={p.accent} class="h-full">
+            <div class="flex items-start justify-between gap-3">
+              <LogoPlate
+                src={p.logo}
+                alt={bySlug(p.slug).name}
+                height={34}
+                class={p.round ? '!rounded-full' : ''}
+              />
+              <span class="font-mono text-label text-ink-3">{p.count}</span>
+            </div>
+            <p class="mt-5 font-mono text-label uppercase tracking-[0.08em] text-[var(--accent-text)]">
+              {p.kind}
+            </p>
+            <h3 class="mt-1 text-card">{bySlug(p.slug).name}</h3>
+            <p class="mt-2 flex-1 text-small">{p.line}</p>
+            <span class="mt-4 inline-flex items-center gap-1.5 text-small font-semibold text-[var(--accent-text)]">
+              Open the page
+              <Icon name="arrow-right" size={15} />
+            </span>
+          </Card>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <!-- ========== GARUDA ========== -->
+  <Section id="garuda" tone="deep" title="GARUDA – Blue Cloud's Policing Operational Ecosystem">
+    <div style={accentStyle('garuda')}>
+      <div class="flex flex-col gap-6 md:flex-row md:items-start">
+        <LogoPlate
+          src="/logos/garuda.webp"
+          alt="GARUDA"
+          height={64}
+          class="!rounded-full self-start"
+        />
+        <SectionHeading
+          eyebrow="GARUDA – Blue Cloud's Policing Operational Ecosystem"
+          title="One front door. Thirteen products. Working as one."
+        >
+          Policing needs many systems. Officers need one picture. GARUDA is the front door to the
+          policing vertical: one login, one app launcher, one alert feed, one search box — and
+          thirteen products behind it, each doing one job well.
+        </SectionHeading>
+      </div>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {h.garudaProblems.map((p) => (
+          <li class="rounded-card border border-line bg-surface/60 p-5">
+            <h3 class="text-[1.0625rem]">{p.title}</h3>
+            <p class="mt-2 text-small text-ink-2">{p.text}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-14">
+        <h3 class="text-card">The ecosystem</h3>
+        <p class="mt-1 text-small text-ink-3">
+          Thirteen products in four groups. Select any product to open its own page.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {h.garudaGroups.map((g) => (
+            <div style={accentStyle(g.key)} class="rounded-panel border border-line bg-surface p-5">
+              <p class="font-mono text-label uppercase tracking-[0.1em] text-[var(--accent-text)]">
+                {division(g.key)}
+              </p>
+              <p class="mt-2 text-small text-ink-2">{g.text}</p>
+              <ul class="mt-4 space-y-2">
+                {g.tiles.map(([slug, line]) => (
+                  <li>
+                    <a
+                      href={productUrl(slug)}
+                      class="group flex items-center gap-3 rounded-[10px] border border-line-soft bg-bg-alt px-3 py-2.5 no-underline transition hover:border-[var(--accent)]"
+                    >
+                      <span
+                        class="size-2 flex-none rounded-full bg-[var(--accent)]"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="min-w-0 flex-1">
+                        <b class="block text-small font-semibold text-white">{bySlug(slug).name}</b>
+                        <span class="block text-label leading-snug text-ink-3">{line}</span>
+                      </span>
+                      <Icon
+                        name="chevron-right"
+                        size={16}
+                        class="flex-none text-ink-3 group-hover:text-[var(--accent-text)]"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col gap-4 rounded-panel border border-[color-mix(in_oklab,var(--accent)_40%,transparent)] bg-[color-mix(in_oklab,var(--accent)_8%,transparent)] p-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 class="text-card">The full GARUDA ecosystem</h3>
+          <p class="mt-1 text-small text-ink-2">
+            Integration levels, the shared GARUDA ID, safeguards and every product's flow — on the
+            GARUDA page.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <Button href={productUrl('garuda')} icon="arrow-right">
+            Open GARUDA
+          </Button>
+          <Button href={demoUrl('/demos/garuda/')} variant="secondary" icon="play">
+            Interactive demo
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ========== Workflows ========== -->
+  <Section id="scenarios" title="Connected workflows">
+    <SectionHeading eyebrow="Connected workflows" title="Follow one case across the portfolio.">
+      The point of a portfolio is what happens between the products. Each workflow below follows one
+      real operational situation through several platforms — and each step is labelled with how
+      mature that connection actually is, so a proposed integration is never presented as a live
+      one.
+    </SectionHeading>
+    <div class="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,20rem)_1fr]">
+      <div
+        role="tablist"
+        aria-label="Connected workflows"
+        aria-orientation="vertical"
+        class="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible"
+        data-tabs
+      >
+        {h.scenarios.map((s, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`sct${i + 1}`}
+            aria-controls={`sc${i + 1}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class="min-w-[15rem] flex-none rounded-card border border-line bg-surface px-4 py-3 text-left transition hover:border-ink-3/60 aria-selected:border-brand/50 aria-selected:bg-brand/15 lg:min-w-0"
+          >
+            <span class="font-mono text-label text-brand-soft">{s.n}</span>
+            <b class="block font-display text-[0.9375rem] font-semibold text-white">{s.title}</b>
+            <span class="mt-0.5 block text-label text-ink-3">{s.path}</span>
+          </button>
+        ))}
+      </div>
+      <div>
+        {h.scenarios.map((s, i) => (
+          <div
+            role="tabpanel"
+            id={`sc${i + 1}`}
+            aria-labelledby={`sct${i + 1}`}
+            hidden={i !== 0}
+            tabindex="0"
+          >
+            <ol class="relative space-y-4 before:absolute before:bottom-6 before:left-[15px] before:top-6 before:w-px before:bg-line">
+              {s.steps.map((st, k) => (
+                <li class="relative flex gap-4">
+                  <span class="relative z-10 grid size-8 flex-none place-items-center rounded-full border border-line bg-bg-alt font-mono text-label text-ink-2">
+                    {k + 1}
+                  </span>
+                  <div class="min-w-0 flex-1 rounded-card border border-line bg-surface p-4 md:p-5">
+                    <p class="font-mono text-label uppercase tracking-[0.08em] text-ink-3">
+                      {st.who}
+                    </p>
+                    <h3 class="mt-1 text-[1.0625rem]">{st.title}</h3>
+                    <p class="mt-2 text-small text-ink-2">{st.text}</p>
+                    <div class="mt-3">
+                      <Maturity kind={st.maturity}>{st.label}</Maturity>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            {s.note && (
+              <p class="mt-5 rounded-card border border-line bg-bg-alt p-4 text-small text-ink-2">
+                <b class="text-white">{s.note.strong}</b> {s.note.text}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+    <p class="mt-10 rounded-card border border-line bg-bg-alt p-5 text-small leading-relaxed text-ink-2">
+      <b class="text-white">How to read the labels.</b>{' '}
+      <Maturity kind="established">Established</Maturity> means the capability is built and working
+      in that product today. <Maturity kind="integration">Integration level / defined</Maturity>{' '}
+      means the connection pattern is specified and implemented per deployment.{' '}
+      <Maturity kind="proposed">Proposed</Maturity> means it has not yet been validated against a
+      production system — each connection is scoped, tested and approved before it goes live.
+    </p>
+  </Section>
+
+  <!-- ========== Technology ========== -->
+  <Section id="technology" tone="alt" title="Technology foundations">
+    <SectionHeading eyebrow="Technology foundations" title="Where it runs is your decision.">
+      The same platforms run where the organisation decides. Most government deployments keep data
+      inside the department: video, records and evidence are processed and stored on infrastructure
+      the department owns, and nothing is sent to outside AI services.
+    </SectionHeading>
+    <ul class="grid gap-4 md:grid-cols-3">
+      {h.deployOptions.map((o) => (
+        <li>
+          <Card accent={o.accent} class="h-full">
+            <span class="font-mono text-label text-[var(--accent-text)]">{o.n}</span>
+            <h3 class="mt-2 text-card">{o.title}</h3>
+            <p class="mt-2 text-small">{o.text}</p>
+          </Card>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      {[
+        ['Security and sovereignty', h.security, 'shield'],
+        ['Evidence that holds up', h.evidence, 'check'],
+      ].map(([title, items, icon]) => (
+        <div class="rounded-panel border border-line bg-surface p-6 md:p-7">
+          <h3 class="flex items-center gap-2.5 text-card">
+            <Icon name={icon as 'shield'} size={20} class="text-brand-soft" />
+            {title as string}
+          </h3>
+          <ul class="mt-4 space-y-3">
+            {(items as string[][]).map(([k, v]) => (
+              <li class="text-small text-ink-2">
+                <b class="text-white">{k}</b> — {v}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <p class="mt-6 rounded-card border border-line bg-bg p-4 text-small text-ink-2">
+      <b class="text-white">Nothing here claims an integration that has not been validated.</b>{' '}
+      Where a connection is proposed rather than deployed, it is labelled as such in the workflow
+      section above, and scoped source by source in the deployment document.
+    </p>
+  </Section>
+
+  <!-- ========== Proof and company ========== -->
+  <Section id="value" title="Proof and company">
+    <SectionHeading eyebrow="On the ground" title="Proof from live deployments.">
+      The figures below come from deployments that are running today. Client names are withheld here
+      because this page is shared across regions; they are available under a confidentiality
+      agreement, and references can be arranged.
+    </SectionHeading>
+    <dl class="grid grid-cols-2 gap-x-6 gap-y-8 rounded-panel border border-line bg-surface p-6 md:grid-cols-4 md:p-8">
+      {h.proof.map(([v, l]) => (
+        <Stat value={v} label={l} />
+      ))}
+    </dl>
+    <p class="mt-4 text-small text-ink-3">
+      <b class="text-ink-2">These are reference deployment figures, not guarantees.</b> They
+      describe what specific deployments have produced. What any other customer sees depends on
+      their cameras, their records, their network and the scope they deploy.
+    </p>
+
+    <div class="mt-16">
+      <SectionHeading eyebrow="What changes on the ground" title="Before and after." />
+      <table class="w-full border-separate border-spacing-0 overflow-hidden rounded-panel border border-line text-small max-md:block">
+        <thead class="max-md:sr-only">
+          <tr class="bg-surface-2 text-left">
+            <th
+              scope="col"
+              class="w-1/5 p-4 font-mono text-label font-medium uppercase tracking-[0.08em] text-ink-3"
+            >
+              <span class="sr-only">Area</span>
+            </th>
+            <th
+              scope="col"
+              class="p-4 font-mono text-label font-medium uppercase tracking-[0.08em] text-ink-3"
+            >
+              Before
+            </th>
+            <th
+              scope="col"
+              class="p-4 font-mono text-label font-medium uppercase tracking-[0.08em] text-brand-soft"
+            >
+              With the platform
+            </th>
+          </tr>
+        </thead>
+        <tbody class="max-md:block">
+          {h.beforeAfter.map(([area, before, after]) => (
+            <tr class="bg-surface max-md:block max-md:border-b max-md:border-line max-md:p-4 max-md:last:border-0">
+              <th
+                scope="row"
+                class="border-t border-line-soft p-4 text-left font-display font-semibold text-white max-md:block max-md:border-0 max-md:p-0"
+              >
+                {area}
+              </th>
+              <td
+                data-label="Before"
+                class="border-t border-line-soft p-4 text-ink-3 max-md:block max-md:border-0 max-md:p-0 max-md:pt-2 max-md:before:block max-md:before:font-mono max-md:before:text-label max-md:before:uppercase max-md:before:content-[attr(data-label)]"
+              >
+                {before}
+              </td>
+              <td
+                data-label="With the platform"
+                class="border-t border-line-soft p-4 text-ink max-md:block max-md:border-0 max-md:p-0 max-md:pt-2 max-md:before:block max-md:before:font-mono max-md:before:text-label max-md:before:uppercase max-md:before:text-brand-soft max-md:before:content-[attr(data-label)]"
+              >
+                {after}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-16 grid gap-10 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow mb-3">About the company</p>
+        <h3 class="text-[clamp(1.375rem,2.6vw,1.75rem)]">
+          One Hyderabad team that builds the software, supplies the hardware and stays after
+          go-live.
+        </h3>
+        <p class="mt-4 text-ink-2">
+          Blue Cloud Softech Solutions Limited builds AI video and IoT intelligence for public
+          safety, government and enterprise — and runs the deployments it builds.
+        </p>
+        <dl class="mt-8 grid grid-cols-2 gap-6">
+          {h.companyFacts.map(([v, l]) => (
+            <Stat value={v} label={l} />
+          ))}
+        </dl>
+      </div>
+      <div>
+        <p class="eyebrow mb-3">How we engage</p>
+        <h3 class="text-[clamp(1.375rem,2.6vw,1.75rem)]">A pilot first.</h3>
+        <p class="mt-4 text-ink-2">
+          We start with your cameras, your stations and the problems your teams face today — not
+          with a platform rollout.
+        </p>
+        <ol class="mt-6 space-y-3">
+          {h.engagement.map(([t, d], i) => (
+            <li class="flex gap-4 rounded-card border border-line bg-surface p-4">
+              <span class="grid size-8 flex-none place-items-center rounded-full bg-brand/15 font-mono text-label text-brand-soft">
+                {i + 1}
+              </span>
+              <div>
+                <b class="font-display font-semibold text-white">{t}</b>
+                <p class="mt-1 text-small text-ink-2">{d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ========== Demonstrations (new) ========== -->
+  <Section id="demos" tone="band" title="Interactive demonstrations">
+    <SectionHeading eyebrow="Interactive demonstrations" title="Open a demonstration.">
+      Each platform and product below has an interactive demonstration that opens in its own page,
+      in the browser.
+    </SectionHeading>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {h.demos.map((d) => {
+        const p = bySlug(d.slug);
+        return (
+          <li>
+            <Card href={demoUrl(d.path)} accent={p.accent} class="h-full">
+              <div class="flex items-center justify-between gap-3">
+                <p class="font-mono text-label uppercase tracking-[0.08em] text-[var(--accent-text)]">
+                  {p.family === 'garuda' && d.slug !== 'garuda' ? 'GARUDA' : p.name}
+                </p>
+                <span class="grid size-8 place-items-center rounded-full bg-[color-mix(in_oklab,var(--accent)_18%,transparent)] text-[var(--accent-text)]">
+                  <Icon name="play" size={14} />
+                </span>
+              </div>
+              <h3 class="mt-3 text-card">{d.title}</h3>
+              <p class="mt-2 flex-1 text-small">{d.line}</p>
+            </Card>
+          </li>
+        );
+      })}
+    </ul>
+  </Section>
+
+  <!-- ========== Contact ========== -->
+  <Section id="contact" tone="deep" title="Request a demonstration">
+    <div class="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <SectionHeading eyebrow="Next step" title="See it running on your own data.">
+          Tell us which platform you want to see and what you are trying to change. We will come
+          back with a scoped demonstration on your own cameras, records or sources — not a generic
+          slide walkthrough.
+        </SectionHeading>
+        <ul class="space-y-3">
+          {[
+            [
+              'mailto:smartapps@bluecloudsoftech.com',
+              'mail',
+              'smartapps@bluecloudsoftech.com',
+              'Email the SmartApps team',
+            ],
+            ['tel:+917259002609', 'phone', '+91 72590 02609', 'Speak to the team directly'],
+            [
+              'https://bluecloudsoftech.com',
+              'arrow-up-right',
+              'bluecloudsoftech.com',
+              'Blue Cloud Softech Solutions Ltd.',
+            ],
+          ].map(([u, icon, t, s]) => (
+            <li>
+              <a
+                href={u}
+                class="flex items-center gap-4 rounded-card border border-line bg-surface p-4 no-underline transition hover:border-ink-3/60"
+              >
+                <span class="grid size-10 flex-none place-items-center rounded-full bg-brand/15 text-brand-soft">
+                  <Icon name={icon as 'mail'} size={18} />
+                </span>
+                <span class="min-w-0">
+                  <b class="block break-all font-semibold text-white">{t}</b>
+                  <span class="text-small text-ink-3">{s}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <form
+        id="enqForm"
+        novalidate
+        class="rounded-panel border border-line bg-surface p-6 shadow-raised md:p-8"
+      >
+        <h3 class="text-[1.375rem]">Request a demonstration</h3>
+        <p class="mb-6 mt-1 text-small text-ink-3">
+          This form opens your email client with the details filled in — nothing is transmitted from
+          this page.
+        </p>
+        <div class="grid gap-4">
+          <label class="field">
+            Which platform?
+            <select id="eProduct">
+              {h.enquiryOptions.map((o) => (
+                <option>{o}</option>
+              ))}
+            </select>
+          </label>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="field">
+              Your name
+              <input
+                type="text"
+                id="eName"
+                autocomplete="name"
+                placeholder="Full name"
+                aria-describedby="errName"
+              />
+              <span class="err" id="errName" aria-live="polite"></span>
+            </label>
+            <label class="field">
+              Organisation
+              <input
+                type="text"
+                id="eOrg"
+                autocomplete="organization"
+                placeholder="Department or company"
+              />
+            </label>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="field">
+              Email
+              <input
+                type="email"
+                id="eMail"
+                autocomplete="email"
+                placeholder="you@organisation.gov"
+                aria-describedby="errMail"
+              />
+              <span class="err" id="errMail" aria-live="polite"></span>
+            </label>
+            <label class="field">
+              <span>
+                Phone <span class="font-normal text-ink-3">optional</span>
+              </span>
+              <input type="tel" id="ePhone" autocomplete="tel" placeholder="+91" />
+            </label>
+          </div>
+          <label class="field">
+            What are you trying to change?
+            <textarea
+              id="eMsg"
+              rows="3"
+              placeholder="e.g. we have 400 cameras across 12 stations and no way to search them"
+            ></textarea>
+          </label>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button type="submit" icon="arrow-right">
+            Open in email
+          </Button>
+          <Button variant="secondary" id="copyEnq">
+            Copy details
+          </Button>
+        </div>
+        <p class="mt-3 text-small text-established" id="enqOk" role="status" hidden>
+          Copied — paste it into an email or a message.
+        </p>
+      </form>
+    </div>
   </Section>
 </MainLayout>
+
+<style>
+  .field {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .field :is(input, select, textarea) {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    border-radius: 10px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg-alt);
+    padding: 10px 12px;
+    font: inherit;
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+  .field textarea {
+    min-height: 96px;
+    resize: vertical;
+  }
+  .field :is(input, select, textarea):focus {
+    outline: 2px solid var(--color-brand-soft);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  .field input[aria-invalid='true'] {
+    border-color: var(--color-proposed);
+  }
+  .field ::placeholder {
+    color: var(--color-ink-3);
+    opacity: 0.8;
+  }
+  .err {
+    font-weight: 500;
+    font-size: var(--text-label);
+    color: var(--color-proposed);
+  }
+  .err:empty {
+    display: none;
+  }
+</style>
+
+<script>
+  /* ---------- Workflow tabs: click, arrow keys, and #sc1–#sc4 / #sct1–#sct4 in the URL ---------- */
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tabs] [role="tab"]'));
+  const select = (t: HTMLButtonElement, focus = false) => {
+    tabs.forEach((o) => {
+      const on = o === t;
+      o.setAttribute('aria-selected', String(on));
+      o.tabIndex = on ? 0 : -1;
+      const p = document.getElementById(o.getAttribute('aria-controls')!);
+      if (p) p.hidden = !on;
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', (e) => {
+      const n = tabs.length;
+      const j = {
+        ArrowRight: i + 1,
+        ArrowDown: i + 1,
+        ArrowLeft: i - 1 + n,
+        ArrowUp: i - 1 + n,
+        Home: 0,
+        End: n - 1,
+      }[e.key];
+      if (j === undefined) return;
+      e.preventDefault();
+      select(tabs[j % n], true);
+    });
+  });
+  const fromHash = () => {
+    const id = location.hash.slice(1);
+    if (!id) return;
+    const t = tabs.find((o) => o.id === id || o.getAttribute('aria-controls') === id);
+    if (t) {
+      select(t);
+      document.getElementById('scenarios')?.scrollIntoView();
+    }
+  };
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+
+  /* ---------- Enquiry: same mailto and copy text as the live page ---------- */
+  const v = (id: string) => (document.getElementById(id) as HTMLInputElement).value;
+  const text = () =>
+    [
+      'Platform of interest: ' + v('eProduct'),
+      'Name: ' + v('eName'),
+      'Organisation: ' + v('eOrg'),
+      'Email: ' + v('eMail'),
+      'Phone: ' + (v('ePhone') || '—'),
+      '',
+      'What we are trying to change:',
+      v('eMsg') || '—',
+    ].join('\n');
+  const err = (field: string, box: string, msg: string) => {
+    document.getElementById(box)!.textContent = msg;
+    document.getElementById(field)!.setAttribute('aria-invalid', msg ? 'true' : 'false');
+  };
+  const validate = () => {
+    let ok = true;
+    if (!v('eName').trim()) {
+      err('eName', 'errName', 'Enter your name first');
+      ok = false;
+    } else err('eName', 'errName', '');
+    const m = v('eMail').trim();
+    if (!m || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) {
+      err('eMail', 'errMail', 'Enter a valid email address');
+      ok = false;
+    } else err('eMail', 'errMail', '');
+    if (!ok) (document.querySelector('[aria-invalid="true"]') as HTMLElement | null)?.focus();
+    return ok;
+  };
+  document.getElementById('eName')!.addEventListener('input', () => err('eName', 'errName', ''));
+  document.getElementById('eMail')!.addEventListener('input', () => err('eMail', 'errMail', ''));
+  document.getElementById('enqForm')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    const subject = 'SmartApps demonstration request — ' + v('eProduct');
+    window.location.href =
+      'mailto:smartapps@bluecloudsoftech.com?subject=' +
+      encodeURIComponent(subject) +
+      '&body=' +
+      encodeURIComponent(text());
+  });
+  document.getElementById('copyEnq')!.addEventListener('click', () => {
+    if (!validate()) return;
+    const ok = document.getElementById('enqOk')!;
+    const done = () => {
+      ok.hidden = false;
+      setTimeout(() => (ok.hidden = true), 3200);
+    };
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text()).then(done, () => {});
+    else {
+      const ta = document.createElement('textarea');
+      ta.value = text();
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        done();
+      } catch {
+        /* nothing to do */
+      }
+      ta.remove();
+    }
+  });
+</script>
