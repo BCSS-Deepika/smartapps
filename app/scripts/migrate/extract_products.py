@@ -5,6 +5,8 @@ Content is copied word for word. Structure is kept as clean HTML fragments for t
 that differ page to page; legacy inline styles are dropped and colours become data-acc tokens.
 
 Run from the repository root:  python3 app/scripts/migrate/extract_products.py
+The legacy pages were removed from the repository at Gate 7, so they are read from the last
+commit of the old site (LEGACY below) into a temporary folder.
 """
 import base64
 import hashlib
@@ -14,8 +16,19 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 
+import subprocess
+import tarfile
+import io
+import tempfile
+
 ROOT = Path(__file__).resolve().parents[3]
+LEGACY = '7082f0d'  # main before the rebuild: the live site's pages
 SRC = ROOT / 'products'
+if not SRC.exists():
+    tmp = Path(tempfile.mkdtemp())
+    tar = subprocess.run(['git', '-C', str(ROOT), 'archive', LEGACY, 'products'], capture_output=True, check=True).stdout
+    tarfile.open(fileobj=io.BytesIO(tar)).extractall(tmp, filter='data')
+    SRC = tmp / 'products'
 OUT = ROOT / 'app/src/content/products'
 MEDIA = ROOT / 'app/public/media/products'
 OUT.mkdir(parents=True, exist_ok=True)
