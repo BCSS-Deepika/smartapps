@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/memo-generator.html",
+    "href": "/demos/memo-generator/",
     "primary": false
    }
   ],
@@ -164,7 +164,7 @@
   "heading": "Walk through Compliant Memo Generator, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/memo-generator.html"
+  "href": "/demos/memo-generator/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/smartcop.html",
+    "href": "/demos/smartcop/",
     "primary": false
    }
   ],
@@ -262,7 +262,7 @@
   "heading": "Walk through SmartCOP, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/smartcop.html"
+  "href": "/demos/smartcop/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

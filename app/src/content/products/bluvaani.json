@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/bluvaani.html",
+    "href": "/demos/bluvaani/",
     "primary": false
    }
   ],
@@ -586,7 +586,7 @@
   "heading": "Walk through BluVaani, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/bluvaani.html"
+  "href": "/demos/bluvaani/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

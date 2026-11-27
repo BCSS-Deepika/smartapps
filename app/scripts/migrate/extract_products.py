@@ -27,7 +27,7 @@ LOGOS = {'access-genie': '/logos/access-genie.webp', 'access-genie-retail': '/lo
          'blura-saga': '/logos/blura-saga.webp', 'edugenie': '/logos/edugenie.webp', 'blugo': '/logos/blugo.webp',
          'garuda': '/logos/garuda.webp', 'bluflow': '/logos/bluflow.webp', 'bluvaani': '/logos/bluvaani.webp',
          'smartcop': '/logos/smartcop.svg'}
-LEGACY_DEMOS = {'traffic-analytics/index.html': '/demos/traffic-analytics/index.html'}
+LEGACY_DEMOS = {'traffic-analytics/index.html': '/demos/traffic-analytics/'}
 
 KEEP_ATTRS = {'href', 'id', 'colspan', 'rowspan', 'scope', 'role', 'aria-selected', 'aria-controls', 'aria-label',
               'aria-labelledby', 'hidden', 'data-bp', 'data-v', 'data-tab', 'target', 'rel', 'alt', 'src', 'width', 'height',
@@ -46,7 +46,7 @@ def rewrite_href(h: str) -> str:
     m = re.match(r'^\.\./demos/(.+)$', h)
     if m:
         p = m.group(1)
-        return LEGACY_DEMOS.get(p.split('#')[0], '/demos/' + p.split('#')[0]) + ('#' + p.split('#', 1)[1] if '#' in p else '')
+        return LEGACY_DEMOS.get(p.split('#')[0], '/demos/' + re.sub(r'\.html$', '/', p.split('#')[0])) + ('#' + p.split('#', 1)[1] if '#' in p else '')
     return h
 
 

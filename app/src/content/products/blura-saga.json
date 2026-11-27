@@ -32,7 +32,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/blura-saga.html",
+    "href": "/demos/blura-saga/",
     "primary": false
    }
   ],
@@ -480,7 +480,7 @@
   "heading": "Walk through Blura SAGA, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/blura-saga.html"
+  "href": "/demos/blura-saga/"
  },
  "related": {
   "title": "Elsewhere in the portfolio",

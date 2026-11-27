@@ -27,7 +27,7 @@
    },
    {
     "label": "Open Traffic AI Analytics",
-    "href": "/demos/traffic-analytics/index.html",
+    "href": "/demos/traffic-analytics/",
     "primary": false
    }
   ],
@@ -331,7 +331,7 @@
   "heading": "Traffic AI Analytics, on real Indian road footage",
   "text": "40 cameras, 20 traffic analytics: detection, counting, density, ANPR, helmets, triple riding, speed and more. Opens as its own page.",
   "button": "Open the dashboard →",
-  "href": "/demos/traffic-analytics/index.html"
+  "href": "/demos/traffic-analytics/"
  },
  "related": {
   "title": "Elsewhere in the portfolio",

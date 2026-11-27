@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/ai-copwriter.html",
+    "href": "/demos/ai-copwriter/",
     "primary": false
    }
   ],
@@ -152,7 +152,7 @@
   "heading": "Walk through AI CopWriter, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/ai-copwriter.html"
+  "href": "/demos/ai-copwriter/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

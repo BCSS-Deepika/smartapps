@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/bluflow.html",
+    "href": "/demos/bluflow/",
     "primary": false
    }
   ],
@@ -226,7 +226,7 @@
   "heading": "Walk through BluFlow, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/bluflow.html"
+  "href": "/demos/bluflow/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

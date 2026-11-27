@@ -100,6 +100,61 @@
       "source": "/products/women-safety-portal.html",
       "destination": "/products/women-safety-portal/",
       "permanent": true
+    },
+    {
+      "source": "/demos/traffic-analytics/index.html",
+      "destination": "/demos/traffic-analytics/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/access-genie-retail.html",
+      "destination": "/demos/access-genie-retail/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/ai-copwriter.html",
+      "destination": "/demos/ai-copwriter/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/bluflow.html",
+      "destination": "/demos/bluflow/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/blura-saga.html",
+      "destination": "/demos/blura-saga/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/bluvaani.html",
+      "destination": "/demos/bluvaani/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/garuda.html",
+      "destination": "/demos/garuda/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/geo-intelligence.html",
+      "destination": "/demos/geo-intelligence/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/memo-generator.html",
+      "destination": "/demos/memo-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/smartcop.html",
+      "destination": "/demos/smartcop/",
+      "permanent": true
+    },
+    {
+      "source": "/demos/women-safety-portal.html",
+      "destination": "/demos/women-safety-portal/",
+      "permanent": true
     }
   ]
 }

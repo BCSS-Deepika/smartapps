@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/access-genie-retail.html",
+    "href": "/demos/access-genie-retail/",
     "primary": false
    }
   ],
@@ -532,7 +532,7 @@
   "heading": "Walk through Access Genie Retail, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/access-genie-retail.html"
+  "href": "/demos/access-genie-retail/"
  },
  "related": {
   "title": "Elsewhere in Access Genie",

@@ -40,7 +40,7 @@
    },
    {
     "label": "Open the interactive demo",
-    "href": "/demos/geo-intelligence.html",
+    "href": "/demos/geo-intelligence/",
     "primary": false
    }
   ],
@@ -256,7 +256,7 @@
   "heading": "Walk through Geo Intelligence, screen by screen",
   "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
   "button": "Open the demo →",
-  "href": "/demos/geo-intelligence.html"
+  "href": "/demos/geo-intelligence/"
  },
  "related": {
   "title": "Other products in the GARUDA ecosystem",

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCSS Access Genie — Retail Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#05142A; --navy-900:#081B37; --navy:#0E2545; --navy-700:#183E6A; --navy-600:#195086;
+  --blue:#2070B3; --blue-500:#3E86C7; --blue-200:#A6D1F0;
+  --orange:#F58120; --orange-600:#DE6C0E; --orange-tint:#FFF1E7; --orange-line:#F9D2B0;
+  --green:#1E7F4F; --green-500:#22A06B; --green-tint:#E8F5EE; --violet:#5B3FA8; --cyan:#0A7C8C;
+  --red:#D21F45; --red-tint:#FCE9ED; --amber:#D9A006; --amber-tint:#FDF6E3;
+  --line:#DBE2ED; --line-2:#CBD6E4; --paper:#F6F9FC; --paper-2:#F1F6FC;
+  --ink:#0E2545; --ink-2:#2E4566; --mist:#5D6776; --mist-2:#9CA8BA;
+  --c-sales:#1E7F4F; --c-risk:#2070B3; --c-ops:#DE6C0E; --c-found:#5B3FA8;
+  --shadow-sm:0 1px 2px rgba(14,37,69,.06),0 2px 8px rgba(14,37,69,.05);
+  --shadow:0 2px 4px rgba(14,37,69,.05),0 8px 24px rgba(14,37,69,.08);
+  --shadow-lg:0 24px 48px -20px rgba(14,37,69,.30),0 8px 20px rgba(14,37,69,.10);
+  --display:"Poppins","Segoe UI",Arial,sans-serif; --body:"Inter",-apple-system,"Segoe UI",system-ui,sans-serif; --mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+section{padding:96px 0;border-top:1px solid var(--line);scroll-margin-top:60px}
+section.alt{background:var(--paper)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.22em;color:var(--blue);text-transform:uppercase}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--orange)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,3.8vw,44px);margin:14px 0 16px;max-width:960px}
+h2 em{font-style:normal;color:var(--orange)}
+h3{font-size:21px;letter-spacing:-.01em}
+.lead{color:var(--ink-2);font-size:17.5px;max-width:900px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em;flex-shrink:0}
+.itile{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0;background:color-mix(in srgb,var(--cc,var(--blue)) 11%,#fff);color:var(--cc,var(--blue));font-size:16px;border:1px solid color-mix(in srgb,var(--cc,var(--blue)) 18%,#fff)}
+.itile.lg{width:62px;height:62px;border-radius:16px;font-size:30px}
+.itile.md{width:46px;height:46px;border-radius:12px;font-size:22px}
+.itile.sm{width:26px;height:26px;border-radius:7px;font-size:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:4px 11px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.chip .ic{color:var(--cc,var(--blue))}
+a.chip:hover{border-color:var(--cc,var(--blue))}
+.mono{font-family:var(--mono)}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand .mark{height:30px;width:auto}
+.brand b{display:block;font-family:var(--display);font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.15;white-space:nowrap}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mist);text-transform:uppercase;white-space:nowrap}
+.navlinks{display:flex;gap:2px;margin-left:auto}
+.navlinks a{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);padding:8px 10px;border-radius:7px;white-space:nowrap;border-bottom:2px solid transparent}
+.navlinks a:hover{color:var(--blue)}
+.navlinks a.on{color:var(--blue);background:var(--paper-2);border-bottom-color:var(--orange)}
+.navpill{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--green);border:1px solid rgba(30,127,79,.35);background:var(--green-tint);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.navpill::before{content:'● '}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 640px at 76% 44%,rgba(32,112,179,.5),transparent 62%),linear-gradient(160deg,var(--navy-900) 0%,var(--navy) 55%,var(--navy-700) 100%)}
+.hero .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center;padding-top:64px;padding-bottom:52px}
+.hero .wrap>*{min-width:0}
+.hero .ag{height:58px;width:auto;margin-bottom:24px;box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
+.htag{display:inline-block;background:var(--orange);color:#fff;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;padding:7px 26px 7px 18px;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);text-transform:uppercase}
+.hero h1{color:#fff;font-size:clamp(34px,4.3vw,52px);margin:22px 0 16px;letter-spacing:-.03em}
+.hero h1 span{color:var(--orange)}
+.hero .rule{width:64px;height:3px;background:var(--orange);margin:20px 0}
+.hero p{color:rgba(255,255,255,.82);font-size:16.5px;max-width:600px}
+.hero p+p{margin-top:12px}
+.hero p b{color:#fff}
+.hbtns{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.hbtn{font-family:var(--display);font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:8px}
+.hbtn.pri{background:var(--orange);color:#fff;box-shadow:0 10px 24px -8px rgba(245,129,32,.7);letter-spacing:.04em;text-transform:uppercase}
+.hbtn.sec{border:1px solid rgba(255,255,255,.3);color:#fff}
+.hchips{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.hchips span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 13px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:rgba(255,255,255,.85)}
+.hchips span:first-child{color:#7fe0b0;border-color:rgba(127,224,176,.4)}
+.console{background:rgba(8,27,55,.6);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);backdrop-filter:blur(8px)}
+.console .bar{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.65);margin-bottom:12px}
+.console .bar i{width:8px;height:8px;border-radius:50%;background:#7fe0b0;box-shadow:0 0 0 4px rgba(127,224,176,.18);animation:live 1.6s ease-in-out infinite}
+.console .bar span:last-child{margin-left:auto}
+@keyframes live{50%{opacity:.35}}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cam{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#04101b;border:1px solid rgba(255,255,255,.08);cursor:zoom-in}
+.cam video{width:100%;height:100%;object-fit:cover;display:block}
+.cam b{position:absolute;left:6px;bottom:5px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:#fff;background:rgba(8,27,55,.8);padding:1px 6px;border-radius:4px;font-weight:500}
+.cam em{position:absolute;left:6px;top:5px;font-style:normal;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--fc);background:rgba(8,27,55,.82);padding:1px 6px;border-radius:4px}
+.cam em::before{content:'● ';color:#FF5A5F;animation:live 1.4s ease-in-out infinite}
+.cam.alert{outline:2px solid var(--orange);outline-offset:-2px;animation:ap 2.2s ease-in-out infinite}
+@keyframes ap{50%{box-shadow:0 0 18px rgba(245,129,32,.6)}}
+.feed{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.feed div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--fc);border-radius:9px;padding:8px 12px;animation:float 5s ease-in-out infinite}
+.feed small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--fc)}
+.feed b{display:block;font-family:var(--display);font-size:13.5px;color:#fff;margin:1px 0;font-weight:600}
+.feed span{font-size:11.5px;color:rgba(255,255,255,.7)}
+@keyframes float{50%{transform:translateY(-4px)}}
+.hero .stats-wrap{display:block;padding-top:0;padding-bottom:0}
+.hstats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.14)}
+.hstats div{padding:22px 22px;border-right:1px solid rgba(255,255,255,.14)}
+.hstats div:last-child{border-right:0}
+.hstats small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.6);text-transform:uppercase}
+.hstats b{display:block;font-family:var(--display);font-size:32px;color:#fff;line-height:1.1;margin:4px 0 2px}
+.hstats span{font-size:12.5px;color:rgba(255,255,255,.7)}
+
+/* dilemma / parameters */
+.params{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.param{padding:26px;border-top:4px solid var(--cc);display:flex;flex-direction:column}
+.param .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.param .kk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--cc);text-transform:uppercase}
+.param h3{color:var(--navy);margin:14px 0 8px;font-size:22px}
+.param p{color:var(--ink-2);font-size:14.5px;margin-bottom:16px;flex:1}
+.param .ft{display:flex;align-items:baseline;gap:10px;border-top:1px dashed var(--line-2);padding-top:14px;margin-bottom:14px}
+.param .ft b{font-family:var(--display);font-size:30px;color:var(--cc);line-height:1}
+.param .ft span{font-size:13px;color:var(--mist)}
+.together{font-family:var(--display);font-weight:700;font-size:24px;color:var(--navy);margin-top:34px;letter-spacing:-.01em;max-width:1000px}
+.together em{font-style:normal;color:var(--orange)}
+
+/* layers */
+.layers-wrap{display:grid;grid-template-columns:1fr 64px;gap:14px;margin-top:36px}
+.layers{display:flex;flex-direction:column;gap:12px;position:relative}
+.layer{display:grid;grid-template-columns:280px 1fr;gap:26px;padding:22px 24px;transition:border-color .3s,box-shadow .3s}
+.layer>*{min-width:0}
+.layer.hot{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),var(--shadow)}
+.layer .ln{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#fff;background:var(--navy);border-radius:6px;padding:2px 8px}
+.layer h4{font-size:18px;margin:10px 0 6px;letter-spacing:-.01em}
+.layer .sub{color:var(--mist);font-size:13.5px}
+.layer .chips{margin-bottom:12px}
+.layer .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.layer .cols h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--orange-600);text-transform:uppercase;font-weight:500;margin-bottom:6px}
+.layer.l5{border-color:rgba(245,129,32,.45);background:linear-gradient(90deg,var(--orange-tint),#fff 45%)}
+.feat{list-style:none;display:grid;gap:7px}
+.feat li{font-size:14px;padding-left:20px;position:relative;color:var(--ink-2);line-height:1.5}
+.feat li::before{content:'';position:absolute;left:3px;top:8px;width:7px;height:7px;border-radius:2px;background:var(--cc,var(--blue));transform:rotate(45deg)}
+.feat li b{color:var(--navy);font-weight:600}
+.side-rails{display:flex;gap:8px}
+.rail{flex:1;border-radius:12px;border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;background:#fff}
+.rail span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-2)}
+.pulse-dot{position:absolute;left:-18px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(245,129,32,.2);transition:top .7s ease-in-out}
+.pulse-cap{margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--blue);min-height:20px}
+
+/* KPI explorer */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:30px}
+.filters button{background:#fff;border:1px solid var(--line);color:var(--ink-2);padding:8px 14px;border-radius:999px;cursor:pointer;font-family:var(--body);font-size:13.5px;box-shadow:var(--shadow-sm)}
+.filters button b{font-family:var(--mono);font-weight:500;color:var(--cc,var(--navy));margin-left:6px}
+.filters button.on{border-color:var(--navy);background:var(--navy);color:#fff}
+.filters button.on b{color:var(--orange)}
+.explorer{display:grid;grid-template-columns:270px 1fr;gap:28px;margin-top:24px;align-items:start}
+.explorer>*{min-width:0}
+.plist{display:flex;flex-direction:column;gap:2px;position:sticky;top:84px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto;padding:2px 6px 12px 2px;scrollbar-width:thin}
+.pgroup{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--cc);margin:12px 0 4px 8px;text-transform:uppercase}
+.pbtn{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:10px;border:1px solid transparent;color:var(--ink-2);cursor:pointer;background:none;font-family:var(--body);font-size:14px;text-align:left;transition:all .25s;line-height:1.3}
+.pbtn:hover{background:#fff;color:var(--navy)}
+.pbtn.on{background:#fff;border-color:var(--line);color:var(--navy);font-weight:600;box-shadow:var(--shadow-sm);border-left:3px solid var(--cc)}
+.pcards{display:flex;flex-direction:column;gap:28px}
+.pcard{padding:28px 30px;border-top:3px solid var(--cc);box-shadow:var(--shadow);scroll-margin-top:84px}
+.phead{display:flex;gap:18px;align-items:flex-start}
+.phead>div{flex:1;min-width:0}
+.phead h3{font-size:26px;letter-spacing:-.02em;margin:3px 0 2px}
+.phead .code{font-family:var(--mono);font-size:11px;color:var(--cc);letter-spacing:.14em;text-transform:uppercase}
+.phead .tagl{font-size:14px;color:var(--mist);font-weight:500}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:500;white-space:nowrap;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.pill.param{background:color-mix(in srgb,var(--cc) 10%,#fff);color:var(--cc);border:1px solid color-mix(in srgb,var(--cc) 30%,#fff)}
+.p-red{background:var(--red-tint);color:var(--red)}.p-amber{background:var(--amber-tint);color:#B07A00}.p-green{background:var(--green-tint);color:var(--green)}
+.desc{color:var(--ink-2);font-size:15.5px;margin-top:16px}
+.specs{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:0;margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}
+.specs div{padding:11px 14px;border-right:1px solid var(--line);min-width:0}
+.specs div:last-child{border-right:0}
+.specs small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mist);text-transform:uppercase;margin-bottom:2px}
+.specs span{font-size:13.5px;color:var(--navy);font-weight:500;line-height:1.4;display:block}
+.sub-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--mist);text-transform:uppercase;margin:24px 0 12px}
+.sub-h b{color:var(--cc);font-weight:500;letter-spacing:.08em}
+.kflow{display:flex;align-items:stretch}
+.kstep{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 12px 14px;min-width:0;transition:all .35s}
+.kstep .n{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mist-2)}
+.kstep b{display:block;font-family:var(--display);font-size:14.5px;color:var(--navy);margin:3px 0 3px;line-height:1.3}
+.kstep p{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.kstep.on{border-color:var(--cc);background:#fff;box-shadow:0 10px 24px -12px var(--cc);transform:translateY(-3px)}
+.kstep.on .n,.kstep.done .n{color:var(--orange)}
+.parrow{width:24px;flex-shrink:0;position:relative}
+.parrow::before{content:'';position:absolute;left:3px;right:3px;top:50%;height:2px;background:var(--line-2)}
+.parrow::after{content:'';position:absolute;right:2px;top:calc(50% - 5px);border:5px solid transparent;border-left:6px solid var(--line-2);border-right:0}
+.parrow.on::before{background:var(--orange)}.parrow.on::after{border-left-color:var(--orange)}
+.kgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:26px}
+.gbox{background:var(--orange-tint);border:1px solid var(--orange-line);border-radius:12px;padding:6px 16px;font-size:14px;color:var(--ink)}
+.gbox div{padding:9px 0;border-bottom:1px dashed var(--orange-line)}.gbox div:last-child{border-bottom:0}
+.gbox b{display:block;color:var(--orange-600);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:2px}
+.roi{margin-top:14px;padding:12px 15px;border-radius:10px;background:var(--green-tint);border:1px solid rgba(30,127,79,.3);font-size:14px;color:var(--ink)}
+.roi b{display:block;color:var(--green);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:2px}
+.monitor{border-radius:12px;overflow:hidden;border:1px solid var(--navy-700);background:var(--navy);box-shadow:var(--shadow)}
+.monitor .mt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:rgba(255,255,255,.75)}
+.monitor .mt i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#FF5A5F;margin-right:6px;animation:live 1.4s infinite}
+.monitor .st{padding:2px 8px;border-radius:5px;font-weight:500;white-space:nowrap}
+.st.ok{background:rgba(127,224,176,.16);color:#7fe0b0}.st.alert{background:rgba(255,90,95,.18);color:#FF9A9D}
+.monitor video{width:100%;height:auto;display:block;background:#000}
+.shots{display:grid;gap:10px;margin-top:10px}
+.shots.two{grid-template-columns:1fr 1fr}.shots.three{grid-template-columns:1fr 1fr 1fr}
+.shot{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:zoom-in;box-shadow:var(--shadow-sm)}
+.shot img{width:100%;height:auto;transition:transform .4s}
+.shot:hover img{transform:scale(1.03)}
+.shot figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-2);padding:7px 10px;border-top:1px solid var(--line);line-height:1.4}
+.widget{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow-sm)}
+.hb-row{display:grid;grid-template-columns:96px 1fr 70px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px}
+.hb-row:last-of-type{border-bottom:0}
+.hb-row .id{font-family:var(--mono);font-size:11px;color:var(--ink)}
+.hb-row .s{font-family:var(--mono);font-size:10px;text-align:right;letter-spacing:.06em}
+.beats{display:flex;gap:2px;height:18px;align-items:flex-end}
+.beats i{flex:1;border-radius:2px;background:var(--green-500);opacity:.85}
+.beats i.dn{background:var(--red);opacity:1}.beats i.wk{background:var(--amber)}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.mini div{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.mini small{display:block;font-size:11px;color:var(--mist)}.mini b{font-family:var(--mono);font-size:17px;color:var(--navy)}
+.wa{background:#ECE5DD;border-radius:12px;padding:14px;border:1px solid var(--line)}
+.wa .hd{display:flex;align-items:center;gap:10px;background:#075E54;color:#fff;margin:-14px -14px 12px;padding:10px 14px;border-radius:12px 12px 0 0;font-size:13px;font-weight:600}
+.wa .hd small{display:block;font-weight:400;font-size:11px;opacity:.8}
+.bub{background:#fff;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#1f2d3d;box-shadow:0 1px 1px rgba(0,0,0,.1);max-width:92%;line-height:1.5}
+.bub+.bub{margin-top:8px}
+.bub b{color:var(--navy)}
+.bub .t{display:block;text-align:right;font-size:10px;color:#8a97a5;margin-top:4px}
+.bub .doc{display:flex;align-items:center;gap:8px;background:#F6F9FC;border-radius:8px;padding:8px;margin-top:6px;font-family:var(--mono);font-size:11px}
+.tnode{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:13.5px;color:var(--ink)}
+.tnode small{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--mist);letter-spacing:.06em}
+.tkids{margin:7px 0 7px 20px;padding-left:14px;border-left:2px dashed var(--line-2);display:grid;gap:7px}
+
+/* journeys */
+.scen-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.scen-tabs button{flex:1 1 220px;background:#fff;border:1px solid var(--line);color:var(--ink-2);padding:11px 15px;border-radius:10px;cursor:pointer;font-family:var(--body);font-size:14px;text-align:left;box-shadow:var(--shadow-sm);line-height:1.35}
+.scen-tabs button small{display:block;font-family:var(--mono);font-size:10px;color:var(--orange-600);letter-spacing:.14em;margin-bottom:2px}
+.scen-tabs button.on{border-color:var(--navy);color:var(--navy);font-weight:600;box-shadow:0 0 0 1px var(--navy),var(--shadow-sm)}
+.jflow{margin-top:18px;padding:28px;box-shadow:var(--shadow)}
+.jhead{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+.jhead>*{min-width:0}
+.jtag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--orange-600)}
+.jhead h3{font-size:24px;margin:4px 0 6px}
+.jhead p{color:var(--ink-2);font-size:15px;max-width:720px}
+.jprod{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:420px}
+.jprod span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;border:1px solid color-mix(in srgb,var(--cc) 35%,#fff);color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff)}
+.jtrack{position:relative;height:3px;background:var(--line);border-radius:2px;margin:24px 0 18px;overflow:hidden}
+.jtrack i{position:absolute;top:0;left:-30%;width:30%;height:100%;background:linear-gradient(90deg,transparent,var(--orange),transparent);animation:trk 2.4s linear infinite}
+@keyframes trk{to{left:100%}}
+.jsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.jstep{position:relative;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--cc);border-radius:12px;padding:14px 14px 16px;opacity:0;animation:jin .45s ease forwards}
+.jstep:not(:last-child)::after{content:'›';position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;font-size:14px;line-height:18px;text-align:center;z-index:1;box-shadow:var(--shadow-sm)}
+@keyframes jin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.jn{font-family:var(--mono);font-size:11px;color:var(--orange-600);letter-spacing:.12em}
+.jwho{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--cc);margin:6px 0 4px;line-height:1.4}
+.jstep h4{font-size:15px;margin-bottom:5px;letter-spacing:-.005em;line-height:1.3}
+.jstep p{font-size:13px;color:var(--ink-2);line-height:1.45}
+
+/* integration */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.lvl{padding:26px;display:flex;flex-direction:column}
+.lvl .lv{font-family:var(--mono);font-size:11px;color:var(--orange-600);letter-spacing:.16em}
+.lvl h3{margin:10px 0 8px}
+.lvl p{color:var(--ink-2);font-size:14.5px;flex:1}
+.lvl .bw{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--blue);background:var(--paper-2);border:1px dashed var(--line-2);border-radius:8px;padding:9px 11px}
+.topo{display:flex;align-items:center;gap:6px;margin-top:16px;flex-wrap:wrap}
+.topo span{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:4px 9px;border-radius:7px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.topo i{font-style:normal;color:var(--orange);font-weight:700}
+
+/* safeguards */
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}
+.sc{padding:24px}
+.sc h4{font-size:18px;margin:14px 0 6px;letter-spacing:-.01em}
+.sc p{color:var(--ink-2);font-size:14.5px}
+
+/* ecosystem ring */
+.ring-box{position:relative;background:radial-gradient(ellipse at center,var(--paper-2),#fff 70%);border:1px solid var(--line);border-radius:18px;margin-top:34px;box-shadow:var(--shadow)}
+.ring-box svg{width:100%;height:auto;display:block}
+.ring-hint{position:absolute;top:16px;left:20px;font-family:var(--mono);font-size:11px;color:var(--mist);letter-spacing:.14em}
+.legend{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;padding:0 16px 18px;font-size:14px;color:var(--ink-2)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.spoke{stroke:#B9C6D8;stroke-width:1.2;stroke-dasharray:3 7;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-20}}
+.node{cursor:pointer;transition:opacity .4s}
+.node circle.bg{fill:#fff;stroke-width:2;transition:fill .2s}
+.node .ig{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.node text.lbl{font-family:var(--display);font-size:13.5px;font-weight:600;fill:var(--navy);text-anchor:middle}
+.node text.sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;fill:var(--mist);text-anchor:middle}
+.node:hover circle.bg,.node.sel circle.bg{fill:var(--paper-2)}
+.node .halo{fill:none;stroke-width:2;opacity:0}
+.node.sel .halo{animation:halo 1.6s ease-out infinite}
+@keyframes halo{0%{opacity:.9;r:28}100%{opacity:0;r:48}}
+.ring-svg.dim .node:not(.hub){opacity:.5}
+.ring-svg.dim .node.sel{opacity:1}
+.hubpulse{fill:none;stroke:var(--orange);stroke-width:1.5;animation:hubp 3s ease-out infinite}
+@keyframes hubp{0%{r:70;opacity:.8}100%{r:140;opacity:0}}
+.spin{transform-origin:550px 350px;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eco-detail{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:0;margin-top:18px;border:1px solid var(--line);border-top:4px solid var(--cc);border-radius:14px;background:#fff;box-shadow:var(--shadow);overflow:hidden;transition:border-color .3s}
+.eco-detail>div{padding:18px 20px;border-right:1px solid var(--line);min-width:0}
+.eco-detail>div:last-child{border-right:0}
+.eco-detail .code{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--cc);text-transform:uppercase}
+.eco-detail h4{font-size:19px;margin:4px 0 8px;line-height:1.25}
+.eco-detail small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--orange-600);text-transform:uppercase;margin-bottom:4px}
+.eco-detail p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.eco-detail .go{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--blue)}
+.clusters{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.cluster{padding:22px;border-top:3px solid var(--cc)}
+.cluster h3{color:var(--cc);font-size:18px}
+.cluster p{color:var(--ink-2);font-size:13.5px;margin:6px 0 14px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,27,55,.92);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lb img,.lb video{max-width:min(1400px,100%);max-height:84vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb p{color:rgba(255,255,255,.8);font-family:var(--mono);font-size:12px;margin-top:12px;text-align:center}
+
+footer{background:var(--navy-900);color:rgba(255,255,255,.65);padding:48px 0 28px;font-size:13.5px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h5{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--orange);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+footer li{list-style:none;margin:4px 0}
+footer .ag{height:40px;width:auto;margin-bottom:12px}
+footer .base{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.45)}
+
+@media (max-width:1500px){.navpill{display:none}}
+@media (max-width:1240px){.navlinks{display:none}}
+@media (max-width:1100px){.hero .wrap{grid-template-columns:1fr;gap:30px}.hstats{grid-template-columns:repeat(3,1fr)}.cards4,.clusters{grid-template-columns:1fr 1fr}.eco-detail{grid-template-columns:1fr 1fr}.eco-detail>div:nth-child(2){border-right:0}.eco-detail>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:1000px){
+  .params,.levels{grid-template-columns:1fr}
+  .explorer,.kgrid{grid-template-columns:1fr}
+  .plist{position:static;flex-direction:row;flex-wrap:wrap;max-height:none;gap:6px}.pgroup{width:100%;margin:6px 0 2px}
+  .pbtn{padding:6px 10px;font-size:13px;background:#fff;border-color:var(--line)}
+  .kflow{flex-direction:column}
+  .parrow{width:100%;height:18px}.parrow::before{left:50%;right:auto;top:2px;bottom:2px;width:2px;height:auto}.parrow::after{display:none}
+  .layers-wrap{grid-template-columns:1fr}.side-rails,.pulse-dot{display:none}
+  .layer{grid-template-columns:1fr;gap:12px}
+  .jsteps{grid-template-columns:1fr 1fr}.jhead{flex-direction:column}.jstep::after{display:none}.jprod{justify-content:flex-start}
+  .specs{grid-template-columns:1fr}.specs div{border-right:0;border-bottom:1px solid var(--line)}.specs div:last-child{border-bottom:0}
+  footer .cols{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .wrap{padding:0 18px}section{padding:64px 0}
+  nav.top .wrap{height:58px}.brand small{display:none}.navpill{display:none}
+  .hstats{grid-template-columns:1fr 1fr}.hstats div{padding:16px 14px;border-bottom:1px solid rgba(255,255,255,.14)}.hstats b{font-size:24px}
+  .hbtns{flex-direction:column;align-items:stretch;text-align:center}
+  .cgrid{grid-template-columns:1fr 1fr}.feed{grid-template-columns:1fr}
+  .layer .cols{grid-template-columns:1fr}
+  .pcard{padding:20px 18px}.phead{flex-wrap:wrap}.phead h3{font-size:22px}
+  .shots.two,.shots.three{grid-template-columns:1fr}
+  .jflow{padding:20px}.jsteps{grid-template-columns:1fr}
+  .cards4,.clusters,.eco-detail{grid-template-columns:1fr}.eco-detail>div{border-right:0;border-bottom:1px solid var(--line)}
+  .ring-box{display:none}
+  .together{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.jstep{opacity:1;transform:none}}
+@media print{nav.top{position:static}.reveal{opacity:1;transform:none}.plist{position:static}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <div class="brand"><img class="mark" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDQwMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC50ZXh0IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDgwMDsgZm9udC1zaXplOiA0NnB4OyBmaWxsOiB3aGl0ZTsgbGV0dGVyLXNwYWNpbmc6IDAuMDJlbTsgfQogICAgICAudG0geyBmb250LWZhbWlseTogc3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogODAwOyBmb250LXNpemU6IDE2cHg7IGZpbGw6IHdoaXRlOyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjAsMCAyNjAsMCAxNjAsMTIwIDAsMTIwIiBmaWxsPSIjRjg3QTI0IiAvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYwLDAgNDAwLDAgNDAwLDEyMCAxNjAsMTIwIiBmaWxsPSIjMjU2QkFFIiAvPgogIDx0ZXh0IHg9IjI0IiB5PSI4MCIgY2xhc3M9InRleHQiPkFDQ0VTUyBHRU5JRTwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjQ4IiBjbGFzcz0idG0iPlRNPC90ZXh0Pgo8L3N2Zz4=" alt="Access Genie"><div><b>BCSS Access Genie</b><small>Retail Infrastructure · Jewellery Chain</small></div></div>
+    <div class="navlinks">
+      <a href="#overview">Overview</a><a href="#architecture">6 Layers</a><a href="#kpis">16 Retail KPIs</a>
+      <a href="#journeys">Incident Journeys</a><a href="#integration">Integration</a><a href="#governance">Governance</a><a href="#ecosystem">Delivery Ecosystem</a>
+    </div>
+    <span class="navpill">56 / 56 STORES ACTIVE</span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <img class="ag" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDQwMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC50ZXh0IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDgwMDsgZm9udC1zaXplOiA0NnB4OyBmaWxsOiB3aGl0ZTsgbGV0dGVyLXNwYWNpbmc6IDAuMDJlbTsgfQogICAgICAudG0geyBmb250LWZhbWlseTogc3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogODAwOyBmb250LXNpemU6IDE2cHg7IGZpbGw6IHdoaXRlOyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjAsMCAyNjAsMCAxNjAsMTIwIDAsMTIwIiBmaWxsPSIjRjg3QTI0IiAvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYwLDAgNDAwLDAgNDAwLDEyMCAxNjAsMTIwIiBmaWxsPSIjMjU2QkFFIiAvPgogIDx0ZXh0IHg9IjI0IiB5PSI4MCIgY2xhc3M9InRleHQiPkFDQ0VTUyBHRU5JRTwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjQ4IiBjbGFzcz0idG0iPlRNPC90ZXh0Pgo8L3N2Zz4=" alt="Access Genie">
+      <div><span class="htag">Autonomous Retail AI Surveillance Infrastructure</span></div>
+      <h1>Unified Intelligence.<br>56 Jewellery Stores.<br><span>16 Critical KPIs.</span></h1>
+      <div class="rule"></div>
+      <p><b>The jewellery chain</b> operates 56 luxury jewellery showrooms across Southern India. With thousands of high-definition cameras active across multiple states, manual human supervision of security, operational hospitality and sales staff was impossible.</p>
+      <p><b>BCSS Access Genie Retail Infrastructure</b> unifies the entire network into a single edge-to-cloud AI platform, delivering automated surveillance, 16 real-time KPIs across Sales, Risk and Operations, sub-second WhatsApp alerts, and 24/7 camera heartbeat monitoring.</p>
+      <div class="hbtns"><a class="hbtn pri" href="#kpis">Explore All 16 KPIs ↓</a><a class="hbtn sec" href="#ecosystem">View the Delivery Ecosystem</a></div>
+      <div class="hchips"><span>● 56 STORES IN TELEMETRY</span><span>1,000+ CCTV STREAMS</span><span>ZERO-TRUST VAULT AUDIT</span><span>WHATSAPP &amp; MAIL ALERTS</span><span>ARCFACE EMBEDDINGS</span></div>
+    </div>
+    <div class="console">
+      <div class="bar"><i></i><span>LIVE PREVIEW · FLAGSHIP STORE</span><span>AI OVERLAYS ON</span></div>
+      <div class="cgrid">
+        <div class="cam" data-cap="KPI-SALES-01 · Customer Walk-ins & Headcount"><video data-vid="walkins" autoplay muted loop playsinline></video><em style="--fc:#7FE0B0">WALK-INS</em><b>GF-1-CAM-3</b></div>
+        <div class="cam alert" data-cap="KPI-RISK-01 · Store Opening & Closing Shutter Compliance"><video data-vid="opening" autoplay muted loop playsinline></video><em style="--fc:#A6D1F0">SHUTTER</em><b>GF-1-CAM-3</b></div>
+        <div class="cam" data-cap="KPI-SALES-03 · Try-On & Purchase Selection Analytics"><video data-vid="tryon" autoplay muted loop playsinline></video><em style="--fc:#7FE0B0">TRY-ON</em><b>FF-1-CAM-8</b></div>
+        <div class="cam" data-cap="KPI-RISK-03 · Vault Opening & Dual-Custodian Audit"><video data-vid="vault" autoplay muted loop playsinline></video><em style="--fc:#A6D1F0">VAULT</em><b>GF-1-CAM-40</b></div>
+        <div class="cam alert" data-cap="KPI-RISK-02 · Security Frisking & Keypoint Checks"><video data-vid="seccheck" autoplay muted loop playsinline></video><em style="--fc:#A6D1F0">FRISKING</em><b>CAM-15</b></div>
+        <div class="cam" data-cap="KPI-RISK-06 · Frisking Bag Screening Compliance"><video data-vid="bags" autoplay muted loop playsinline></video><em style="--fc:#A6D1F0">BAG CHECK</em><b>GF-1-CAM-57</b></div>
+      </div>
+      <div class="feed">
+        <div style="--fc:#7FE0B0"><small>SALES PARAMETER · TRY-ON</small><b>Diamond Necklace Tried On</b><span>Customer Counter FF-CAM-19 · Logged</span></div>
+        <div style="--fc:#A6D1F0;animation-delay:1.2s"><small>RISK PARAMETER · VAULT ACCESS</small><b>Dual Custodians P1 &amp; P2 Verified</b><span>Strongroom GF-CAM-40 · 10:15 AM</span></div>
+        <div style="--fc:#FFB27A;animation-delay:2.4s"><small>OPERATIONS · HOSPITALITY SLA</small><b>Service Delivered: 7 Seconds</b><span>Seated Customer Greeted · FF-CAM-7</span></div>
+        <div style="--fc:#C7B6F5;animation-delay:3.6s"><small>FOUNDATION · HEARTBEAT</small><b>56 Stores 100% Online</b><span>1,048 Cameras Active · MTTR 3.1m</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap stats-wrap"><div class="hstats">
+    <div><small>Retail Stores Covered</small><b>56</b><span>Across Southern India</span></div>
+    <div><small>Monitored Cameras</small><b>1,000+</b><span>RTSP 1080p &amp; 4K Feeds</span></div>
+    <div><small>Real-Time Core KPIs</small><b>16</b><span>Sales, Risk &amp; Operations</span></div>
+    <div><small>Face Vectors Indexed</small><b>500k+</b><span>Forensic Evidence Trail</span></div>
+    <div><small>Camera Uptime SLA</small><b>99.9%</b><span>Automated Heartbeat Daemon</span></div>
+  </div></div>
+</header>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="eyebrow">The Retail Dilemma &amp; The Solution</div>
+    <h2>Manual monitoring of thousands of cameras is <em>physically impossible.</em></h2>
+    <p class="lead">For a luxury jewellery chain with 56 branches, traditional CCTV setups were purely passive archives. Incidents were noticed hours or days after occurrence. BCSS Access Genie transforms surveillance into an autonomous operational intelligence engine.</p>
+    <div class="params" id="params"></div>
+    <div class="together">One platform for every stakeholder: <em>Management, Risk and Operations</em>, each governing its own KPIs with verifiable evidence.</div>
+  </div>
+</section>
+
+<section id="architecture" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Enterprise Infrastructure</div>
+    <h2>Six layers powering 56 stores<br>and thousands of cameras.</h2>
+    <p class="lead">From edge inference on store premises to distributed cloud clusters and multi-channel notification relays, Access Genie is engineered for sub-second alert latency, cryptographic evidence integrity, and carrier-grade 99.9% uptime.</p>
+    <div class="layers-wrap">
+      <div class="layers" id="layers"><div class="pulse-dot" id="pulseDot"></div></div>
+      <div class="side-rails"><div class="rail"><span>SECURITY · SHA-256 AUDIT · RBAC</span></div><div class="rail"><span>EDGE · CLOUD · 99.9% UPTIME</span></div></div>
+    </div>
+    <div class="pulse-cap" id="pulseCap"></div>
+  </div>
+</section>
+
+<section id="kpis">
+  <div class="wrap">
+    <div class="eyebrow">The 16 Retail Deliverables</div>
+    <h2>Comprehensive deep-dive into every KPI<br>delivered by Access Genie.</h2>
+    <p class="lead">Inspect camera positions, deep learning models, operational workflows and real camera evidence captured live from the chain's branches. Select any snapshot or live clip to enlarge it.</p>
+    <div class="filters" id="filters"></div>
+    <div class="explorer"><div class="plist" id="plist"></div><div class="pcards" id="pcards"></div></div>
+  </div>
+</section>
+
+<section id="journeys" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">End-to-End Operational Scenarios</div>
+    <h2>Follow retail events across<br>the Access Genie ecosystem.</h2>
+    <p class="lead">See how edge computer vision models, temporal correlation engines and multi-channel notification dispatchers interact during real retail operational situations.</p>
+    <div class="scen-tabs" id="scenTabs"></div>
+    <div class="jflow card" id="jflow"></div>
+  </div>
+</section>
+
+<section id="integration">
+  <div class="wrap">
+    <div class="eyebrow">Integration Topology</div>
+    <h2>Three deployment modes connecting<br>store cameras to Access Genie.</h2>
+    <p class="lead">Designed to adapt seamlessly across flagship megastores, suburban boutique showrooms and regional shopping mall formats.</p>
+    <div class="levels">
+      <div class="lvl card reveal"><div class="lv">MODE 1 · EDGE</div><h3>On-Premise Edge Gateways</h3><p>Heavy retail stores with high camera density run compact NVIDIA Jetson edge inference nodes. RTSP streams are decoded locally with zero WAN video streaming, sending only JSON metadata, face vectors and alert snapshots to the central cloud.</p>
+        <div class="topo"><span>Store cameras</span><i>→</i><span>Jetson gateway</span><i>→</i><span>JSON + snapshots</span><i>→</i><span>Cloud</span></div>
+        <div class="bw">BANDWIDTH: &lt;50 KBPS PER STORE · ULTRA LOW LATENCY</div></div>
+      <div class="lvl card reveal"><div class="lv">MODE 2 · CLOUD</div><h3>Centralized Cloud Ingestion Cluster</h3><p>Showrooms connected via high-speed SD-WAN stream direct RTSP/WebRTC feeds to the chain’s private cloud compute cluster. Elastic GPU workers scale inference during morning store openings and evening peak shopping traffic.</p>
+        <div class="topo"><span>Store cameras</span><i>→</i><span>SD-WAN</span><i>→</i><span>Elastic GPU cluster</span></div>
+        <div class="bw">CENTRALIZED GPU CLUSTER · ZERO LOCAL HARDWARE</div></div>
+      <div class="lvl card reveal"><div class="lv">MODE 3 · HYBRID DISPATCH</div><h3>Hybrid Multi-Channel Dispatch</h3><p>Edge inferences trigger local sirens and strobes while asynchronously dispatching encrypted alert payloads to the WhatsApp Business API, SMTP Mail Relay and the Live Surveillance WebSockets Dashboard in under 500 milliseconds.</p>
+        <div class="topo"><span>Edge alert</span><i>→</i><span>Siren</span><span>WhatsApp</span><span>Email</span><span>Dashboard</span></div>
+        <div class="bw">WHATSAPP · EMAIL · WEBSOCKETS · SMS ESCALATION</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="governance" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Enterprise Safeguards &amp; Governance</div>
+    <h2>Accountability for the management.<br>Fast for the floor team.</h2>
+    <p class="lead">Access Genie combines automated computer vision with enterprise-grade security, evidence cryptography and multi-tenant administrative governance.</p>
+    <div class="cards4">
+      <div class="sc card reveal"><span class="itile md" data-ic="admin"></span><h4>Super Admin Portal</h4><p>Single pane of glass for adding new stores, registering camera RTSP streams, assigning role-based permissions (CSO, Floor Manager, Hospitality Lead) and adjusting KPI alert thresholds.</p></div>
+      <div class="sc card reveal"><span class="itile md" style="--cc:var(--orange-600)" data-ic="hash"></span><h4>SHA-256 Evidence Integrity</h4><p>Every alert video clip and high-resolution snapshot is cryptographically stamped with SHA-256 hashes and UTC timestamps, preventing tampering and ensuring legal admissibility.</p></div>
+      <div class="sc card reveal"><span class="itile md" style="--cc:var(--green)" data-ic="heart"></span><h4>Camera Heartbeat SLA</h4><p>Continuous polling across 1,000+ CCTV endpoints ensures a 99.9% camera uptime SLA. Automated escalations alert technicians before blind spots can be exploited.</p></div>
+      <div class="sc card reveal"><span class="itile md" style="--cc:var(--violet)" data-ic="chat"></span><h4>Daily WhatsApp Summaries</h4><p>Automated executive scorecard generated every night at 22:30 IST. Delivers store-wise KPI scorecards, violation logs and conversion metrics directly to leadership phones.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="eyebrow">Enterprise Delivery Ecosystem</div>
+    <h2>Access Genie at the centre.<br>Every deliverable <em>one click away.</em></h2>
+    <p class="lead">The complete delivery summary of all 16 KPIs and 3 foundation systems: what each one monitors, its trigger logic, the evidence it archives and the surface it is delivered to. Select any node to inspect it, or open its full KPI card.</p>
+    <div class="ring-box">
+      <div class="ring-hint">SELECT ANY DELIVERABLE TO INSPECT</div>
+      <svg id="ring" class="ring-svg" viewBox="0 0 1100 700" role="img" aria-label="Access Genie delivery ecosystem: 16 KPIs and 3 foundation systems around the Access Genie platform"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="eco-detail" id="ecoDetail"></div>
+    <div class="clusters" id="clusters"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><img class="ag" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDQwMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC50ZXh0IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDgwMDsgZm9udC1zaXplOiA0NnB4OyBmaWxsOiB3aGl0ZTsgbGV0dGVyLXNwYWNpbmc6IDAuMDJlbTsgfQogICAgICAudG0geyBmb250LWZhbWlseTogc3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogODAwOyBmb250LXNpemU6IDE2cHg7IGZpbGw6IHdoaXRlOyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjAsMCAyNjAsMCAxNjAsMTIwIDAsMTIwIiBmaWxsPSIjRjg3QTI0IiAvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYwLDAgNDAwLDAgNDAwLDEyMCAxNjAsMTIwIiBmaWxsPSIjMjU2QkFFIiAvPgogIDx0ZXh0IHg9IjI0IiB5PSI4MCIgY2xhc3M9InRleHQiPkFDQ0VTUyBHRU5JRTwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjQ4IiBjbGFzcz0idG0iPlRNPC90ZXh0Pgo8L3N2Zz4=" alt="Access Genie"><p>Enterprise AI Surveillance, Real-Time Computer Vision &amp; Operational Governance for the jewellery chain’s 56 retail showrooms across Southern India.</p></div>
+      <div><h5>Parameters</h5><ul><li>Sales Parameter (3 KPIs)</li><li>Risk Parameter (7 KPIs)</li><li>Operations Parameter (6 KPIs)</li><li>Platform Foundation (3 Core)</li></ul></div>
+      <div><h5>Deployment</h5><ul><li>56 Stores Across South India</li><li>1,000+ CCTV Cameras</li><li>Edge &amp; Cloud Hybrid</li><li>24/7 Heartbeat Daemon</li></ul></div>
+    </div>
+    <div class="base">BCSS ACCESS GENIE · JEWELLERY CHAIN · RETAIL INFRASTRUCTURE DOCUMENTATION</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden><div><img id="lbImg" alt=""><video id="lbVid" muted loop playsinline autoplay controls hidden></video><p id="lbCap"></p></div></div>
+
+<script>
+const ICON={
+ walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l2-6 3 3v3"/><path d="M7 12l3-4 4 1 2 4 3 1"/><path d="M11 15l-1-5"/>',
+ gem:'<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M12 21 8 9l4-6 4 6z"/>',
+ ring:'<circle cx="12" cy="15" r="6"/><path d="M9 5h6l-1.5 3.5h-3z"/>',
+ store:'<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v8h14v-8"/><path d="M10 21v-5h4v5"/>',
+ shield:'<path d="M12 3l8 3v6c0 4.8-3.4 8-8 9-4.6-1-8-4.2-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ vault:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M12 8v1M12 15v1M8 12h1M15 12h1"/>',
+ guard:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/><path d="M17 3l4 4M21 3l-4 4"/>',
+ rack:'<rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18M3 15h18"/><path d="M7 7h.01M12 7h.01M7 12.5h.01"/>',
+ bag:'<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M10 13l1.5 1.5L14 12"/>',
+ moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ late:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6M19 5l1.5-1.5"/>',
+ hand:'<path d="M7 11V6a1.5 1.5 0 0 1 3 0v4"/><path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M13 10V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M16 9.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a7 7 0 0 1-5.5-3L3 14.5a1.5 1.5 0 0 1 2.4-1.8L7 14"/>',
+ counter:'<rect x="3" y="10" width="18" height="4" rx="1"/><path d="M5 14v6M19 14v6"/><path d="M8 7l1.5-3h5L16 7"/>',
+ mop:'<path d="M14 3l-4 11"/><path d="M6 14h8l2 7H4z"/><path d="M7 21v-3M10 21v-3M13 21v-3"/>',
+ gather:'<circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="8" r="2.5"/><circle cx="12" cy="6" r="2.5"/><path d="M3 19c.5-3 2-4.5 4-4.5M21 19c-.5-3-2-4.5-4-4.5M8 19c.5-3.5 2-5.5 4-5.5s3.5 2 4 5.5"/>',
+ heart:'<path d="M3 12h4l2-4 3 8 2-4h7"/>',
+ report:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17v-3M12 17v-6M16 17v-4"/>',
+ admin:'<circle cx="9" cy="8" r="4"/><path d="M2 21c1-4 3.5-6 7-6s6 2 7 6"/><path d="M19 8v6M16 11h6"/>',
+ hash:'<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>',
+ chat:'<path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 21l2-5.2A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.5 10h7M8.5 13.5h4"/>',
+ camera:'<path d="M15 10l5-3v10l-5-3z"/><rect x="3" y="6" width="12" height="12" rx="2"/>',
+ cpu:'<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>',
+ db:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+ send:'<path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+ rules:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>',
+ stream:'<path d="M4 6h16M4 12h10M4 18h13"/><path d="M18 10l3 2-3 2"/>',
+ map:'<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+ building:'<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.6.8 2.6 2.6 3 5.2"/>',
+ pdf:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/>'
+};
+const ic=k=>`<svg class="ic" viewBox="0 0 24 24">${ICON[k]||''}</svg>`;
+const tile=(k,cc,cls='')=>`<span class="itile ${cls}" style="--cc:${cc}">${ic(k)}</span>`;
+document.querySelectorAll('[data-ic]').forEach(e=>e.innerHTML=ic(e.dataset.ic));
+
+const CL={
+ sales:{name:'Sales Parameter',short:'Sales',hex:'#1E7F4F',ic:'gem',kk:'3 Core KPIs',
+   desc:'Maximizes luxury conversion and client rapport. Detects customer walk-in footfall, logs secure facial embeddings for fraud prevention, audits display trays presented on table, and monitors physical jewellery try-ons versus purchase outcomes.',
+   foot:'Walk-ins, Display Items, Try-ons'},
+ risk:{name:'Risk & Security Parameter',short:'Risk',hex:'#2070B3',ic:'shield',kk:'7 Core KPIs',
+   desc:'Enforces zero-trust retail security protocols: dual-witness store opening and closing, AI pose-estimation frisking verification, dual-custodian vault access audits, guard absence alarms (>15 min), empty rack theft alerts, and after-hours intruder tracking.',
+   foot:'Vault, Guards, Intrusion, Frisking'},
+ ops:{name:'Operations Parameter',short:'Operations',hex:'#DE6C0E',ic:'hand',kk:'6 Core KPIs',
+   desc:'Guarantees world-class hospitality under the philosophy of “Atithi Devo Bhava”. Tracks 10-second Meet & Greet, hospitality Service On-Time and Service Late, counter clearance, floor hygiene and staff gathering on the showroom floor.',
+   foot:'Hospitality, Counters, Hygiene, Staff'},
+ found:{name:'Platform Foundation',short:'Foundation',hex:'#5B3FA8',ic:'heart',kk:'3 Core Systems',
+   desc:'Camera heartbeat and downtime daemon, automated daily multi-channel reports, and the Super Admin role-based multi-store portal.',
+   foot:'Heartbeat, Daily Reports, Super Admin'}
+};
+
+/* KPI dictionary (copy from BCSS Access Genie Retail Infrastructure) */
+const IMG=p=>p;
+const K=[
+ {id:'walkins',c:'sales',ic:'walk',code:'KPI-SALES-01',short:'Walk-ins',name:'Customer Walk-ins & Headcount',tagline:'Footfall Counting, Peak Traffic & Forensic Face Embeddings',
+  desc:'Monitors customer walk-in volume and group size entering through showroom vestibules. Stores 512-dimensional facial vector embeddings securely in Milvus Vector DB to provide instantaneous forensic evidence if any security dispute or high-value loss occurs.',
+  cam:'GF-1-CAM-3 (Entrance Vestibule Overhead)',res:'1280×720 @ 30 FPS',model:'YOLOv8x Retail Footfall + ByteTrack + ArcFace 512-d Vector Extractor',sla:'Real-time Tripwire Crossing (<100ms)',
+  steps:[['Entrance Crossing','Customer crosses directional tripwire at vestibule'],['Headcount Tally','Multi-person group tracking increments store footfall'],['Face Alignment','High-resolution face crop extracted and quality-checked'],['Vector Embedding','512-d ArcFace feature vector stored in Milvus DB'],['Forensic Index','Timestamped face vector ready for instant security query']],
+  trigger:'Customer enters showroom across vestibule tripwire; groups tallied',proof:'Timestamped head count tally + 512-d ArcFace facial vector embedding in Milvus DB',channels:'Live Dashboard, WhatsApp Summary, PDF Nightly',
+  badge:'VERIFIED HEADCOUNT: 235',st:'ok',roi:'Accurate footfall baseline for sales conversion; instant forensic identification without scrubbing hours of video.',
+  vid:'walkins',shots:[['media/cd8f6df6efd2.jpg','Walk-in group detected · GF-1-CAM-3 · 17-Nov-2026 12:56 IST']]},
+ {id:'display',c:'sales',ic:'gem',code:'KPI-SALES-02',short:'Display Items',name:'Display Ornaments Counter',tagline:'Counter Table Dwell & Presented Jewellery Tracking',
+  desc:'Detects when a customer is seated at a sales consultation table and audits the exact count of jewellery trays and ornaments presented by the sales associate. Prevents counter overcrowding, measures customer engagement, and correlates presentation depth with closing rates.',
+  cam:'FF-1-CAM-8 (First Floor Counter Top-Down)',res:'1024×576 @ 25 FPS',model:'Jewellery Ornament Detector + Table Polygon Dwell Timer',sla:'Continuous Counter Audit (5-sec polling)',
+  steps:[['Customer Seated','Customer sitting detected in table bounding zone'],['Tray Placement','Sales associate brings out velvet trays from safe'],['Ornament Count','AI segments and counts active items displayed on counter'],['Dwell Logging','Calculates time spent presenting diamond vs gold ornaments'],['Sales Analytics','Correlates items presented with final billing invoice']],
+  trigger:'Customer seated at table; velvet trays placed; items audited continuously',proof:'Bounding box snapshot of displayed jewellery pieces + table dwell duration',channels:'Live Dashboard, Floor Manager Alert',
+  badge:'ITEMS DISPLAYED: 5 PIECES',st:'ok',roi:'Ensures sales staff adhere to luxury presentation standards; prevents unattended clutter and loss on tables.',
+  vid:'display',shots:[['media/6a40a777b1a2.jpg','Number of ornaments shown: 5 · FF-1-CAM-8 · 15-Nov-2026 18:49 IST']]},
+ {id:'tryon',c:'sales',ic:'ring',code:'KPI-SALES-03',short:'Try-On',name:'Try-On & Purchase Selection Analytics',tagline:'Physical Try-on Detection & Selection Conversion',
+  desc:'Uses upper-body pose estimation to detect when a customer tries on a necklace, ring, bangle or earrings in front of mirrors. Logs try-on duration and interaction intensity, and flags the final ornament selected for purchase.',
+  cam:'FF-1-CAM-19 (Mirror & Consultation Zone)',res:'1024×576 @ 25 FPS',model:'YOLOv8-Pose + Hand-to-Neck/Wrist/Face Interaction Classifier',sla:'Sub-second Gesture Classification (<250ms)',
+  steps:[['Tray Pick Event','Customer or staff lifts ornament from display tray'],['Try-On Gesture','Hand coordinates reach neck, ear or wrist area'],['Mirror Gaze','Customer views reflection in showroom mirror'],['Selection Flag','Item retained or handed to cashier for billing'],['Conversion Log','Try-on to purchase ratio recorded in daily dashboard']],
+  trigger:'Hand-to-neck/ear/wrist gesture detected while viewing mirror',proof:'Pose interaction snapshot + try-on item ID & conversion selection flag',channels:'Daily Merchandising Intelligence Report',
+  badge:'TRY-ON DETECTED: NECKLACE',st:'ok',roi:'Identifies top-performing designs and provides high-intent buyer analytics to retail merchandising executives.',
+  vid:'tryon',shots:[['media/247cebe042a3.jpg','Try-on detected · FF-1-CAM-19 · 16-Nov-2026 17:19 IST']]},
+
+ {id:'opening',c:'risk',ic:'store',code:'KPI-RISK-01',short:'Store Opening',name:'Store Opening & Closing Shutter Compliance',tagline:'Motorized Shutter/Curtain State & Dual-Witness Protocol',
+  desc:'Monitors the opening and closing of store motorized shutters and heavy velvet security curtains. Strictly enforces the chain’s dual-witness security protocol, ensuring 2+ authorized staff members are verified present before opening or after closing.',
+  cam:'GF-1-CAM-3 (Exterior Shutter & Ingress)',res:'1280×720 @ 30 FPS',model:'Shutter/Curtain State Classifier + Multi-Witness Presence Engine',sla:'Zero-Tolerance Schedule & Dual-Witness Enforcement',
+  steps:[['Shutter Motion','Motion detected at rolling shutter entrance'],['State Tracking','Shutter classified as Closed, Lifting or Fully Open'],['Witness Tally','Computer vision verifies 2+ staff members present'],['Schedule Check','Opening validated against scheduled store operating hours'],['Compliance Log','Dispatches “Fully Compliant” or raises unauthorized alert']],
+  trigger:'Shutter/curtain motion; requires 2+ authorized staff witnesses',proof:'Dual-witness arrival snapshots + opening/closing timestamp compliance log',channels:'WhatsApp Alert, Central Security Console',
+  badge:'ALERT: OUT-OF-HOURS OPENING',st:'alert',roi:'Eliminates lone-worker insider theft risks during high-vulnerability morning and night transitions.',
+  vid:'opening',shots:[['media/2377fe10280c.jpg','AUTHORIZED · Closure in business hours, 3 persons · 16-Nov-2026 20:59'],['media/606fc0a8f6d6.jpg','UNAUTHORIZED · Opened with fewer than 2 persons · 17-Nov-2026 08:05']]},
+ {id:'seccheck',c:'risk',ic:'shield',code:'KPI-RISK-02',short:'Security Checks',name:'Security Frisking & Keypoint Checks',tagline:'Human Frisking Pose Estimation & Anatomical Keypoint Coverage',
+  desc:'Monitors security guards performing frisking on staff and visitors entering or exiting. Using 17-keypoint skeleton pose tracking, it verifies whether all mandated body zones (torso, arms, pockets, waistband, lower legs) were systematically scanned, with video proof archived.',
+  cam:'FF-1-CAM-55 / GF-1-CAM-58 (Security Checkpoints)',res:'2688×1520 (4K Ultra-HD)',model:'HRNet 17-Keypoint Pose Estimation + Guard Trajectory Analyzer',sla:'100% Body Coverage Verification with 10s Video Clip',
+  steps:[['Staff Approach','Person enters security checkpoint boundary'],['Guard Engagement','Guard begins hand-held metal detector scanning'],['Keypoint Audit','AI tracks coverage across torso, waistline and legs'],['Completeness Score','Calculates % coverage against mandatory frisking checklist'],['Evidence Clip','Saves short video clip with SHA-256 hash in vault']],
+  trigger:'Staff/visitor enters checkpoint; audits all body touchpoint scans',proof:'10-second proof video clip + SHA-256 hash + keypoint coverage %',channels:'Security Vault, CSO Audit Log',
+  badge:'VERIFIED PROPER FRISKING',st:'ok',roi:'Guarantees 100% adherence to loss-prevention frisking; stops weapon or tool ingress and jewellery shrinkage.',
+  vid:'seccheck',shots:[['media/f6c0f07f16ac.jpg','Proper frisking · FF-1-CAM-55 · 17-Nov-2026 12:57 IST'],['media/632adbab3f56.jpg','Proper frisking · GF-1-CAM-58 · 17-Nov-2026 13:05 IST']]},
+ {id:'vault',c:'risk',ic:'vault',code:'KPI-RISK-03',short:'Vault Access',name:'Vault Opening & Dual-Custodian Audit',tagline:'Strongroom Access, Multi-Angle Snapshots (P1, P2, Door)',
+  desc:'Monitors the high-security jewellery strongroom 24/7. Upon vault door motion, the system captures synchronized multi-angle snapshots: Person 1 (P1), Person 2 (P2) and the Vault Door. Enforces dual-custodian authorization and alerts on single-person breaches.',
+  cam:'GF-1-CAM-40 (Strongroom Vault Ingress)',res:'2688×1520 High-Res',model:'Vault Door State Detector + Authorized Custodian Face Matcher',sla:'Instant Multi-Snapshot Synchronized Capture (<50ms)',
+  steps:[['Vault Approach','Authorized personnel enter strongroom vestibule'],['Dual Verification','AI validates two authorized keyholders present (P1 + P2)'],['Door Unlock','Vault door motion detected and classified as Opened'],['Multi-Snapshot','Simultaneously records P1, P2 and Door angle snapshots'],['Tamper Log','Logs access timestamp and dispatches WhatsApp alert']],
+  trigger:'Vault door motion; validates dual authorized keyholders present',proof:'Triple synchronized snapshots: Person 1 (P1), Person 2 (P2), Vault Door',channels:'Urgent WhatsApp to CSO & Store Head',
+  badge:'AUTHORIZED DUAL ACCESS (P1+P2)',st:'ok',roi:'Strict physical dual-control of the highest-value inventory in the store; provides an unalterable audit trail.',
+  vid:'vault',shots:[['media/f8eb6a745803.jpg','DOOR · Awaiting door opening'],['media/b0192ab5061e.jpg','P1 · Custodian verified'],['media/5d38bedab040.jpg','P2 · Custodian verified']]},
+ {id:'guard',c:'risk',ic:'guard',code:'KPI-RISK-04',short:'Guard Absence',name:'Security Guard Absence Monitoring',tagline:'Post Dwell Tracking & >15 Minutes Absence Escalation',
+  desc:'Continuously verifies that assigned security guard posts at main entrances, vaults and billing counters remain occupied. If a guard vacates the assigned post for more than 15 minutes continuously during business hours, a high-severity alert is immediately raised to the Store Manager.',
+  cam:'FF-1-CAM-55 / GF-1-CAM-58 (Guard Station Posts)',res:'1280×720 @ 30 FPS',model:'Guard Uniform Classifier + Polygonal Geofence Dwell Tracker',sla:'Escalation at 15m 00s Continuous Absence',
+  steps:[['Guard Stationed','Guard bounding box detected in designated post polygon'],['Post Vacated','Guard leaves post boundary; timer initialized'],['5-Min Warning','Local dashboard logs yellow warning status'],['15-Min Threshold','Continuous absence exceeds 15-minute SLA benchmark'],['Manager Alert','Dispatches WhatsApp alert with snapshot to Store Head']],
+  trigger:'Guard vacates designated geofence post for >15 minutes continuously',proof:'Absence timer stopwatch log + empty post camera snapshot',channels:'WhatsApp Ping to Store Head & Agency SLA Log',
+  badge:'ALERT: GUARD ABSENT >15 MINS',st:'alert',roi:'Maintains active deterrence at all showroom gates; ensures security agencies fulfil contractual staffing SLAs.',
+  shots:[['media/48b92fdef705.jpg','Guard post vacant · FF-1-CAM-55 · 31-Oct-2026 21:33 IST'],['media/c5a984df4196.jpg','Guard post vacant · GF-1-CAM-58 · 08-Nov-2026 21:23 IST']]},
+ {id:'racks',c:'risk',ic:'rack',code:'KPI-RISK-05',short:'Empty Racks',name:'Empty Racks & Jewellery Displacement',tagline:'Showcase Rack Occupancy & Anti-Robbery Telemetry',
+  desc:'Audits high-value diamond and gold showcases, wall display cabinets and counter trays. Logs when jewellery is placed and removed, flags prolonged empty display slots, and triggers an anti-robbery alert if multiple trays are removed abruptly without customer consultation.',
+  cam:'FF-1-CAM-22 / FF-1-CAM-34 (Showcase & Wall Displays)',res:'1920×1080 @ 25 FPS',model:'Showcase Segmentation + Velvet Slot Occupancy Detector',sla:'Immediate Anomaly Classification (<1 sec)',
+  steps:[['Rack Baseline','AI maps all tray slots and jewellery positions'],['Tray Removal','Staff lifts tray; displacement event logged with timestamp'],['Customer Check','Verifies if customer is seated at adjacent consultation table'],['Prolonged Vacancy','Flags rack left vacant during operating hours'],['Robbery Defense','Immediate emergency alert if bulk trays displaced']],
+  trigger:'Jewellery tray removed from rack; flags prolonged vacancy or abrupt removal',proof:'Showcase slot vacancy heatmap + displacement event timestamp',channels:'Dashboard Telemetry, Anti-Robbery Siren',
+  badge:'RACK EMPTY · ALERT RAISED',st:'alert',roi:'Prevents internal shrinkage during stock transitions and provides early warning during smash-and-grab attempts.',
+  shots:[['media/52b6c8b98a4e.jpg','Rack empty at 20:56 · FF-1-CAM-22 · 16-Nov-2026'],['media/930686f2c349.jpg','Rack empty at 20:54 · FF-1-CAM-34 · 16-Nov-2026']]},
+ {id:'bags',c:'risk',ic:'bag',code:'KPI-RISK-06',short:'Bag Frisking',name:'Frisking Bag Screening Compliance',tagline:'Staff & Visitor Carry-on Screening Enforcement',
+  desc:'Verifies that security guards inspect all staff backpacks, handbags and visitor tote bags upon entry and exit. Guarantees that bags are physically opened and inspected under camera view before clearance is granted.',
+  cam:'GF-1-CAM-57 / FF-1-CAM-56 (Screening Stations)',res:'2688×1520 High-Res',model:'Luggage/Bag Detector + Open Bag Inspection Pose Classifier',sla:'100% Bag Ingress/Egress Inspection Enforcement',
+  steps:[['Bag Detected','AI identifies backpack, handbag or duffle on person'],['Bag Handover','Person presents bag to security screening desk'],['Inspection Pose','Guard opens compartments and performs visual check'],['Bypass Detection','Flags if bag is carried through without inspection'],['Compliance Log','Records screening compliance with camera snapshot']],
+  trigger:'Staff or visitor carry-on bag crosses screening without full inspection',proof:'Open bag inspection pose snapshot vs uninspected bypass alert frame',channels:'Security Post Monitor, Daily Compliance Report',
+  badge:'PROPER BAG INSPECTION',st:'ok',roi:'Stops illicit transport of jewellery, loose diamonds or dangerous articles in or out of store premises.',
+  vid:'bags',shots:[['media/e964defea8ab.jpg','Proper bag frisking · GF-1-CAM-57 · 16-Nov-2026 21:34 IST'],['media/d45b416156db.jpg','Proper bag frisking · FF-1-CAM-56 · 16-Nov-2026 20:16 IST']]},
+ {id:'intruder',c:'risk',ic:'moon',code:'KPI-RISK-07',short:'Intruder Alert',name:'After-Hours Perimeter Intruder Detection',tagline:'Night Vision IR Human Silhouette & Tripwire Trigger',
+  desc:'Arms automatically once store shutters are locked (e.g. 21:30 IST). Continuously scans low-light showroom floors, back offices and vault perimeters, and dispatches an instant emergency alert if an unauthorized person is detected after hours.',
+  cam:'GF-1-CAM-1 (Night Vision Infrared Perimeter)',res:'1280×720 IR Night Mode @ 20 FPS',model:'Temporal Motion Filter + Human Silhouette Classifier',sla:'Sub-500ms Emergency Dispatch & Siren Activation',
+  steps:[['Auto-Arming','System enters armed security state after store closure'],['IR Motion Detect','Infrared feed detects motion in darkened showroom'],['Human Verification','Deep learning classifies motion as human vs shadow/rodent'],['Emergency Alert','Instant WhatsApp, SMS and Email to Police & Management'],['Siren Trigger','Optionally activates edge relay strobes and sirens']],
+  trigger:'Human silhouette or motion in darkened showroom during closed hours',proof:'Night-vision IR snapshot with bounding box + instant alarm clip',channels:'Emergency Siren, Central Command, Police Dispatch',
+  badge:'INTRUDER DETECTED (00:23 AM)',st:'alert',roi:'Protects high-value retail assets 24/7/365; eliminates vulnerability during holidays and overnight hours.',
+  shots:[['media/c3a65a3949f8.jpg','Night movement · intruder count 1 · 17-Nov-2026 00:23 IST'],['media/66b31e59ae7c.jpg','Night movement · intruder count 1 · 17-Nov-2026 04:16 IST']]},
+
+ {id:'ontime',c:'ops',ic:'clock',code:'KPI-OPS-01',short:'Service On-Time',name:'Hospitality Service On-Time',tagline:'Luxury Customer Seating to Service Stopwatch',
+  desc:'Measures the duration from when a customer sits at a showroom sales table until a hospitality team member or sales associate attends to them with welcome refreshments, water or product catalogues, ensuring the chain’s luxury hospitality standards are consistently maintained.',
+  cam:'FF-1-CAM-7 (First Floor Seating Lounge)',res:'1280×720 @ 30 FPS',model:'Customer Seated Detector + Hospitality Staff Arrival Timer',sla:'Target Service Response: <3 Minutes',
+  steps:[['Customer Seated','Customer settles into consultation table chair'],['Stopwatch Starts','Hospitality SLA timer begins counting seconds'],['Staff Approach','Hospitality staff arrives with welcome tray / water'],['Timer Stopped','Response recorded (e.g. 7 seconds from seating)'],['Scorecard Update','Increments store on-time hospitality compliance']],
+  trigger:'Customer seated; associates deliver water/refreshments within benchmark',proof:'Stopwatch timer record (e.g. 7 seconds) + arrival confirmation frame',channels:'Live Dashboard Hospitality Scorecard',
+  badge:'SERVICE ON-TIME: 7 SEC',st:'ok',roi:'Enhances luxury brand prestige; seated customers feel immediately valued upon arrival.',
+  shots:[['media/db7023c8edd8.jpg','Service on time · attended in 7 sec · FF-1-CAM-7 · 16-Nov-2026 15:33']]},
+ {id:'late',c:'ops',ic:'late',code:'KPI-OPS-02',short:'Service Late',name:'Hospitality Service Late Escalation Alarm',tagline:'Delayed Service Alarm (>5 Minutes Dwell Alert)',
+  desc:'Triggers an operational alarm whenever a seated customer remains unattended past acceptable hospitality thresholds (e.g. >5 minutes 1 second), and sends an immediate ping to the Floor Manager to deploy staff before customer frustration sets in.',
+  cam:'FF-1-CAM-8 (Showroom Consultation Zone)',res:'1024×576 @ 25 FPS',model:'Dwell Timer State Machine + Floor Escalation Dispatcher',sla:'Immediate Escalation at 5-Minute Benchmark',
+  steps:[['Customer Waiting','Customer seated at table without staff member'],['Timer Exceeded','Dwell duration crosses 5-minute SLA threshold'],['Alarm Triggered','Status shifts to Critical Hospitality Violation'],['Manager Ping','Alert pushed to Floor Manager with table location'],['Staff Dispatched','Manager assigns available associate to attend table']],
+  trigger:'Customer seated and unattended for >5 minutes without service',proof:'Elapsed dwell snapshot (5m 1s) + unattended table coordinates',channels:'Floor Manager Handheld Ping & Dashboard Alarm',
+  badge:'SERVICE LATE: 5 MIN 1 SEC',st:'alert',roi:'Significantly reduces customer walk-outs and negative reviews due to unattended consultation tables.',
+  shots:[['media/4efd62794bf5.jpg','Service delay · customer waited 5 min 1 sec · FF-1-CAM-8 · 16-Nov-2026 18:50']]},
+ {id:'greet',c:'ops',ic:'hand',code:'KPI-OPS-03',short:'Meet & Greet',name:'Meet & Greet Protocol (“Atithi Devo Bhava”)',tagline:'10-Second Welcoming Reception Compliance',
+  desc:'Enforces the chain’s foundational philosophy of “Atithi Devo Bhava”. Detects entering customers and verifies whether designated showroom reception hosts welcome them with a traditional Namaste within 10 seconds of crossing the door.',
+  cam:'GF-1-CAM-3 (Showroom Entrance Foyer)',res:'1280×720 @ 30 FPS',model:'Entrance Trigger + Staff Approach Vector + Namaste Pose Classifier',sla:'Greeting Window: <10 Seconds from Ingress',
+  steps:[['Customer Enters','Customer crosses main showroom entry threshold'],['Staff Movement','Host staff member steps forward toward customer'],['Gesture Classified','Computer vision verifies welcoming Namaste gesture'],['10s Validation','Greeting completed within 10 seconds of arrival'],['Hospitality Score','Increments showroom reception quality index']],
+  trigger:'Customer enters; staff host must perform welcoming Namaste in <10s',proof:'10-second reception pose verification snapshot + store greeting %',channels:'Executive Scorecard, Area Head Dashboard',
+  badge:'GREETED IN 10 SECONDS',st:'ok',roi:'Creates an exceptional first impression and establishes customer loyalty from the very first step.',
+  shots:[['media/0e2c2ed130e0.jpg','Meet & greet · greeted within 10 sec · GF-1-CAM-3 · 17-Nov-2026 12:55']]},
+ {id:'counter',c:'ops',ic:'counter',code:'KPI-OPS-04',short:'Clear Counter',name:'Clear Counter Safety Protocol',tagline:'Prompt Counter Clearance & Inventory Safe Return',
+  desc:'Monitors consultation counters after customer departure. Verifies that diamond and gold ornaments are promptly counted, repacked into secure trays and returned to locked safes or display cases rather than left unattended on open tables.',
+  cam:'FF-1-CAM-19 (Sales Consultation Counters)',res:'1024×576 @ 25 FPS',model:'Customer Departure Detector + Unattended Jewellery Tray Classifier',sla:'Escalation if Counter Unattended >15 Minutes',
+  steps:[['Customer Leaves','Customer stands and walks away from sales counter'],['Tray Detection','AI checks if jewellery trays remain exposed on table'],['Staff Repacking','Staff accounts for inventory and returns tray to safe'],['Table Cleared','Counter confirmed fully cleared'],['15-Min Timeout','Raises alert if jewellery left unattended on counter']],
+  trigger:'Customer departs; jewellery trays left unattended on table >15 mins',proof:'Customer departure timestamp + exposed ornaments on counter snapshot',channels:'Floor Manager Alert, Stock Audit Log',
+  badge:'ALERT: UNCLEARED (15 MINS)',st:'alert',roi:'Prevents opportunist theft or inventory misplacement; keeps sales counters impeccably organized.',
+  shots:[['media/f4a103f732ae.jpg','Counter clearance alert · item uncleared for 15 min · FF-1-CAM-19 · 15-Nov-2026 19:22']]},
+ {id:'mopping',c:'ops',ic:'mop',code:'KPI-OPS-05',short:'Floor Mopping',name:'Floor Mopping & Store Hygiene Standards',tagline:'Morning Pre-Opening & Evening Hygiene Verification',
+  desc:'Audits pre-opening showroom cleaning routines (08:00–09:30 AM) and evening maintenance. Tracks housekeeping staff using mops and cleaning equipment across all floor aisles, ensuring pristine hygiene benchmarks for luxury jewellery buyers.',
+  cam:'FF-1-CAM-10 / GF-1-CAM-3 (Showroom Aisles)',res:'1920×1080 @ 25 FPS',model:'Cleaning Staff Detector + Mop/Bucket Object Classifier + Heatmap',sla:'Daily Pre-Opening Schedule (08:00–09:30 AM)',
+  steps:[['Cleaning Starts','Housekeeping staff detected with mop and bucket'],['Coverage Heatmap','AI tracks mop trajectories across all aisle tiles'],['Schedule Check','Validates cleaning completed before 09:30 AM opening'],['Coverage %','Verifies ≥95% showroom floor area was covered'],['Hygiene Certificate','Issues daily store cleanliness compliance token']],
+  trigger:'Housekeeping floor mopping verified during morning routine (08:00–09:30)',proof:'Mop trajectory floor coverage heatmap + pre-opening hygiene certificate',channels:'Store Manager Hygiene Sign-Off',
+  badge:'FLOOR MOPPED (09:01 AM)',st:'ok',roi:'Ensures showroom floors, mirrors and display cases maintain luxury brand standards.',
+  shots:[['media/5723d0986c90.jpg','Mopping verified · FF-1-CAM-10 · 17-Nov-2026 09:01 IST'],['media/8a9b82200196.jpg','Mopping verified · GF-1-CAM-3 · 17-Nov-2026 08:10 IST']]},
+ {id:'gathering',c:'ops',ic:'gather',code:'KPI-OPS-06',short:'Staff Gathering',name:'Staff Gathering & Loitering Detection',tagline:'Unproductive Staff Congregation & Floor Discipline',
+  desc:'Identifies instances where 3 or more sales associates cluster together for informal conversation while customer tables remain unattended. Generates floor productivity analytics to maintain professional showroom decorum.',
+  cam:'GF-1-CAM-31 (Showroom Central Crossway)',res:'1280×720 @ 30 FPS',model:'Multi-Staff Spatial Clusterer (≥3 within 2m) + Counter Status Correlator',sla:'Alert on Clustering >3 Minutes with Open Counters',
+  steps:[['Staff Cluster','AI detects 3+ sales executives standing in close proximity'],['Dwell Stopwatch','Tracks congregation duration past 3 minutes'],['Counter Audit','Cross-checks whether customer tables are waiting for staff'],['Discipline Flag','Registers staff gathering event on supervisor console'],['Floor Rebalancing','Floor Manager directs staff back to active zones']],
+  trigger:'3+ sales staff congregating for >3 mins while customer tables unattended',proof:'Spatial cluster bounding box frame + unattended counter status',channels:'Floor Productivity Console, Floor Lead Alert',
+  badge:'STAFF GATHERING DETECTED',st:'alert',roi:'Boosts floor staff utilization and prevents customers from waiting unattended.',
+  shots:[['media/0653b34fd3e7.jpg','Staff gathering for 5 mins · GF-1-CAM-31 · 17-Nov-2026 11:46'],['media/a83b0fdf48ab.jpg','Staff gathering for 5 mins · GF-1-CAM-31 · 16-Nov-2026 12:14']]},
+
+ {id:'heartbeat',c:'found',ic:'heart',code:'FOUNDATION-01',short:'Camera Heartbeat',name:'Camera Heartbeat & Downtime Daemon',tagline:'24/7 RTSP Health Polling Across 1,000+ CCTV Feeds',
+  desc:'Continuous automated daemon polling all cameras across 56 stores every 15–30 seconds. Detects stream dropouts, network switch packet loss, power cuts and lens tampering (occlusion/defocus), and dispatches instant email alerts with camera ID, store location and switch port.',
+  cam:'System-Wide Infrastructure (All 56 Stores)',res:'Continuous RTSP Daemon',model:'ICMP + RTSP Keep-Alive Frame Grabber + Tamper Occlusion Detector',sla:'Offline Alert <30s · MTTR Target <15 mins',
+  steps:[['15s Heartbeat Ping','RTSP ping sent to all 1,000+ camera IP endpoints'],['Packet Loss Check','Analyzes video bitrate and frame continuity'],['Tamper Analysis','Detects lens occlusion, spray paint or severe tilt'],['Email Dispatch','Sends IT technician alert with switch port & last frame'],['Downtime Telemetry','Logs MTTR and updates store health score']],
+  trigger:'RTSP ping or video stream drops offline, packet loss or lens tampering',proof:'Automated downtime log (MTTR), switch port identification & last frame',channels:'Instant Email to IT Team, Live Dashboard Banner',
+  badge:'100% HEALTH SCORE (0 OFFLINE)',st:'ok',roi:'Guarantees zero security blind spots across 56 stores; technical issues are resolved before they can be exploited.',widget:'heartbeat'},
+ {id:'reports',c:'found',ic:'report',code:'FOUNDATION-02',short:'Daily Reports',name:'Automated Daily Multi-Channel Reports',tagline:'22:30 IST WhatsApp & Email Executive Dispatches',
+  desc:'Every evening at 22:30 IST, Access Genie compiles a store-wise executive intelligence summary, generates PDF scorecards and dispatches them via the WhatsApp Business API and Email directly to Store Heads, Regional Directors and senior management.',
+  cam:'Automated Analytics Engine',res:'Nightly Cron (22:30 IST)',model:'Headless Report Compiler + WhatsApp Business API + SMTP Mail Relay',sla:'Delivered Every Night by 22:30 IST',
+  steps:[['Store Closure','Shutter closure triggers daily data aggregation'],['KPI Synthesis','Aggregates Walk-ins, Frisking, Hospitality & Violations'],['PDF Rendering','Generates branded executive PDF scorecard'],['WhatsApp Broadcast','Dispatches summary card with download link to leadership'],['Email Delivery','Full detailed audit attachments sent to security inbox']],
+  trigger:'Automated nightly schedule at 22:30 IST following store closure',proof:'Signed executive PDF report + store-wise CSV export',channels:'WhatsApp Business API Broadcast + Executive Email',
+  badge:'DAILY REPORTS DISPATCHED',st:'ok',roi:'Gives executives effortless oversight of every store without manual spreadsheets or phone calls.',widget:'reports'},
+ {id:'admin',c:'found',ic:'admin',code:'FOUNDATION-03',short:'Super Admin',name:'Super Admin Role-Based Multi-Store Portal',tagline:'Multi-Tenant Store Provisioning, Camera Onboarding & RBAC',
+  desc:'Central command portal allowing Super Admins to provision new stores, register IP cameras, configure RTSP credentials, map showroom floor zones, assign role-based access control (RBAC) to employees, and customize KPI sensitivity thresholds per store format.',
+  cam:'Central Governance Web Console',res:'Multi-Tenant Web UI',model:'Enterprise RBAC (Super Admin, CSO, Area Manager, Floor Lead)',sla:'Zero-Downtime Live Reconfiguration',
+  steps:[['Store Onboarding','Register store branch name, state, city and location'],['Camera Mapping','Input RTSP URLs and assign to Entrance, Vault or Counter'],['Zone Calibration','Draw polygonal geofences for guard posts and counters'],['User Assignment','Grant role permissions to Store Managers & Auditors'],['Threshold Setup','Customize guard absence timer (e.g. 15m) and service SLAs']],
+  trigger:'Administrative configuration of stores, cameras, RBAC roles and thresholds',proof:'Audit log of all user role assignments, RTSP mappings and KPI rule updates',channels:'Super Admin Multi-Tenant Portal',
+  badge:'SUPER ADMIN CONSOLE: ACTIVE',st:'ok',roi:'Scales from 56 stores to 200+ stores with unified security and operational governance.',widget:'admin'}
+];
+K.forEach(k=>k.cc=CL[k.c].hex);
+
+/* ---------- videos: one copy each, WebM (VP9) with MP4 (H.264) fallback ---------- */
+const VSRC={walkins:['media/05b0ebf79a07.webm','media/29aa61be2afc.mp4'],display:['media/d83c03844434.webm','media/e023dd15d93a.mp4'],tryon:['media/33964f4b081e.webm','media/4a9136649941.mp4'],opening:['media/2582c03d6ad2.webm','media/fa3afe4be2c5.mp4'],seccheck:['media/f5f9c01cf089.webm','media/58e9c7792033.mp4'],bags:['media/11135dd8db4e.webm','media/ed8578bb5aa7.mp4'],vault:['media/94e9b9d9036a.webm','media/3a1c30f8087e.mp4']};
+const probe=document.createElement('video');
+const useWebm=!!probe.canPlayType('video/webm; codecs="vp9"');
+const useMp4=!!probe.canPlayType('video/mp4; codecs="avc1.42E01E"');
+const VURL={};
+function b64ToUrl(d){try{const [h,b]=d.split(',');const mime=h.slice(5,h.indexOf(';'));const bin=atob(b);const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([u],{type:mime}))}catch(e){return d}}
+function vidUrl(k){if(!VURL[k]){const s=VSRC[k];VURL[k]=b64ToUrl(useWebm||!useMp4?s[0]:s[1])}return VURL[k]}
+
+/* ---------- parameters ---------- */
+document.getElementById('params').innerHTML=['sales','risk','ops'].map(c=>{const x=CL[c],ks=K.filter(k=>k.c===c);
+  return `<div class="param card reveal" style="--cc:${x.hex}"><div class="top">${tile(x.ic,x.hex,'md')}<span class="kk">${x.kk}</span></div><h3>${x.name}</h3><p>${x.desc}</p><div class="ft"><b>${ks.length}</b><span>KPIs · ${x.foot}</span></div><div class="chips">${ks.map(k=>`<a class="chip" style="--cc:${x.hex}" href="#k-${k.id}">${ic(k.ic)}${k.short}</a>`).join('')}</div></div>`}).join('');
+
+/* ---------- six layers ---------- */
+const LAYERS=[
+ {n:'L1',h:'Edge & In-Store Camera Hardware Layer',s:'RTSP IP Dome, Bullet, 4K Checkpoint Cameras & Local Edge AI Gateways',chips:['RTSP / ONVIF','H.264 / H.265','56 Store Gateways','1080p / 4K'],
+  a:['Edge Ingestion Capabilities',['Over 1,000 IP cameras across 56 showrooms streaming continuous RTSP feeds over isolated store surveillance VLANs.','NVIDIA Jetson / edge micro-servers deployed on-premise for real-time video decode and frame subsampling (5–15 FPS).','Automated local failover buffer storing critical video snapshots during transient internet outages.']],
+  b:['Telemetry & Hardware Specs',['<b>Camera Hardware:</b> 4K high-resolution dome cameras with IR night vision.','<b>Network Bandwidth Throttling:</b> adaptive bitrate streaming preventing retail WAN link saturation.','<b>Heartbeat Probe:</b> continuous 15-second RTSP ping daemon monitoring packet drop and lens tampering.']]},
+ {n:'L2',h:'Stream Preprocessing & Ingestion Pipeline',s:'Zero-Copy Hardware Acceleration, Frame Decoders & Queue Throttling',chips:['FFmpeg / NVDEC','Redis Streams','Kafka Broker','Dynamic FPS'],
+  a:['Stream Orchestration',['Hardware-accelerated NVDEC decoding directly into GPU VRAM without host CPU memory copies.','Motion-adaptive frame decimation drops static background frames while retaining 30 FPS bursts during action.','Distributed Kafka ingestion topics partitioned by Store ID and Camera Zone for load balancing.']],
+  b:['Fault Tolerance',['Automatic RTSP reconnection daemon with exponential backoff on stream timeout.','Buffer backpressure management preventing memory leaks during peak showroom footfall.']]},
+ {n:'L3',h:'Multi-Model Computer Vision & Deep Learning Cluster',s:'YOLOv8x Detectors, ArcFace Embeddings, HRNet Pose Keypoints & OCR',chips:['YOLOv8x Retail','ArcFace 512-d','HRNet-Pose','ByteTrack','PyTorch / TensorRT'],
+  a:['Deployed Neural Models',['<b>Retail Object Detector (YOLOv8x):</b> custom-trained weights recognizing customers, staff uniforms, jewellery trays, velvet pads, security guards and cleaning mops.','<b>Facial Recognition (ArcFace):</b> 512-dimensional embeddings for walk-in identification and vault custodian verification.','<b>Pose Keypoint Estimation (HRNet):</b> 17-keypoint skeleton tracking auditing guard frisking across body touchpoints.']],
+  b:['Inference Performance',['TensorRT FP16 quantization for low-latency inference on edge and cloud GPUs.','ByteTrack multi-target tracking maintaining persistent track IDs across occlusions and customer movement.']]},
+ {n:'L4',h:'Retail KPI Rules & Temporal Correlation Engine',s:'16 KPI Logic Engines, Multi-Witness State Machines & Dwell Timers',chips:['Temporal Rules','Geofence Dwell','Dual-Witness State','Hospitality SLA'],
+  a:['Business Rule Engines',['<b>Dual-Witness Correlator:</b> validates that 2+ authorized personnel are present before clearing shutter opening or vault access.','<b>Guard Absence Timer:</b> geofence dwell tracker triggering an alert when a guard is absent for >15 minutes.','<b>Hospitality SLA Clock:</b> measures seconds between customer seated event and staff arrival.']],
+  b:['Alert Trigger Rules',['<b>Clear Counter Timeout:</b> flags counters left with jewellery trays for >15 minutes.','<b>Staff Loitering Rule:</b> flags 3+ staff clustered in non-consultation zones for >3 minutes.']]},
+ {n:'L5',h:'Secure Evidence Vault & Vector Embeddings Store',s:'Milvus Vector Database, PostgreSQL / Timescale & SHA-256 S3 Object Storage',chips:['Milvus Vector DB','PostgreSQL / Timescale','MinIO / S3 Vault','SHA-256 Hashes'],
+  a:['Vector & Relational Storage',['<b>Milvus Distributed Vector DB:</b> stores 512-dimension face vectors for walk-in forensic search across 56 stores using cosine similarity.','<b>TimescaleDB:</b> high-throughput time-series logging of every camera heartbeat, KPI event and dwell duration.']],
+  b:['Evidence Vault Integrity',['Every alert snapshot and 10-second proof clip is signed with a SHA-256 checksum, supporting legal and insurance admissibility.','Strict retention policies: 90-day hot storage with automated cold archive tiering.']]},
+ {n:'L6',h:'Actionable Delivery, Dashboards & Governance Surfaces',s:'Surveillance Dashboard, WhatsApp Business API, SMTP Mail Relay & RBAC',chips:['Surveillance UI','WhatsApp Bot','Email Summaries','Super Admin RBAC'],
+  a:['Surveillance Dashboard & Dispatch',['Unified Surveillance Dashboard displaying live store metrics, camera downtime and alert feeds.','Automated WhatsApp dispatcher sending real-time violation alerts and daily 22:30 IST executive reports to Store Managers and leadership.','High-priority SMTP email alerts with embedded evidence frames on camera offline or intruder events.']],
+  b:['Super Admin Governance',['Role-Based Access Control (RBAC) with granular permissions for Regional Heads, Loss Prevention Officers and Floor Managers.','<b>Store & Camera Onboarding:</b> self-service UI to add new stores, map floor plans and configure custom KPI thresholds.']]}
+];
+const LCAP=['Store cameras stream RTSP feeds to the in-store edge gateway…','Frames are decoded on the GPU and queued per store and camera zone…','Detection, face, pose and tracking models analyse every relevant frame…','KPI rule engines apply witness, dwell and SLA logic…','Evidence is hashed and stored with face vectors and telemetry…','…and the alert reaches the dashboard, WhatsApp and email in under a second.'];
+const lw=document.getElementById('layers');
+LAYERS.forEach((L,i)=>{const d=document.createElement('div');d.className='layer card'+(i===4?' l5':'');d.id='L'+i;
+  d.innerHTML=`<div><span class="ln">LAYER ${L.n}</span><h4>${L.h}</h4><div class="sub">${L.s}</div></div><div><div class="chips">${L.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div><div class="cols"><div><h5>${L.a[0]}</h5><ul class="feat">${L.a[1].map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h5>${L.b[0]}</h5><ul class="feat">${L.b[1].map(x=>`<li>${x}</li>`).join('')}</ul></div></div></div>`;lw.appendChild(d);});
+let lq=0;function stepLayer(){document.querySelectorAll('.layer').forEach(x=>x.classList.remove('hot'));const L=document.getElementById('L'+lq);L.classList.add('hot');
+  document.getElementById('pulseDot').style.top=(L.offsetTop+28)+'px';document.getElementById('pulseCap').textContent='▸ '+LCAP[lq];lq=(lq+1)%LAYERS.length}
+
+/* ---------- KPI explorer ---------- */
+const widgets={
+ heartbeat:()=>{const cams=[['GF-1-CAM-01',[]],['GF-1-CAM-03',[]],['GF-1-CAM-40',[[14,15]]],['FF-1-CAM-07',[]],['FF-1-CAM-19',[[30,30]]],['GF-1-CAM-58',[[41,43]]],['FF-1-CAM-55',[]]],wk={2:[12,16],4:[28,31],5:[39,44]};
+  return `<div class="widget"><div class="sub-h" style="margin:0 0 8px">Heartbeat · last 24 hours<b>SAMPLE</b></div>`+cams.map(([id,dn],ci)=>{let b='';for(let t=0;t<48;t++){const d=dn.some(([a,z])=>t>=a&&t<=z),w=wk[ci]&&t>=wk[ci][0]&&t<=wk[ci][1]&&!d;b+=`<i class="${d?'dn':w?'wk':''}" style="height:${d?100:55+((t*37+ci*13)%40)}%"></i>`}
+   return `<div class="hb-row"><span class="id">${id}</span><div class="beats">${b}</div><span class="s" style="color:${dn.length?'var(--red)':'var(--green)'}">${dn.length?'RECOVERED':'ONLINE'}</span></div>`}).join('')+
+   `<div class="mini"><div><small>Total Incidents</small><b>7</b></div><div><small>Total Downtime</small><b>0.4 hrs</b></div><div><small>Avg Downtime</small><b>3.1 mins</b></div><div><small>Affected Cams</small><b>7</b></div><div><small>Currently Offline</small><b>0</b></div><div><small>Peak Hour</small><b>1–2 AM</b></div></div></div>`},
+ reports:()=>`<div class="wa"><div class="hd">${ic('chat')}<div>Access Genie · Daily Report<small>WhatsApp Business · 22:30 IST</small></div></div>
+   <div class="bub"><b>Flagship store · Daily KPI Scorecard</b><br>17-Nov-2026<br><br>Walk-ins: <b>235</b> · Try-ons: <b>24</b><br>Security checks: <b>853</b> · Bags frisked: <b>156</b><br>Meet &amp; Greet: <b>233</b> · Service on-time: <b>187</b><br>Service late: <b>18</b> · Staff gathering: <b>21</b><br>Camera health: <b>100%</b> · Offline: <b>0</b><span class="t">22:30 ✓✓</span></div>
+   <div class="bub"><div class="doc">${ic('pdf')} Flagship_KPI_17-11-2026.pdf</div><span class="t">22:30 ✓✓</span></div></div>`,
+ admin:()=>`<div class="widget"><div class="sub-h" style="margin:0 0 10px">Governance hierarchy<b>RBAC</b></div>
+   <div class="tnode">${tile('map','var(--violet)','sm')}State<small>One or more states</small></div>
+   <div class="tkids"><div class="tnode">${tile('building','var(--violet)','sm')}City<small>e.g. Metro City</small></div>
+    <div class="tkids"><div class="tnode">${tile('store','var(--violet)','sm')}Store<small>add · modify · delete</small></div>
+     <div class="tkids"><div class="tnode">${tile('camera','var(--cyan)','sm')}Cameras<small>RTSP · zones</small></div><div class="tnode">${tile('target','var(--orange-600)','sm')}KPI thresholds<small>per store format</small></div><div class="tnode">${tile('users','var(--green)','sm')}Employees<small>role · KPIs · alerts</small></div></div></div></div></div>`
+};
+const evid=k=>{
+  if(k.widget)return widgets[k.widget]();
+  let h='';
+  if(k.vid)h+=`<div class="monitor"><div class="mt"><span><i></i>${k.cam.split(' ')[0]} · LIVE FEED EVIDENCE</span><span class="st ${k.st}">${k.badge}</span></div><video data-vid="${k.vid}" autoplay muted loop playsinline controls></video></div>`;
+  const cls=k.shots.length===3?'three':k.shots.length===2?'two':'';
+  if(!k.vid)h+=`<div class="monitor"><div class="mt"><span><i></i>${k.cam.split(' ')[0]} · VERIFIED EVIDENCE</span><span class="st ${k.st}">${k.badge}</span></div></div>`;
+  h+=`<div class="shots ${cls}">`+k.shots.map(s=>`<figure class="shot" data-cap="${k.code} · ${s[1]}"><img loading="lazy" src="${s[0]}" alt="${k.name}: ${s[1]}"><figcaption>${s[1]}</figcaption></figure>`).join('')+'</div>';
+  return h;
+};
+const order=['sales','risk','ops','found'];
+document.getElementById('plist').innerHTML=order.map(c=>`<div class="pgroup" style="--cc:${CL[c].hex}">${CL[c].name} · ${K.filter(k=>k.c===c).length}</div>`+K.filter(k=>k.c===c).map(k=>`<a class="pbtn" href="#k-${k.id}" data-id="${k.id}" data-c="${k.c}" style="--cc:${k.cc}">${tile(k.ic,k.cc)}${k.short}</a>`).join('')).join('');
+document.getElementById('pcards').innerHTML=K.map(k=>`
+<article class="pcard card" id="k-${k.id}" data-c="${k.c}" style="--cc:${k.cc}">
+  <div class="phead">${tile(k.ic,k.cc,'lg')}<div><div class="code">${k.code}</div><h3>${k.name}</h3><div class="tagl">${k.tagline}</div></div><span class="pill param">${CL[k.c].name}</span></div>
+  <p class="desc">${k.desc}</p>
+  <div class="specs"><div><small>Camera &amp; Zone</small><span>${k.cam}</span></div><div><small>Resolution / Feed</small><span>${k.res}</span></div><div><small>AI Model &amp; Deep Learning Engine</small><span>${k.model}</span></div></div>
+  <div class="sub-h">Operational Pipeline Flow<b>${k.sla}</b></div>
+  <div class="kflow">${k.steps.map((s,j)=>(j?'<div class="parrow"></div>':'')+`<div class="kstep"><div class="n">${String(j+1).padStart(2,'0')}</div><b>${s[0]}</b><p>${s[1]}</p></div>`).join('')}</div>
+  <div class="kgrid" style="margin-top:22px">
+    <div><div class="gbox"><div><b>Trigger &amp; Rules</b>${k.trigger}</div><div><b>Archived Evidence Proof</b>${k.proof}</div><div><b>Delivery Surface</b>${k.channels}</div></div>
+      <div class="roi"><b>Business Impact</b>${k.roi}</div></div>
+    <div>${evid(k)}</div>
+  </div>
+</article>`).join('');
+/* filters */
+const F=[['all','All Deliverables',K.length,'var(--navy)'],...order.map(c=>[c,CL[c].name,K.filter(k=>k.c===c).length,CL[c].hex])];
+const fwrap=document.getElementById('filters');
+fwrap.innerHTML=F.map(f=>`<button data-f="${f[0]}" style="--cc:${f[3]}" class="${f[0]==='all'?'on':''}">${f[1]}<b>${f[2]}</b></button>`).join('');
+fwrap.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const f=b.dataset.f;
+  fwrap.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.pcard,.pbtn').forEach(x=>x.hidden=!(f==='all'||x.dataset.c===f));
+  document.querySelectorAll('.pgroup').forEach((g,i)=>g.hidden=!(f==='all'||order[i]===f));});
+/* step animation on the card in view */
+let flowT,activeId;
+function animateFlow(card){clearInterval(flowT);const st=[...card.querySelectorAll('.kstep')],ar=[...card.querySelectorAll('.kflow .parrow')];let i=0;
+  const tick=()=>{st.forEach((s,j)=>{s.classList.toggle('on',j===i);s.classList.toggle('done',j<i)});ar.forEach((a,j)=>a.classList.toggle('on',j<i));i=(i+1)%(st.length+1)};tick();flowT=setInterval(tick,1100)}
+const btns=[...document.querySelectorAll('.pbtn')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id.slice(2);if(id!==activeId){activeId=id;btns.forEach(b=>b.classList.toggle('on',b.dataset.id===id));animateFlow(e.target)}}}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('.pcard').forEach(c=>io.observe(c));
+
+/* ---------- journeys ---------- */
+const J=[
+ {tag:'FORENSIC TRAIL PROTOCOL',t:'Scenario 1: Suspicious Incident & Rapid Forensic Investigation',d:'A suspicious individual loiters near high-value diamond counters. Using walk-in face embeddings, rack displacement telemetry and automated alert logs, security reconstructs the full timeline in 90 seconds without manual video searching.',
+  k:['walkins','display','racks','bags'],s:[['sales','Entrance Vestibule · GF-CAM-3','Customer Walk-in & Face Indexed','Individual enters showroom at 12:56 PM. Face detected and 512-d ArcFace vector embedding indexed in Milvus DB.'],['sales','Diamond Counter · FF-CAM-8','Display Items Monitored','Associate brings out 5 diamond trays. Customer asks to view 3 items concurrently.'],['risk','Rack Telemetry · AI Rule','Rack Vacancy Detected','Empty rack state detected while staff is distracted. System logs sudden displacement event.'],['risk','Security Checkpoint · GF-CAM-58','Exit Frisking Alert Triggered','Individual approaches exit. Guard console displays active alert to verify carry-on bag.'],['found','Evidence Vault · S3 Archive','Cryptographic Forensic Dossier','Full chronological evidence bundle with timestamps and video clips exported for police.']]},
+ {tag:'OPENING PROTOCOL',t:'Scenario 2: Morning Store Opening & Shutter Dual-Witness Verification',d:'Guarantees zero lone-worker vulnerability during high-risk morning opening hours. Both staff witnesses must be verified present before shutter and vault are unlocked.',
+  k:['opening','vault','mopping'],s:[['risk','Store Front Exterior · GF-CAM-3','08:05 AM Early Motion','Movement detected at motorized shutter. AI flags unauthorized out-of-schedule attempt.'],['risk','Exterior Entrance · 09:30 AM','Dual Witnesses Arrive','Store Manager and Cashier arrive. AI verifies 2+ staff witnesses at entrance threshold.'],['risk','Shutter Motion Engine','Authorized Shutter Opening','Rolling shutter lifted with dual witnesses verified. Status shifts to Fully Compliant.'],['risk','Strongroom Vault · GF-CAM-40','Dual-Custodian Vault Access','Keyholders P1 & P2 simultaneously unlock vault. Triple snapshot captured.'],['ops','Showroom Floor · FF-CAM-10','Hygiene Mopping Verified','Floor mopping verified completed by 09:45 AM. Store declared open for customers.']]},
+ {tag:'SALES & HOSPITALITY EXCELLENCE',t:'Scenario 3: Luxury Hospitality & Sales Try-On Experience',d:'Transforms VIP customer visits into verifiable operational excellence under the banner of “Atithi Devo Bhava”.',
+  k:['greet','ontime','display','tryon','counter'],s:[['ops','Entrance Foyer · GF-CAM-3','Meet & Greet (8 Seconds)','Customer greeted with a traditional Namaste within 8 seconds of entering.'],['ops','VIP Lounge · FF-CAM-7','Hospitality Service On-Time','Customer seated. Water and refreshments served in exactly 7 seconds.'],['sales','Sales Table · FF-CAM-8','Ornaments Displayed (4 Trays)','Sales associate presents 4 necklace options. Item bounding boxes tracked on counter.'],['sales','Mirror Consultation · FF-CAM-19','Try-On Detected & Chosen','Customer tries on an emerald necklace. Selection flagged and sent to POS billing.'],['ops','Sales Table · FF-CAM-19','Counter Cleared in 2 Mins','Remaining ornaments repacked and returned to the secure safe immediately.']]},
+ {tag:'NIGHT SECURITY DEFENSE',t:'Scenario 4: After-Hours Perimeter Intrusion & Police Dispatch',d:'Automated night-vision defense active during store darkness. Detects human silhouettes and escalates in under 500 ms.',
+  k:['intruder','reports'],s:[['risk','Automated System Arming · 21:30','Showroom Armed','Following night shutter closure, the AI intruder detection engine arms showroom cameras.'],['risk','Ground Floor Perimeter · GF-CAM-1','IR Motion Detected (00:23 AM)','Infrared feed detects movement near the showroom side glass.'],['risk','Silhouette Classifier','Human Intruder Verified','Deep learning classifies the silhouette as an unauthorized human, rejecting false alarms.'],['found','Multi-Channel Dispatch','Instant WhatsApp & Siren','Edge siren triggered. Urgent WhatsApp alert sent to CSO and Police.'],['found','Central Command Center','Police Interception','Patrol unit arrives on-site within 4 minutes. Incident resolved with zero loss.']]}
+];
+const tabs=document.getElementById('scenTabs');
+tabs.innerHTML=J.map((j,i)=>`<button data-i="${i}"><small>${j.tag}</small>${j.t.replace(/^Scenario \d: /,'')}</button>`).join('');
+function loadScen(i){tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));const j=J[i];
+  document.getElementById('jflow').innerHTML=`<div class="jhead"><div><div class="jtag">${j.tag}</div><h3>${j.t}</h3><p>${j.d}</p></div><div class="jprod">${j.k.map(id=>{const k=K.find(x=>x.id===id);return `<span style="--cc:${k.cc}">${ic(k.ic)}${k.short}</span>`}).join('')}</div></div><div class="jtrack"><i></i></div>
+  <div class="jsteps">${j.s.map((s,n)=>`<div class="jstep" style="--cc:${CL[s[0]].hex};animation-delay:${n*.12}s"><div class="jn">STEP ${String(n+1).padStart(2,'0')}</div><div class="jwho">${s[1]}</div><h4>${s[2]}</h4><p>${s[3]}</p></div>`).join('')}</div>`}
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)loadScen(+b.dataset.i)});loadScen(0);
+
+/* ---------- delivery ecosystem ring ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+const ring=document.getElementById('ring'),CX=550,CY=350,RX=448,RY=262;
+const POS={};K.forEach((k,i)=>{const a=-Math.PI/2+i*2*Math.PI/K.length;POS[k.id]={x:CX+RX*Math.cos(a),y:CY+RY*Math.sin(a),a}});
+el('ellipse',{cx:CX,cy:CY,rx:RX,ry:RY,fill:'none',stroke:'#DBE2ED','stroke-width':1},ring);
+el('ellipse',{cx:CX,cy:CY,rx:250,ry:150,fill:'none',stroke:'#E3E9F2','stroke-width':1,'stroke-dasharray':'2 7',class:'spin'},ring);
+/* cluster arcs */
+order.forEach(c=>{const ids=K.filter(k=>k.c===c);const step=2*Math.PI/K.length,a1=POS[ids[0].id].a-step/2+.05,a2=POS[ids[ids.length-1].id].a+step/2-.05;
+  const rx=RX+62,ry=RY+52,p=a=>[CX+rx*Math.cos(a),CY+ry*Math.sin(a)];const [x1,y1]=p(a1),[x2,y2]=p(a2);
+  el('path',{d:`M${x1} ${y1}A${rx} ${ry} 0 ${a2-a1>Math.PI?1:0} 1 ${x2} ${y2}`,fill:'none',stroke:CL[c].hex,'stroke-width':3,'stroke-linecap':'round',opacity:.35},ring)});
+const gS=el('g',{},ring),gN=el('g',{},ring);
+K.forEach((k,i)=>{const q=POS[k.id];
+  el('line',{x1:CX,y1:CY,x2:q.x,y2:q.y,class:'spoke'},gS);
+  const pid='sp'+k.id;el('path',{id:pid,d:`M${CX},${CY} L${q.x},${q.y}`,fill:'none'},gS);
+  const d=el('circle',{r:3.2,fill:k.cc},gS);const am=el('animateMotion',{dur:(2.4+((i*7)%10)/6).toFixed(2)+'s',repeatCount:'indefinite',begin:((i*3)%10/5).toFixed(2)+'s'},d);el('mpath',{href:'#'+pid},am);
+  const g=el('g',{class:'node','data-id':k.id,transform:`translate(${q.x},${q.y})`,tabindex:0,role:'button','aria-label':k.name},gN);
+  el('circle',{class:'halo',r:28,stroke:k.cc},g);el('circle',{class:'bg',r:26,stroke:k.cc},g);el('circle',{r:26,fill:k.cc,opacity:.08},g);
+  const ig=el('g',{class:'ig',transform:'translate(-12,-12)',style:`color:${k.cc}`},g);ig.innerHTML=ICON[k.ic];
+  const below=q.y>CY+20,side=Math.abs(Math.cos(q.a))>.8;
+  const ly=side?(below?46:-36):(below?46:-40);
+  el('text',{class:'lbl',y:ly},g).textContent=k.short;
+  el('text',{class:'sub',y:ly+14},g).textContent=k.code;
+});
+const hub=el('g',{class:'node hub',transform:`translate(${CX},${CY})`},gN);
+el('circle',{class:'hubpulse',r:70},hub);
+el('circle',{r:84,fill:'#0E2545',stroke:'#F58120','stroke-width':3},hub);
+el('image',{href:'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDQwMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC50ZXh0IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDgwMDsgZm9udC1zaXplOiA0NnB4OyBmaWxsOiB3aGl0ZTsgbGV0dGVyLXNwYWNpbmc6IDAuMDJlbTsgfQogICAgICAudG0geyBmb250LWZhbWlseTogc3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogODAwOyBmb250LXNpemU6IDE2cHg7IGZpbGw6IHdoaXRlOyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjAsMCAyNjAsMCAxNjAsMTIwIDAsMTIwIiBmaWxsPSIjRjg3QTI0IiAvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYwLDAgNDAwLDAgNDAwLDEyMCAxNjAsMTIwIiBmaWxsPSIjMjU2QkFFIiAvPgogIDx0ZXh0IHg9IjI0IiB5PSI4MCIgY2xhc3M9InRleHQiPkFDQ0VTUyBHRU5JRTwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjQ4IiBjbGFzcz0idG0iPlRNPC90ZXh0Pgo8L3N2Zz4=',x:-66,y:-24,width:132,height:40},hub);
+const ht=el('text',{y:36,'text-anchor':'middle','font-family':'Roboto Mono,monospace','font-size':10,'letter-spacing':2,fill:'#A6D1F0'},hub);ht.textContent='RETAIL PLATFORM';
+const ht2=el('text',{y:52,'text-anchor':'middle','font-family':'Roboto Mono,monospace','font-size':9,'letter-spacing':1.5,fill:'rgba(255,255,255,.55)'},hub);ht2.textContent='16 KPIs · 3 CORE';
+document.getElementById('legend').innerHTML=order.map(c=>`<span><i style="background:${CL[c].hex}"></i>${CL[c].name} (${K.filter(k=>k.c===c).length})</span>`).join('')+`<span><i style="background:var(--orange)"></i>Access Genie hub</span>`;
+const det=document.getElementById('ecoDetail');
+let selId=null,auto=true,ai=0;
+function select(id){selId=id;const k=K.find(x=>x.id===id);ring.classList.add('dim');ring.querySelectorAll('.node').forEach(n=>n.classList.toggle('sel',n.dataset.id===id));
+  det.style.setProperty('--cc',k.cc);
+  det.innerHTML=`<div><div class="code">${k.code} · ${CL[k.c].name}</div><h4>${k.name}</h4><p>${k.cam}</p><a class="go" href="#k-${k.id}">OPEN FULL KPI CARD ↑</a></div><div><small>Trigger &amp; Rules</small><p>${k.trigger}</p></div><div><small>Archived Evidence Proof</small><p>${k.proof}</p></div><div><small>Delivery Surface</small><p>${k.channels}</p></div>`}
+ring.querySelectorAll('.node[data-id]').forEach(n=>{const go=()=>{auto=false;select(n.dataset.id)};n.addEventListener('click',go);n.addEventListener('mouseenter',go);n.addEventListener('keydown',e=>{if(e.key==='Enter')go()})});
+ring.addEventListener('mouseleave',()=>{auto=true});
+select(K[0].id);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(auto){ai=(K.findIndex(k=>k.id===selId)+1)%K.length;select(K[ai].id)}},2600);
+document.getElementById('clusters').innerHTML=order.map(c=>`<div class="cluster card" style="--cc:${CL[c].hex}"><h3>${CL[c].name}</h3><p>${CL[c].foot}</p><div class="chips">${K.filter(k=>k.c===c).map(k=>`<a class="chip" style="--cc:${k.cc}" href="#k-${k.id}">${ic(k.ic)}${k.short}</a>`).join('')}</div></div>`).join('');
+
+/* ---------- videos: attach and play only while visible ---------- */
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.dataset.ready){v.src=vidUrl(v.dataset.vid);v.dataset.ready=1}v.muted=true;const p=v.play();if(p&&p.catch)p.catch(()=>{})}else v.pause()}),{rootMargin:'300px 0px'});
+document.querySelectorAll('video[data-vid]').forEach(v=>{v.muted=true;vio.observe(v)});
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbVid=document.getElementById('lbVid');
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.cam[data-cap]');
+  if(c){lbImg.hidden=true;lbVid.hidden=false;lbVid.src=vidUrl(c.querySelector('video').dataset.vid);lbVid.play().catch(()=>{});document.getElementById('lbCap').textContent=c.dataset.cap;lb.hidden=false;return}
+  const f=e.target.closest('.shot[data-cap]');
+  if(f){lbVid.hidden=true;lbImg.hidden=false;lbImg.src=f.querySelector('img').src;document.getElementById('lbCap').textContent=f.dataset.cap;lb.hidden=false}});
+function closeLb(){lb.hidden=true;lbVid.pause();lbVid.removeAttribute('src')}
+lb.addEventListener('click',e=>{if(e.target!==lbVid)closeLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+/* ---------- reveal, layers, nav ---------- */
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>rv.observe(x));
+stepLayer();if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(stepLayer,2400);
+const links=[...document.querySelectorAll('.navlinks a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+</script>
+
+<!-- SmartApps portfolio navigation (added) -->
+<style>
+#sa-back{position:fixed; left:16px; bottom:16px; z-index:2147483000; display:flex; align-items:center;
+  gap:2px; padding:4px 5px 4px 4px; border-radius:999px; background:rgba(7,22,51,.94);
+  box-shadow:0 6px 24px rgba(4,13,30,.35); border:1px solid rgba(255,255,255,.14);
+  font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  backdrop-filter:blur(10px)}
+#sa-back .sa-i{width:24px; height:24px; border-radius:50%; background:#fff; display:grid;
+  place-items:center; flex:none}
+#sa-back .sa-i img{width:17px; height:17px; object-fit:contain; display:block}
+#sa-back a{color:#fff; text-decoration:none; padding:6px 9px; border-radius:999px; white-space:nowrap}
+#sa-back a:hover{background:rgba(255,255,255,.12)}
+#sa-back .sa-l{color:#FFB27A}
+#sa-back .sa-sep{width:1px; height:16px; background:rgba(255,255,255,.2)}
+@media(max-width:480px){ #sa-back{left:10px; bottom:10px; font-size:12px} #sa-back a{padding:6px 9px} }
+@media print{ #sa-back{display:none !important} }
+</style>
+<nav id="sa-back" aria-label="SmartApps portfolio">
+  <span class="sa-i"><img src="data:image/webp;base64,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" alt="Blue Cloud Softech"></span>
+  <a href="/products/access-genie-retail/">&larr; Access Genie Retail page</a><span class="sa-sep"></span><a href="/">Portfolio</a>
+</nav>
+<!-- SmartApps shared design layer (added) -->
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/poppins-latin-500-normal.woff2") format("woff2")}@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/poppins-latin-600-normal.woff2") format("woff2")}@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/poppins-latin-700-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/inter-latin-400-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/inter-latin-500-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/inter-latin-600-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/inter-latin-700-normal.woff2") format("woff2")}@font-face{font-family:"Roboto Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/roboto-mono-latin-400-normal.woff2") format("woff2")}@font-face{font-family:"Roboto Mono";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/roboto-mono-latin-500-normal.woff2") format("woff2")}</style><style>html,body{overflow-x:clip}canvas{max-width:100%}.win,.win-body{max-width:100%;overflow:hidden}.navlinks,.nav-links{min-width:0;flex-shrink:1;overflow-x:auto;scrollbar-width:none}:focus-visible{outline:3px solid #2070B3 !important;outline-offset:3px}a:focus-visible,button:focus-visible{border-radius:6px}.brand small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.navlinks a:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.wrap span.htag:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#21324B !important}
+.hbtns a.hbtn.pri:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not([aria-selected=true]):not([aria-pressed=true]){color:#21324B !important}
+.hchips span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.bar span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cam em:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cam b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cam.alert em:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cam.alert b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.feed small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hstats small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.wrap em:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#D77423 !important}
+.top span.kk:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.together em:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#D77423 !important}
+.layer.card span.ln:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cols h5:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.layer.card.hot span.ln:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.layer.card.l5 span.ln:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.rail span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.filters b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important}
+.plist div.pgroup:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.phead div.code:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.phead span.pill.param:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#1C784D !important;font-size:11.5px !important}
+.specs small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.pcard.card div.sub-h:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.sub-h b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.kstep div.n:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#617086 !important;font-size:11.5px !important}
+.gbox b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#A85818 !important;font-size:11.5px !important}
+.roi b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.mt span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]):not(.alert):not(.ok):not(.st){font-size:11.5px !important}
+.mt span.st.ok:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.shot figcaption:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.mt span.st.alert:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.widget div.sub-h:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hb-row span.id:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hb-row span.s:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.mini small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hd small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.bub span.t:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#667587 !important;font-size:11.5px !important}
+.bub div.doc:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.tnode small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.on small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.scen-tabs small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.jhead div.jtag:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.jstep div.jn:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#AE5A17 !important;font-size:11.5px !important}
+.jstep div.jwho:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.lvl.card.reveal.on div.lv:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.topo i:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#A86027 !important}
+.lvl.card.reveal.on div.bw:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.ring-box div.ring-hint:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.eco-detail div.code:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.eco-detail a.go:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.eco-detail small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important;font-size:11.5px !important}
+.cluster.card h3:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#B35C16 !important}
+.wrap div.base:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#FFFFFF !important;font-size:11.5px !important}.layer .cols h5:not(#_x):not(#_y){color:#B4570B !important}
+</style>
+</body>
+</html>
