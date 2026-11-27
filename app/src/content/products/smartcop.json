@@ -1,0 +1,338 @@
+{
+ "slug": "smartcop",
+ "title": "SmartCOP — SMARTAPPS by Blue Cloud Softech",
+ "description": "One platform. From the beat to command. The officer's phone. Nineteen modules in one Command Deck bring every system into the field, from the emergency call to hashed evidence capture.",
+ "accent": "field",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "SmartCOP",
+    "href": null
+   }
+  ],
+  "tag": "Officer mobile platform",
+  "h1": "SmartCOP",
+  "tagline": "One platform. From the beat to command.",
+  "lede": "The officer's phone. Nineteen modules in one Command Deck bring every system into the field, from the emergency call to hashed evidence capture.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Field & Citizen",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 19 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/smartcop/",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/smartcop.svg",
+  "icon": null,
+  "round": false,
+  "facts": [
+   {
+    "value": "19",
+    "label": "modules"
+   },
+   {
+    "value": "4",
+    "label": "groups"
+   },
+   {
+    "value": "7",
+    "label": "platform layers"
+   },
+   {
+    "value": "10",
+    "label": "shared capabilities"
+   }
+  ]
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "19 modules on one Command Deck",
+  "lede": "Everything the officer needs, in four groups.",
+  "groups": [
+   {
+    "name": "Respond",
+    "sub": "Emergency & citizen safety"
+   },
+   {
+    "name": "Investigate",
+    "sub": "Records, identity & evidence"
+   },
+   {
+    "name": "Prevent",
+    "sub": "Beat & offender watch"
+   },
+   {
+    "name": "Enforce & support",
+    "sub": "Traffic, cyber & the officer"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-dial-112",
+    "n": "01",
+    "name": "Emergency dispatch",
+    "tag": "Live dispatch",
+    "group": "Respond",
+    "summary": "Accept the call, navigate, attach evidence and close it from the phone."
+   },
+   {
+    "id": "m-sos-feed",
+    "n": "02",
+    "name": "SOS feed",
+    "tag": "Citizen + officer",
+    "group": "Respond",
+    "summary": "Citizen panic and officer SOS in one live feed, routed to the nearest unit."
+   },
+   {
+    "id": "m-t-safe",
+    "n": "03",
+    "name": "T-Safe",
+    "tag": "Journey monitoring",
+    "group": "Respond",
+    "summary": "Citizens share a journey; a route deviation raises an emergency incident."
+   },
+   {
+    "id": "m-hawk-eye",
+    "n": "04",
+    "name": "Hawk Eye",
+    "tag": "Citizen reports",
+    "group": "Respond",
+    "summary": "A two-way thread with the citizen, with live officer ETA. Anonymous reports allowed."
+   },
+   {
+    "id": "m-e-complaint",
+    "n": "05",
+    "name": "e-Complaint",
+    "tag": "Voice · multilingual",
+    "group": "Investigate",
+    "summary": "The complainant speaks in their own language; the text is transcribed, translated and classified."
+   },
+   {
+    "id": "m-records-search",
+    "n": "06",
+    "name": "Records search",
+    "tag": "Report · person",
+    "group": "Investigate",
+    "summary": "One federated search across crime records, court linkage and bureau records."
+   },
+   {
+    "id": "m-frs",
+    "n": "07",
+    "name": "Facial recognition",
+    "tag": "FRS",
+    "group": "Investigate",
+    "summary": "Face match with a liveness check. A match is a lead only and needs supervisor sign-off.",
+    "details": [
+     {
+      "label": "How it works",
+      "text": "The officer points the phone, the platform extracts the biometric template, searches the gallery and returns a ranked candidate."
+     },
+     {
+      "label": "Safeguard",
+      "text": "An investigative lead only. The officer verifies against the record and a supervisor signs off before any action. Every scan, result and sign-off is logged."
+     }
+    ]
+   },
+   {
+    "id": "m-e-sakshya",
+    "n": "08",
+    "name": "Digital evidence",
+    "tag": "Statutory evidence",
+    "group": "Investigate",
+    "summary": "Geotagged, hashed evidence with chain of custody and a statutory certificate."
+   },
+   {
+    "id": "m-mobile-tower",
+    "n": "09",
+    "name": "Mobile / tower data",
+    "tag": "Call & device records",
+    "group": "Investigate",
+    "summary": "Requests need a case link and two levels of senior approval before any data comes back."
+   },
+   {
+    "id": "m-osint",
+    "n": "10",
+    "name": "OSINT",
+    "tag": "Public data only",
+    "group": "Investigate",
+    "summary": "Flags misinformation and upcoming public events from open sources."
+   },
+   {
+    "id": "m-hotspots",
+    "n": "11",
+    "name": "Hotspots",
+    "tag": "Predictive grid",
+    "group": "Prevent",
+    "summary": "Crime forecast in 250 m cells, with time windows and patrol tasking."
+   },
+   {
+    "id": "m-surveillance",
+    "n": "12",
+    "name": "Surveillance watch list",
+    "tag": "Preventive watch",
+    "group": "Prevent",
+    "summary": "Dossiers with geo-verified house visits."
+   },
+   {
+    "id": "m-mo-offenders",
+    "n": "13",
+    "name": "MO offenders",
+    "tag": "Modus operandi",
+    "group": "Prevent",
+    "summary": "Find offenders by how they operate: snatching, house break, two-wheeler theft."
+   },
+   {
+    "id": "m-release-alerts",
+    "n": "14",
+    "name": "Release alerts",
+    "tag": "In your zone",
+    "group": "Prevent",
+    "summary": "Alert when a repeat offender is released into the officer's jurisdiction."
+   },
+   {
+    "id": "m-point-book",
+    "n": "15",
+    "name": "Point book",
+    "tag": "QR · NFC check-in",
+    "group": "Prevent",
+    "summary": "Geofenced beat check-ins, with points graded by risk each shift."
+   },
+   {
+    "id": "m-cctv-grid",
+    "n": "16",
+    "name": "CCTV grid",
+    "tag": "Beat cameras",
+    "group": "Prevent",
+    "summary": "Beat cameras with plate-read alerts and AI video analytics."
+   },
+   {
+    "id": "m-traffic",
+    "n": "17",
+    "name": "Traffic",
+    "tag": "e-Challan · ANPR",
+    "group": "Enforce & support",
+    "summary": "Quick e-challan with photo evidence, synced to the enforcement system; the owner gets an SMS."
+   },
+   {
+    "id": "m-cyber-1930",
+    "n": "18",
+    "name": "Cyber fraud freeze",
+    "tag": "Golden hour",
+    "group": "Enforce & support",
+    "summary": "Bank freeze requested within the golden hour after a fraud complaint."
+   },
+   {
+    "id": "m-hrms",
+    "n": "19",
+    "name": "HRMS",
+    "tag": "Duty · leave",
+    "group": "Enforce & support",
+    "summary": "Duty roster, leave, payslips, e-files and the officer fitness score."
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"ch-lead\">\n<p>\n            Policing on the beat needs many systems, all at once. A emergency call, an SOS or a cyber\n            fraud in its golden hour needs the nearest officer to act straight away — while record\n            searches, cameras, challans, evidence and duty records each come from a different system.\n            SmartCOP brings it together: respond, prevent, record.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h2 class=\"lv4\">The problem</h2>\n<div class=\"grid g3\">\n<div class=\"card\"><h3 class=\"lv4\">Minutes decide outcomes</h3><p>An emergency call or a fraud in its golden hour needs the nearest officer moving immediately, not after a phone tree.</p></div>\n<div class=\"card\"><h4>Too many separate tools</h4><p>Record searches, cameras, challans, evidence and duty records each come from a different system with a different login.</p></div>\n<div class=\"card\"><h4>Every step must hold up</h4><p>Evidence, searches and visits must be recorded properly so they stand in court and in audit.</p></div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>How it works · one emergency call, ring to closed case</h4>\n<ol class=\"flow\">\n<li><div><b>Call</b><span>A citizen dials the emergency number; the control room receives it with location.</span></div></li>\n<li><div><b>Dispatch</b><span>The nearest unit is identified by distance and ETA, and assigned without a phone call.</span></div></li>\n<li><div><b>Respond</b><span>The officer accepts on their phone, navigates, and marks en-route, on-scene and closed.</span></div></li>\n<li><div><b>Evidence</b><span>Geotagged, timestamped and hash-registered before upload, sealed in the evidence locker.</span></div></li>\n<li><div><b>Closed</b><span>Logged to the response register; the unit returns to available. Every action audit-logged.</span></div></li>\n</ol>\n</div>\n<div class=\"ch-sec\">\n<h4>Two modules in detail</h4>\n<div class=\"grid g2\">\n<div class=\"card\">\n<h4>Facial recognition — a lead, never an identification</h4>\n<p>The officer points the phone, the platform extracts the biometric template, searches the gallery and returns a ranked candidate.</p>\n<div class=\"note\">\n<span>A match is an <b>investigative lead only</b>. The officer verifies against the record and a supervisor signs off before any action is taken. Every scan, result and sign-off is written to the audit log.</span>\n</div>\n</div>\n<div class=\"card\">\n<h4>Patrol &amp; beat management</h4>\n<p>Patrol cars and two-wheelers stream their position continuously. The control room sees who is where, which check-points are covered, and which unit is closest when a call comes in.</p>\n<div class=\"chips\">\n<span class=\"chip\">Live unit positions</span><span class=\"chip\">Beat boundaries</span>\n<span class=\"chip\">QR check-points</span><span class=\"chip\">CCTV nodes</span>\n<span class=\"chip\">Crime hotspots</span><span class=\"chip\">Nearest-unit dispatch</span>\n</div>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Built for how police work</h4>\n<ul class=\"ticks\">\n<li><b>Biometric login</b> — fingerprint verified and bound to the officer's own device.</li>\n<li><b>Every action logged</b> — searches, face scans and each dispatch step recorded for audit.</li>\n<li><b>Approval before sensitive data</b> — mobile and tower requests go through two levels of sign-off, tied to a case.</li>\n<li><b>A human decides</b> — face matches and AI suggestions are leads; an officer verifies before action.</li>\n<li><b>Officer SOS</b> — sends live location to the command centre, alerts the three nearest units and starts body-cam recording.</li>\n<li><b>Phone and tablet</b> — the Command Deck adapts: three module columns on a phone, up to five on a tablet.</li>\n<li><b>Offline operations</b> — permitted activity continues through network interruptions and reconciles cleanly on reconnect.</li>\n</ul>\n</div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "Safeguards",
+   "id": null,
+   "tone": "alt",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">Safeguards</div><h2>What it will not do, and what it always keeps.</h2><ul class=\"ticks\"><li>Biometric login, bound to the officer's own device.</li><li>Every search, face scan and dispatch step recorded for audit.</li><li>Mobile and tower requests go through two levels of sign-off, tied to a case.</li><li>Face matches and AI suggestions are leads; an officer verifies before action.</li><li>Officer SOS sends live location to the command centre, alerts the three nearest units and starts body-cam recording.</li><li>Offline operations continue through network loss and reconcile on reconnect.</li></ul>"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through SmartCOP, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/smartcop/"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "grievance-management",
+   "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
+  ]
+ },
+ "pager": [
+  {
+   "label": "Compliant Memo Generator",
+   "href": "/products/memo-generator/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "Grievance Management",
+   "href": "/products/grievance-management/",
+   "kind": "next"
+  }
+ ],
+ "cta": {
+  "title": "See SmartCOP running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "SmartCOP demonstration request"
+ }
+}

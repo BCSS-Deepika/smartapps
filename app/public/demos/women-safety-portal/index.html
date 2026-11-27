@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women Safety Portal — Platform Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2545;--navy-900:#081B37;--navy-950:#050F22;--navy-700:#183E6A;--navy-600:#195086;
+  --blue:#2070B3;--blue-500:#3E86C7;--blue-200:#A6D1F0;
+  --orange:#F58120;--orange-600:#DE6C0E;--orange-tint:#FFF1E7;
+  --glow:#3FD8FF;--cyan:#0A7C8C;
+  --line:#DBE2ED;--line-2:#CBD6E4;--paper:#F6F9FC;--paper-2:#F1F6FC;
+  --ink:#0E2545;--ink-2:#2E4566;--mist:#5D6776;--mist-2:#9CA8BA;
+  --green:#1E7F4F;--violet:#5B3FA8;--red:#C21B3F;--amber:#B07A00;
+  --shadow-sm:0 1px 2px rgba(14,37,69,.06),0 2px 8px rgba(14,37,69,.05);
+  --shadow:0 2px 4px rgba(14,37,69,.05),0 8px 24px rgba(14,37,69,.08);
+  --shadow-lg:0 24px 48px -20px rgba(14,37,69,.30),0 8px 20px rgba(14,37,69,.10);
+  --display:"Poppins","Segoe UI",Arial,sans-serif;--body:"Inter",-apple-system,"Segoe UI",system-ui,sans-serif;--mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+section{padding:100px 0;border-top:1px solid var(--line);position:relative}
+section.alt{background:var(--paper)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.22em;color:var(--blue);text-transform:uppercase}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--orange)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1.1}
+h2{font-size:clamp(28px,3.8vw,46px);margin:14px 0 16px;max-width:940px}
+h2 em{font-style:normal;color:var(--orange)}
+h2 .w{display:inline-block;opacity:0;transform:translateY(.55em) rotate(2deg);transition:opacity .6s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+h2.in .w{opacity:1;transform:none}
+h3{font-size:22px;letter-spacing:-.01em}
+.lead{color:var(--ink-2);font-size:17.5px;max-width:880px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm)}
+.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em;flex-shrink:0}
+.itile{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:12px;background:color-mix(in srgb,var(--cc,var(--blue)) 11%,#fff);color:var(--cc,var(--blue));font-size:22px;border:1px solid color-mix(in srgb,var(--cc,var(--blue)) 18%,#fff)}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--orange),var(--glow));z-index:120;pointer-events:none}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .dot{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy-600),var(--navy-900));color:var(--orange);font-size:21px}
+.brand b{display:block;font-family:var(--display);font-size:17px;color:var(--navy);line-height:1.1}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--mist);text-transform:uppercase}
+.navlinks{display:flex;gap:1px;margin-left:auto}
+.navlinks a{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);padding:8px 9px;border-radius:7px;border-bottom:2px solid transparent;white-space:nowrap}
+.navlinks a.on{color:var(--blue);background:var(--paper-2);border-bottom-color:var(--orange)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 620px at 74% 44%,rgba(32,112,179,.5),transparent 62%),linear-gradient(160deg,var(--navy-950),var(--navy) 55%,var(--navy-700))}
+.hero .wrap.g{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center;padding-top:66px;padding-bottom:54px}
+.htag{display:inline-block;background:var(--orange);color:#fff;font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.16em;padding:7px 22px 7px 18px;clip-path:polygon(0 0,100% 0,93% 100%,0 100%)}
+.hero h1{color:#fff;font-size:clamp(34px,4.5vw,55px);margin:24px 0 16px;letter-spacing:-.03em}
+.hrule{width:64px;height:3px;background:var(--orange);margin:18px 0}
+.hero p{color:rgba(255,255,255,.82);font-size:17px;max-width:580px}
+.hero p b{color:#fff}
+.hbtns{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.hbtn{font-family:var(--display);font-weight:600;font-size:15px;padding:13px 24px;border-radius:8px;border:0}
+.hbtn.pri{background:var(--orange);color:#fff;box-shadow:0 10px 24px -8px rgba(245,129,32,.7);text-transform:uppercase;letter-spacing:.04em}
+.hbtn.sec{border:1px solid rgba(255,255,255,.3);color:#fff;background:none}
+.hchips{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.hchips span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 13px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:rgba(255,255,255,.85)}
+.hchips span:first-child{color:#7fe0b0;border-color:rgba(127,224,176,.4)}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.14)}
+.hstats div{padding:22px 26px;border-right:1px solid rgba(255,255,255,.14)}
+.hstats div:last-child{border-right:0}
+.hstats b{display:block;font-family:var(--display);font-size:31px;color:#fff;line-height:1}
+.hstats span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.65);text-transform:uppercase}
+
+/* hero console */
+.console{position:relative;height:505px}
+.hood{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(5,15,34,.55);backdrop-filter:blur(6px);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.hood .hh{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.12);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+.hood .hh i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25)}
+.hood .hh em{margin-left:auto;font-style:normal;color:var(--glow)}
+.hbody{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.hcard{border:1px solid rgba(255,255,255,.14);border-left:3px solid var(--cc);border-radius:10px;padding:11px 14px;background:rgba(255,255,255,.05);opacity:.25;transform:translateY(8px);transition:all .6s ease}
+.hcard.on{opacity:1;transform:none;background:rgba(255,255,255,.1)}
+.hcard small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--cc)}
+.hcard b{font-family:var(--display);font-weight:600;font-size:14.5px;color:#fff}
+.hcard span{display:block;font-size:11.5px;color:rgba(255,255,255,.6);font-family:var(--mono);margin-top:2px}
+.hgate{margin-top:auto;border-top:1px solid rgba(255,255,255,.12);padding:13px 16px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:rgba(255,255,255,.55)}
+.hgate i{width:9px;height:9px;border-radius:2px;background:rgba(255,255,255,.2);transition:background .4s}
+.hgate i.on{background:#7fe0b0}
+.hgate b{margin-left:auto;color:#7fe0b0;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:0;opacity:0;transition:opacity .5s}
+.hgate b.on{opacity:1}
+
+/* ticker */
+.ticker{overflow:hidden;background:var(--navy-950);border-top:1px solid rgba(255,255,255,.1);padding:11px 0}
+.ticker .rail{display:flex;gap:34px;white-space:nowrap;animation:tick 48s linear infinite;width:max-content}
+@keyframes tick{to{transform:translateX(-50%)}}
+.ticker span{font-size:12.5px;color:rgba(255,255,255,.55);display:inline-flex;align-items:center;gap:8px}
+.st{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:2px 8px;border-radius:999px}
+.st-ok{background:rgba(30,127,79,.25);color:#7fe0b0}
+.st-info{background:rgba(32,112,179,.25);color:var(--blue-200)}
+.st-wait{background:rgba(176,122,0,.25);color:#ffd87a}
+.st-fail{background:rgba(194,27,63,.25);color:#ff9bb0}
+.st-skip{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+.st-human{background:rgba(91,63,168,.3);color:#c7b6f5}
+.st-link{background:rgba(10,124,140,.3);color:#7fd8e0}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.why .card{padding:26px}
+.why h3{margin:16px 0 8px;font-size:20px}
+.why p{color:var(--ink-2);font-size:15px}
+.why .was{margin-top:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--mist)}
+.why .was b{color:var(--green);font-weight:500}
+
+/* pills */
+.pill{display:inline-block;padding:2px 8px;border-radius:9px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.p-o{background:rgba(245,129,32,.14);color:var(--orange-600)}.p-g{background:rgba(30,127,79,.12);color:var(--green)}
+.p-b{background:rgba(32,112,179,.12);color:var(--blue)}.p-r{background:rgba(194,27,63,.1);color:var(--red)}
+.p-a{background:rgba(217,160,6,.16);color:var(--amber)}.p-v{background:rgba(91,63,168,.12);color:var(--violet)}
+.p-c{background:rgba(10,124,140,.12);color:var(--cyan)}.p-x{background:#EEF2F6;color:var(--mist)}
+
+/* credibility */
+.cred{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;padding:2px 8px;border-radius:999px;border:1px solid;text-transform:uppercase;white-space:nowrap}
+.cred-ESTABLISHED{color:var(--green);border-color:rgba(30,127,79,.4);background:rgba(30,127,79,.07)}
+.cred-SIMULATED{color:var(--blue);border-color:rgba(32,112,179,.4);background:rgba(32,112,179,.07)}
+.cred-ILLUSTRATIVE{color:var(--amber);border-color:rgba(176,122,0,.4);background:rgba(176,122,0,.07)}
+
+/* two doors */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+.door{padding:30px;display:flex;flex-direction:column;border-top:4px solid var(--cc)}
+.door .rt{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--cc)}
+.door h3{font-size:25px;margin:8px 0 10px}
+.door>p{font-size:15px;color:var(--ink-2);margin-bottom:16px}
+.door ul{list-style:none;display:grid;gap:7px;margin-bottom:18px}
+.door li{font-size:14.5px;padding-left:22px;position:relative;color:var(--ink-2)}
+.door li::before{content:'';position:absolute;left:3px;top:8px;width:7px;height:7px;border-radius:2px;background:var(--cc);transform:rotate(45deg)}
+.door .who{margin-top:auto;display:flex;gap:6px;flex-wrap:wrap;padding-top:16px;border-top:1px dashed var(--line-2)}
+.equal{margin-top:24px;padding:26px 30px;border-radius:14px;background:linear-gradient(135deg,var(--navy-950),var(--navy-700));color:#fff;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.equal h3{color:#fff;font-size:23px;margin-bottom:8px}
+.equal p{color:rgba(255,255,255,.8);font-size:15px;max-width:900px}
+.equal p b{color:#fff}
+.eqrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.eqrow span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.82)}
+
+/* journey */
+.jr{margin-top:34px;padding:26px 26px 30px}
+.jr-rail{position:relative;height:4px;background:var(--line);border-radius:2px;margin-bottom:22px}
+.jr-rail i{position:absolute;left:0;top:0;height:100%;width:0;background:var(--orange);border-radius:2px;transition:width .45s ease}
+.jr-cols{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.jcol{border:1px solid var(--line);border-radius:12px;padding:12px 10px;background:var(--paper);transition:all .4s}
+.jcol.on{background:#fff;border-color:var(--cc);box-shadow:var(--shadow)}
+.jcol h4{font-size:12px;font-family:var(--mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);display:flex;gap:6px;align-items:center;margin-bottom:9px}
+.jcol.on h4{color:var(--cc)}
+.jcol h4 small{font-family:var(--mono);color:var(--mist-2);font-size:10px}
+.js{display:flex;gap:7px;align-items:flex-start;padding:5px 6px;border-radius:7px;font-size:12px;color:var(--mist);transition:all .3s;cursor:pointer;line-height:1.3}
+.js .n{font-family:var(--mono);font-size:9.5px;color:var(--mist-2);width:14px;flex-shrink:0;padding-top:1px}
+.js.done{color:var(--ink-2)}
+.js.on{background:var(--cc);color:#fff;font-weight:600;box-shadow:0 5px 14px -6px var(--cc)}
+.js.on .n{color:rgba(255,255,255,.75)}
+.jr-detail{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:24px;padding-top:24px;border-top:1px solid var(--line);min-height:210px}
+.jr-detail.anim{animation:fpin .45s ease}
+@keyframes fpin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.jr-detail .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--orange)}
+.jr-detail h3{font-size:26px;margin:6px 0 10px}
+.jr-detail p{font-size:15.5px;color:var(--ink-2)}
+.jr-comp{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.jr-comp b{display:block}
+.jchips{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.jchips span{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:7px;background:var(--paper-2);border:1px solid var(--line);color:var(--ink-2)}
+.ctrl{display:flex;gap:8px;align-items:center;margin-top:18px}
+.ctrl button{border:1px solid var(--line-2);background:#fff;border-radius:8px;padding:8px 15px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.ctrl button:hover{border-color:var(--orange);color:var(--orange-600)}
+.ctrl .count{margin-left:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--mist)}
+
+/* system map */
+.views{display:flex;gap:7px;flex-wrap:wrap;margin-top:28px}
+.views button{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.views button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.vt{margin-top:14px;font-size:15px;color:var(--ink-2);min-height:48px;max-width:980px}
+.map-box{margin-top:18px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(170deg,#fff,var(--paper));overflow:hidden;box-shadow:var(--shadow)}
+.map-svg{display:block;width:100%;height:auto}
+.medge{fill:none;stroke:var(--line-2);stroke-width:1.6;transition:all .4s}
+.medge.dim{opacity:.12}
+.medge.hot{stroke:var(--orange);stroke-width:2.4}
+.mdot{opacity:.75;transition:opacity .4s}
+.mdot.dim{opacity:0}
+.mnode{cursor:pointer}
+.mnode .halo{fill:none;stroke-width:0;opacity:0;transition:all .35s}
+.mnode .bg{fill:#fff;stroke-width:1.8;transition:all .35s}
+.mnode text{font-family:var(--display);font-weight:600;font-size:13px;fill:var(--navy);text-anchor:middle;pointer-events:none}
+.bandlbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;font-weight:500;opacity:.75}
+.mnode text.t2{font-family:var(--body);font-weight:400;font-size:11px;fill:var(--mist);letter-spacing:0}
+.mnode.dim{opacity:.17}
+.mnode.sel .halo{stroke-width:2;opacity:.45}
+.mnode.sel .bg{stroke-width:3}
+.insp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line);background:#fff}
+.insp>div{padding:18px 22px;border-right:1px solid var(--line)}
+.insp>div:last-child{border-right:0}
+.insp .ih{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.insp .ih b{font-family:var(--display);font-weight:600;font-size:16.5px;color:var(--navy)}
+.insp small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mist);text-transform:uppercase;margin-bottom:6px}
+.insp p{font-size:13.5px;color:var(--ink-2)}
+.io{display:flex;flex-direction:column;gap:5px}
+.io span{font-size:12.5px;color:var(--ink-2);padding-left:16px;position:relative}
+.io span::before{content:'';position:absolute;left:2px;top:7px;width:6px;height:6px;border-radius:2px;background:var(--cc);transform:rotate(45deg)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;padding:12px 22px;border-top:1px solid var(--line);background:var(--paper);font-size:12px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;background:var(--cc)}
+
+/* the gate */
+.gate{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;margin-top:36px;align-items:stretch}
+.conds{padding:28px;display:flex;flex-direction:column;gap:11px}
+.conds h3{font-size:19px;margin-bottom:2px}
+.conds .sub{font-size:13.5px;color:var(--mist);margin-bottom:10px}
+.cond{display:flex;gap:14px;align-items:center;padding:13px 15px;border:1px solid var(--line);border-radius:11px;background:var(--paper);transition:all .35s;text-align:left;width:100%}
+.cond.on{background:#fff;border-color:rgba(30,127,79,.5);box-shadow:0 6px 16px -10px rgba(30,127,79,.6)}
+.cond .sw{width:42px;height:24px;border-radius:999px;background:var(--line-2);position:relative;flex-shrink:0;transition:background .3s}
+.cond .sw::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .3s}
+.cond.on .sw{background:var(--green)}
+.cond.on .sw::after{transform:translateX(18px)}
+.cond b{display:block;font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--navy)}
+.cond span{display:block;font-size:12.5px;color:var(--mist)}
+.cond .tag{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--mist-2);flex-shrink:0}
+.cond.on .tag{color:var(--green)}
+.gout{padding:28px;display:flex;flex-direction:column}
+.gout h3{font-size:19px;margin-bottom:2px}
+.gout .sub{font-size:13.5px;color:var(--mist);margin-bottom:16px}
+.gsvg{display:grid;place-items:center;padding:8px 0 16px}
+.verdict{border-radius:12px;padding:20px 22px;border:2px solid;transition:all .4s;margin-bottom:14px}
+.verdict.pass{border-color:rgba(30,127,79,.45);background:rgba(30,127,79,.06)}
+.verdict.fail{border-color:rgba(194,27,63,.4);background:rgba(194,27,63,.05)}
+.verdict .vh{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+.verdict.pass .vh{color:var(--green)}.verdict.fail .vh{color:var(--red)}
+.verdict b{display:block;font-family:var(--display);font-weight:700;font-size:21px;margin:5px 0 7px;color:var(--navy)}
+.verdict p{font-size:14px;color:var(--ink-2)}
+.presets{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line-2)}
+.presets .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--mist);text-transform:uppercase;margin-bottom:9px}
+.presets .pb{display:flex;gap:7px;flex-wrap:wrap}
+.presets button{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.presets button.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.samenote{margin-top:22px;padding:18px 22px;border-radius:12px;border:1px solid rgba(245,129,32,.4);background:var(--orange-tint);display:flex;gap:14px;align-items:flex-start}
+.samenote p{font-size:14.5px;color:var(--ink-2)}
+.samenote b{color:var(--navy)}
+
+/* scenarios */
+.sxg{display:flex;gap:7px;flex-wrap:wrap;margin-top:26px}
+.sxg button{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:7px 15px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.sxg button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sx-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;align-items:start}
+.sx-card{padding:18px 20px;cursor:pointer;transition:all .35s;border-left:3px solid transparent}
+.sx-card:hover{border-color:var(--line-2)}
+.sx-card.on{border-left-color:var(--orange);box-shadow:var(--shadow);transform:translateY(-2px)}
+.sx-card .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--mist-2);text-transform:uppercase}
+.sx-card h4{font-size:16px;margin:5px 0 7px;line-height:1.25}
+.sx-card p{font-size:13px;color:var(--ink-2)}
+.lanes{margin-top:12px;display:flex;flex-direction:column;gap:4px}
+.lane{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mist);opacity:.32;transition:all .3s}
+.lane.on{opacity:1;color:var(--ink-2)}
+.lane i{transform:scale(.8);transition:transform .3s}
+.lane.on i{transform:scale(1.15)}
+.lane>i{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.lane.ok i{background:var(--green)}.lane.skip i{background:var(--mist-2)}
+.lane.fail i{background:var(--red)}.lane.wait i{background:var(--amber)}
+.lane.human i{background:var(--violet)}.lane.link i{background:var(--cyan)}
+.outcome{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line-2);font-size:12.5px;color:var(--navy);font-weight:500}
+
+/* statuses */
+.slanes{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:34px}
+.slane{padding:24px}
+.slane h3{font-size:17.5px;margin-bottom:3px}
+.slane .sub{font-size:13px;color:var(--mist);margin-bottom:18px}
+.strack{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.snode{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line-2);background:#fff;font-size:12.5px;font-weight:600;color:var(--mist-2);transition:all .4s}
+.snode.on{border-color:var(--cc);color:var(--cc);background:color-mix(in srgb,var(--cc) 8%,#fff);box-shadow:0 0 0 4px color-mix(in srgb,var(--cc) 12%,transparent)}
+.sarrow{color:var(--mist-2);font-size:13px}
+.sbranch{margin-top:14px;padding-top:13px;border-top:1px dashed var(--line-2);display:flex;gap:8px;flex-wrap:wrap}
+.sbranch span{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px dashed var(--line-2);color:var(--mist);background:var(--paper)}
+
+/* reports */
+.reps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.rep{padding:22px 24px}
+.rep .rh{display:flex;align-items:center;gap:9px;margin-bottom:3px}
+.rep .rh b{font-family:var(--display);font-weight:600;font-size:16.5px;color:var(--navy)}
+.rep .rn{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mist-2);margin-left:auto}
+.rep .sub{font-size:12.5px;color:var(--mist);margin-bottom:14px}
+.hb{display:grid;grid-template-columns:118px 1fr 28px;gap:10px;align-items:center;margin:7px 0;font-size:12.5px;color:var(--ink-2)}
+.hb .tr{height:10px;border-radius:5px;background:var(--paper-2);overflow:hidden}
+.hb .tr i{display:block;height:100%;width:0;border-radius:5px;background:var(--cc);transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.hb b{font-family:var(--mono);font-weight:500;color:var(--navy);text-align:right}
+.rep-note{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mist);text-transform:uppercase;text-align:center}
+
+/* safeguards */
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+.sc{padding:22px}
+.sc h4{font-size:17px;margin:14px 0 6px}
+.sc p{font-size:14px;color:var(--ink-2)}
+.credrow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.credrow .card{padding:20px 22px}
+.credrow h4{font-size:15px;margin:10px 0 5px}
+.credrow p{font-size:13.5px;color:var(--ink-2)}
+
+/* decisions */
+.qs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+.q{padding:22px 24px;border-left:3px solid var(--orange)}
+.q .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--orange)}
+.q h4{font-size:17px;margin:6px 0 6px}
+.q p{font-size:14px;color:var(--ink-2)}
+.q .rec{margin-top:10px;font-size:13px;color:var(--green);font-weight:500}
+
+footer{background:var(--navy-950);color:rgba(255,255,255,.6);padding:30px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:#fff;font-family:var(--display);font-weight:600}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.h2 .w{opacity:1;transform:none}}
+/* responsive */
+.jr-detail>*,.gate>*,.doors>*,.insp>*,.why>*,.cards4>*,.reps>*,.sx-list>*,.qs>*,.slanes>*{min-width:0}
+@media(max-width:1340px){.navlinks a{padding:8px 7px;font-size:11px}}
+@media(max-width:1280px){.wrap{padding:0 28px}}
+@media(max-width:1180px){.navlinks{display:none}}
+@media(max-width:1100px){
+  .hero .wrap.g{grid-template-columns:1fr;gap:30px}
+  .sx-list,.reps{grid-template-columns:repeat(2,1fr)}
+  .jr-cols{grid-template-columns:repeat(3,1fr)}
+  .insp{grid-template-columns:1fr}
+  .insp>div{border-right:0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:1000px){
+  .doors,.gate,.jr-detail,.slanes,.equal{grid-template-columns:1fr}
+  .why,.cards4,.qs,.credrow{grid-template-columns:1fr 1fr}.hstats{grid-template-columns:1fr 1fr}
+  .console{display:none}
+}
+@media(max-width:700px){
+  .wrap{padding:0 18px}section{padding:62px 0}
+  nav.top .wrap{height:58px}.brand small{display:none}
+  .hbtns{flex-direction:column;align-items:stretch}
+  .hstats div{padding:16px 14px}.hstats b{font-size:24px}
+  .why,.cards4,.qs,.credrow,.sx-list,.reps{grid-template-columns:1fr}
+  .jr-cols{grid-template-columns:repeat(2,1fr)}
+  .jr,.conds,.gout,.slane,.rep,.sx-card{padding:18px}
+  .jr-detail h3{font-size:22px}
+  .hb{grid-template-columns:92px 1fr 26px;font-size:12px}
+  .equal{padding:20px}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav class="top"><div class="wrap">
+  <div class="brand"><div class="dot" data-ic="shield"></div><div><b>Women Safety Portal</b><small>Sexual Offender Registry</small></div></div>
+  <div class="navlinks">
+    <a href="#why">Why</a><a href="#doors">Two Doors</a><a href="#journey">Journey</a><a href="#architecture">Architecture</a>
+    <a href="#gate">The Gate</a><a href="#scenarios">Scenarios</a><a href="#statuses">Statuses</a><a href="#reports">Reports</a><a href="#safeguards">Safeguards</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap g">
+    <div>
+      <span class="htag">WOMEN SAFETY PORTAL · SEXUAL OFFENDER REGISTRY</span>
+      <h1>One registry.<br>Two doors. <em>One limit.</em></h1>
+      <div class="hrule"></div>
+      <p>The Women Safety Portal joins police case records, prison events, court status and geographic monitoring into one offender lifecycle — and puts a strictly separate, consent-based verification channel beside it for schools, universities and employers. <b>Every requester meets the same five-condition disclosure gate.</b> A corporation gets no more than a school.</p>
+      <div class="hbtns"><button class="hbtn pri" id="goJourney">Follow one record ↓</button><a class="hbtn sec" href="#gate">See the disclosure gate</a></div>
+      <div class="hchips"><span>● ACCUSED ≠ CONVICTED</span><span>5-CONDITION DISCLOSURE GATE</span><span>EVERY ACCESS AUDITED</span></div>
+    </div>
+    <div class="console">
+      <div class="hood">
+        <div class="hh"><i></i><i></i><i></i>WOMEN SAFETY PORTAL · REGISTRY CONSOLE<em id="hclock">PROFILE 00418-TG</em></div>
+        <div class="hbody">
+          <div class="hcard" style="--cc:#A6D1F0" data-h="0"><small>REGISTRY · MASTER PROFILE</small><b>Three cases, one profile</b><span>MATCHED ON IDENTITY + BIOMETRIC REF</span></div>
+          <div class="hcard" style="--cc:#FFB27A" data-h="1"><small>LEGAL STATUS · e-COURTS</small><b>Convicted · one case</b><span>UNDER TRIAL IN ANOTHER · HELD SEPARATELY</span></div>
+          <div class="hcard" style="--cc:#C7B6F5" data-h="2"><small>CUSTODY · e-PRISONS</small><b>Release due in 14 days</b><span>ALERT ROUTED TO JURISDICTION</span></div>
+          <div class="hcard" style="--cc:#7fe0b0" data-h="3"><small>FIELD · WOMEN SAFETY TEAM</small><b>Address verified on visit</b><span>LOGGED 02 DEC · SUPERVISOR APPROVED</span></div>
+        </div>
+        <div class="hgate"><i data-g="0"></i><i data-g="1"></i><i data-g="2"></i><i data-g="3"></i><i data-g="4"></i>DISCLOSURE GATE<b id="hgv">5 OF 5 · OUTCOME ISSUED</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="hstats">
+    <div><b id="k1">0</b><span>Journey stages</span></div><div><b id="k2">0</b><span>Boxes in the system</span></div>
+    <div><b id="k3">0</b><span>Demo scenarios</span></div><div><b id="k4">0</b><span>Conditions before disclosure</span></div>
+  </div></div>
+</header>
+
+<div class="ticker"><div class="rail" id="ticker"></div></div>
+
+<section id="why"><div class="wrap">
+  <div class="eyebrow">Why this exists</div>
+  <h2 data-split>The record exists. It is never in one place at the right time.</h2>
+  <div class="why">
+    <div class="card reveal"><span class="itile" data-ic="database"></span><h3>The person is scattered</h3><p>The FIR sits in CCTNS, the trial in e-Courts, the sentence in e-Prisons. One individual across three cases becomes three unconnected records, and the pattern never surfaces.</p><div class="was">NOW · <b>ONE MASTER PROFILE, MANY LINKED CASES</b></div></div>
+    <div class="card reveal"><span class="itile" style="--cc:var(--orange-600)" data-ic="bell"></span><h3>Release passes unnoticed</h3><p>A convicted offender completes a sentence and returns to a jurisdiction where no officer was told. The information existed — it never reached the station that needed it.</p><div class="was">NOW · <b>RELEASE EVENTS RAISE A ROUTED ALERT</b></div></div>
+    <div class="card reveal"><span class="itile" style="--cc:var(--violet)" data-ic="school"></span><h3>Employers have no lawful route</h3><p>A school hiring a bus driver has documents and references and no proper way to ask the police anything — so either nothing is checked, or records move through channels that should not exist.</p><div class="was">NOW · <b>ONE CONSENTED, AUDITED, GATED CHANNEL</b></div></div>
+  </div>
+</div></section>
+
+<section id="doors" class="alt"><div class="wrap">
+  <div class="eyebrow">Two Operational Ecosystems</div>
+  <h2 data-split>Same platform. Separate access. <em>Identical limit.</em></h2>
+  <p class="lead">Police use the registry to monitor and manage cases and individuals under lawful authority. Every other requester — school, university, childcare body, hospital or corporation — uses a different door that returns an outcome, never a record.</p>
+  <div class="doors">
+    <div class="door card reveal" style="--cc:var(--blue)">
+      <div class="rt">DOOR A · LAWFUL AUTHORITY</div>
+      <h3>Police &amp; women safety team operations</h3>
+      <p>The operational registry: identify, register and track individuals connected to sexual-offence cases, with legal status maintained accurately at every stage.</p>
+      <ul>
+        <li>Consolidated registry of case-linked individuals</li>
+        <li>Accused, under-trial and convicted as distinct categories</li>
+        <li>Release, bail and legal-status change alerts</li>
+        <li>Verified addresses, geotagged and jurisdiction-resolved</li>
+        <li>Repeat-offender and multi-case identification</li>
+        <li>women safety team field assignments and follow-up history</li>
+      </ul>
+      <div class="who"><span class="pill p-b">Women safety teams</span><span class="pill p-b">Police stations</span><span class="pill p-b">Women safety wing</span><span class="pill p-b">Investigating officers</span><span class="pill p-b">District supervision</span></div>
+    </div>
+    <div class="door card reveal" style="--cc:var(--violet)">
+      <div class="rt">DOOR B · CONTROLLED DISCLOSURE</div>
+      <h3>Institutional &amp; employer verification</h3>
+      <p>A segregated portal where registered requesters submit consented background-verification requests for people in roles with access to women and children — and receive an outcome against a defined scope.</p>
+      <ul>
+        <li>Requester registration and authentication</li>
+        <li>Consent and authorisation captured with every request</li>
+        <li>Requests routed to the correct police jurisdiction</li>
+        <li>Authorised officer reviews before any response is issued</li>
+        <li>Outcome returned as a referenced verification certificate</li>
+        <li>Full request and access history retained for audit</li>
+      </ul>
+      <div class="who"><span class="pill p-v">Schools</span><span class="pill p-v">Universities</span><span class="pill p-v">Childcare</span><span class="pill p-v">Hospitals</span><span class="pill p-v">Corporations</span><span class="pill p-v">Transport &amp; facility staffing</span></div>
+    </div>
+  </div>
+  <div class="equal reveal">
+    <span class="itile" style="--cc:var(--orange);background:rgba(245,129,32,.18);border-color:rgba(245,129,32,.4);width:60px;height:60px;font-size:28px" data-ic="equal"></span>
+    <div>
+      <h3>No requester goes beyond the limit — corporations included</h3>
+      <p>There is <b>no enhanced tier</b>. A corporation is held to exactly the same gate, the same scope and the same outcome set as a primary school, whatever its size, sector, contract value or stated reason. Size does not buy access, and neither does a commercial relationship with the department. Door B returns one of five outcomes and nothing else.</p>
+      <div class="eqrow"><span>NO SEARCH OR BROWSE</span><span>NO CASE FILE</span><span>NO ACCUSED RECORD</span><span>NO VICTIM INFORMATION</span><span>NO MAP OR MONITORING VIEW</span><span>NO BULK OR STANDING ACCESS</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+  <div class="eyebrow">The Journey of One Record</div>
+  <h2 data-split>Nineteen stages. From a registered case to an audited disclosure.</h2>
+  <p class="lead">One individual, followed end to end: a case registered, a profile matched, a conviction and sentence, a release that raises an alert, a field verification, and finally an employer's question answered at the gate. Each stage lights up in turn — click any stage to stop and look at it.</p>
+  <div class="jr card reveal">
+    <div class="jr-rail"><i id="jrFill"></i></div>
+    <div class="jr-cols" id="jrCols"></div>
+    <div class="jr-detail" id="jrDetail"></div>
+    <div class="ctrl">
+      <button id="jPrev">◀ Back</button><button id="jPlay">❚❚ Pause</button><button id="jNext">Next ▶</button>
+      <span class="count" id="jCount"></span>
+    </div>
+  </div>
+</div></section>
+
+<section id="architecture" class="alt"><div class="wrap">
+  <div class="eyebrow">Platform Architecture</div>
+  <h2 data-split>Fifteen boxes. Two paths. <em>One platform.</em></h2>
+  <p class="lead">Read it as two lanes. The top lane is what the police do with a record. The bottom lane is what an employer gets when they ask about someone. Pick a path to follow, or click any box to see what goes in, what comes out, and what happens if it fails.</p>
+  <div class="views" id="views"></div>
+  <div class="vt" id="viewText"></div>
+  <div class="map-box reveal">
+    <svg class="map-svg" id="mapSvg" viewBox="0 0 1400 760" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="insp" id="insp"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+</div></section>
+
+<section id="gate"><div class="wrap">
+  <div class="eyebrow">The Disclosure Gate</div>
+  <h2 data-split>Five conditions. All true, or no disclosure.</h2>
+  <p class="lead">A verification response leaves the platform only when every one of five conditions is true. Switch them on and off, or pick a real scenario, to watch the decision change. The gate is identical for every requester.</p>
+  <div class="gate">
+    <div class="conds card reveal" id="conds">
+      <h3>Conditions</h3>
+      <div class="sub">All five are evaluated with AND. One false is enough to stop a response.</div>
+    </div>
+    <div class="gout card reveal">
+      <h3>Decision</h3>
+      <div class="sub">What leaves the platform, and what is written to the audit trail</div>
+      <div id="verdict"></div>
+      <div class="presets">
+        <div class="pl">Try a scenario</div>
+        <div class="pb" id="presets"></div>
+      </div>
+    </div>
+  </div>
+  <div class="samenote reveal">
+    <span class="itile" style="--cc:var(--orange-600)" data-ic="equal"></span>
+    <p><b>Switch between the school and the corporate preset.</b> The conditions evaluated, the scope of the check and the outcome text are byte-identical. The only thing that differs in the record is which registered requester asked — and that is kept for audit, not used to widen what is returned.</p>
+  </div>
+</div></section>
+
+<section id="scenarios" class="alt"><div class="wrap">
+  <div class="eyebrow">17 Scenarios</div>
+  <h2 data-split>Not every record is the simple case. Each one still ends somewhere clear.</h2>
+  <p class="lead">Seventeen demo scenarios cover identity matching, split legal statuses, acquittals, bail and parole, address changes, failed field visits, refused disclosures and victim-protected cases. They play in turn — click one to stay on it.</p>
+  <div class="sxg" id="sxg"></div>
+  <div class="sx-list" id="sxList"></div>
+</div></section>
+
+<section id="statuses"><div class="wrap">
+  <div class="eyebrow">Clean Statuses</div>
+  <h2 data-split>One status at a time. Always a clear answer.</h2>
+  <p class="lead">Every individual, case, monitoring assignment and verification request has exactly one status at any moment. These are the statuses the portal uses and the order they move in; the dashed branches show where a step can go another way.</p>
+  <div class="slanes" id="slanes"></div>
+</div></section>
+
+<section id="reports" class="alt"><div class="wrap">
+  <div class="eyebrow">Seven Reports</div>
+  <h2 data-split>Everything above, counted in seven reports.</h2>
+  <p class="lead">Individuals, cases, custody events, field visits and verification requests add up to seven operational reports. The numbers here are counted from the 17 demo scenarios on this page.</p>
+  <div class="reps" id="reps"></div>
+  <div class="rep-note">Demo data · counted from the 17 scenarios above · not production figures</div>
+</div></section>
+
+<section id="safeguards"><div class="wrap">
+  <div class="eyebrow">Safeguards</div>
+  <h2 data-split>Useful to the officer. Fair to the individual.</h2>
+  <div class="cards4">
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--red)" data-ic="eyeoff"></span><h4>Victim identity protected</h4><p>Victim information is restricted throughout and never leaves through Door B, reflecting the statutory bar on disclosing a victim's identity and the added safeguards for child victims.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--orange-600)" data-ic="scale"></span><h4>Due process preserved</h4><p>Accused, under-trial and convicted stay separate in the data model, the workflows and every disclosure. A pending FIR is never returned as a finding.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--violet)" data-ic="lock"></span><h4>Access is narrow and logged</h4><p>Role-based access by rank, unit and jurisdiction, with an immutable record of every view, search, download and disclosure, exportable for vigilance or court.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--green)" data-ic="usercheck"></span><h4>Consent and a human reviewer</h4><p>No verification runs without recorded consent, and no response is issued without an authorised officer deciding what is disclosable.</p></div>
+    <div class="sc card reveal"><span class="itile" data-ic="database"></span><h4>Provenance on every field</h4><p>Each record carries its source system, verification status and last-updated time, so an officer sees how current and how reliable it is.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--amber)" data-ic="history"></span><h4>Retention and correction</h4><p>Approved retention, correction and deletion policies apply, with a legal and data-protection review against the applicable framework.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--cyan)" data-ic="map"></span><h4>Monitoring within authority</h4><p>Geotagging an address is not live tracking, and release is not surveillance. Each assignment records the order or procedure it acts on.</p></div>
+    <div class="sc card reveal"><span class="itile" style="--cc:var(--blue)" data-ic="split"></span><h4>Structural separation</h4><p>Door B has no path to the registry, the map or the case record. The boundary is in the architecture, not in a permission setting someone can widen.</p></div>
+  </div>
+  <div class="credrow">
+    <div class="card reveal"><span class="cred cred-ESTABLISHED">Established</span><h4>Built and working today</h4><p>Capabilities already present in the Women Safety Portal application — the registry, case and offence records, role-based access and the officer portals.</p></div>
+    <div class="card reveal"><span class="cred cred-SIMULATED">Simulated</span><h4>Mocked for this demonstration</h4><p>Runs as a local mock here, including the CCTNS, e-Prisons and e-Courts adapters and the verification certificate service. Not connected to live systems.</p></div>
+    <div class="card reveal"><span class="cred cred-ILLUSTRATIVE">Illustrative</span><h4>Proposed, not yet validated</h4><p>Example schemas, matching models and interfaces that have not been checked against production or confirmed with the owning department.</p></div>
+  </div>
+</div></section>
+
+<section id="decisions" class="alt"><div class="wrap">
+  <div class="eyebrow">Before Build</div>
+  <h2 data-split>Four decisions that shape the architecture.</h2>
+  <p class="lead">Each of these changes the data model or the workflow engine, so they are worth settling with the department before development rather than during it.</p>
+  <div class="qs">
+    <div class="q card reveal"><div class="n">DECISION 01</div><h4>Registry coverage</h4><p>Does the registry hold only sexual-offence records, or also linked trafficking, child exploitation and related offences?</p><div class="rec">→ Sets the classification engine's inclusion rules</div></div>
+    <div class="q card reveal"><div class="n">DECISION 02</div><h4>Release monitoring scope</h4><p>Is monitoring limited to convicted individuals released from prison, or does it also cover accused persons released on bail, under a separate workflow?</p><div class="rec">→ Sets the alert engine and the legal-status rules</div></div>
+    <div class="q card reveal"><div class="n">DECISION 03</div><h4>Disclosable record definition</h4><p>Which legal statuses are ever disclosable through Door B? The gate assumes conviction-based disclosure only.</p><div class="rec">→ Recommended: conviction-based, with a named reviewing officer</div></div>
+    <div class="q card reveal"><div class="n">DECISION 04</div><h4>Location requirement</h4><p>Is the requirement address geotagging with officer field verification, or is approved live-location tracking also in scope?</p><div class="rec">→ Determines whether a device integration is needed at all</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b>Women Safety Portal</b> · Sexual Offender Registry · Platform architecture for client demonstration · part of the Access Genie / GARUDA ecosystem</div>
+  <div>Names, numbers and records on this page are simulated demo data.</div>
+</div></footer>
+
+<script>
+/* ===================== helpers ===================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const NS='http://www.w3.org/2000/svg';
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function whenSeen(elm,fn,th=.2){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fn();o.disconnect();}}),{threshold:th});o.observe(elm);}
+
+const ICON={
+ shield:'<path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.6.8 2.6 2.6 3 5.2"/>',
+ usercheck:'<circle cx="9" cy="8" r="4"/><path d="M2 21c1-4 3.5-6 7-6s6 2 7 6"/><path d="M16 11l2 2 4-4"/>',
+ school:'<path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/>',
+ lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+ monitor:'<rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+ file:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/>',
+ scale:'<path d="M12 3v18M7 21h10"/><path d="M12 6 5 8l-2.5 6a4 4 0 0 0 7 0L7 8"/><path d="m12 6 7 2 2.5 6a4 4 0 0 1-7 0L17 8"/>',
+ filter:'<path d="M3 4h18l-7 8v7l-4 2v-9z"/>',
+ fingerprint:'<path d="M12 4a8 8 0 0 0-8 8v3"/><path d="M12 8a4 4 0 0 0-4 4v4"/><path d="M12 12v5"/><path d="M16 12a4 4 0 0 0-1.2-2.9"/><path d="M20 12a8 8 0 0 0-2.4-5.7"/><path d="M16 16v2"/>',
+ bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9z"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+ map:'<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+ pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+ link:'<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+ database:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+ chart:'<path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/>',
+ log:'<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+ badge:'<path d="M12 2.5l2.5 1.9 3.1-.2.9 3 2.6 1.8-1.1 2.9 1.1 2.9-2.6 1.8-.9 3-3.1-.2L12 21.5l-2.5-1.9-3.1.2-.9-3-2.6-1.8 1.1-2.9-1.1-2.9 2.6-1.8.9-3 3.1.2z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+ gate:'<path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><path d="M9 21v-6h6v6"/>',
+ door:'<path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M3 21h18"/><circle cx="13" cy="12" r="1"/>',
+ split:'<path d="M12 3v6"/><path d="M12 9 6 15v6"/><path d="m12 9 6 6v6"/>',
+ equal:'<path d="M5 9h14M5 15h14"/>',
+ eyeoff:'<path d="M3 3l18 18"/><path d="M10.6 5.3A9.9 9.9 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-3.1 4.1"/><path d="M6.3 6.4A17.6 17.6 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 4.3-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
+ history:'<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ cert:'<path d="M5 3h14v12H5z"/><path d="M9 7h6M9 11h4"/><circle cx="12" cy="19" r="2.5"/><path d="M12 16.5V15"/>',
+ court:'<path d="M3 21h18M12 3v18M5 8h14"/><path d="M5 8 3 14h4zM19 8l-2 6h4z"/>',
+ alert:'<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+ check:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+ x:'<circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/>',
+ cpu:'<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>'
+};
+const ic=k=>`<svg class="ic" viewBox="0 0 24 24">${ICON[k]||''}</svg>`;
+function hydrate(root){root.querySelectorAll('[data-ic]').forEach(e=>{if(!e.dataset.done){e.insertAdjacentHTML('afterbegin',ic(e.dataset.ic));e.dataset.done=1;}});}
+
+/* ===================== domains ===================== */
+const DOM={
+ access:{n:'Access',hex:'#2070B3'},
+ registry:{n:'Registry core',hex:'#F58120'},
+ justice:{n:'Justice systems',hex:'#5B3FA8'},
+ field:{n:'Field & location',hex:'#1E7F4F'},
+ disclosure:{n:'Controlled disclosure',hex:'#0A7C8C'},
+ govern:{n:'Security & governance',hex:'#C21B3F'}
+};
+
+/* ===================== components ===================== */
+/* n plain name · k what it does in a few words · s technical name · d domain · cred label
+   p description · i takes in · o produces · f when it fails */
+const C={
+ officer:{n:'Police & Women safety teams',k:'who works the registry',s:'officer_users',d:'access',ic:'shield',cred:'ESTABLISHED',p:'Officers who register cases, review records, receive alerts and verify addresses in the field, within their own rank and jurisdiction.',i:['Sign-in with role, unit and jurisdiction'],o:['Case entries, field outcomes, review decisions'],f:'Access is removed centrally on transfer; open assignments return to the station queue.'},
+ inst:{n:'Schools & employers',k:'who may ask a question',s:'requester_users',d:'access',ic:'school',cred:'ESTABLISHED',p:'Schools, universities, childcare bodies, hospitals and corporations. All registered, all authenticated, all held to one identical limit.',i:['A verification request, with consent'],o:['One permitted outcome, with a reference number'],f:'An unregistered or lapsed requester is refused before a request is even created.'},
+ iam:{n:'Sign-in & permissions',k:'decides who sees what',s:'iam_rbac_mfa',d:'govern',ic:'lock',cred:'ESTABLISHED',p:'Decides which door a person enters and what is reachable once inside. This is where the two sides are kept apart.',i:['Credentials, role, rank, unit, jurisdiction, organisation'],o:['A scoped session; a permission decision on every action'],f:'A failed or unclear authorisation denies by default, and the attempt is logged.'},
+ portal:{n:'Officer app',k:'where officers work',s:'officer_web_mobile_app',d:'access',ic:'monitor',cred:'ESTABLISHED',p:'The officer-facing application: registry, case records, alerts, assignments and field capture, on desktop and on a phone.',i:['Officer session; assigned work'],o:['Record views, field reports, status updates'],f:'Field capture queues on the device when offline and syncs when the signal returns.'},
+ vportal:{n:'Request portal',k:'where requests come in',s:'requester_web_portal',d:'disclosure',ic:'door',cred:'ESTABLISHED',p:'The separate requester-facing application. It can submit a request and track it. It cannot search, browse or view a record.',i:['Requester session; request form and consent document'],o:['Request status; the issued response'],f:'An incomplete request is rejected at submission with a reason, before it is routed anywhere.'},
+ person:{n:'One profile',k:'one person, many cases',s:'master_person_service',d:'registry',ic:'users',cred:'ESTABLISHED',p:'A single master profile for each individual, carrying identity, aliases, addresses and every linked case. One person never becomes three records.',i:['Identity details; linked cases; match results'],o:['One consolidated profile; registry status'],f:'Where a match is uncertain, nothing is merged — the record waits for an officer to confirm.'},
+ casemgmt:{n:'Case record',k:'what the case is',s:'case_offence_service',d:'registry',ic:'file',cred:'ESTABLISHED',p:'Each case against the profile: station, dates, the exact sections it was registered under, and whether it belongs in the registry at all.',i:['Case data from the justice systems; officer updates'],o:['Case records with their exact legal provisions'],f:'An unrecognised provision is flagged for configuration, not quietly included or dropped.'},
+ status:{n:'Legal status',k:'accused, convicted, released',s:'legal_status_service',d:'registry',ic:'scale',cred:'ESTABLISHED',p:'One current status per case — accused, under trial, convicted, released, acquitted — each with where it came from and when.',i:['Court and prison events; officer updates'],o:['A status per case, with its source'],f:'Conflicting events are held for review. The platform never decides a status on its own.'},
+ custody:{n:'Prison & release',k:'in prison, out of prison',s:'custody_event_processor',d:'justice',ic:'lock',cred:'SIMULATED',p:'Follows admission, sentence, transfer, release, bail and parole, so the day someone is released is known before it happens, not after.',i:['Prisoner lifecycle events'],o:['A custody timeline; release and interim-release events'],f:'A late event is reconciled on the next sweep; gaps are shown rather than assumed away.'},
+ alert:{n:'Alerts & field work',k:'who is told, who checks',s:'alert_assignment_field',d:'field',ic:'bell',cred:'ESTABLISHED',p:'Works out which station covers the verified address, sends the alert to that women safety team with a due date, and records what the officer found on the visit.',i:['Status and release events; addresses; station boundaries'],o:['Routed alerts, assignments and visit outcomes'],f:'If no station can be resolved the alert escalates to district supervision rather than being dropped.'},
+ disc:{n:'Disclosure gate',k:'five conditions, all true',s:'disclosure_decision_service',d:'disclosure',ic:'gate',cred:'ESTABLISHED',p:'The decision that stands between a request and any answer. Identical for a village school and a national corporation.',i:['The request, consent, role, officer review, record status'],o:['One permitted outcome, or a refusal with a reason'],f:'Any condition unresolved means no disclosure — and the attempt is still logged in full.'},
+ cert:{n:'Outcome issued',k:'an answer, never a record',s:'certificate_service',d:'disclosure',ic:'cert',cred:'SIMULATED',p:'Produces the referenced response the requester receives. It carries an outcome and a reference number — never an extract of the record.',i:['The gate decision; the request reference'],o:['A signed response with a reference number'],f:'If signing fails nothing is released; the request stays pending rather than going out unsigned.'},
+ justice:{n:'Justice systems',k:'CCTNS · e-Prisons · e-Courts',s:'justice_systems_gateway',d:'justice',ic:'database',cred:'SIMULATED',p:'The systems that own the facts: police records, the prison service and the courts, all reached through one managed gateway so authentication and retries are solved once.',i:['Authorised queries and events'],o:['Cases, custody events, court orders and status changes'],f:'If one is unavailable the registry holds its last known state, marked with how old it is.'},
+ store:{n:'Records & audit',k:'every action, kept',s:'core_store_audit',d:'govern',ic:'log',cred:'ESTABLISHED',p:'One store for profiles, cases, events and requests — and an immutable record of every view, search, decision and disclosure.',i:['Writes and access events from everything above'],o:['Records with provenance; an exportable audit trail'],f:'If the audit path is down the action is refused. Nothing happens unrecorded.'},
+ reports:{n:'Seven reports',k:'what it all adds up to',s:'reporting_service',d:'registry',ic:'chart',cred:'ESTABLISHED',p:'Turns registry, custody, field and verification activity into the seven operational reports.',i:['Records and events from the store'],o:['Seven report views'],f:'Each report states the data cut-off it was built from, so a stale figure looks stale.'}
+};
+
+/* ---- simple lane layout: two paths, a band above and a band below ---- */
+const BANDS=[
+ {x:300,y:40,w:1060,h:108,t:'THE SYSTEMS THAT OWN THE FACTS',c:'#5B3FA8'},
+ {x:300,y:196,w:1060,h:150,t:'DOOR A · WHAT THE POLICE DO',c:'#2070B3'},
+ {x:300,y:394,w:1060,h:150,t:'DOOR B · WHAT AN EMPLOYER GETS',c:'#0A7C8C'},
+ {x:300,y:592,w:1060,h:108,t:'UNDER EVERYTHING',c:'#C21B3F'}
+];
+const MP={
+ officer:[160,262,'t'], iam:[160,378,'t'], inst:[160,486,'b'],
+ justice:[830,94,'t'],
+ portal:[390,271,'b'], person:[560,271,'b'], casemgmt:[730,271,'b'], status:[900,271,'b'], custody:[1070,271,'b'], alert:[1250,271,'b'],
+ vportal:[430,469,'b'], disc:[700,469,'b'], cert:[970,469,'b'],
+ store:[640,646,'b'], reports:[900,646,'b']
+};
+const ME=[
+ ['officer','iam'],['inst','iam'],['iam','portal'],['iam','vportal'],
+ ['portal','person'],['person','casemgmt'],['casemgmt','status'],['status','custody'],['custody','alert'],
+ ['vportal','disc'],['disc','cert'],
+ ['justice','casemgmt'],['justice','status'],['justice','custody'],
+ ['disc','person',-150],
+ ['alert','store',120],['cert','store'],['store','reports']
+];
+const VIEWS=[
+ ['system','The whole picture','Two paths, one platform','A case comes in from the justice systems, becomes one profile with a true legal status, and a release sends an alert to the officer who covers that address. Separately, an employer asks one question and the gate decides whether anything may be said. Everything is written down.',Object.keys(MP)],
+ ['police','Door A · the police path','What an officer does','Register the case, match it to one person, keep the status true from the courts and the prison, and get the right officer to the right address when someone is released.',['officer','iam','portal','person','casemgmt','status','custody','alert','justice','store']],
+ ['disc','Door B · the employer path','What an employer gets','A registered school or employer submits a consented request. It never touches the registry — the gate checks on its behalf, an officer reviews, and one outcome goes back.',['inst','iam','vportal','disc','cert','person','store']],
+ ['govern','Under everything','What applies to every action','Sign-in and permissions decide what is reachable; the store keeps every record with its source; the audit trail keeps every action; seven reports count it all.',['iam','store','reports','person','disc']]
+];
+
+/* ===================== ticker ===================== */
+const TK=[['st-ok','Profile 00418-TG','matched to one profile · 3 cases'],['st-info','Legal status','convicted in one case, under trial in another'],
+['st-wait','Release due','14 days · pre-release alert raised'],['st-ok','Jurisdiction','resolved from verified address'],
+['st-ok','Field visit','address verified · supervisor approved'],['st-human','Address mismatch','escalated to the station'],
+['st-ok','Disclosure gate','5 of 5 · outcome issued'],['st-fail','No consent on record','refused at the gate'],
+['st-skip','Accused only','not a disclosable record'],['st-link','Duplicate record','linked, not merged'],
+['st-fail','Unregistered requester','refused before routing'],['st-ok','Corporate request','same gate, same outcome as a school'],
+['st-info','Victim information','never leaves through Door B'],['st-ok','Every access','written to the audit trail']];
+$('#ticker').innerHTML=(h=>h+h)(TK.map(e=>`<span><span class="st ${e[0]}">${e[1]}</span>${e[2]}</span>`).join(''));
+
+/* ===================== journey ===================== */
+const PH=[['reg','Registration','registry'],['ident','One profile','registry'],['just','Court & prison','justice'],['alrt','Alert to a station','field'],['fld','Officer visits','field'],['disc','An employer asks','disclosure']];
+/* [phase, id, plain title, plain detail, technical detail, chips, component] */
+const ST=[
+ ['reg','case_registered','A case is registered','A sexual-offence FIR is registered at a police station and becomes available to the registry through an authorised interface.','CCTNS adapter emits a case event; the gateway normalises and validates it before the registry sees it.',['FIR 0147/2026','PS Lakeside'],'justice'],
+ ['reg','classified','The offence is classified','The exact sections the case was registered under are stored, so the record stays correct as the law changes.','Classification engine maps registered provisions to the configured offence set, retaining the original provision.',['BNS 74','BNS 78'],'casemgmt'],
+ ['reg','inclusion','Registry inclusion is decided','Not every offence against a woman or child is a sexual offence. The configured set decides whether this case belongs in the registry.','Inclusion predicate evaluated against the department-configured classification set; unrecognised provisions flagged.',['inclusion: pass'],'casemgmt'],
+ ['reg','case_linked','The case record is created','Station, dates, investigating unit and charge-sheet progression are held on the case, with victim references restricted.','Case record written with restricted-field policy applied to victim-linked attributes.',['case: open','victim refs restricted'],'casemgmt'],
+ ['ident','identity','The individual is identified','Name, aliases, date of birth and available identity references are read from the case.','Identity attributes extracted and normalised for matching.',['2 aliases'],'person'],
+ ['ident','matching','Checked against existing profiles','The platform asks whether this is someone already in the registry, rather than creating a second record for the same person.','Matcher scores identity and authorised biometric references against existing profiles (illustrative model).',['confidence: high'],'person'],
+ ['ident','profile','Matched to one master profile','Three cases across three stations resolve to one individual, with the cases linked rather than duplicated.','Case linked to existing master profile; no merge performed below threshold.',['Profile 00418-TG','3 cases'],'person'],
+ ['just','chargesheet','Investigation closes and a charge sheet is filed','The case moves from investigation to court, and the individual\'s status on this case moves with it.','Case progression event updates per-case status with source and date.',['status: under trial'],'status'],
+ ['just','court','The court record updates the status','Hearings, orders and judgments come from the court system, not from an assumption made by the platform.','e-Courts adapter supplies status, orders and conditions; status engine records provenance.',['source: e-Courts'],'justice'],
+ ['just','conviction','Conviction and sentence are recorded','One case ends in conviction. A second case involving the same person is still under trial, and the two are held separately.','Per-case statuses maintained independently; no roll-up to a single person-level label.',['convicted · case 1','under trial · case 2'],'status'],
+ ['just','admission','Prison admission is recorded','The custody record begins: where the person is held, under what sentence, and what the expected release date is.','e-Prisons events build the custody timeline with admission, sentence and transfer records.',['admitted','sentence recorded'],'custody'],
+ ['just','release_due','A release date becomes known','The platform now knows something that needs to reach a station before it happens, not after.','Scheduled-release event raises a pre-release notification window.',['release in 14 days'],'custody'],
+ ['alrt','release_event','The release event arrives','The actual release is received from the prison system and matched to the existing profile.','Custody event matched to master profile by prisoner reference and identity attributes.',['matched'],'custody'],
+ ['alrt','jurisdiction','Jurisdiction is resolved','The verified address decides which station and beat covers this person — and therefore who is told.','Geo resolver maps the verified address to station limits and beat boundaries.',['PS resolved','beat assigned'],'alert'],
+ ['alrt','assignment','An assignment is created, with its basis','The alert goes to the women safety team with a due date and the court order or procedure it acts on recorded against it.','Assignment created with a required legal-basis reference; unresolved jurisdiction escalates to district supervision.',['due: 7 days','basis recorded'],'alert'],
+ ['fld','visit','An officer verifies the address','The assigned officer sees the individual, the address, the legal status and the conditions, and carries out the visit.','Field module serves the assignment with status and conditions; capture queues offline.',['visit scheduled'],'alert'],
+ ['fld','outcome','The outcome is recorded, or escalated','Verified, changed or not found — each ends somewhere clear. A discrepancy escalates and the assignment stays open.','Visit outcome written with officer, time and evidence; discrepancy raises station escalation.',['verified','supervisor approved'],'alert'],
+ ['disc','request','An employer asks about this person','Months later a registered requester submits a consented verification request for a role with access to children.','Request created at the verification portal with consent artefacts; identity validated and routed by jurisdiction.',['role: transport staff','consent: on record'],'vportal'],
+ ['disc','gate','The gate decides, and everything is logged','Five conditions are evaluated and an authorised officer reviews. One outcome goes back — never a record — and the request, the reviewer and the disclosure are kept.','Disclosure predicate evaluated with AND; decision, reviewer and released payload written to the immutable audit trail.',['5 of 5','outcome issued'],'disc']
+];
+(function journey(){
+ const cols=$('#jrCols'),detail=$('#jrDetail');
+ let k=0,playing=true,vis=false,timer=null;
+ cols.innerHTML=PH.map((p,pi)=>`<div class="jcol" data-p="${p[0]}" style="--cc:${DOM[p[2]].hex}"><h4><small>0${pi+1}</small>${p[1]}</h4>${ST.map((s,i)=>s[0]===p[0]?`<div class="js" data-i="${i}" style="--cc:${DOM[C[s[6]].d].hex}"><span class="n">${i+1}</span><span>${s[2]}</span></div>`:'').join('')}</div>`).join('');
+ function show(i){
+  k=(i+ST.length)%ST.length;const s=ST[k],c=C[s[6]],cc=DOM[c.d].hex;
+  $$('.js').forEach(e=>{const j=+e.dataset.i;e.classList.toggle('on',j===k);e.classList.toggle('done',j<k);});
+  $$('.jcol').forEach(e=>e.classList.toggle('on',e.dataset.p===s[0]));
+  $('#jrFill').style.width=((k+1)/ST.length*100)+'%';
+  $('#jCount').textContent=`STAGE ${String(k+1).padStart(2,'0')} OF ${ST.length}`;
+  detail.innerHTML=`<div>
+    <div class="k">${PH.find(p=>p[0]===s[0])[1].toUpperCase()} · STAGE ${String(k+1).padStart(2,'0')}</div>
+    <h3>${s[2]}</h3>
+    <p>${s[3]}</p>
+    <div class="jchips">${s[5].map(x=>`<span>${x}</span>`).join('')}</div></div>
+   <div class="jr-comp">
+    <div class="card" style="padding:18px 20px;border-left:3px solid ${cc}">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <span class="itile" style="--cc:${cc};width:38px;height:38px;font-size:18px">${ic(c.ic)}</span>
+        <div><b style="font-family:var(--display);font-size:16.5px;color:var(--navy)">${c.n}</b>
+        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--mist)">${DOM[c.d].n.toUpperCase()}</span></div>
+        <span class="cred cred-${c.cred}" style="margin-left:auto">${c.cred}</span></div>
+      <p style="font-size:13.5px;color:var(--ink-2)">${c.p}</p>
+    </div>
+    <div class="card" style="padding:14px 18px;background:var(--paper)">
+      <small style="display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mist);text-transform:uppercase;margin-bottom:5px">If this step fails</small>
+      <p style="font-size:13px;color:var(--ink-2)">${c.f}</p>
+    </div></div>`;
+  detail.classList.remove('anim');void detail.offsetWidth;detail.classList.add('anim');
+  clearTimeout(timer);if(playing&&vis&&!RM)timer=setTimeout(()=>show(k+1),3600);
+ }
+ cols.addEventListener('click',e=>{const n=e.target.closest('.js');if(n){playing=false;$('#jPlay').textContent='▶ Play';show(+n.dataset.i);}});
+ $('#jPrev').onclick=()=>{playing=false;$('#jPlay').textContent='▶ Play';show(k-1);};
+ $('#jNext').onclick=()=>{playing=false;$('#jPlay').textContent='▶ Play';show(k+1);};
+ $('#jPlay').onclick=()=>{playing=!playing;$('#jPlay').textContent=playing?'❚❚ Pause':'▶ Play';if(playing)show(k+1);else clearTimeout(timer);};
+ $('#goJourney').onclick=()=>$('#journey').scrollIntoView({behavior:'smooth'});
+ show(0);
+ whenSeen(cols,()=>{vis=true;show(0);});
+})();
+
+/* ===================== system map (lane layout) ===================== */
+(function map(){
+ const svg=$('#mapSvg'),gB=el('g',{},svg),gE=el('g',{},svg),gD=el('g',{},svg),gN=el('g',{},svg);
+ const nodes={},edges=[];let sel=null,tour=true,tourT=null;
+
+ BANDS.forEach(b=>{
+  el('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:16,fill:b.c,'fill-opacity':.045,stroke:b.c,'stroke-opacity':.28,'stroke-width':1.4,'stroke-dasharray':'7 6'},gB);
+  const t=el('text',{x:b.x+18,y:b.y+22,class:'bandlbl',fill:b.c},gB);t.textContent=b.t;
+ });
+
+ function cp(a,z,bend){const mx=(a[0]+z[0])/2,my=(a[1]+z[1])/2;if(!bend)return null;const dx=z[0]-a[0],dy=z[1]-a[1],L=Math.hypot(dx,dy)||1;return[mx+(-dy/L)*bend,my+(dx/L)*bend];}
+ ME.forEach(([sId,tId,bend],i)=>{
+  const a=MP[sId],z=MP[tId],c=cp(a,z,bend);
+  const d=c?`M${a[0]} ${a[1]}Q${c[0]} ${c[1]} ${z[0]} ${z[1]}`:`M${a[0]} ${a[1]}L${z[0]} ${z[1]}`;
+  const p=el('path',{d,class:'medge',id:'sme'+i},gE);
+  const col=DOM[C[sId].d].hex;let dot=null;
+  if(!RM){dot=el('circle',{r:3.6,fill:col,class:'mdot'},gD);
+   const am=el('animateMotion',{dur:(2.4+Math.random()*1.4).toFixed(2)+'s',repeatCount:'indefinite',begin:(Math.random()*2.5).toFixed(2)+'s'},dot);
+   el('mpath',{href:'#sme'+i},am);}
+  edges.push({s:sId,t:tId,p,dot});
+ });
+
+ Object.entries(MP).forEach(([id,[x,y,lp]])=>{
+  const c=C[id],col=DOM[c.d].hex;
+  const g=el('g',{class:'mnode',transform:`translate(${x},${y})`,'data-id':id},gN);
+  el('circle',{class:'halo',r:31,stroke:col},g);
+  el('circle',{class:'bg',r:28,stroke:col},g);
+  el('circle',{r:28,fill:col,opacity:.07},g);
+  const ig=el('g',{transform:'translate(-12,-12)',style:`color:${col}`,fill:'none',stroke:'currentColor','stroke-width':1.8,'stroke-linecap':'round','stroke-linejoin':'round'},g);
+  ig.innerHTML=`<svg viewBox="0 0 24 24" width="24" height="24">${ICON[c.ic]}</svg>`;
+  const ty=lp==='t'?-48:48;
+  const t1=el('text',{y:ty},g),t2=el('text',{y:ty+15,class:'t2'},g);
+  nodes[id]={g,t1,t2};
+  g.addEventListener('click',()=>{tour=false;clearTimeout(tourT);select(id);});
+ });
+ function labels(){Object.entries(nodes).forEach(([id,n])=>{n.t1.textContent=C[id].n;n.t2.textContent=C[id].k;});}
+ labels();
+
+ function select(id){
+  sel=id;const c=C[id],col=DOM[c.d].hex;
+  Object.entries(nodes).forEach(([k,n])=>n.g.classList.toggle('sel',k===id));
+  edges.forEach(e=>e.p.classList.toggle('hot',e.s===id||e.t===id));
+  $('#insp').innerHTML=`
+   <div style="--cc:${col}"><div class="ih"><span class="itile" style="--cc:${col};width:40px;height:40px;font-size:19px">${ic(c.ic)}</span>
+     <div><b>${c.n}</b>
+     <span style="font-size:12.5px;color:var(--mist);display:block">${c.k}</span></div><span class="cred cred-${c.cred}" style="margin-left:auto">${c.cred}</span></div>
+     <p>${c.p}</p></div>
+   <div style="--cc:${col}"><small>Takes in</small><div class="io">${c.i.map(x=>`<span>${x}</span>`).join('')}</div>
+     <small style="margin-top:12px">Produces</small><div class="io">${c.o.map(x=>`<span>${x}</span>`).join('')}</div></div>
+   <div style="--cc:var(--red)"><small>When it fails</small><p>${c.f}</p></div>`;
+  hydrate($('#insp'));
+ }
+ function view(vi){
+  const v=VIEWS[vi],set=new Set(v[4]);
+  Object.entries(nodes).forEach(([k,n])=>n.g.classList.toggle('dim',!set.has(k)));
+  edges.forEach(e=>{const on=set.has(e.s)&&set.has(e.t);e.p.classList.toggle('dim',!on);if(e.dot)e.dot.classList.toggle('dim',!on);});
+  $('#viewText').innerHTML=`<b style="font-family:var(--display);color:var(--navy)">${v[2]}.</b> ${v[3]}`;
+  $$('#views button').forEach((b,i)=>b.classList.toggle('on',i===vi));
+  if(!set.has(sel))select(v[4][0]);
+ }
+ $('#views').innerHTML=VIEWS.map((v,i)=>`<button data-v="${i}">${v[1]}</button>`).join('');
+ $('#views').addEventListener('click',e=>{const b=e.target.closest('button');if(b){tour=false;clearTimeout(tourT);view(+b.dataset.v);}});
+ $('#legend').innerHTML=Object.entries(DOM).map(([k,d])=>`<span style="--cc:${d.hex}"><i></i>${d.n}</span>`).join('')+
+  `<span style="margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--mist)">CLICK ANY BOX</span>`;
+ view(0);select('person');
+ whenSeen(svg,()=>{
+  const order=['person','casemgmt','status','custody','alert','disc','cert','store'];let t=0;
+  (function step(){if(!tour)return;select(order[t%order.length]);t++;tourT=setTimeout(step,2800);})();
+ });
+})();
+
+/* ===================== disclosure gate ===================== */
+const COND=[
+ {id:'reg',n:'Requester is registered and authenticated',s:'The organisation is onboarded, verified and currently in good standing — school, hospital or corporation alike.',t:'requester.status == ACTIVE'},
+ {id:'consent',n:'The individual\'s consent is on record',s:'Written consent and authorisation from the person being checked, captured with the request.',t:'consent.artefact != null'},
+ {id:'role',n:'The role is within the notified scope',s:'The post involves access to children or vulnerable people, as defined by the department — not simply any vacancy.',t:'role ∈ notified_scope'},
+ {id:'review',n:'An authorised officer has reviewed',s:'A named officer in the correct jurisdiction has examined the match and decided what is disclosable.',t:'review.officer != null'},
+ {id:'disclosable',n:'The record is legally disclosable',s:'A conviction within the disclosable set. An accused or under-trial record is never disclosable, and victim or child-protected material never is.',t:'record.class == DISCLOSABLE'}
+];
+const PRESET=[
+ ['school','School · teacher',[1,1,1,1,1]],
+ ['corp','Corporation · driver',[1,1,1,1,1]],
+ ['noconsent','No consent on record',[1,0,1,1,1]],
+ ['accused','Accused record only',[1,1,1,1,0]],
+ ['unreg','Unregistered requester',[0,1,1,1,1]],
+ ['noreview','Awaiting officer review',[1,1,1,0,1]]
+];
+(function gate(){
+ let state=[1,1,1,1,1],preset='school';
+ const box=$('#conds');
+ COND.forEach((c,i)=>{
+  const b=document.createElement('button');b.className='cond on';b.dataset.i=i;
+  b.innerHTML=`<span class="sw"></span><span><b>${c.n}</b><span>${c.s}</span></span><span class="tag">TRUE</span>`;
+  box.appendChild(b);
+ });
+ const FAILTXT={
+  consent:['Refused — no consent on record','Without the individual\'s written consent and authorisation, no check is performed and nothing is disclosed. The request is returned to the requester as incomplete.'],
+  reg:['Refused — requester not registered','The organisation is not onboarded or is no longer in good standing. The request is rejected before it is routed to any police jurisdiction.'],
+  role:['Refused — role outside the notified scope','The post does not fall within the roles the department has notified for verification. A requester cannot widen this by describing the job differently.'],
+  review:['Pending — awaiting officer review','No response leaves the platform until a named officer in the correct jurisdiction has reviewed the match. The requester sees only that the request is in progress.'],
+  disclosable:['No disclosable record','There is no conviction within the disclosable set. An accused or under-trial record is never returned as an adverse finding, and victim or child-protected material is never disclosed at all.']
+ };
+ function render(){
+  $$('.cond').forEach((b,i)=>{b.classList.toggle('on',!!state[i]);b.querySelector('.tag').textContent=state[i]?'TRUE':'FALSE';});
+  const pass=state.every(Boolean);
+  const firstFail=state.findIndex(v=>!v);
+  const v=$('#verdict');
+  if(pass){
+   v.className='verdict pass';
+   v.innerHTML=`<div class="vh">All five conditions true</div><b>Outcome issued</b>
+    <p>A referenced verification response is generated and returned to the requester — one of the five permitted outcomes, with a reference number and nothing else. The request, the reviewing officer and exactly what was released are written to the audit trail.</p>
+    <div style="margin-top:14px;display:flex;gap:7px;flex-wrap:wrap">
+      <span class="pill p-g">Verification completed</span><span class="pill p-g">No disclosable record</span>
+      <span class="pill p-a">Further verification required</span><span class="pill p-b">Verification pending</span><span class="pill p-r">Adverse information requiring review</span></div>`;
+  }else{
+   const key=COND[firstFail].id,[h,p]=FAILTXT[key];
+   v.className='verdict fail';
+   v.innerHTML=`<div class="vh">Condition ${firstFail+1} of 5 is false</div><b>${h}</b><p>${p}</p>
+    <p style="margin-top:12px;font-size:13px;color:var(--mist)">The attempt is still recorded in full — who asked, about whom, when, and why it was refused.</p>`;
+  }
+ }
+ function setPreset(id){
+  preset=id;const p=PRESET.find(x=>x[0]===id);state=[...p[2]];
+  $$('#presets button').forEach(b=>b.classList.toggle('on',b.dataset.p===id));
+  render();
+ }
+ box.addEventListener('click',e=>{const b=e.target.closest('.cond');if(!b)return;const i=+b.dataset.i;state[i]=state[i]?0:1;$$('#presets button').forEach(x=>x.classList.remove('on'));render();});
+ $('#presets').innerHTML=PRESET.map(p=>`<button data-p="${p[0]}">${p[1]}</button>`).join('');
+ $('#presets').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setPreset(b.dataset.p);});
+ setPreset('school');
+ whenSeen($('#gate'),()=>{if(RM)return;let i=0;const seq=['school','corp','noconsent','accused','school'];
+  setInterval(()=>{if(document.querySelector('#presets button.on')){i=(i+1)%seq.length;setPreset(seq[i]);}},4200);});
+})();
+
+/* ===================== scenarios ===================== */
+const SG=[['all','All 17'],['ident','Identity & registry'],['status','Legal status'],['rel','Custody & release'],['fld','Field monitoring'],['disc','Disclosure']];
+const SCN=[
+ {id:'s1',g:'ident',t:'Conviction, release, verified',who:'Record A · full path',d:'The complete journey: case registered, profile matched, conviction, release alert, field verification, closed.',out:'Profile current; monitoring assignment closed with supervisor approval.',L:'ok:Case registered|ok:Matched to one profile|ok:Convicted · recorded|ok:Release alert routed|ok:Address verified|ok:Assignment closed',r:{st:'convicted',rel:'released',fld:'verified',disc:'none',cls:'BNS 64'}},
+ {id:'s2',g:'ident',t:'Three FIRs, one person',who:'Record B · deduplication',d:'The same individual appears in three cases at three stations under two spellings of the name.',out:'One master profile with three linked cases. No duplicate records created.',L:'ok:Three cases received|ok:Identity match · high confidence|link:Linked to existing profile|ok:Case history consolidated|skip:No new profile|ok:Repeat-case indicator set',r:{st:'convicted',rel:'none',fld:'none',disc:'none',cls:'BNS 74'}},
+ {id:'s3',g:'ident',t:'Similar names, different people',who:'Record C · match held',d:'Two individuals share a common name and approximate age. The matcher is not confident.',out:'Nothing merged. The record is queued for an officer to confirm or reject.',L:'ok:Case received|wait:Match confidence below threshold|skip:No automatic merge|human:Queued for officer confirmation|ok:Both records preserved',r:{st:'accused',rel:'none',fld:'none',disc:'none',cls:'BNS 75'}},
+ {id:'s4',g:'ident',t:'Offence outside the registry set',who:'Record D · not included',d:'An offence against a woman that is not a sexual offence under the configured classification set.',out:'Case recorded in the justice systems; not included in the registry.',L:'ok:Case received|ok:Provision classified|skip:Outside configured set|skip:No registry profile|ok:Decision logged',r:{st:'none',rel:'none',fld:'none',disc:'none',cls:'Other'}},
+ {id:'s5',g:'ident',t:'Unrecognised provision',who:'Record E · flagged',d:'A case arrives under a provision the classification set does not recognise.',out:'Flagged for configuration. Not silently included, not silently dropped.',L:'ok:Case received|wait:Provision unrecognised|human:Flagged for configuration|skip:Inclusion deferred|ok:Flag visible on dashboard',r:{st:'accused',rel:'none',fld:'none',disc:'none',cls:'Unmapped'}},
+ {id:'s6',g:'status',t:'Accused, investigation ongoing',who:'Record F · accused only',d:'An individual is named in an FIR. Investigation is under way and nothing is proven.',out:'Status held as accused. No monitoring. Never disclosable through Door B.',L:'ok:Case registered|ok:Status · accused|skip:No monitoring assignment|skip:Not disclosable|ok:Status source recorded',r:{st:'accused',rel:'none',fld:'none',disc:'none',cls:'BNS 74'}},
+ {id:'s7',g:'status',t:'Under trial',who:'Record G · before the court',d:'The charge sheet is filed and the matter is before the court.',out:'Status tracked from e-Courts. Still not a disclosable record.',L:'ok:Charge sheet filed|ok:Status · under trial|ok:Court updates received|skip:Not disclosable|ok:Provenance · e-Courts',r:{st:'undertrial',rel:'none',fld:'none',disc:'none',cls:'BNS 70'}},
+ {id:'s8',g:'status',t:'Acquitted',who:'Record H · acquittal',d:'The court acquits. The registry has to reflect that, not quietly keep the old label.',out:'Status updated to acquitted; monitoring closed; disclosure position changes with it.',L:'ok:Judgment received|ok:Status · acquitted|ok:Monitoring closed|skip:Not disclosable|ok:Record updated with order reference',r:{st:'acquitted',rel:'none',fld:'closed',disc:'none',cls:'BNS 74'}},
+ {id:'s9',g:'status',t:'Convicted in one case, under trial in another',who:'Record I · split status',d:'The same person holds two different legal positions at the same time.',out:'Two per-case statuses held separately. No single person-level label.',L:'ok:Two cases linked|ok:Case 1 · convicted|ok:Case 2 · under trial|skip:No roll-up label|ok:Both statuses shown with source',r:{st:'convicted',rel:'none',fld:'none',disc:'adverse',cls:'BNS 64'}},
+ {id:'s10',g:'rel',t:'Sentence completed',who:'Record J · release',d:'A convicted individual completes the sentence and is released.',out:'Release event matched, jurisdiction resolved, assignment created with its legal basis.',L:'ok:Release event received|ok:Matched to profile|ok:Jurisdiction resolved|ok:women safety team assigned|ok:Basis recorded on assignment',r:{st:'convicted',rel:'released',fld:'pending',disc:'none',cls:'BNS 64'}},
+ {id:'s11',g:'rel',t:'Released on bail',who:'Record K · interim release',d:'An under-trial individual is released on bail with conditions attached by the court.',out:'Separate workflow from a sentence release. Conditions attached; status unchanged.',L:'ok:Bail order received|ok:Status unchanged · under trial|ok:Conditions attached|ok:Separate bail workflow|skip:Not a conviction release',r:{st:'undertrial',rel:'bail',fld:'pending',disc:'none',cls:'BNS 75'}},
+ {id:'s12',g:'rel',t:'Parole',who:'Record L · temporary release',d:'A temporary release with an expected return date.',out:'Recorded as temporary; return expected; the custody timeline stays continuous.',L:'ok:Parole event received|ok:Temporary status set|ok:Return date recorded|ok:Alert routed|ok:Timeline continuous',r:{st:'convicted',rel:'parole',fld:'pending',disc:'none',cls:'BNS 70'}},
+ {id:'s13',g:'rel',t:'Prison transfer',who:'Record M · no alert',d:'The individual moves between prisons. Nothing has changed for the station.',out:'Custody record updated. No release alert raised.',L:'ok:Transfer event received|ok:Custody record updated|skip:No release alert|skip:No assignment|ok:Event logged',r:{st:'convicted',rel:'transfer',fld:'none',disc:'none',cls:'BNS 64'}},
+ {id:'s14',g:'fld',t:'Address changed after release',who:'Record N · re-resolved',d:'The verified address is no longer current. The person has moved to another station\'s area.',out:'Jurisdiction re-resolved; assignment moves; address history kept, not overwritten.',L:'ok:New address reported|ok:Previous address retained|ok:Jurisdiction re-resolved|link:Assignment transferred|ok:History preserved',r:{st:'convicted',rel:'released',fld:'verified',disc:'none',cls:'BNS 64'}},
+ {id:'s15',g:'fld',t:'Not found at the address',who:'Record O · escalated',d:'The officer attends and the individual is not there. The address cannot be confirmed.',out:'Discrepancy escalated to the station. The assignment stays open.',L:'ok:Visit attempted|fail:Address not confirmed|human:Escalated to station|wait:Assignment stays open|ok:Outcome recorded with officer and time',r:{st:'convicted',rel:'released',fld:'escalated',disc:'none',cls:'BNS 70'}},
+ {id:'s16',g:'disc',t:'School request, conviction found',who:'Door B · school',d:'A school submits a consented request for a transport role. The record contains a disclosable conviction.',out:'Adverse information requiring review. An outcome, with a reference — never the record.',L:'ok:Requester registered|ok:Consent on record|ok:Role in scope|ok:Officer reviewed|ok:Outcome issued · adverse',r:{st:'convicted',rel:'released',fld:'verified',disc:'adverse',cls:'BNS 64'}},
+ {id:'s17',g:'disc',t:'Corporation, same person, same answer',who:'Door B · corporation',d:'A large corporate employer submits the same request about the same individual for an equivalent role.',out:'Identical gate, identical scope, identical outcome text. No enhanced tier exists.',L:'ok:Requester registered|ok:Consent on record|ok:Role in scope|ok:Officer reviewed|ok:Outcome issued · identical to the school',r:{st:'convicted',rel:'released',fld:'verified',disc:'adverse',cls:'BNS 64'}}
+];
+(function scenarios(){
+ let g='all',cur=0,timer=null,vis=false;
+ const list=$('#sxList');
+ $('#sxg').innerHTML=SG.map(s=>`<button data-g="${s[0]}"${s[0]==='all'?' class="on"':''}>${s[1]}</button>`).join('');
+ function filtered(){return g==='all'?SCN:SCN.filter(s=>s.g===g);}
+ function paint(){
+  const F=filtered();
+  list.innerHTML=F.map((s,i)=>`<div class="sx-card card" data-i="${i}">
+    <div class="who">${s.who}</div><h4>${s.t}</h4><p>${s.d}</p>
+    <div class="lanes">${s.L.split('|').map(l=>{const[k,txt]=l.split(':');return `<div class="lane ${k}"><i></i>${txt}</div>`;}).join('')}</div>
+    <div class="outcome">${s.out}</div></div>`).join('');
+  cur=0;play();
+ }
+ function play(){
+  clearTimeout(timer);
+  const cards=$$('.sx-card');if(!cards.length)return;
+  cards.forEach(c=>{c.classList.remove('on');c.querySelectorAll('.lane').forEach(l=>l.classList.remove('on'));});
+  const c=cards[cur%cards.length];c.classList.add('on');
+  const lanes=[...c.querySelectorAll('.lane')];
+  lanes.forEach((l,i)=>setTimeout(()=>l.classList.add('on'),120+i*230));
+  if(vis&&!RM)timer=setTimeout(()=>{cur++;play();},lanes.length*230+2300);
+ }
+ $('#sxg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g=b.dataset.g;$$('#sxg button').forEach(x=>x.classList.toggle('on',x===b));paint();});
+ list.addEventListener('click',e=>{const c=e.target.closest('.sx-card');if(!c)return;cur=+c.dataset.i;clearTimeout(timer);
+  $$('.sx-card').forEach(x=>{x.classList.remove('on');x.querySelectorAll('.lane').forEach(l=>l.classList.remove('on'));});
+  c.classList.add('on');[...c.querySelectorAll('.lane')].forEach((l,i)=>setTimeout(()=>l.classList.add('on'),100+i*200));});
+ paint();
+ whenSeen(list,()=>{vis=true;play();});
+})();
+
+/* ===================== statuses ===================== */
+const STATES=[
+ {t:'Individual legal status',s:'Per case, never rolled up into one label',cc:'var(--orange)',n:['Accused','Under trial','Convicted','Released'],b:['Acquitted — monitoring closed','Discharged before trial','Convicted in one case, under trial in another']},
+ {t:'Case record',s:'From registration to disposal',cc:'var(--blue)',n:['Open','Charge-sheeted','In trial','Disposed'],b:['Closed — no further action','Reopened on fresh material']},
+ {t:'Monitoring assignment',s:'Created only with a recorded legal basis',cc:'var(--green)',n:['Created','Assigned','In progress','Closed'],b:['Escalated — discrepancy at the address','Overdue — past the due date','Transferred — jurisdiction changed']},
+ {t:'Verification request',s:'Door B, from submission to outcome',cc:'var(--cyan)',n:['Submitted','Identity checked','Under review','Issued'],b:['Refused at the gate — with a reason','Further information required','Withdrawn by the requester']}
+];
+(function statuses(){
+ $('#slanes').innerHTML=STATES.map((s,si)=>`<div class="slane card reveal" style="--cc:${s.cc}">
+   <h3>${s.t}</h3><div class="sub">${s.s}</div>
+   <div class="strack" data-s="${si}">${s.n.map((n,i)=>`<span class="snode" data-i="${i}">${n}</span>${i<s.n.length-1?'<span class="sarrow">→</span>':''}`).join('')}</div>
+   <div class="sbranch">${s.b.map(b=>`<span>${b}</span>`).join('')}</div></div>`).join('');
+ $$('.strack').forEach(tr=>{
+  const ns=[...tr.querySelectorAll('.snode')];let k=0;
+  whenSeen(tr,()=>{if(RM){ns.forEach(n=>n.classList.add('on'));return;}
+   setInterval(()=>{if(k>=ns.length){ns.forEach(n=>n.classList.remove('on'));k=0;return;}ns.forEach((n,i)=>n.classList.toggle('on',i<=k));k++;},1100);});
+ });
+})();
+
+/* ===================== reports (computed from scenarios) ===================== */
+(function reports(){
+ const count=(key,val)=>SCN.filter(s=>s.r[key]===val).length;
+ const REPS=[
+  {n:'01',t:'Registry composition',s:'Individuals by current legal status',cc:'#F58120',d:[['Convicted',count('st','convicted')],['Under trial',count('st','undertrial')],['Accused',count('st','accused')],['Acquitted',count('st','acquitted')],['Not included',count('st','none')]]},
+  {n:'02',t:'Custody & release events',s:'Events received from the prison system',cc:'#5B3FA8',d:[['Released',count('rel','released')],['Bail',count('rel','bail')],['Parole',count('rel','parole')],['Transfer',count('rel','transfer')],['No event',count('rel','none')]]},
+  {n:'03',t:'Field verification',s:'Outcome of monitoring assignments',cc:'#1E7F4F',d:[['Verified',count('fld','verified')],['Pending',count('fld','pending')],['Escalated',count('fld','escalated')],['Closed',count('fld','closed')],['Not applicable',count('fld','none')]]},
+  {n:'04',t:'Disclosure outcomes',s:'Responses issued through Door B',cc:'#0A7C8C',d:[['Adverse — review',count('disc','adverse')],['No disclosable record',0],['Refused at gate',0],['Pending review',0],['No request',count('disc','none')]]},
+  {n:'05',t:'Offence classification',s:'Cases by registered provision',cc:'#2070B3',d:[['BNS 64',count('cls','BNS 64')],['BNS 70',count('cls','BNS 70')],['BNS 74',count('cls','BNS 74')],['BNS 75',count('cls','BNS 75')],['Other / unmapped',count('cls','Other')+count('cls','Unmapped')]]},
+  {n:'06',t:'Identity resolution',s:'How records resolved to people',cc:'#B07A00',d:[['Matched to existing',1],['New profile',SCN.length-4],['Held for confirmation',1],['Not included',count('st','none')],['Flagged for config',1]]},
+  {n:'07',t:'Access & disclosure audit',s:'Every action, counted',cc:'#C21B3F',d:[['Record views',SCN.length],['Status changes',SCN.filter(x=>x.r.st!=='none').length],['Assignments created',SCN.filter(x=>x.r.fld!=='none').length],['Disclosure decisions',SCN.filter(x=>x.r.disc!=='none').length],['Refused at the gate',0]]}
+ ];
+ $('#reps').innerHTML=REPS.map(r=>{
+  const max=Math.max(...r.d.map(x=>x[1]),1);
+  return `<div class="rep card reveal" style="--cc:${r.cc}">
+   <div class="rh"><span class="itile" style="--cc:${r.cc};width:34px;height:34px;font-size:16px" data-ic="chart"></span><b>${r.t}</b><span class="rn">R${r.n}</span></div>
+   <div class="sub">${r.s}</div>
+   ${r.d.map(x=>`<div class="hb"><span>${x[0]}</span><div class="tr"><i data-w="${x[1]/max*100}"></i></div><b>${x[1]}</b></div>`).join('')}
+  </div>`;}).join('');
+ hydrate($('#reps'));
+ whenSeen($('#reps'),()=>$$('#reps .hb i').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*45)));
+})();
+
+/* ===================== hero console loop + counters ===================== */
+(function heroLoop(){
+ const cards=$$('.hcard'),gi=$$('.hgate i'),gv=$('#hgv');
+ let k=0;
+ function step(){
+  cards.forEach((c,i)=>c.classList.toggle('on',i<=k%5&&k<5||k>=5));
+  if(k<5){gi.forEach(g=>g.classList.remove('on'));gv.classList.remove('on');}
+  else{gi.forEach((g,i)=>setTimeout(()=>g.classList.add('on'),i*180));setTimeout(()=>gv.classList.add('on'),5*180);}
+  k=(k+1)%8;
+ }
+ step();if(!RM)setInterval(step,1100);
+ const K=[['#k1',ST.length],['#k2',Object.keys(C).length],['#k3',SCN.length],['#k4',COND.length]];
+ whenSeen($('.hstats'),()=>K.forEach(([sel,n])=>{let v=0;const t=setInterval(()=>{v++;$(sel).textContent=v;if(v>=n)clearInterval(t);},900/Math.max(n,1));}),.1);
+})();
+
+/* ===================== mode toggle, reveal, nav, progress ===================== */
+$$('h2[data-split]').forEach(h=>{h.innerHTML=h.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)/g,m=>`<span class="w">${m}</span>`);});
+const hv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const ws=e.target.querySelectorAll('.w');ws.forEach((w,i)=>w.style.transitionDelay=(i*42)+'ms');e.target.classList.add('in');hv.unobserve(e.target);}}),{threshold:.3});
+$$('h2[data-split]').forEach(h=>hv.observe(h));
+
+hydrate(document);
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target);}}),{threshold:.06});
+$$('.reveal').forEach((e,i)=>{e.style.transitionDelay=((i%4)*85)+'ms';rv.observe(e);});
+
+const secs=$$('section[id]'),navA=$$('.navlinks a');
+addEventListener('scroll',()=>{
+ let id='';secs.forEach(s=>{if(s.getBoundingClientRect().top<130)id=s.id;});
+ navA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+ const h=document.documentElement;
+ $('#progress').style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+')';
+},{passive:true});
+</script>
+
+<!-- SmartApps portfolio navigation (added) -->
+<style>
+#sa-back{position:fixed; left:16px; bottom:16px; z-index:2147483000; display:flex; align-items:center;
+  gap:2px; padding:4px 5px 4px 4px; border-radius:999px; background:rgba(7,22,51,.94);
+  box-shadow:0 6px 24px rgba(4,13,30,.35); border:1px solid rgba(255,255,255,.14);
+  font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  backdrop-filter:blur(10px)}
+#sa-back .sa-i{width:24px; height:24px; border-radius:50%; background:#fff; display:grid;
+  place-items:center; flex:none}
+#sa-back .sa-i img{width:17px; height:17px; object-fit:contain; display:block}
+#sa-back a{color:#fff; text-decoration:none; padding:6px 9px; border-radius:999px; white-space:nowrap}
+#sa-back a:hover{background:rgba(255,255,255,.12)}
+#sa-back .sa-l{color:#FFB27A}
+#sa-back .sa-sep{width:1px; height:16px; background:rgba(255,255,255,.2)}
+@media(max-width:480px){ #sa-back{left:10px; bottom:10px; font-size:12px} #sa-back a{padding:6px 9px} }
+@media print{ #sa-back{display:none !important} }
+</style>
+<nav id="sa-back" aria-label="SmartApps portfolio">
+  <span class="sa-i"><img src="data:image/webp;base64,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" alt="Blue Cloud Softech"></span>
+  <a href="/products/women-safety-portal/">&larr; Women Safety Portal page</a><span class="sa-sep"></span><a href="/">Portfolio</a><span class="sa-sep"></span><a href="/products/garuda/" class="sa-l">GARUDA</a>
+</nav>
+<!-- SmartApps shared design layer (added) -->
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/poppins-latin-500-normal.woff2") format("woff2")}@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/poppins-latin-600-normal.woff2") format("woff2")}@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/poppins-latin-700-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/inter-latin-400-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/inter-latin-500-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/inter-latin-600-normal.woff2") format("woff2")}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/inter-latin-700-normal.woff2") format("woff2")}@font-face{font-family:"Roboto Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/roboto-mono-latin-400-normal.woff2") format("woff2")}@font-face{font-family:"Roboto Mono";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/roboto-mono-latin-500-normal.woff2") format("woff2")}</style><style>html,body{overflow-x:clip}canvas{max-width:100%}.win,.win-body{max-width:100%;overflow:hidden}.navlinks,.nav-links{min-width:0;flex-shrink:1;overflow-x:auto;scrollbar-width:none}:focus-visible{outline:3px solid #2070B3 !important;outline-offset:3px}a:focus-visible,button:focus-visible{border-radius:6px}.brand small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.navlinks a:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.wrap.g span.htag:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#21324B !important}
+.hbtns button.hbtn.pri:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not([aria-selected=true]):not([aria-pressed=true]){color:#21324B !important}
+.hchips span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hood div.hh:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hh em:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hcard.on small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hood div.hgate:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.hstats span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.door.card.reveal.on div.rt:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.who span.pill.p-b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#1F6CAD !important;font-size:11.5px !important}
+.who span.pill.p-v:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.eqrow span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.jcol.on small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important;font-size:11.5px !important}
+.jcol.on h4:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#A86027 !important}
+.js.on span.n:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.js span.n:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#617086 !important;font-size:11.5px !important}
+.jcol small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#617086 !important;font-size:11.5px !important}
+.jr-detail.anim div.k:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#A86027 !important}
+.jchips span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.card span:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]):not(.cred):not(.cred-SIMULATED){font-size:11.5px !important}
+.card span.cred.cred-SIMULATED:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.card small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.ih span.cred.cred-ESTABLISHED:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.insp small:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.cond.on span.tag:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.verdict.pass div.vh:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.verdict.pass span.pill.p-g:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#1B704B !important;font-size:11.5px !important}
+.verdict.pass span.pill.p-a:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#82600F !important;font-size:11.5px !important}
+.verdict.pass span.pill.p-b:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#1D65A4 !important;font-size:11.5px !important}
+.verdict.pass span.pill.p-r:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.presets div.pl:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.pb button.on:not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#21324B !important}
+.sx-card.card.on div.who:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important;font-size:11.5px !important}
+.sx-card.card div.who:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important;font-size:11.5px !important}
+.strack span.snode:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important}
+.strack span.sarrow:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important}
+.rh span.rn:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#647389 !important;font-size:11.5px !important}
+.wrap div.rep-note:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.card.reveal.on span.cred.cred-ESTABLISHED:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.card.reveal.on span.cred.cred-SIMULATED:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){font-size:11.5px !important}
+.card.reveal.on span.cred.cred-ILLUSTRATIVE:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#8E670B !important;font-size:11.5px !important}
+.q.card.reveal.on div.n:not(.on):not(.active):not(.sel):not(.selected):not(.open):not(.hot):not(.current):not(.is-active):not(.is-on):not(.pri):not([aria-selected=true]):not([aria-pressed=true]){color:#A86027 !important;font-size:11.5px !important}</style>
+</body>
+</html>

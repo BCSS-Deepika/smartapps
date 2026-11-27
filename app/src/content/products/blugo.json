@@ -1,0 +1,262 @@
+{
+ "slug": "blugo",
+ "title": "BluGo — SMARTAPPS by Blue Cloud Softech",
+ "description": "The movement side of enterprise operations. The logistics and mobility line within Access Genie: a multi-role platform for goods transport, fleet operations and labour coordination, using the sa",
+ "accent": "blugo",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "Access Genie",
+    "href": "/products/access-genie/"
+   },
+   {
+    "label": "Enterprise",
+    "href": "/products/access-genie/#enterprise"
+   },
+   {
+    "label": "BluGo",
+    "href": null
+   }
+  ],
+  "tag": "Logistics & mobility",
+  "h1": "BluGo",
+  "tagline": "The movement side of enterprise operations.",
+  "lede": "The logistics and mobility line within Access Genie: a multi-role platform for goods transport, fleet operations and labour coordination, using the same identity, tracking and evidence layer as the rest of the platform.",
+  "chips": [
+   {
+    "text": "Access Genie · Enterprise & industry",
+    "division": true
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 14 modules",
+    "href": "#modules",
+    "primary": true
+   }
+  ],
+  "logo": "/logos/blugo.webp",
+  "icon": null,
+  "round": false,
+  "facts": [
+   {
+    "value": "6",
+    "label": "participant roles"
+   },
+   {
+    "value": "4",
+    "label": "vehicle categories"
+   },
+   {
+    "value": "2",
+    "label": "booking modes"
+   },
+   {
+    "value": "1",
+    "label": "governed platform"
+   }
+  ]
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "Modules",
+  "lede": "One governed platform for goods transport, mobility and on-ground labour.",
+  "groups": [
+   {
+    "name": "Participants",
+    "sub": "Six roles, one platform"
+   },
+   {
+    "name": "Booking & transport",
+    "sub": "What can be moved, and how"
+   },
+   {
+    "name": "Trust & safety",
+    "sub": "Agreed enhancement scope"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-customer",
+    "n": "01",
+    "name": "Customer",
+    "tag": "Books a move",
+    "group": "Participants",
+    "summary": "Books local or intercity goods transport, with labour add-ons."
+   },
+   {
+    "id": "m-driver",
+    "n": "02",
+    "name": "Driver",
+    "tag": "Runs the job",
+    "group": "Participants",
+    "summary": "Receives and runs trips."
+   },
+   {
+    "id": "m-fleet",
+    "n": "03",
+    "name": "Transporter & fleet owner",
+    "tag": "Supplies capacity",
+    "group": "Participants",
+    "summary": "Manages vehicles and drivers on the platform."
+   },
+   {
+    "id": "m-labour",
+    "n": "04",
+    "name": "Labour partner",
+    "tag": "On-ground work",
+    "group": "Participants",
+    "summary": "Loading, unloading and packing labour."
+   },
+   {
+    "id": "m-b2b",
+    "n": "05",
+    "name": "Corporate / B2B",
+    "tag": "Business booking",
+    "group": "Participants",
+    "summary": "A corporate booking module for business customers."
+   },
+   {
+    "id": "m-admin",
+    "n": "06",
+    "name": "Admin & super admin",
+    "tag": "Governance",
+    "group": "Participants",
+    "summary": "Platform administration and oversight."
+   },
+   {
+    "id": "m-transport",
+    "n": "07",
+    "name": "Local & intercity transport",
+    "tag": "Goods",
+    "group": "Booking & transport",
+    "summary": "Local and intercity goods transport."
+   },
+   {
+    "id": "m-booking",
+    "n": "08",
+    "name": "Instant & scheduled booking",
+    "tag": "With capacity",
+    "group": "Booking & transport",
+    "summary": "Book now or schedule ahead against available capacity."
+   },
+   {
+    "id": "m-vehicles",
+    "n": "09",
+    "name": "Vehicle categories",
+    "tag": "Four types",
+    "group": "Booking & transport",
+    "summary": "Mini truck, pickup, three-wheeler and full truck."
+   },
+   {
+    "id": "m-labour-addons",
+    "n": "10",
+    "name": "Labour add-ons",
+    "tag": "Load · unload · pack",
+    "group": "Booking & transport",
+    "summary": "Loading, unloading and packing added to a booking."
+   },
+   {
+    "id": "m-masked",
+    "n": "11",
+    "name": "Masked calling & in-app chat",
+    "tag": "Privacy",
+    "group": "Trust & safety",
+    "summary": "Parties talk without exposing phone numbers.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Enhancement"
+    }
+   },
+   {
+    "id": "m-disputes",
+    "n": "12",
+    "name": "Dispute & grievance workflow",
+    "tag": "Resolution",
+    "group": "Trust & safety",
+    "summary": "A defined workflow for disputes and grievances.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Enhancement"
+    }
+   },
+   {
+    "id": "m-gps",
+    "n": "13",
+    "name": "GPS spoofing & anomaly detection",
+    "tag": "Integrity",
+    "group": "Trust & safety",
+    "summary": "Detects spoofed locations and anomalous trips.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Enhancement"
+    }
+   },
+   {
+    "id": "m-access",
+    "n": "14",
+    "name": "Accessibility & languages",
+    "tag": "WCAG · Hindi/English",
+    "group": "Trust & safety",
+    "summary": "Accessible design, launching in Hindi and English.",
+    "maturity": {
+     "kind": "proposed",
+     "label": "Enhancement"
+    }
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "The problem",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">The problem</div><h2>What it is there to fix.</h2><div class=\"pp-grid\"><div class=\"card card-top\" data-acc=\"blugo\"><h3 class=\"lv4\">Movement sits outside the platform</h3><p>Fleet, goods and labour coordination run on separate tools that share nothing with the operational systems around them.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Roles need different views</h4><p>A driver, a dispatcher, a labour supervisor and a customer each need a different surface onto the same job.</p></div><div class=\"card card-top\" data-acc=\"blugo\"><h4>Proof of movement is weak</h4><p>Where a vehicle went and when a job completed is reconstructed from phone calls rather than recorded as it happens.</p></div></div>"
+  },
+  {
+   "kind": "html",
+   "title": "How it works",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"eyebrow\">How it works</div><h2>From input to outcome.</h2><ol class=\"flow fl-5\" data-acc=\"blugo\"><li><div><b>Request</b><span>A movement job is raised with its route and load</span></div></li><li><div><b>Assign</b><span>Vehicle, driver and labour matched to the job</span></div></li><li><div><b>Track</b><span>Position and status update as the job runs</span></div></li><li><div><b>Confirm</b><span>Completion captured with time and location</span></div></li><li><div><b>Report</b><span>Utilisation, timing and exception reporting</span></div></li></ol><h3 class=\"kicker lv4\">Who uses it</h3><div class=\"chips\"><span class=\"chip\">Fleet operators</span><span class=\"chip\">Dispatchers</span><span class=\"chip\">Labour supervisors</span><span class=\"chip\">Enterprise logistics teams</span></div>"
+  },
+  {
+   "kind": "modules"
+  },
+  {
+   "kind": "html",
+   "title": "",
+   "id": null,
+   "tone": "base",
+   "tight": true,
+   "html": "<div class=\"note\"><span>BluGo's detailed capability set is covered in its own collateral. This page positions it within the Access Genie portfolio.</span></div>"
+  }
+ ],
+ "demo": null,
+ "related": {
+  "title": "Elsewhere in Access Genie",
+  "slugs": [
+   "access-genie-retail",
+   "access-genie",
+   "garuda"
+  ],
+  "lines": [
+   "Retail vertical",
+   "Multi-industry platform",
+   "Blue Cloud's Policing Operational Ecosystem"
+  ]
+ },
+ "pager": [],
+ "cta": {
+  "title": "See BluGo running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "BluGo demonstration request"
+ }
+}

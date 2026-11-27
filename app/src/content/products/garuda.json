@@ -1,0 +1,302 @@
+{
+ "slug": "garuda",
+ "title": "GARUDA – Blue Cloud's Policing Operational Ecosystem — SMARTAPPS by Blue Cloud Softech",
+ "description": "One front door. Thirteen products. Working as one. Blue Cloud's policing vertical, built on the three Smart Apps platforms: Access Genie, Blura SAGA and EduGenie. One login, one app launcher, one alert feed, one search box — and thirteen products behind it, each doing one j",
+ "accent": "garuda",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": null
+   }
+  ],
+  "tag": "Blue Cloud's Policing Operational Ecosystem",
+  "h1": "GARUDA",
+  "tagline": "One front door. Thirteen products. Working as one.",
+  "lede": "Blue Cloud's policing vertical, built on the three Smart Apps platforms: Access Genie, Blura SAGA and EduGenie. One login, one app launcher, one alert feed, one search box — and thirteen products behind it, each doing one job well.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 13 products",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/garuda/",
+    "primary": false
+   }
+  ],
+  "logo": "/logos/garuda.webp",
+  "icon": null,
+  "round": true,
+  "facts": [
+   {
+    "value": "13",
+    "label": "connected products"
+   },
+   {
+    "value": "4",
+    "label": "product groups"
+   },
+   {
+    "value": "6",
+    "label": "platform layers"
+   },
+   {
+    "value": "1",
+    "label": "login and GARUDA ID"
+   }
+  ]
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "Thirteen products in four groups",
+  "lede": "Each product does one job well and connects to GARUDA. Every one has its own page.",
+  "groups": [
+   {
+    "name": "Watch & Detect",
+    "sub": "See what is happening early"
+   },
+   {
+    "name": "Investigate",
+    "sub": "Build the case"
+   },
+   {
+    "name": "Draft & Decide",
+    "sub": "Correct documents, in minutes"
+   },
+   {
+    "name": "Field & Citizen",
+    "sub": "The officer and the citizen"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-blura-saga",
+    "n": "01",
+    "name": "Blura SAGA",
+    "tag": "Social media & web intelligence",
+    "group": "Watch & Detect",
+    "summary": "Watches public social media, news and websites, flagging threats, unrest, misinformation and citizen grievances before they reach a police station.",
+    "go": {
+     "label": "Open the Blura SAGA page →",
+     "href": "/products/blura-saga/"
+    }
+   },
+   {
+    "id": "m-geo-intelligence",
+    "n": "02",
+    "name": "Geo Intelligence",
+    "tag": "One map for every product",
+    "group": "Watch & Detect",
+    "summary": "Puts incidents, offenders, alerts, cameras and patrols on one map, so commanders see where to act.",
+    "go": {
+     "label": "Open the Geo Intelligence page →",
+     "href": "/products/geo-intelligence/"
+    }
+   },
+   {
+    "id": "m-drug-offender-portal",
+    "n": "03",
+    "name": "Drug Offender Portal",
+    "tag": "Narcotics offender register",
+    "group": "Investigate",
+    "summary": "One register of every drug offender, seizure and supply link, so repeat offenders and their networks cannot slip through.",
+    "go": {
+     "label": "Open the Drug Offender Portal page →",
+     "href": "/products/drug-offender-portal/"
+    }
+   },
+   {
+    "id": "m-women-safety-portal",
+    "n": "04",
+    "name": "Women Safety Portal",
+    "tag": "Registry & controlled disclosure",
+    "group": "Investigate",
+    "summary": "A registry of sexual offenders kept up to date, with a segregated, consented door for institutional verification.",
+    "go": {
+     "label": "Open the Women Safety Portal page →",
+     "href": "/products/women-safety-portal/"
+    }
+   },
+   {
+    "id": "m-bluflow",
+    "n": "05",
+    "name": "BluFlow",
+    "tag": "Financial intelligence",
+    "group": "Investigate",
+    "summary": "Brings statements, accounts and transactions into one connected view, and shows where the money went.",
+    "go": {
+     "label": "Open the BluFlow page →",
+     "href": "/products/bluflow/"
+    }
+   },
+   {
+    "id": "m-digital-forensics",
+    "n": "06",
+    "name": "Digital Forensics",
+    "tag": "Device & media evidence",
+    "group": "Investigate",
+    "summary": "Turns seized phones, laptops and recordings into verified, court-ready evidence.",
+    "go": {
+     "label": "Open the Digital Forensics page →",
+     "href": "/products/digital-forensics/"
+    }
+   },
+   {
+    "id": "m-trap-case-management",
+    "n": "07",
+    "name": "Trap Case Management",
+    "tag": "Anti-corruption trap cases",
+    "group": "Investigate",
+    "summary": "Runs an anti-corruption trap case from bribe complaint to chargesheet, with every step recorded.",
+    "go": {
+     "label": "Open the Trap Case Management page →",
+     "href": "/products/trap-case-management/"
+    }
+   },
+   {
+    "id": "m-ai-copwriter",
+    "n": "08",
+    "name": "AI CopWriter",
+    "tag": "Voice to structured complaint",
+    "group": "Draft & Decide",
+    "summary": "Records a complaint by voice or text in the complainant's language and writes it up as a structured draft.",
+    "go": {
+     "label": "Open the AI CopWriter page →",
+     "href": "/products/ai-copwriter/"
+    }
+   },
+   {
+    "id": "m-fir-automation",
+    "n": "09",
+    "name": "FIR Automation",
+    "tag": "Complaint to registered report",
+    "group": "Draft & Decide",
+    "summary": "Fills in the report from a complaint or petition and registers it after the officer approves.",
+    "go": {
+     "label": "Open the FIR Automation page →",
+     "href": "/products/fir-automation/"
+    }
+   },
+   {
+    "id": "m-memo-generator",
+    "n": "10",
+    "name": "Compliant Memo Generator",
+    "tag": "Supervision memos",
+    "group": "Draft & Decide",
+    "summary": "Reads the daily situation reports and drafts accountability memos to the responsible officer.",
+    "go": {
+     "label": "Open the Compliant Memo Generator page →",
+     "href": "/products/memo-generator/"
+    }
+   },
+   {
+    "id": "m-smartcop",
+    "n": "11",
+    "name": "SmartCOP",
+    "tag": "Officer mobile platform",
+    "group": "Field & Citizen",
+    "summary": "The officer's phone: nineteen modules bring every system into the field.",
+    "go": {
+     "label": "Open the SmartCOP page →",
+     "href": "/products/smartcop/"
+    }
+   },
+   {
+    "id": "m-grievance-management",
+    "n": "12",
+    "name": "Grievance Management",
+    "tag": "Citizen grievances to closure",
+    "group": "Field & Citizen",
+    "summary": "Every grievance — from public conversation, a petition or a call — routed and tracked until closed.",
+    "go": {
+     "label": "Open the Grievance Management page →",
+     "href": "/products/grievance-management/"
+    }
+   },
+   {
+    "id": "m-bluvaani",
+    "n": "13",
+    "name": "BluVaani",
+    "tag": "The sovereign AI call dispatcher",
+    "group": "Field & Citizen",
+    "summary": "Answers and understands citizen calls in all Indian languages, then dispatches each to the right station, unit or product.",
+    "go": {
+     "label": "Open the BluVaani page →",
+     "href": "/products/bluvaani/"
+    }
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "deep",
+   "tight": false,
+   "html": "<div class=\"wrap\">\n</div>\n<div class=\"grid g3\">\n<div class=\"card card-d\"><h2 class=\"lv4\">Too many separate tools</h2>\n<p>Public conversation, offender records, bank statements, seized devices and paperwork each sit in a different system with a different login.</p></div>\n<div class=\"card card-d\"><h3 class=\"lv4\">Intelligence stays in silos</h3>\n<p>What one unit finds about a person is not seen by the station or wing working the same person next door.</p></div>\n<div class=\"card card-d\"><h4>Every step must hold up</h4>\n<p>Evidence, searches and decisions must be recorded properly so they stand in court, in audit and in information-rights requests.</p></div>\n</div>\n<div>\n<h3>Built on the three Smart Apps platforms</h3>\n<p>\n        GARUDA is a separate vertical for policing. It draws on all three flagship platforms, and each platform keeps its own page for everything it does outside policing.\n      </p>\n<div class=\"grid g3\">\n<a class=\"card card-d\" href=\"/products/access-genie/\">\n<span class=\"tag\" data-acc=\"ag\">Flagship · Access Genie</span>\n<h4>AI video and operational intelligence</h4>\n<p>Camera analytics and the operational policing products that run on the Access Genie platform.</p>\n</a>\n<a class=\"card card-d\" href=\"/products/blura-saga/\">\n<span class=\"tag\" data-acc=\"saga\">Flagship · Blura SAGA</span>\n<h4>Social media &amp; web intelligence</h4>\n<p>Watches public social media, news and websites, and flags threats, unrest, misinformation and citizen grievances early.</p>\n</a>\n<a class=\"card card-d\" href=\"/products/edugenie/\">\n<span class=\"tag\" data-acc=\"edu\">Flagship · EduGenie</span>\n<h4>Workforce management</h4>\n<p>A workforce management platform covering ERP, CRM and LMS.</p>\n</a>\n</div>\n</div>\n<div class=\"grid g2\">\n<div class=\"card card-d\">\n<div class=\"eyebrow\">Shared data model</div>\n<h3>One person. One GARUDA ID.</h3>\n<p>Each product adds its own piece to the same person's record. An officer who opens a subject sees all of it on one screen, with every item traced back to the product and the source it came from.</p>\n<div class=\"chips\">\n<span class=\"chip\">Identity &amp; aliases</span><span class=\"chip\">Risk score</span>\n<span class=\"chip\">Case history</span><span class=\"chip\">Financial links</span>\n<span class=\"chip\">Device findings</span><span class=\"chip\">Registry status</span>\n</div>\n</div>\n<div class=\"card card-d\">\n<div class=\"eyebrow\">Safeguards</div>\n<h3>Fast for the officer. Accountable for the department.</h3>\n<ul class=\"ticks\">\n<li>Single sign-on; what an officer sees depends on rank, unit and jurisdiction, and access is removed in one click on transfer.</li>\n<li>Searches, views, downloads, approvals and AI drafts are logged with who, when and why — exportable for vigilance, audit or court.</li>\n<li>AI suggests, the officer decides. Section suggestions, risk scores, face matches and drafted documents are reviewed before any action.</li>\n<li>Data stays in the state. Language and AI models run on local servers, so case data is not sent to outside AI services.</li>\n<li>Phone numbers, account numbers, dates of birth and victim details are masked by default; revealing them needs a reason, and is logged.</li>\n<li>Evidence is hashed when captured and its chain of custody recorded, with statutory certificates produced for digital records.</li>\n</ul>\n</div>\n</div>"
+  },
+  {
+   "kind": "modules"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through GARUDA, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/garuda/"
+ },
+ "related": {
+  "title": "The thirteen policing products on GARUDA",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "women-safety-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Registry & controlled disclosure",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
+  ]
+ },
+ "pager": [],
+ "cta": {
+  "title": "See GARUDA running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "GARUDA demonstration request"
+ }
+}

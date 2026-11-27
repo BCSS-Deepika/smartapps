@@ -178,3 +178,10 @@
   body[data-present='true'] main > section.present-on { min-height: 100vh; }
   body[data-present='true'] [data-present-bar] { display: flex; }
 }
+
+/* Inline links inside copied rich text (module summaries and details). */
+@layer components {
+  .rich a { color: var(--accent-text, var(--color-sky)); text-decoration: underline; text-underline-offset: 3px; }
+  .rich a:hover { color: var(--color-white); }
+  .rich b, .rich strong { color: var(--color-white); font-weight: 600; }
+}

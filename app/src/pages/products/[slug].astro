@@ -1,0 +1,341 @@
+---
+/*
+ * Product pages, one per product, built from src/content/products/<slug>.json.
+ * The content was copied from the live pages by scripts/migrate/extract_products.py.
+ * Module anchors (#m-…) are unchanged, so every old module link still lands on its module.
+ */
+import MainLayout from '@/layouts/MainLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ProductMark from '@/components/product/ProductMark.astro';
+import ModuleExplorer from '@/components/module/ModuleExplorer';
+import { accentStyle } from '@/lib/accent';
+import { bySlug, productUrl } from '@/data/products';
+import type { Accent, ModuleItem, ModuleGroup } from '@/types/product';
+import '@/styles/product-content.css';
+
+interface Section_ {
+  kind: 'html' | 'modules';
+  title?: string;
+  id?: string | null;
+  tone?: 'base' | 'alt' | 'deep';
+  tight?: boolean;
+  html?: string;
+}
+interface Content {
+  slug: string;
+  title: string;
+  description: string;
+  accent: Accent;
+  hero: {
+    crumbs: { label: string; href: string | null }[];
+    tag: string;
+    h1: string;
+    tagline: string;
+    lede: string;
+    chips: { text: string; division: boolean }[];
+    actions: { label: string; href: string; primary: boolean }[];
+    logo: string | null;
+    icon: string | null;
+    round: boolean;
+    facts: { value: string; label: string }[];
+  };
+  modules: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    groups: ModuleGroup[];
+    items: ModuleItem[];
+  };
+  sections: Section_[];
+  demo: {
+    title: string;
+    kicker: string;
+    heading: string;
+    text: string;
+    button: string;
+    href: string;
+  } | null;
+  related: { title: string; slugs: string[]; lines: string[] } | null;
+  pager: { label: string; href: string; kind: 'prev' | 'all' | 'next' }[];
+  cta: { title: string; text: string; subject: string } | null;
+}
+
+export function getStaticPaths() {
+  const files = import.meta.glob<{ default: Content }>('../../content/products/*.json', {
+    eager: true,
+  });
+  return Object.values(files).map((m) => ({
+    params: { slug: m.default.slug },
+    props: { c: m.default },
+  }));
+}
+
+const { c } = Astro.props as { c: Content };
+const p = bySlug(c.slug);
+const h = c.hero;
+const accent = c.accent ?? p.accent;
+// Bands alternate so neighbouring sections never merge; the live dark bands stay dark.
+let k = 0;
+const tones = c.sections.map(
+  (s) => (s.tone === 'deep' ? 'band' : k++ % 2 ? 'base' : 'alt') as 'base' | 'alt' | 'band',
+);
+const crumbs = h.crumbs.map((x) => ({ label: x.label, href: x.href ?? undefined }));
+---
+
+<MainLayout title={c.title} description={c.description}>
+  <div style={accentStyle(accent)}>
+    <!-- Hero -->
+    <section data-title={h.h1} class="relative overflow-hidden bg-deep">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_88%_15%,color-mix(in_oklab,var(--accent)_26%,transparent),transparent_70%)]"
+      ></div>
+      <div class="wrap relative grid grid-cols-[minmax(0,1fr)] items-center gap-10 py-[clamp(40px,7vw,96px)] lg:grid-cols-[1.4fr_0.6fr]">
+        <div>
+          <Breadcrumbs items={crumbs} />
+          {h.tag && <p class="eyebrow mt-8 !text-[var(--accent-text)]">{h.tag}</p>}
+          <h1 class="mt-3 text-page">{h.h1}</h1>
+          {h.tagline && (
+            <p
+              class="mt-4 font-display text-[clamp(1.2rem,2.3vw,1.6rem)] font-semibold text-white"
+              set:html={h.tagline}
+            />
+          )}
+          {h.lede && <p class="mt-4 max-w-2xl text-lede text-ink-2" set:html={h.lede} />}
+          {h.chips.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {h.chips.map((ch) => (
+                <li
+                  class={`rounded-chip border px-2.5 py-1 text-label font-medium ${ch.division ? 'border-[color-mix(in_oklab,var(--accent)_45%,transparent)] bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] text-[var(--accent-text)]' : 'border-line bg-surface-2 text-ink-2'}`}
+                >
+                  {ch.text}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div class="mt-8 flex flex-wrap gap-3">
+            {h.actions.map((a) => (
+              <Button
+                href={a.href}
+                variant={a.primary ? 'primary' : 'secondary'}
+                icon={a.href.startsWith('#') ? 'chevron-down' : 'arrow-right'}
+              >
+                {a.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+        <div class="hidden justify-center lg:flex">
+          {h.logo ? (
+            <ProductMark slug={c.slug} size={h.round || c.slug === 'smartcop' ? 150 : 72} />
+          ) : (
+            <span
+              class="grid size-44 place-items-center rounded-full border border-[color-mix(in_oklab,var(--accent)_35%,transparent)] bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] text-[var(--accent-text)] [&>svg]:size-24"
+              set:html={h.icon}
+            />
+          )}
+        </div>
+      </div>
+    </section>
+
+    {h.facts.length > 0 && (
+      <div class="border-y border-line bg-surface">
+        <ul class="wrap grid grid-cols-2 gap-x-6 gap-y-5 py-6 md:grid-cols-4">
+          {h.facts.map((f) => (
+            <li>
+              <b class="block font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold leading-none text-[var(--accent-text)]">
+                {f.value}
+              </b>
+              <span class="mt-1 block text-small leading-snug text-ink-2">{f.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {c.sections.map((s, i) =>
+      s.kind === 'modules' ? (
+        <Section id="modules" tone={tones[i]} rule title="Modules">
+          <header class="mb-8 max-w-3xl md:mb-10">
+            {c.modules.eyebrow && (
+              <p class="eyebrow mb-3 !text-[var(--accent-text)]">{c.modules.eyebrow}</p>
+            )}
+            <h2 class="text-section">{c.modules.title}</h2>
+            {c.modules.lede && <p class="mt-4 text-lede text-ink-2" set:html={c.modules.lede} />}
+            <p class="mt-3 text-small text-ink-3">
+              Click any module to open it. Each module has its own link you can send on its own.
+            </p>
+          </header>
+          <ModuleExplorer
+            client:load
+            modules={c.modules.items}
+            groups={c.modules.groups}
+            productName={p.name}
+          />
+        </Section>
+      ) : (
+        <Section
+          id={s.id ?? undefined}
+          tone={tones[i]}
+          rule
+          title={s.title || undefined}
+          class={s.tight ? '!py-[clamp(32px,5vw,64px)]' : ''}
+        >
+          <div class="pc" set:html={s.html} />
+        </Section>
+      ),
+    )}
+
+    {c.demo && (
+      <Section tone="base" title={c.demo.title} class="!py-[clamp(32px,5vw,64px)]">
+        <a
+          href={c.demo.href}
+          class="group flex flex-col gap-5 rounded-panel border border-[color-mix(in_oklab,var(--accent)_40%,transparent)] bg-[linear-gradient(135deg,color-mix(in_oklab,var(--accent)_16%,var(--color-surface)),var(--color-surface))] p-6 no-underline transition hover:-translate-y-0.5 hover:shadow-raised md:flex-row md:items-center md:p-8"
+        >
+          <span class="grid size-14 flex-none place-items-center rounded-full bg-[var(--accent)] text-brand-ink">
+            <Icon name="play" size={22} />
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="eyebrow block !text-[var(--accent-text)]">{c.demo.kicker}</span>
+            <b class="mt-1 block font-display text-[1.25rem] font-semibold text-white">
+              {c.demo.heading}
+            </b>
+            <span class="mt-1 block text-small text-ink-2">{c.demo.text}</span>
+          </span>
+          <span class="inline-flex min-h-12 flex-none items-center justify-center gap-2 rounded-btn bg-brand px-5 font-semibold text-brand-ink group-hover:bg-brand-hover">
+            {c.demo.button.replace(/\s*→$/, '')}
+            <Icon name="arrow-right" size={18} />
+          </span>
+        </a>
+      </Section>
+    )}
+
+    {c.pager.length > 0 && (
+      <nav aria-label="GARUDA products" class="border-t border-line-soft bg-bg">
+        <div class="wrap flex flex-col gap-3 py-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          {c.pager.map((x) => (
+            <a
+              href={x.href}
+              class={`inline-flex min-h-11 items-center gap-2 text-small font-semibold no-underline hover:text-[var(--accent-text)] ${x.kind === 'all' ? 'text-[var(--accent-text)]' : 'text-ink-2'}`}
+            >
+              {x.kind === 'prev' && <Icon name="arrow-left" size={16} />}
+              {x.kind === 'prev' && <span class="sr-only">Previous:</span>}
+              {x.kind === 'next' && <span class="sr-only">Next:</span>}
+              {x.label}
+              {x.kind === 'next' && <Icon name="arrow-right" size={16} />}
+            </a>
+          ))}
+        </div>
+      </nav>
+    )}
+
+    {c.related && (
+      <Section tone="alt" rule title="Related products" class="!py-[clamp(32px,5vw,64px)]">
+        <h2 class="mb-5 text-[clamp(1.1rem,1.9vw,1.4rem)]">{c.related.title}</h2>
+        <ul class="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          {c.related.slugs.map((s, i) => {
+            const r = bySlug(s);
+            return (
+              <li>
+                <a
+                  href={productUrl(s)}
+                  style={accentStyle(r.accent)}
+                  class="group flex h-full items-center gap-3 rounded-card border border-line bg-surface p-3 no-underline transition hover:border-[var(--accent)]"
+                >
+                  <span class="flex w-24 flex-none justify-center">
+                    <ProductMark slug={s} size={r.logo ? 26 : 22} />
+                  </span>
+                  <span class="min-w-0 flex-1">
+                    <b class="block text-small font-semibold text-white">{r.name}</b>
+                    <span class="block text-label leading-snug text-ink-3">{c.related!.lines[i] || r.line}</span>
+                  </span>
+                  <Icon
+                    name="chevron-right"
+                    size={16}
+                    class="flex-none text-ink-3 group-hover:text-[var(--accent-text)]"
+                  />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
+    )}
+
+    {c.cta && (
+      <Section tone="deep" title="Request a demonstration" class="!py-[clamp(32px,5vw,64px)]">
+        <div class="flex flex-col gap-6 rounded-panel border border-line bg-surface p-6 md:flex-row md:items-center md:justify-between md:p-8">
+          <div class="max-w-2xl">
+            <h2 class="text-[clamp(1.25rem,2.4vw,1.6rem)]">{c.cta.title}</h2>
+            <p class="mt-2 text-ink-2">{c.cta.text}</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <Button
+              href={`mailto:smartapps@bluecloudsoftech.com?subject=${encodeURIComponent(c.cta.subject)}`}
+              icon="mail"
+            >
+              Request a demonstration
+            </Button>
+            <Button href="/#contact" variant="secondary">
+              Full enquiry form
+            </Button>
+          </div>
+        </div>
+      </Section>
+    )}
+  </div>
+</MainLayout>
+
+<script>
+  /* Tabs inside product content: Blura SAGA workspaces (panels by aria-controls) and EduGenie
+     industries (table cells by data-v). Click, arrow keys, and a URL hash naming a panel or tab. */
+  document.querySelectorAll<HTMLElement>('.pc [role="tablist"]').forEach((list) => {
+    const tabs = Array.from(list.querySelectorAll<HTMLElement>('[role="tab"]'));
+    const scope = list.closest('section') ?? document;
+    const select = (t: HTMLElement, focus = false) => {
+      tabs.forEach((o) => {
+        const on = o === t;
+        o.setAttribute('aria-selected', String(on));
+        o.tabIndex = on ? 0 : -1;
+        o.classList.toggle('on', on);
+        const panel = o.getAttribute('aria-controls');
+        if (panel) {
+          const el = document.getElementById(panel);
+          if (el) el.hidden = !on;
+        }
+      });
+      const v = t.dataset.v;
+      if (v !== undefined)
+        scope
+          .querySelectorAll<HTMLElement>('td[data-v]')
+          .forEach((td) => (td.hidden = td.dataset.v !== v));
+      if (focus) t.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.tabIndex = t.getAttribute('aria-selected') === 'true' ? 0 : -1;
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', (e) => {
+        const n = tabs.length;
+        const j = (
+          { ArrowRight: i + 1, ArrowLeft: i - 1 + n, Home: 0, End: n - 1 } as Record<string, number>
+        )[e.key];
+        if (j === undefined) return;
+        e.preventDefault();
+        select(tabs[j % n], true);
+      });
+    });
+    const fromHash = () => {
+      const id = location.hash.slice(1);
+      const t = tabs.find((o) => o.id === id || o.getAttribute('aria-controls') === id);
+      if (t) {
+        select(t);
+        list.scrollIntoView({ block: 'start' });
+      }
+    };
+    addEventListener('hashchange', fromHash);
+    fromHash();
+  });
+</script>

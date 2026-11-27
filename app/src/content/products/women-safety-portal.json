@@ -1,0 +1,494 @@
+{
+ "slug": "women-safety-portal",
+ "title": "Women Safety Portal — SMARTAPPS by Blue Cloud Softech",
+ "description": "One registry. Two doors. One limit. A registry of sexual offenders kept up to date so the right officer knows who lives in their beat — with a second, segregated door for consented insti",
+ "accent": "invest",
+ "hero": {
+  "crumbs": [
+   {
+    "label": "SmartApps",
+    "href": "/"
+   },
+   {
+    "label": "GARUDA",
+    "href": "/products/garuda/"
+   },
+   {
+    "label": "Women Safety Portal",
+    "href": null
+   }
+  ],
+  "tag": "Registry & controlled disclosure",
+  "h1": "Women Safety Portal",
+  "tagline": "One registry. Two doors. One limit.",
+  "lede": "A registry of sexual offenders kept up to date so the right officer knows who lives in their beat — with a second, segregated door for consented institutional verification.",
+  "chips": [
+   {
+    "text": "GARUDA – Blue Cloud's Policing Operational Ecosystem",
+    "division": true
+   },
+   {
+    "text": "Investigate",
+    "division": false
+   }
+  ],
+  "actions": [
+   {
+    "label": "Explore the 15 modules",
+    "href": "#modules",
+    "primary": true
+   },
+   {
+    "label": "Open the interactive demo",
+    "href": "/demos/women-safety-portal/",
+    "primary": false
+   }
+  ],
+  "logo": null,
+  "icon": "<svg aria-hidden=\"true\" fill=\"none\" height=\"94\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.9\" viewbox=\"0 0 24 24\" width=\"94\"><path d=\"M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z\"></path><path d=\"M8.5 12l2.5 2.5 4.5-5\"></path></svg>",
+  "round": false,
+  "facts": [
+   {
+    "value": "15",
+    "label": "components"
+   },
+   {
+    "value": "2",
+    "label": "doors"
+   },
+   {
+    "value": "5",
+    "label": "conditions at the gate"
+   },
+   {
+    "value": "19",
+    "label": "stages per record"
+   }
+  ]
+ },
+ "modules": {
+  "eyebrow": "Module explorer",
+  "title": "15 components, two doors, one platform",
+  "lede": "Read it as two lanes: what the police do with a record, and what an employer gets when they ask. Door B has no path to the registry, the map or the case record.",
+  "groups": [
+   {
+    "name": "Door A · police",
+    "sub": "Lawful authority"
+   },
+   {
+    "name": "Door B · verification",
+    "sub": "Controlled disclosure"
+   },
+   {
+    "name": "Shared",
+    "sub": "Identity, records and reports"
+   }
+  ],
+  "items": [
+   {
+    "id": "m-officer",
+    "n": "01",
+    "name": "Police & women safety teams",
+    "tag": "Who works the registry",
+    "group": "Door A · police",
+    "summary": "Officers who register cases, review records, receive alerts and verify addresses in the field, within their own rank and jurisdiction.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Sign-in with role, unit and jurisdiction"
+     },
+     {
+      "label": "Produces",
+      "text": "Case entries, field outcomes, review decisions"
+     },
+     {
+      "label": "If it fails",
+      "text": "Access is removed centrally on transfer; open assignments return to the station queue."
+     }
+    ]
+   },
+   {
+    "id": "m-portal",
+    "n": "02",
+    "name": "Officer app",
+    "tag": "Where officers work",
+    "group": "Door A · police",
+    "summary": "The officer-facing application: registry, case records, alerts, assignments and field capture, on desktop and on a phone.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Officer session; assigned work"
+     },
+     {
+      "label": "Produces",
+      "text": "Record views, field reports, status updates"
+     },
+     {
+      "label": "If it fails",
+      "text": "Field capture queues on the device when offline and syncs when the signal returns."
+     }
+    ]
+   },
+   {
+    "id": "m-justice",
+    "n": "03",
+    "name": "Justice systems",
+    "tag": "Crime records · prisons · courts",
+    "group": "Door A · police",
+    "summary": "SIMULATED",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "The systems that own the facts: police records, the prison service and the courts, all reached through one managed gateway so authentication and retries are solved once."
+     },
+     {
+      "label": "Produces",
+      "text": "Authorised queries and events"
+     },
+     {
+      "label": "If it fails",
+      "text": "Cases, custody events, court orders and status changes"
+     }
+    ]
+   },
+   {
+    "id": "m-person",
+    "n": "04",
+    "name": "One profile",
+    "tag": "One person, many cases",
+    "group": "Door A · police",
+    "summary": "",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": ""
+     },
+     {
+      "label": "Produces",
+      "text": ""
+     },
+     {
+      "label": "If it fails",
+      "text": ""
+     }
+    ]
+   },
+   {
+    "id": "m-casemgmt",
+    "n": "05",
+    "name": "Case record",
+    "tag": "What the case is",
+    "group": "Door A · police",
+    "summary": "Each case against the profile: station, dates, the exact sections it was registered under, and whether it belongs in the registry at all.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Case data from the justice systems; officer updates"
+     },
+     {
+      "label": "Produces",
+      "text": "Case records with their exact legal provisions"
+     },
+     {
+      "label": "If it fails",
+      "text": "An unrecognised provision is flagged for configuration, not quietly included or dropped."
+     }
+    ]
+   },
+   {
+    "id": "m-status",
+    "n": "06",
+    "name": "Legal status",
+    "tag": "Accused, convicted, released",
+    "group": "Door A · police",
+    "summary": "One current status per case — accused, under trial, convicted, released, acquitted — each with where it came from and when.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Court and prison events; officer updates"
+     },
+     {
+      "label": "Produces",
+      "text": "A status per case, with its source"
+     },
+     {
+      "label": "If it fails",
+      "text": "Conflicting events are held for review. The platform never decides a status on its own."
+     }
+    ]
+   },
+   {
+    "id": "m-custody",
+    "n": "07",
+    "name": "Prison & release",
+    "tag": "In prison, out of prison",
+    "group": "Door A · police",
+    "summary": "SIMULATED",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Follows admission, sentence, transfer, release, bail and parole, so the day someone is released is known before it happens, not after."
+     },
+     {
+      "label": "Produces",
+      "text": "Prisoner lifecycle events"
+     },
+     {
+      "label": "If it fails",
+      "text": "A custody timeline; release and interim-release events"
+     }
+    ]
+   },
+   {
+    "id": "m-alert",
+    "n": "08",
+    "name": "Alerts & field work",
+    "tag": "Who is told, who checks",
+    "group": "Door A · police",
+    "summary": "Works out which station covers the verified address, sends the alert to that women safety team with a due date, and records what the officer found on the visit.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Status and release events; addresses; station boundaries"
+     },
+     {
+      "label": "Produces",
+      "text": "Routed alerts, assignments and visit outcomes"
+     },
+     {
+      "label": "If it fails",
+      "text": "If no station can be resolved the alert escalates to district supervision rather than being dropped."
+     }
+    ]
+   },
+   {
+    "id": "m-inst",
+    "n": "09",
+    "name": "Schools & employers",
+    "tag": "Who may ask a question",
+    "group": "Door B · verification",
+    "summary": "Schools, universities, childcare bodies, hospitals and corporations. All registered, all authenticated, all held to one identical limit.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "A verification request, with consent"
+     },
+     {
+      "label": "Produces",
+      "text": "One permitted outcome, with a reference number"
+     },
+     {
+      "label": "If it fails",
+      "text": "An unregistered or lapsed requester is refused before a request is even created."
+     }
+    ]
+   },
+   {
+    "id": "m-vportal",
+    "n": "10",
+    "name": "Request portal",
+    "tag": "Where requests come in",
+    "group": "Door B · verification",
+    "summary": "The separate requester-facing application. It can submit a request and track it. It cannot search, browse or view a record.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Requester session; request form and consent document"
+     },
+     {
+      "label": "Produces",
+      "text": "Request status; the issued response"
+     },
+     {
+      "label": "If it fails",
+      "text": "An incomplete request is rejected at submission with a reason, before it is routed anywhere."
+     }
+    ]
+   },
+   {
+    "id": "m-disc",
+    "n": "11",
+    "name": "Disclosure gate",
+    "tag": "Five conditions, all true",
+    "group": "Door B · verification",
+    "summary": "The decision that stands between a request and any answer. Identical for a village school and a national corporation.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "The request, consent, role, officer review, record status"
+     },
+     {
+      "label": "Produces",
+      "text": "One permitted outcome, or a refusal with a reason"
+     },
+     {
+      "label": "If it fails",
+      "text": "Any condition unresolved means no disclosure — and the attempt is still logged in full."
+     }
+    ]
+   },
+   {
+    "id": "m-cert",
+    "n": "12",
+    "name": "Outcome issued",
+    "tag": "An answer, never a record",
+    "group": "Door B · verification",
+    "summary": "SIMULATED",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Produces the referenced response the requester receives. It carries an outcome and a reference number — never an extract of the record."
+     },
+     {
+      "label": "Produces",
+      "text": "The gate decision; the request reference"
+     },
+     {
+      "label": "If it fails",
+      "text": "A signed response with a reference number"
+     }
+    ]
+   },
+   {
+    "id": "m-iam",
+    "n": "13",
+    "name": "Sign-in & permissions",
+    "tag": "Decides who sees what",
+    "group": "Shared",
+    "summary": "Decides which door a person enters and what is reachable once inside. This is where the two sides are kept apart.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Credentials, role, rank, unit, jurisdiction, organisation"
+     },
+     {
+      "label": "Produces",
+      "text": "A scoped session; a permission decision on every action"
+     },
+     {
+      "label": "If it fails",
+      "text": "A failed or unclear authorisation denies by default, and the attempt is logged."
+     }
+    ]
+   },
+   {
+    "id": "m-store",
+    "n": "14",
+    "name": "Records & audit",
+    "tag": "Every action, kept",
+    "group": "Shared",
+    "summary": "One store for profiles, cases, events and requests — and an immutable record of every view, search, decision and disclosure.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Writes and access events from everything above"
+     },
+     {
+      "label": "Produces",
+      "text": "Records with provenance; an exportable audit trail"
+     },
+     {
+      "label": "If it fails",
+      "text": "If the audit path is down the action is refused. Nothing happens unrecorded."
+     }
+    ]
+   },
+   {
+    "id": "m-reports",
+    "n": "15",
+    "name": "Seven reports",
+    "tag": "What it all adds up to",
+    "group": "Shared",
+    "summary": "Turns registry, custody, field and verification activity into the seven operational reports.",
+    "details": [
+     {
+      "label": "Takes in",
+      "text": "Records and events from the store"
+     },
+     {
+      "label": "Produces",
+      "text": "Seven report views"
+     },
+     {
+      "label": "If it fails",
+      "text": "Each report states the data cut-off it was built from, so a stale figure looks stale."
+     }
+    ]
+   }
+  ]
+ },
+ "sections": [
+  {
+   "kind": "html",
+   "title": "Overview",
+   "id": null,
+   "tone": "base",
+   "tight": false,
+   "html": "<div class=\"ch-lead\">\n<p>\n            The record already exists. It is never in one place at the right time. The report sits in\n            crime records, the trial in the court system, the sentence in prison records — so one\n            individual across three cases becomes three unconnected records, and the pattern never\n            surfaces.\n          </p>\n</div>\n<div class=\"ch-sec\">\n<h2 class=\"lv4\">Why it exists</h2>\n<div class=\"grid g3\">\n<div class=\"card\">\n<h3 class=\"lv4\">The person is scattered</h3>\n<p>One individual across three systems becomes three unconnected records.</p>\n<span class=\"now\">Now · one master profile, many linked cases</span>\n</div>\n<div class=\"card\">\n<h4>Release passes unnoticed</h4>\n<p>An offender completes a sentence and returns to a jurisdiction where no officer was told. The information existed — it never reached the station that needed it.</p>\n<span class=\"now\">Now · release events raise a routed alert</span>\n</div>\n<div class=\"card\">\n<h4>Employers have no lawful route</h4>\n<p>A school hiring a bus driver has documents and references and no proper way to ask the police anything — so either nothing is checked, or records move through channels that should not exist.</p>\n<span class=\"now\">Now · one consented, audited, gated channel</span>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>Two operational ecosystems · same platform, separate access, identical limit</h4>\n<div class=\"doors\">\n<div class=\"door\">\n<span class=\"tag\" data-acc=\"invest\">Door A · lawful authority</span>\n<h4>Police &amp; field team operations</h4>\n<p>The operational registry: identify, register and track individuals connected to sexual-offence cases, with legal status maintained accurately at every stage.</p>\n<ul class=\"ticks\">\n<li>Consolidated registry of case-linked individuals</li>\n<li>Accused, under-trial and convicted kept as distinct categories</li>\n<li>Release, bail and legal-status change alerts</li>\n<li>Verified addresses, geotagged and jurisdiction-resolved</li>\n<li>Repeat-offender and multi-case identification</li>\n<li>Field assignments and follow-up history</li>\n</ul>\n<div class=\"chips\">\n<span class=\"chip\">Women safety teams</span><span class=\"chip\">Police stations</span>\n<span class=\"chip\">Investigating officers</span><span class=\"chip\">District supervision</span>\n</div>\n</div>\n<div class=\"door\">\n<span class=\"tag\" data-acc=\"watch\">Door B · controlled disclosure</span>\n<h4>Institutional &amp; employer verification</h4>\n<p>A segregated portal where registered requesters submit consented background-verification requests for people in roles with access to women and children — and receive an outcome against a defined scope.</p>\n<ul class=\"ticks\">\n<li>Requester registration and authentication</li>\n<li>Consent and authorisation captured with every request</li>\n<li>Requests routed to the correct police jurisdiction</li>\n<li>An authorised officer reviews before any response is issued</li>\n<li>Outcome returned as a referenced verification certificate</li>\n<li>Full request and access history retained for audit</li>\n</ul>\n<div class=\"chips\">\n<span class=\"chip\">Schools</span><span class=\"chip\">Universities</span><span class=\"chip\">Childcare</span>\n<span class=\"chip\">Hospitals</span><span class=\"chip\">Corporations</span><span class=\"chip\">Transport staffing</span>\n</div>\n</div>\n</div>\n<div class=\"limit-box\">\n<b>No requester goes beyond the limit — corporations included</b>\n<p>\n              There is <strong>no enhanced tier</strong>. A corporation is held to exactly the same gate,\n              the same scope and the same outcome set as a primary school, whatever its size, sector,\n              contract value or stated reason. Size does not buy access, and neither does a commercial\n              relationship with the department.\n            </p>\n<div class=\"chips\">\n<span class=\"chip neg\">No search or browse</span><span class=\"chip neg\">No case file</span>\n<span class=\"chip neg\">No accused record</span><span class=\"chip neg\">No victim information</span>\n<span class=\"chip neg\">No map or monitoring view</span><span class=\"chip neg\">No bulk or standing access</span>\n</div>\n</div>\n</div>\n<div class=\"ch-sec\">\n<h4>The disclosure gate · five conditions, all true or no disclosure</h4>\n<p>\n            A verification response leaves the platform only when every one of five conditions is true.\n            They are evaluated with AND — one false is enough to stop a response. The gate is identical\n            for every requester: the conditions evaluated, the scope of the check and the outcome text\n            are byte-identical between a school and a corporate requester. The only thing that differs\n            in the record is which registered requester asked, and that is kept for audit, not used to\n            widen what is returned.\n          </p>\n<div class=\"note\"><span><b>Nineteen stages</b> take one individual end to end — a case registered, a profile matched, a conviction and sentence, a release that raises an alert, a field verification, and finally an employer's question answered at the gate. Seventeen scenarios cover identity matching, split legal statuses, acquittals, bail and parole, address changes, failed field visits, refused disclosures and victim-protected cases.</span></div>\n</div>\n<div class=\"ch-sec\">\n<h4>Safeguards · useful to the officer, fair to the individual</h4>\n<ul class=\"ticks\">\n<li><b>Victim identity protected</b> — victim information is restricted throughout and never leaves through Door B.</li>\n<li><b>Due process preserved</b> — accused, under-trial and convicted stay separate in the data model, the workflows and every disclosure. A pending report is never returned as a finding.</li>\n<li><b>Access is narrow and logged</b> — role-based by rank, unit and jurisdiction, with an immutable record of every view, search, download and disclosure.</li>\n<li><b>Consent and a human reviewer</b> — no verification runs without recorded consent, and no response is issued without an authorised officer deciding what is disclosable.</li>\n<li><b>Provenance on every field</b> — each record carries its source system, verification status and last-updated time.</li>\n<li><b>Monitoring within authority</b> — geotagging an address is not live tracking, and release is not surveillance. Each assignment records the order it acts on.</li>\n<li><b>Structural separation</b> — Door B has no path to the registry, the map or the case record. The boundary is in the architecture, not in a permission setting someone can widen.</li>\n</ul>\n</div>"
+  },
+  {
+   "kind": "modules"
+  }
+ ],
+ "demo": {
+  "title": "Interactive demo",
+  "kicker": "Interactive demo",
+  "heading": "Walk through Women Safety Portal, screen by screen",
+  "text": "The full architecture walkthrough, with live simulated screens. Opens as its own page.",
+  "button": "Open the demo →",
+  "href": "/demos/women-safety-portal/"
+ },
+ "related": {
+  "title": "Other products in the GARUDA ecosystem",
+  "slugs": [
+   "blura-saga",
+   "geo-intelligence",
+   "drug-offender-portal",
+   "bluflow",
+   "digital-forensics",
+   "trap-case-management",
+   "ai-copwriter",
+   "fir-automation",
+   "memo-generator",
+   "smartcop",
+   "grievance-management",
+   "bluvaani"
+  ],
+  "lines": [
+   "Digital intelligence",
+   "One map for every product",
+   "Narcotics offender register",
+   "Financial intelligence",
+   "Device & media evidence",
+   "Anti-corruption trap cases",
+   "Voice to structured complaint",
+   "Complaint to registered report",
+   "Supervision memos",
+   "Officer mobile platform",
+   "Citizen grievances to closure",
+   "The sovereign AI call dispatcher"
+  ]
+ },
+ "pager": [
+  {
+   "label": "Drug Offender Portal",
+   "href": "/products/drug-offender-portal/",
+   "kind": "prev"
+  },
+  {
+   "label": "All thirteen GARUDA products",
+   "href": "/products/garuda/",
+   "kind": "all"
+  },
+  {
+   "label": "BluFlow",
+   "href": "/products/bluflow/",
+   "kind": "next"
+  }
+ ],
+ "cta": {
+  "title": "See Women Safety Portal running on your own data.",
+  "text": "We start with your cameras, your stations and the problems your teams face today — not with a platform rollout. Tell us what you are trying to change.",
+  "subject": "Women Safety Portal demonstration request"
+ }
+}

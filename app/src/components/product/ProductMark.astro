@@ -1,0 +1,33 @@
+---
+/* A product's mark: its logo on a white plate, or, for products without a logo, the line icon
+   from the live site inside an accent-tinted disc. */
+import { bySlug } from '@/data/products';
+import { accentStyle } from '@/lib/accent';
+import LogoPlate from '../ui/LogoPlate.astro';
+import marks from '@/data/marks.json';
+
+interface Props {
+  slug: string;
+  size?: number;
+  class?: string;
+}
+const { slug, size = 36, class: cls = '' } = Astro.props;
+const p = bySlug(slug);
+const svg = (marks as Record<string, string>)[slug];
+const round = slug === 'garuda' || slug === 'smartcop';
+---
+
+{p.logo ? (
+  <LogoPlate
+    src={p.logo}
+    alt={`${p.name} logo`}
+    height={size}
+    class={`${round ? '!rounded-full !p-1.5' : ''} ${cls}`}
+  />
+) : (
+  <span
+    style={`${accentStyle(p.accent)} width:${size + 16}px; height:${size + 16}px`}
+    class={`inline-grid flex-none place-items-center rounded-full bg-[color-mix(in_oklab,var(--accent)_18%,transparent)] text-[var(--accent-text)] [&>svg]:size-[60%] ${cls}`}
+    set:html={svg}
+  />
+)}
